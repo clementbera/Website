@@ -1386,4 +1386,259 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
-!----End fileIn----!----QUIT/NOSAVE----2018-01-27T12:02:38.238152+01:00 Pharo.image priorSource: 110339!
+!----End fileIn----!----QUIT/NOSAVE----2018-01-27T12:02:38.238152+01:00 Pharo.image priorSource: 110339!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDAdvancedTower methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 13:40' prior: 33609387!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'advanced/' , codeName.	1halt.! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 13:40'!combinations	1halt.! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 13:45' prior: 33674106!combinations	combinations ifNotNil: [ ^ combinations ].	combinations := Dictionary new.	self parseCombinations: 'GameRules.gemtd_merge'.	self parseCombinations: 'GameRules.gemtd_merge_secret'.	^ combinations! !Object subclass: #GemTDLuaParser	instanceVariableNames: 'readStream'	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDLuaParser methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 13:47'!parse: rs	readStream := rs.	self skipUntilRelevant.	^ self parseKeyValue! !GemTDParser subclass: #GemTDLuaParser	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 13:48'!parseCombinations: sub	| i |	i := scripts first indexOfSubCollection: sub.	i := i + sub size.	1halt.! !!GemTDAdvancedTower methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 13:48' prior: 33673896!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'advanced/' , codeName.	importer combinations.	1halt.! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:49' prior: 33674650!parse: rs	result := Dictionary new.	readStream := rs.	[self skipSeparators.	 readStream peek = $} ] whileFalse: [ self parseCombination ]! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:49'!skipSeparators	! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:50' prior: 33675601!skipSeparators	[readStream peek isSeparator] whileTrue: [ readStream next ].! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:50'!parseCombination	self ! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:51' prior: 33675870!parseCombination	| ws str |	ws := WriteStream on: (ByteString new: 20).	[readStream peek = $=] whileFalse: [ 		ws nextPut: readStream next].	readStream next. "skip equal"	^ (ws contents reject: [ :e | e = Character null]) trimBoth.	! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:51'!parseRes	| ws str |	ws := WriteStream on: (ByteString new: 20).	[readStream peek = $=] whileFalse: [ 		ws nextPut: readStream next].	readStream next. "skip equal"	^ (ws contents reject: [ :e | e = Character null]) trimBoth.	! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:52' prior: 33675989!parseCombination	| res combo |	res := self parseRes.	combo := self parseCombo.	! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:55'!parseCombo	| str1 ws |	ws := WriteStream on: (Array new: 5).	[readStream peek = ${] whileFalse: [ readStream next].	readStream next. "skip {"	ws nextPut: self parseString.	[self skipSeparators.	readStream peek = $,] whileTrue: [ ws nextPut: self parseString ].	^ ws contents	! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:55' prior: 33676798!parseCombo	| ws |	ws := WriteStream on: (Array new: 5).	[readStream peek = ${] whileFalse: [ readStream next].	readStream next. "skip {"	ws nextPut: self parseString.	[self skipSeparators.	readStream peek = $,] whileTrue: [ ws nextPut: self parseString ].	^ ws contents	! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:55' prior: 33676635!parseCombination	| res combo |	res := self parseRes.	combo := self parseCombo.	result at: res put: combo! !----SNAPSHOT----2018-01-27T13:56:22.607608+01:00 Pharo.image priorSource: 110339!!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 13:57' prior: 33674924!parseCombinations: sub	| i |	i := scripts first indexOfSubCollection: sub.	i := i + sub size.	GemTDLuaParser new parse: (scripts first copyFrom: i + 2 to: i + 100000) readStream.	1halt.! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 13:58' prior: 33677841!parseCombinations: sub	| i |	i := scripts first indexOfSubCollection: sub.	i := i + sub size.	GemTDLuaParser new parse: (scripts first copyFrom: i + 4 to: i + 100000) readStream.	1halt.! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 13:58' prior: 33678128!parseCombinations: sub	| i |	i := scripts first indexOfSubCollection: sub.	i := i + sub size.	GemTDLuaParser new parse: (scripts first copyFrom: i to: i + 100000) readStream.	1halt.! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:58' prior: 33675380!parse: rs	result := Dictionary new.	readStream := rs.	self skipUntilRelevant.	readStream next.	[self skipSeparators.	 readStream peek = $} ] whileFalse: [ self parseCombination ]! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 13:59' prior: 33677178!parseCombo	| ws |	ws := WriteStream on: (Array new: 5).	[readStream peek = ${] whileFalse: [ readStream next].	readStream next. "skip {"	self skipSeparators.	ws nextPut: self parseString.	[self skipSeparators.	readStream peek = $,] whileTrue: [ ws nextPut: self parseString ].	^ ws contents	! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 14:00' prior: 33678977!parseCombo	| ws |	ws := WriteStream on: (Array new: 5).	[readStream peek = ${] whileFalse: [ readStream next].	readStream next. "skip {"	self skipSeparators.	ws nextPut: self parseString.	[self skipSeparators.	readStream peek = $,] whileTrue: [ 	readStream next. "skip ,"	self skipSeparators.	ws nextPut: self parseString ].	^ ws contents	! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 14:01' prior: 33679374!parseCombo	| ws |	ws := WriteStream on: (Array new: 5).	self skipUntilRelevant.	self assert: readStream peek = ${.	readStream next. "skip {"	self skipSeparators.	ws nextPut: self parseString.	[self skipSeparators.	readStream peek = $,] whileTrue: [ 	readStream next. "skip ,"	self skipSeparators.	ws nextPut: self parseString ].	self skipUntilRelevant.	self assert: readStream peek = $}.	readStream next. "skip }"	^ ws contents	! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 14:04' prior: 33677553!parseCombination	| res combo |	res := self parseRes.	combo := self parseCombo.	result at: res put: combo.	res = 'gemtd_haibao' ifTrue: [ 1halt ].! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 14:05' prior: 33680363!parseCombination	| res combo |	res := self parseRes.	combo := self parseCombo.	result at: res put: combo.	res trim = 'gemtd_haibao' ifTrue: [ 1halt ].! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 14:06' prior: 33678697!parse: rs	result := Dictionary new.	readStream := rs.	self skipUntilRelevant.	readStream next.	[self skipSeparators.	 readStream peek = $} ] whileFalse: [ 	  self parseCombination.	  self skipSeparators.	  readStream peek = $, ifTrue: [ readStream next ]	]! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 14:06' prior: 33678415!parseCombinations: sub	| i |	i := scripts first indexOfSubCollection: sub.	i := i + sub size.	GemTDLuaParser new parse: (scripts first copyFrom: i to: i + 100000) readStream.! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 14:07' prior: 33680609!parseCombination	| res combo |	res := self parseRes.	combo := self parseCombo.	result at: res put: combo.! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 14:07' prior: 33680860!parse: rs	result := Dictionary new.	readStream := rs.	self skipUntilRelevant.	readStream next.	[self skipSeparators.	 readStream peek = $} ] whileFalse: [ 	  self parseCombination.	  self skipSeparators.	  readStream peek = $, ifTrue: [ readStream next ]].	^ result! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 14:07' prior: 33681222!parseCombinations: sub	| i combos |	i := scripts first indexOfSubCollection: sub.	i := i + sub size.	combos := GemTDLuaParser new parse: (scripts first copyFrom: i to: i + 100000) readStream.	combos keysAndValuesDo: [ :k :v |		combinations at: k put: v ]	 ! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 14:08' prior: 33674223!combinations	combinations ifNotNil: [ ^ combinations ].	combinations := Dictionary new.	self parseCombinations: 'GameRules.gemtd_merge'.	self parseCombinations: 'GameRules.gemtd_merge_secret'.	1halt.	^ combinations! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 14:08' prior: 33682432!combinations	combinations ifNotNil: [ ^ combinations ].	combinations := Dictionary new.	self parseCombinations: 'GameRules.gemtd_merge'.	self parseCombinations: 'GameRules.gemtd_merge_secret'.	^ combinations! !!GemTDAdvancedTower methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 14:08' prior: 33675131!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'advanced/' , codeName.	combo := importer combinations at: codeName! !!GemTDAdvancedTower methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 14:09' prior: 33683064!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'advanced/' , codeName.	combo := importer combinations at: codeName ifAbsent: [ #() ]! !!GemTDAdvancedTower methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 14:09'!exportOn: s	super exportOn: s.	1halt.! !!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:13' prior: 33683613!exportOn: s	super exportOn: s.	combo ifNil: [ ^ self ].	s << '|!! Combination |!! Combination |!! Combination |!! Combination'	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).		1halt.! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 14:14'!enNameFor: key importer: importer	^ (importer resources at: 'en') at: codeName ifAbsent: ['Unavailable']! !!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:14' prior: 33683751!exportOn: s	super exportOn: s.	combo ifNil: [ ^ self ].	s << '|!! Combination |!! Combination |!! Combination |!! Combination'	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.	1halt.! !!GemTDAdvancedTower methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 14:15' prior: 33683333!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'advanced/' , codeName.	combo := importer combinations at: codeName ifAbsent: [ #() ].	comboNames := combo collect: [ :c | self enNameFor: c importer: importer ].! !!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:15' prior: 33684461!exportOn: s	super exportOn: s.	combo ifNil: [ ^ self ].	s << '|!! Combination |!! Combination |!! Combination |!! Combination'	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.	1halt.! !!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:15' prior: 33685355!exportOn: s	super exportOn: s.	combo ifNil: [ ^ self ].	s << '|!! Combination |!! Combination |!! Combination |!! Combination'	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.! !!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:16' prior: 33686215!exportOn: s	super exportOn: s.	combo ifNil: [ ^ self ].	s << '|!! Combination |!! Combination |!! Combination |!! Combination'.	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.! !!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:16' prior: 33687067!exportOn: s	super exportOn: s.	combo ifNil: [ ^ self ].	combo size < 2 ifTrue: [ ^ self ] .	s << '|!! Combination |!! Combination |!! Combination |!! Combination'.	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.! !----SNAPSHOT----2018-01-27T14:16:59.794337+01:00 Pharo.image priorSource: 123232!!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 14:17' prior: 33684257!enNameFor: key importer: importer	^ (importer resources at: 'en') at: key ifAbsent: ['Unavailable']! !----QUIT----2018-01-27T14:18:21.211368+01:00 Pharo.image priorSource: 134282!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!----QUIT/NOSAVE----2018-01-27T14:19:59.41277+01:00 Pharo.image priorSource: 134562!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:20' prior: 33687920!exportOn: s	super exportOn: s.	combo ifNil: [ ^ self ].	combo size < 2 ifTrue: [ ^ self ] .	s << '|!! Combination |!! Combination |!! Combination |!! Combination'.	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , ' & ' , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , ' & ' , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.! !----SNAPSHOT----2018-01-27T14:20:49.382902+01:00 Pharo.image priorSource: 134562!----QUIT----2018-01-27T14:20:53.48445+01:00 Pharo.image priorSource: 141482!
