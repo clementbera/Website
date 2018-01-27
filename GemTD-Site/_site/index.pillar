@@ -17,4 +17,7 @@ v.0.2: Added initials instead of chinese names that had issues, cleaned too awck
 
 v.0.3: Ordered Advanced towers (Thanks to leQ4specialist)
 
+v.0.4: Added GreatStone picture, Added fall-back list for missing in-game names (Thanks to leQ4specialist). 
+Added clean-up function for names (Everything capitalized, with space, etc.). Made greatStone picture bigger.
+
 Farine
