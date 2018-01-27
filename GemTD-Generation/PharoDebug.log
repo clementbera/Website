@@ -36265,3 +36265,2801 @@ false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
 Processor terminateActive ] in BlockClosure>>newProcess
 -------------------------------------------------------------------------------
 
+THERE_BE_DRAGONS_HERE
+Halt
+27 January 2018 2:57:28.460788 pm
+
+VM: Mac OS - x64 - 1011.6 - CoInterpreter VMMaker.oscog-eem.2265 uuid: 76b62109-629a-4c39-9641-67b53321df9a Aug 27 2017
+StackToRegisterMappingCogit VMMaker.oscog-eem.2262 uuid: 8b531242-de02-48aa-b418-8d2dde0bec6c Aug 27 2017
+VM: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $ Date: Sun Aug 27 21:55:26 2017 +0200 $ Plugins: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $
+
+Image: Pharo7.0alpha [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (64 Bit)]
+
+GemTDBaseTower(GemTDElement)>>exportNamesOn:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+GemTDBaseTower(GemTDTower)>>exportOn:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+[ :u | u exportOn: s ] in GemTDGod>>exportBaseTowers
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+		u: 	a GemTDBaseTower
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower a Ge...etc...
+
+
+OrderedCollection>>do:
+	Receiver: an OrderedCollection(a GemTDBaseTower a GemTDBaseTower a GemTDBaseTower a GemTDBaseTower a...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :u | u exportOn: s ]
+		index: 	1
+	Receiver's instance variables: 
+		array: 	an Array(a GemTDBaseTower a GemTDBaseTower a GemTDBaseTower a GemTDBaseT...etc...
+		firstIndex: 	1
+		lastIndex: 	48
+
+
+GemTDGod>>exportBaseTowers
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower a Ge...etc...
+
+
+GemTDGod>>process
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower a Ge...etc...
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	a ReadStream
+		itsSelection: 	a Text for ''
+		itsSelectionString: 	''
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ GemTDGod new process
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+
+
+RubSmalltalkEditor>>evaluate:andDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aStream: 	a ReadStream
+		aBlock: 	[ :result | aBlock value: result ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result |  ]
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+	Receiver: a RubEditingArea(880226816)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+text...etc...
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (580@69)
+		owner: 	a TransformWithLayoutMorph(1031524864)
+		submorphs: 	an Array(a RubPrimarySelectionMorph(139253760) a RubCursor(758274560...etc...
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (79358464) [other:  (announcer -> an Announcer) (km...etc...
+		model: 	a GLMRubricSmalltalkTextModel
+		paragraph: 	a RubShoutStylerDecorator
+		editor: 	a RubSmalltalkEditor
+		scrollPane: 	a RubTextScrollPane(206663680)
+		editingState: 	a RubEditingState
+		textStyle: 	a TextStyle Source Code Pro
+		textColor: 	Color black
+		margins: 	a Margin top: 6 left: 6 bottom: 6 right: 6
+		readOnly: 	false
+		menuAllowed: 	nil
+		editingMode: 	a RubSmalltalkScriptingMode
+		cursor: 	a RubCursor(758274560)
+		segments: 	an OrderedCollection(a RubHighlightSegmentMorph(1028103424))
+		getMenuPolicy: 	nil
+		mouseDownPoint: 	nil
+		wrapped: 	true
+		editorClass: 	RubSmalltalkEditor
+
+
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+WorldState>>runStepMethodsIn:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+		queue: 	WaitfreeQueue with 0 items
+		nextInQueue: 	[ textMorph textArea
+	handleEdit: [ textMorph textArea editor high...etc...
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a SpecDropListMorph(61845760))(a SpecD...etc...
+		lastStepTime: 	2144
+		lastStepMessage: 	nil
+		lastCycleTime: 	2165
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	2144
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>runStepMethods
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(490979328) a Sp...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a SpecDropListMorph(61845760))(a SpecD...etc...
+		lastStepTime: 	2144
+		lastStepMessage: 	nil
+		lastCycleTime: 	2165
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	2144
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldState>>doOneCycleFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a SpecDropListMorph(61845760))(a SpecD...etc...
+		lastStepTime: 	2144
+		lastStepMessage: 	nil
+		lastCycleTime: 	2165
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	2144
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>doOneCycle
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(490979328) a Sp...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldMorph class>>doOneCycle
+	Receiver: WorldMorph
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	PasteUpMorph
+		methodDict: 	a MethodDictionary(#acceptDroppingMorph:event:->WorldMorph>>#accept...etc...
+		format: 	65549
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	{AthensWorldMorph. OSWindowWorldMorph}
+		name: 	#WorldMorph
+		classPool: 	a Dictionary(#CursorOwnerWorld->a WorldMorph(939862784) [world] #Ext...etc...
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Morphic-Core-Worlds'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+	Receiver: a MorphicUIManager
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		interactiveParser: 	nil
+		activeTranscript: 	Transcript
+
+
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+	Receiver: [ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		outerContext: 	MorphicUIManager>>spawnNewProcess
+		startpc: 	125
+		numArgs: 	0
+
+
+
+--- The full stack ---
+GemTDBaseTower(GemTDElement)>>exportNamesOn:
+GemTDBaseTower(GemTDTower)>>exportOn:
+[ :u | u exportOn: s ] in GemTDGod>>exportBaseTowers
+OrderedCollection>>do:
+GemTDGod>>exportBaseTowers
+GemTDGod>>process
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+RubSmalltalkEditor>>evaluate:andDo:
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+WorldState>>runStepMethodsIn:
+WorldMorph>>runStepMethods
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+WorldMorph class>>doOneCycle
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+Halt
+27 January 2018 3:00:13.198299 pm
+
+VM: Mac OS - x64 - 1011.6 - CoInterpreter VMMaker.oscog-eem.2265 uuid: 76b62109-629a-4c39-9641-67b53321df9a Aug 27 2017
+StackToRegisterMappingCogit VMMaker.oscog-eem.2262 uuid: 8b531242-de02-48aa-b418-8d2dde0bec6c Aug 27 2017
+VM: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $ Date: Sun Aug 27 21:55:26 2017 +0200 $ Plugins: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $
+
+Image: Pharo7.0alpha [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (64 Bit)]
+
+GemTDBaseTower(GemTDElement)>>initialsFrom:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		n: 	'chipped sapphire/B1'
+		s: 	an OrderedCollection('chipped sapphire' 'B1')
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+GemTDBaseTower(GemTDElement)>>exportNamesOn:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+GemTDBaseTower(GemTDTower)>>exportOn:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+[ :u | u exportOn: s ] in GemTDGod>>exportBaseTowers
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+		u: 	a GemTDBaseTower
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower a Ge...etc...
+
+
+OrderedCollection>>do:
+	Receiver: an OrderedCollection(a GemTDBaseTower a GemTDBaseTower a GemTDBaseTower a GemTDBaseTower a...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :u | u exportOn: s ]
+		index: 	1
+	Receiver's instance variables: 
+		array: 	an Array(a GemTDBaseTower a GemTDBaseTower a GemTDBaseTower a GemTDBaseT...etc...
+		firstIndex: 	1
+		lastIndex: 	48
+
+
+GemTDGod>>exportBaseTowers
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower a Ge...etc...
+
+
+GemTDGod>>process
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower a Ge...etc...
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	a ReadStream
+		itsSelection: 	a Text for ''
+		itsSelectionString: 	''
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ GemTDGod new process
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+
+
+RubSmalltalkEditor>>evaluate:andDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aStream: 	a ReadStream
+		aBlock: 	[ :result | aBlock value: result ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result |  ]
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+	Receiver: a RubEditingArea(880226816)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+text...etc...
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (580@69)
+		owner: 	a TransformWithLayoutMorph(1031524864)
+		submorphs: 	an Array(a RubPrimarySelectionMorph(139253760) a RubCursor(758274560...etc...
+		fullBounds: 	(0@0) corner: (580@69)
+		color: 	Color transparent
+		extension: 	a MorphExtension (79358464) [other:  (announcer -> an Announcer) (km...etc...
+		model: 	a GLMRubricSmalltalkTextModel
+		paragraph: 	a RubShoutStylerDecorator
+		editor: 	a RubSmalltalkEditor
+		scrollPane: 	a RubTextScrollPane(206663680)
+		editingState: 	a RubEditingState
+		textStyle: 	a TextStyle Source Code Pro
+		textColor: 	Color black
+		margins: 	a Margin top: 6 left: 6 bottom: 6 right: 6
+		readOnly: 	false
+		menuAllowed: 	nil
+		editingMode: 	a RubSmalltalkScriptingMode
+		cursor: 	a RubCursor(758274560)
+		segments: 	an OrderedCollection(a RubHighlightSegmentMorph(1028103424))
+		getMenuPolicy: 	nil
+		mouseDownPoint: 	nil
+		wrapped: 	true
+		editorClass: 	RubSmalltalkEditor
+
+
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+WorldState>>runStepMethodsIn:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+		queue: 	WaitfreeQueue with 0 items
+		nextInQueue: 	[ textMorph textArea
+	handleEdit: [ textMorph textArea editor high...etc...
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a GLMSystemWindow(490979328))(a GLMSys...etc...
+		lastStepTime: 	167021
+		lastStepMessage: 	nil
+		lastCycleTime: 	167042
+		alarms: 	a Heap()
+		lastAlarmTime: 	167021
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>runStepMethods
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a NautilusWindow(201442048) a GLM...etc...
+		fullBounds: 	nil
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a GLMSystemWindow(490979328))(a GLMSys...etc...
+		lastStepTime: 	167021
+		lastStepMessage: 	nil
+		lastCycleTime: 	167042
+		alarms: 	a Heap()
+		lastAlarmTime: 	167021
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldState>>doOneCycleFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a GLMSystemWindow(490979328))(a GLMSys...etc...
+		lastStepTime: 	167021
+		lastStepMessage: 	nil
+		lastCycleTime: 	167042
+		alarms: 	a Heap()
+		lastAlarmTime: 	167021
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>doOneCycle
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a NautilusWindow(201442048) a GLM...etc...
+		fullBounds: 	nil
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldMorph class>>doOneCycle
+	Receiver: WorldMorph
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	PasteUpMorph
+		methodDict: 	a MethodDictionary(#acceptDroppingMorph:event:->WorldMorph>>#accept...etc...
+		format: 	65549
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	{AthensWorldMorph. OSWindowWorldMorph}
+		name: 	#WorldMorph
+		classPool: 	a Dictionary(#CursorOwnerWorld->a WorldMorph(939862784) [world] #Ext...etc...
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Morphic-Core-Worlds'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+	Receiver: a MorphicUIManager
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		interactiveParser: 	nil
+		activeTranscript: 	Transcript
+
+
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+	Receiver: [ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		outerContext: 	MorphicUIManager>>spawnNewProcess
+		startpc: 	125
+		numArgs: 	0
+
+
+
+--- The full stack ---
+GemTDBaseTower(GemTDElement)>>initialsFrom:
+GemTDBaseTower(GemTDElement)>>exportNamesOn:
+GemTDBaseTower(GemTDTower)>>exportOn:
+[ :u | u exportOn: s ] in GemTDGod>>exportBaseTowers
+OrderedCollection>>do:
+GemTDGod>>exportBaseTowers
+GemTDGod>>process
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+RubSmalltalkEditor>>evaluate:andDo:
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+WorldState>>runStepMethodsIn:
+WorldMorph>>runStepMethods
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+WorldMorph class>>doOneCycle
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+Instance of OrderedCollection did not understand #substrings
+27 January 2018 3:00:17.542231 pm
+
+VM: Mac OS - x64 - 1011.6 - CoInterpreter VMMaker.oscog-eem.2265 uuid: 76b62109-629a-4c39-9641-67b53321df9a Aug 27 2017
+StackToRegisterMappingCogit VMMaker.oscog-eem.2262 uuid: 8b531242-de02-48aa-b418-8d2dde0bec6c Aug 27 2017
+VM: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $ Date: Sun Aug 27 21:55:26 2017 +0200 $ Plugins: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $
+
+Image: Pharo7.0alpha [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (64 Bit)]
+
+OrderedCollection(Object)>>doesNotUnderstand: #substrings
+	Receiver: an OrderedCollection('chipped sapphire' 'B1')
+	Arguments and temporary variables: 
+		aMessage: 	substrings
+		exception: 	MessageNotUnderstood: OrderedCollection>>substrings
+		resumeValue: 	nil
+	Receiver's instance variables: 
+		array: 	#('chipped sapphire' 'B1' nil nil nil nil nil nil nil)
+		firstIndex: 	1
+		lastIndex: 	2
+
+
+GemTDBaseTower(GemTDElement)>>DoItIn:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		ThisContext: 	GemTDBaseTower(GemTDElement)>>initialsFrom:
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	a ReadStream
+		itsSelection: 	a Text for ''
+		itsSelectionString: 	''
+	Receiver's instance variables: 
+		ast: 	DoItIn: ThisContext
+	^ (ThisContext namedTempAt: 2) substrings
+		collect: ...etc...
+		source: 	a ReadStream
+		context: 	GemTDBaseTower(GemTDElement)>>initialsFrom:
+		receiver: 	a GemTDBaseTower
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+
+
+RubSmalltalkEditor>>evaluate:andDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aStream: 	a ReadStream
+		aBlock: 	[ :result | aBlock value: result ]
+		result: 	nil
+		rcvr: 	a GemTDBaseTower
+		ctxt: 	GemTDBaseTower(GemTDElement)>>initialsFrom:
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	nil
+		textArea: 	a RubEditingArea(423089152)
+		selectorChooser: 	nil
+		notificationStrategy: 	a RubTextInsertionStrategy
+
+
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result | result inspect ]
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	nil
+		textArea: 	a RubEditingArea(423089152)
+		selectorChooser: 	nil
+		notificationStrategy: 	a RubTextInsertionStrategy
+
+
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoMethodRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoMethodRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(875683072)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+	Receiver: a RubEditingArea(423089152)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+text...etc...
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (988@126)
+		owner: 	a TransformWithLayoutMorph(542363648)
+		submorphs: 	an Array(a RubCursor(157772800) a RubPrimarySelectionMorph(619692800...etc...
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (956283136) [other:  (announcer -> an Announcer) (k...etc...
+		model: 	a GLMRubricSmalltalkTextModel
+		paragraph: 	a RubShoutStylerDecorator
+		editor: 	a RubSmalltalkEditor
+		scrollPane: 	a RubTextScrollPane(512294656)
+		editingState: 	a RubEditingState
+		textStyle: 	a TextStyle Source Code Pro
+		textColor: 	Color black
+		margins: 	a Margin top: 6 left: 6 bottom: 6 right: 6
+		readOnly: 	false
+		menuAllowed: 	nil
+		editingMode: 	a RubSmalltalkCodeMode
+		cursor: 	a RubCursor(157772800)
+		segments: 	an OrderedCollection(a RubHighlightSegmentMorph(483851776))
+		getMenuPolicy: 	nil
+		mouseDownPoint: 	nil
+		wrapped: 	true
+		editorClass: 	RubSmalltalkEditor
+
+
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoMethodRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoMethodRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(875683072)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+WorldState>>runStepMethodsIn:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+		queue: 	WaitfreeQueue with 0 items
+		nextInQueue: 	[ textMorph textArea
+	handleEdit: [ textMorph textArea editor high...etc...
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(651310592))(a DropList...etc...
+		lastStepTime: 	171357
+		lastStepMessage: 	nil
+		lastCycleTime: 	171380
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(157772800)))
+		lastAlarmTime: 	171357
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>runStepMethods
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(281250048) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(651310592))(a DropList...etc...
+		lastStepTime: 	171357
+		lastStepMessage: 	nil
+		lastCycleTime: 	171380
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(157772800)))
+		lastAlarmTime: 	171357
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldState>>doOneCycleFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(651310592))(a DropList...etc...
+		lastStepTime: 	171357
+		lastStepMessage: 	nil
+		lastCycleTime: 	171380
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(157772800)))
+		lastAlarmTime: 	171357
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>doOneCycle
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(281250048) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldMorph class>>doOneCycle
+	Receiver: WorldMorph
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	PasteUpMorph
+		methodDict: 	a MethodDictionary(#acceptDroppingMorph:event:->WorldMorph>>#accept...etc...
+		format: 	65549
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	{AthensWorldMorph. OSWindowWorldMorph}
+		name: 	#WorldMorph
+		classPool: 	a Dictionary(#CursorOwnerWorld->a WorldMorph(939862784) [world] #Ext...etc...
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Morphic-Core-Worlds'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+	Receiver: a MorphicUIManager
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		interactiveParser: 	nil
+		activeTranscript: 	nil
+
+
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+	Receiver: [ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		outerContext: 	MorphicUIManager>>spawnNewProcess
+		startpc: 	125
+		numArgs: 	0
+
+
+
+--- The full stack ---
+OrderedCollection(Object)>>doesNotUnderstand: #substrings
+GemTDBaseTower(GemTDElement)>>DoItIn:
+OpalCompiler>>evaluate
+RubSmalltalkEditor>>evaluate:andDo:
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoMethodRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoMethodRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+WorldState>>runStepMethodsIn:
+WorldMorph>>runStepMethods
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+WorldMorph class>>doOneCycle
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+Instance of Character did not understand #capitalized
+27 January 2018 3:00:43.099831 pm
+
+VM: Mac OS - x64 - 1011.6 - CoInterpreter VMMaker.oscog-eem.2265 uuid: 76b62109-629a-4c39-9641-67b53321df9a Aug 27 2017
+StackToRegisterMappingCogit VMMaker.oscog-eem.2262 uuid: 8b531242-de02-48aa-b418-8d2dde0bec6c Aug 27 2017
+VM: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $ Date: Sun Aug 27 21:55:26 2017 +0200 $ Plugins: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $
+
+Image: Pharo7.0alpha [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (64 Bit)]
+
+Character(Object)>>doesNotUnderstand: #capitalized
+	Receiver: $c
+	Arguments and temporary variables: 
+		aMessage: 	capitalized
+		exception: 	MessageNotUnderstood: Character>>capitalized
+		resumeValue: 	nil
+	Receiver's instance variables: 
+$c
+
+[ :e | e first capitalized ] in GemTDBaseTower(GemTDElement)>>DoItIn:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		ThisContext: 	GemTDBaseTower(GemTDElement)>>initialsFrom:
+		e: 	'chipped'
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+Array(SequenceableCollection)>>collect:
+	Receiver: #('chipped' 'sapphire')
+	Arguments and temporary variables: 
+		aBlock: 	[ :e | e first capitalized ]
+		newCollection: 	#(nil nil)
+		index: 	1
+	Receiver's instance variables: 
+#('chipped' 'sapphire')
+
+GemTDBaseTower(GemTDElement)>>DoItIn:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		ThisContext: 	GemTDBaseTower(GemTDElement)>>initialsFrom:
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	a ReadStream
+		itsSelection: 	a Text for ''
+		itsSelectionString: 	''
+	Receiver's instance variables: 
+		ast: 	DoItIn: ThisContext
+	^ (ThisContext namedTempAt: 2) first substrings
+		col...etc...
+		source: 	a ReadStream
+		context: 	GemTDBaseTower(GemTDElement)>>initialsFrom:
+		receiver: 	a GemTDBaseTower
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+
+
+RubSmalltalkEditor>>evaluate:andDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aStream: 	a ReadStream
+		aBlock: 	[ :result | aBlock value: result ]
+		result: 	nil
+		rcvr: 	a GemTDBaseTower
+		ctxt: 	GemTDBaseTower(GemTDElement)>>initialsFrom:
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	nil
+		textArea: 	a RubEditingArea(423089152)
+		selectorChooser: 	nil
+		notificationStrategy: 	a RubTextInsertionStrategy
+
+
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result | result inspect ]
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	nil
+		textArea: 	a RubEditingArea(423089152)
+		selectorChooser: 	nil
+		notificationStrategy: 	a RubTextInsertionStrategy
+
+
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoMethodRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoMethodRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(875683072)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+	Receiver: a RubEditingArea(423089152)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+text...etc...
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (988@145)
+		owner: 	a TransformWithLayoutMorph(542363648)
+		submorphs: 	an Array(a RubCursor(157772800) a RubPrimarySelectionMorph(619692800...etc...
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (956283136) [other:  (announcer -> an Announcer) (k...etc...
+		model: 	a GLMRubricSmalltalkTextModel
+		paragraph: 	a RubShoutStylerDecorator
+		editor: 	a RubSmalltalkEditor
+		scrollPane: 	a RubTextScrollPane(512294656)
+		editingState: 	a RubEditingState
+		textStyle: 	a TextStyle Source Code Pro
+		textColor: 	Color black
+		margins: 	a Margin top: 6 left: 6 bottom: 6 right: 6
+		readOnly: 	false
+		menuAllowed: 	nil
+		editingMode: 	a RubSmalltalkCodeMode
+		cursor: 	a RubCursor(157772800)
+		segments: 	an OrderedCollection(a RubHighlightSegmentMorph(630847744))
+		getMenuPolicy: 	nil
+		mouseDownPoint: 	nil
+		wrapped: 	true
+		editorClass: 	RubSmalltalkEditor
+
+
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoMethodRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoMethodRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(875683072)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+WorldState>>runStepMethodsIn:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+		queue: 	WaitfreeQueue with 0 items
+		nextInQueue: 	[ textMorph textArea
+	handleEdit: [ textMorph textArea editor high...etc...
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a SearchMorph(635409920))(a SearchMorp...etc...
+		lastStepTime: 	196916
+		lastStepMessage: 	nil
+		lastCycleTime: 	196937
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(157772800)))
+		lastAlarmTime: 	196916
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>runStepMethods
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(281250048) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a SearchMorph(635409920))(a SearchMorp...etc...
+		lastStepTime: 	196916
+		lastStepMessage: 	nil
+		lastCycleTime: 	196937
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(157772800)))
+		lastAlarmTime: 	196916
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldState>>doOneCycleFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a SearchMorph(635409920))(a SearchMorp...etc...
+		lastStepTime: 	196916
+		lastStepMessage: 	nil
+		lastCycleTime: 	196937
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(157772800)))
+		lastAlarmTime: 	196916
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>doOneCycle
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(281250048) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldMorph class>>doOneCycle
+	Receiver: WorldMorph
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	PasteUpMorph
+		methodDict: 	a MethodDictionary(#acceptDroppingMorph:event:->WorldMorph>>#accept...etc...
+		format: 	65549
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	{AthensWorldMorph. OSWindowWorldMorph}
+		name: 	#WorldMorph
+		classPool: 	a Dictionary(#CursorOwnerWorld->a WorldMorph(939862784) [world] #Ext...etc...
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Morphic-Core-Worlds'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+	Receiver: a MorphicUIManager
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		interactiveParser: 	nil
+		activeTranscript: 	nil
+
+
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+	Receiver: [ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		outerContext: 	MorphicUIManager>>spawnNewProcess
+		startpc: 	125
+		numArgs: 	0
+
+
+
+--- The full stack ---
+Character(Object)>>doesNotUnderstand: #capitalized
+[ :e | e first capitalized ] in GemTDBaseTower(GemTDElement)>>DoItIn:
+Array(SequenceableCollection)>>collect:
+GemTDBaseTower(GemTDElement)>>DoItIn:
+OpalCompiler>>evaluate
+RubSmalltalkEditor>>evaluate:andDo:
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoMethodRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoMethodRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+WorldState>>runStepMethodsIn:
+WorldMorph>>runStepMethods
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+WorldMorph class>>doOneCycle
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+AssertionFailure: Assertion failed
+27 January 2018 3:01:20.970949 pm
+
+VM: Mac OS - x64 - 1011.6 - CoInterpreter VMMaker.oscog-eem.2265 uuid: 76b62109-629a-4c39-9641-67b53321df9a Aug 27 2017
+StackToRegisterMappingCogit VMMaker.oscog-eem.2262 uuid: 8b531242-de02-48aa-b418-8d2dde0bec6c Aug 27 2017
+VM: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $ Date: Sun Aug 27 21:55:26 2017 +0200 $ Plugins: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $
+
+Image: Pharo7.0alpha [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (64 Bit)]
+
+GemTDBaseTower(Object)>>assert:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		aBlock: 	false
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+GemTDBaseTower(GemTDElement)>>initialsFrom:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		n: 	'chipped sapphire/B1'
+		s: 	an OrderedCollection('chipped sapphire' 'B1')
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+GemTDBaseTower(GemTDElement)>>exportNamesOn:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+GemTDBaseTower(GemTDTower)>>exportOn:
+	Receiver: a GemTDBaseTower
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+	Receiver's instance variables: 
+		codeName: 	'gemtd_b1'
+		name: 	a Dictionary(#en->'chipped sapphire/B1' #sch->'xÂvÝ[ów/B1' #tch->'x...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'2'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'base/B'
+
+
+[ :u | u exportOn: s ] in GemTDGod>>exportBaseTowers
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+		u: 	a GemTDBaseTower
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower a Ge...etc...
+
+
+OrderedCollection>>do:
+	Receiver: an OrderedCollection(a GemTDBaseTower a GemTDBaseTower a GemTDBaseTower a GemTDBaseTower a...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :u | u exportOn: s ]
+		index: 	1
+	Receiver's instance variables: 
+		array: 	an Array(a GemTDBaseTower a GemTDBaseTower a GemTDBaseTower a GemTDBaseT...etc...
+		firstIndex: 	1
+		lastIndex: 	48
+
+
+GemTDGod>>exportBaseTowers
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+		s: 	a WriteStream
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower a Ge...etc...
+
+
+GemTDGod>>process
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower a Ge...etc...
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	a ReadStream
+		itsSelection: 	a Text for ''
+		itsSelectionString: 	''
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ GemTDGod new process
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+
+
+RubSmalltalkEditor>>evaluate:andDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aStream: 	a ReadStream
+		aBlock: 	[ :result | aBlock value: result ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result |  ]
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+	Receiver: a RubEditingArea(880226816)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+text...etc...
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (580@69)
+		owner: 	a TransformWithLayoutMorph(1031524864)
+		submorphs: 	an Array(a RubPrimarySelectionMorph(139253760) a RubCursor(758274560...etc...
+		fullBounds: 	(0@0) corner: (580@69)
+		color: 	Color transparent
+		extension: 	a MorphExtension (79358464) [other:  (announcer -> an Announcer) (km...etc...
+		model: 	a GLMRubricSmalltalkTextModel
+		paragraph: 	a RubShoutStylerDecorator
+		editor: 	a RubSmalltalkEditor
+		scrollPane: 	a RubTextScrollPane(206663680)
+		editingState: 	a RubEditingState
+		textStyle: 	a TextStyle Source Code Pro
+		textColor: 	Color black
+		margins: 	a Margin top: 6 left: 6 bottom: 6 right: 6
+		readOnly: 	false
+		menuAllowed: 	nil
+		editingMode: 	a RubSmalltalkScriptingMode
+		cursor: 	a RubCursor(758274560)
+		segments: 	an OrderedCollection(a RubHighlightSegmentMorph(1028103424))
+		getMenuPolicy: 	nil
+		mouseDownPoint: 	nil
+		wrapped: 	true
+		editorClass: 	RubSmalltalkEditor
+
+
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+WorldState>>runStepMethodsIn:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+		queue: 	WaitfreeQueue with 0 items
+		nextInQueue: 	[ textMorph textArea
+	handleEdit: [ textMorph textArea editor high...etc...
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(651310592))(a DropList...etc...
+		lastStepTime: 	234794
+		lastStepMessage: 	nil
+		lastCycleTime: 	234815
+		alarms: 	a Heap()
+		lastAlarmTime: 	234794
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>runStepMethods
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a NautilusWindow(201442048) a GLM...etc...
+		fullBounds: 	nil
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(651310592))(a DropList...etc...
+		lastStepTime: 	234794
+		lastStepMessage: 	nil
+		lastCycleTime: 	234815
+		alarms: 	a Heap()
+		lastAlarmTime: 	234794
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldState>>doOneCycleFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(651310592))(a DropList...etc...
+		lastStepTime: 	234794
+		lastStepMessage: 	nil
+		lastCycleTime: 	234815
+		alarms: 	a Heap()
+		lastAlarmTime: 	234794
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>doOneCycle
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a NautilusWindow(201442048) a GLM...etc...
+		fullBounds: 	nil
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldMorph class>>doOneCycle
+	Receiver: WorldMorph
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	PasteUpMorph
+		methodDict: 	a MethodDictionary(#acceptDroppingMorph:event:->WorldMorph>>#accept...etc...
+		format: 	65549
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	{AthensWorldMorph. OSWindowWorldMorph}
+		name: 	#WorldMorph
+		classPool: 	a Dictionary(#CursorOwnerWorld->a WorldMorph(939862784) [world] #Ext...etc...
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Morphic-Core-Worlds'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+	Receiver: a MorphicUIManager
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		interactiveParser: 	nil
+		activeTranscript: 	Transcript
+
+
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+	Receiver: [ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		outerContext: 	MorphicUIManager>>spawnNewProcess
+		startpc: 	125
+		numArgs: 	0
+
+
+
+--- The full stack ---
+GemTDBaseTower(Object)>>assert:
+GemTDBaseTower(GemTDElement)>>initialsFrom:
+GemTDBaseTower(GemTDElement)>>exportNamesOn:
+GemTDBaseTower(GemTDTower)>>exportOn:
+[ :u | u exportOn: s ] in GemTDGod>>exportBaseTowers
+OrderedCollection>>do:
+GemTDGod>>exportBaseTowers
+GemTDGod>>process
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+RubSmalltalkEditor>>evaluate:andDo:
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+WorldState>>runStepMethodsIn:
+WorldMorph>>runStepMethods
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+WorldMorph class>>doOneCycle
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+Instance of Array did not understand #co:
+27 January 2018 3:14:10.901009 pm
+
+VM: Mac OS - x64 - 1011.6 - CoInterpreter VMMaker.oscog-eem.2265 uuid: 76b62109-629a-4c39-9641-67b53321df9a Aug 27 2017
+StackToRegisterMappingCogit VMMaker.oscog-eem.2262 uuid: 8b531242-de02-48aa-b418-8d2dde0bec6c Aug 27 2017
+VM: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $ Date: Sun Aug 27 21:55:26 2017 +0200 $ Plugins: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $
+
+Image: Pharo7.0alpha [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (64 Bit)]
+
+Array(Object)>>doesNotUnderstand: #co:
+	Receiver: an Array(File @ export/.DS_Store File @ export/advancedTowers.pillar File @ export/baseTow...etc...
+	Arguments and temporary variables: 
+		aMessage: 	co: #delete
+		exception: 	MessageNotUnderstood: Array>>co:
+		resumeValue: 	nil
+	Receiver's instance variables: 
+an Array(File @ export/.DS_Store File @ export/advancedTowers.pillar File @ export/baseTow...etc...
+
+FileReference>>DoIt
+	Receiver: File @ export
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		filesystem: 	a FileSystem
+		path: 	Path * 'export'
+
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	a ReadStream
+		itsSelection: 	a Text for ''
+		itsSelectionString: 	''
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ self children co: #delete
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	File @ export
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+
+
+RubSmalltalkEditor>>evaluate:andDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aStream: 	a ReadStream
+		aBlock: 	[ :result | aBlock value: result ]
+		result: 	nil
+		rcvr: 	File @ export
+		ctxt: 	nil
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(681099264)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result |  ]
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(681099264)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(332480512)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+	Receiver: a RubEditingArea(681099264)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+text...etc...
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (621@69)
+		owner: 	a TransformWithLayoutMorph(73744384)
+		submorphs: 	an Array(a RubPrimarySelectionMorph(232603648) a RubCursor(132694016...etc...
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (949272576) [other:  (announcer -> an Announcer) (k...etc...
+		model: 	a GLMRubricSmalltalkTextModel
+		paragraph: 	a RubShoutStylerDecorator
+		editor: 	a RubSmalltalkEditor
+		scrollPane: 	a RubTextScrollPane(323796992)
+		editingState: 	a RubEditingState
+		textStyle: 	a TextStyle Source Code Pro
+		textColor: 	Color black
+		margins: 	a Margin top: 6 left: 6 bottom: 6 right: 6
+		readOnly: 	false
+		menuAllowed: 	nil
+		editingMode: 	a RubSmalltalkScriptingMode
+		cursor: 	a RubCursor(132694016)
+		segments: 	an OrderedCollection(a RubHighlightSegmentMorph(768163840))
+		getMenuPolicy: 	nil
+		mouseDownPoint: 	(295.0@91.0)
+		wrapped: 	true
+		editorClass: 	RubSmalltalkEditor
+
+
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(332480512)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+WorldState>>runStepMethodsIn:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+		queue: 	WaitfreeQueue with 0 items
+		nextInQueue: 	[ textMorph textArea
+	handleEdit: [ textMorph textArea editor high...etc...
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(976011264))(a DropList...etc...
+		lastStepTime: 	218473
+		lastStepMessage: 	nil
+		lastCycleTime: 	218494
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(132694016)))
+		lastAlarmTime: 	218473
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>runStepMethods
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(513359872) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(976011264))(a DropList...etc...
+		lastStepTime: 	218473
+		lastStepMessage: 	nil
+		lastCycleTime: 	218494
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(132694016)))
+		lastAlarmTime: 	218473
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldState>>doOneCycleFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(976011264))(a DropList...etc...
+		lastStepTime: 	218473
+		lastStepMessage: 	nil
+		lastCycleTime: 	218494
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(132694016)))
+		lastAlarmTime: 	218473
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>doOneCycle
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(513359872) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldMorph class>>doOneCycle
+	Receiver: WorldMorph
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	PasteUpMorph
+		methodDict: 	a MethodDictionary(#acceptDroppingMorph:event:->WorldMorph>>#accept...etc...
+		format: 	65549
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	{AthensWorldMorph. OSWindowWorldMorph}
+		name: 	#WorldMorph
+		classPool: 	a Dictionary(#CursorOwnerWorld->a WorldMorph(939862784) [world] #Ext...etc...
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Morphic-Core-Worlds'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+	Receiver: a MorphicUIManager
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		interactiveParser: 	nil
+		activeTranscript: 	Transcript
+
+
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+	Receiver: [ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		outerContext: 	MorphicUIManager>>spawnNewProcess
+		startpc: 	125
+		numArgs: 	0
+
+
+
+--- The full stack ---
+Array(Object)>>doesNotUnderstand: #co:
+FileReference>>DoIt
+OpalCompiler>>evaluate
+RubSmalltalkEditor>>evaluate:andDo:
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+WorldState>>runStepMethodsIn:
+WorldMorph>>runStepMethods
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+WorldMorph class>>doOneCycle
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+FileDoesNotExist: Path / 'Users' / 'clementbera' / 'Desktop' / 'Perso' / 'GemTDWebsite' / 'Website' / 'GemTD-Generation' / 'export' / '.DS_Store'
+27 January 2018 3:14:23.143752 pm
+
+VM: Mac OS - x64 - 1011.6 - CoInterpreter VMMaker.oscog-eem.2265 uuid: 76b62109-629a-4c39-9641-67b53321df9a Aug 27 2017
+StackToRegisterMappingCogit VMMaker.oscog-eem.2262 uuid: 8b531242-de02-48aa-b418-8d2dde0bec6c Aug 27 2017
+VM: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $ Date: Sun Aug 27 21:55:26 2017 +0200 $ Plugins: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $
+
+Image: Pharo7.0alpha [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (64 Bit)]
+
+MacStore(FileSystemStore)>>signalFileDoesNotExist:
+	Receiver: a MacStore
+	Arguments and temporary variables: 
+		aPath: 	Path / 'Users' / 'clementbera' / 'Desktop' / 'Perso' / 'GemTDWebsite' / ...etc...
+	Receiver's instance variables: 
+		maxFileNameLength: 	255
+
+
+[ self signalFileDoesNotExist: aPath ] in MacStore(FileSystemStore)>>sizeOf:
+	Receiver: a MacStore
+	Arguments and temporary variables: 
+		aPath: 	Path / 'Users' / 'clementbera' / 'Desktop' / 'Perso' / 'GemTDWebsite' / ...etc...
+	Receiver's instance variables: 
+		maxFileNameLength: 	255
+
+
+True>>ifTrue:ifFalse:
+	Receiver: true
+	Arguments and temporary variables: 
+		trueAlternativeBlock: 	[ self signalFileDoesNotExist: aPath ]
+		falseAlternativeBlock: 	[ entry at: 1 put: aPath basename.
+presentBlock value: e...etc...
+	Receiver's instance variables: 
+true
+
+MacStore(DiskStore)>>nodeAt:ifPresent:ifAbsent:
+	Receiver: a MacStore
+	Arguments and temporary variables: 
+		aPath: 	Path / 'Users' / 'clementbera' / 'Desktop' / 'Perso' / 'GemTDWebsite' / ...etc...
+		presentBlock: 	[ :entry | self basicSizeOf: entry ]
+		absentBlock: 	[ self signalFileDoesNotExist: aPath ]
+		entry: 	#badDirectoryPath
+	Receiver's instance variables: 
+		maxFileNameLength: 	255
+
+
+MacStore(FileSystemStore)>>sizeOf:
+	Receiver: a MacStore
+	Arguments and temporary variables: 
+		aPath: 	Path / 'Users' / 'clementbera' / 'Desktop' / 'Perso' / 'GemTDWebsite' / ...etc...
+	Receiver's instance variables: 
+		maxFileNameLength: 	255
+
+
+FileSystem>>sizeOf:
+	Receiver: a FileSystem
+	Arguments and temporary variables: 
+		aResolvable: 	Path * 'export' / '.DS_Store'
+	Receiver's instance variables: 
+		store: 	a MacStore
+
+
+FileReference>>size
+	Receiver: File @ export/.DS_Store
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		filesystem: 	a FileSystem
+		path: 	Path * 'export' / '.DS_Store'
+
+
+FileReference(AbstractFileReference)>>humanReadableSize
+	Receiver: File @ export/.DS_Store
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		filesystem: 	a FileSystem
+		path: 	Path * 'export' / '.DS_Store'
+
+
+[ :each | each humanReadableSize ] in FileReference>>gtInspectorItemsIn:
+	Receiver: File @ export
+	Arguments and temporary variables: 
+		composite: 	a GLMCompositePresentation(id=822165504 title=nil pane=a GLMPane(152...etc...
+		each: 	File @ export/.DS_Store
+	Receiver's instance variables: 
+		filesystem: 	a FileSystem
+		path: 	Path * 'export'
+
+
+BlockClosure>>glamourValueWithArgs:
+	Receiver: [ :each | each humanReadableSize ]
+	Arguments and temporary variables: 
+		anArray: 	an Array(File @ export/.DS_Store File @ export a GLMFastTablePresentat...etc...
+	Receiver's instance variables: 
+		outerContext: 	FileReference>>gtInspectorItemsIn:
+		startpc: 	548
+		numArgs: 	1
+
+
+BlockClosure(ProtoObject)>>glamourValue:
+	Receiver: [ :each | each humanReadableSize ]
+	Arguments and temporary variables: 
+		anObject: 	a GLMMultiValue(File @ export/.DS_Store File @ export a GLMFastTableP...etc...
+		args: 	an Array(File @ export/.DS_Store File @ export a GLMFastTablePresentation...etc...
+	Receiver's instance variables: 
+		outerContext: 	FileReference>>gtInspectorItemsIn:
+		startpc: 	548
+		numArgs: 	1
+
+
+GLMFastTablePresentation(GLMTablePresentation)>>column:valueFor:
+	Receiver: a GLMFastTablePresentation(id=97075200 title=Items pane=a GLMPane(152092672 1))
+	Arguments and temporary variables: 
+		aGlamourColumn: 	a GLMTableColumn
+		anObject: 	File @ export/.DS_Store
+	Receiver's instance variables: 
+		registry: 	a SubscriptionRegistry
+		suspendAll: 	false
+		suspendedAnnouncemets: 	an OrderedCollection()
+		logger: 	a GLMNullLogger
+		pane: 	a GLMPane(152092672 1)
+		title: 	'Items'
+		titleIcon: 	nil
+		transformation: 	[ | children |
+children := self directories , self files.
+self ...etc...
+		actions: 	an OrderedCollection(a GLMGenericAction a GLMGenericAction a GLMGeneri...etc...
+		condition: 	[ self isDirectory and: [ self hasChildren ] ]
+		implicitNotNil: 	true
+		dynamicActionsBlock: 	nil
+		color: 	nil
+		customValidation: 	nil
+		shouldValidate: 	false
+		acceptsSelection: 	nil
+		parentPrototype: 	nil
+		registeredAnnouncers: 	nil
+		updateActions: 	an OrderedCollection()
+		selectionActions: 	an OrderedCollection(a GLMGenericAction)
+		selectionDynamicActionsBlock: 	nil
+		implicitAllNil: 	false
+		rawSelectionTransmissions: 	an IdentitySet(GLMTransmission (origins=an OrderedCo...etc...
+		statusPane: 	nil
+		sourceLink: 	nil
+		initializationBlock: 	nil
+		cachedDisplayedValue: 	an OrderedCollection(File @ . File @ export/.DS_Store Fil...etc...
+		labelActionBlock: 	nil
+		portChangeActions: 	an OrderedCollection()
+		wantsSteps: 	nil
+		stepTime: 	nil
+		stepCondition: 	nil
+		wantsAutomaticRefresh: 	nil
+		format: 	nil
+		icon: 	[ :each | 
+each isDirectory
+	ifTrue: [ GLMUIThemeExtraIcons glamorousFold...etc...
+		searchBlock: 	nil
+		filterBlock: 	nil
+		amountToShowBlock: 	nil
+		allowsMultipleSelection: 	false
+		allowsDeselection: 	false
+		tagsStyle: 	nil
+		helpMessage: 	nil
+		sortBlock: 	nil
+		textBackgroundColor: 	nil
+		dropOnItemBlock: 	nil
+		allowDropOnItemBlock: 	nil
+		allowItemDragBlock: 	nil
+		transformDraggedItemBlock: 	nil
+		allowsRecursiveSearch: 	nil
+		columns: 	an OrderedCollection(a GLMTableColumn a GLMTableColumn a GLMTableColum...etc...
+		children: 	[ #() ]
+		rootsExpanded: 	nil
+		shouldShowHeader: 	true
+		parameters: 	a Dictionary()
+
+
+[ self glamourPresentation
+	column: aGlamourColumn
+	valueFor:
+		(self glamourPresentation isWithElementIndex
+			ifTrue:
+				[ anElement asGlamorousMultiValue , anInteger asGlamorousMultiValue ]
+			ifFalse: [ anElement ]) ] in GLMFastTableDataSource>>valueFor:withIndex:in:
+	Receiver: a GLMFastTableDataSource
+	Arguments and temporary variables: 
+		anElement: 	File @ export/.DS_Store
+		anInteger: 	2
+		aGlamourColumn: 	a GLMTableColumn
+	Receiver's instance variables: 
+		table: 	a FTTableMorph(510181376)
+		elements: 	an OrderedCollection(File @ . File @ export/.DS_Store File @ export/a...etc...
+		glamourPresentation: 	a GLMFastTablePresentation(id=97075200 title=Items pane=a ...etc...
+		announcer: 	a GLMAnnouncer
+		tagsToFilterBy: 	an OrderedCollection()
+		dataCache: 	nil
+		columnToSortBy: 	nil
+
+
+GLMFastTableDataSource(GLMFastListDataSource)>>cacheAt:for:ifAbsentPut:
+	Receiver: a GLMFastTableDataSource
+	Arguments and temporary variables: 
+		aKey: 	'Size'
+		anElement: 	File @ export/.DS_Store
+		aBlock: 	[ self glamourPresentation
+	column: aGlamourColumn
+	valueFor:
+		(self g...etc...
+		elementCache: 	nil
+	Receiver's instance variables: 
+		table: 	a FTTableMorph(510181376)
+		elements: 	an OrderedCollection(File @ . File @ export/.DS_Store File @ export/a...etc...
+		glamourPresentation: 	a GLMFastTablePresentation(id=97075200 title=Items pane=a ...etc...
+		announcer: 	a GLMAnnouncer
+		tagsToFilterBy: 	an OrderedCollection()
+		dataCache: 	nil
+		columnToSortBy: 	nil
+
+
+GLMFastTableDataSource>>valueFor:withIndex:in:
+	Receiver: a GLMFastTableDataSource
+	Arguments and temporary variables: 
+		anElement: 	File @ export/.DS_Store
+		anInteger: 	2
+		aGlamourColumn: 	a GLMTableColumn
+	Receiver's instance variables: 
+		table: 	a FTTableMorph(510181376)
+		elements: 	an OrderedCollection(File @ . File @ export/.DS_Store File @ export/a...etc...
+		glamourPresentation: 	a GLMFastTablePresentation(id=97075200 title=Items pane=a ...etc...
+		announcer: 	a GLMAnnouncer
+		tagsToFilterBy: 	an OrderedCollection()
+		dataCache: 	nil
+		columnToSortBy: 	nil
+
+
+GLMFastTableDataSource>>viewRowMorphForColumn:node:withIndex:
+	Receiver: a GLMFastTableDataSource
+	Arguments and temporary variables: 
+		aGlamourColumn: 	a GLMTableColumn
+		aNode: 	File @ export/.DS_Store
+		anInteger: 	2
+	Receiver's instance variables: 
+		table: 	a FTTableMorph(510181376)
+		elements: 	an OrderedCollection(File @ . File @ export/.DS_Store File @ export/a...etc...
+		glamourPresentation: 	a GLMFastTablePresentation(id=97075200 title=Items pane=a ...etc...
+		announcer: 	a GLMAnnouncer
+		tagsToFilterBy: 	an OrderedCollection()
+		dataCache: 	nil
+		columnToSortBy: 	nil
+
+
+GLMFastTableDataSource>>rowMorphElementsForColumn:node:withIndex:
+	Receiver: a GLMFastTableDataSource
+	Arguments and temporary variables: 
+		glamourColumn: 	a GLMTableColumn
+		aNode: 	File @ export/.DS_Store
+		aRowIndex: 	2
+		rowElements: 	nil
+		contentMorph: 	nil
+		tagMorphs: 	nil
+	Receiver's instance variables: 
+		table: 	a FTTableMorph(510181376)
+		elements: 	an OrderedCollection(File @ . File @ export/.DS_Store File @ export/a...etc...
+		glamourPresentation: 	a GLMFastTablePresentation(id=97075200 title=Items pane=a ...etc...
+		announcer: 	a GLMAnnouncer
+		tagsToFilterBy: 	an OrderedCollection()
+		dataCache: 	nil
+		columnToSortBy: 	nil
+
+
+GLMFastTableDataSource>>rowMorphForColumn:item:withIndex:
+	Receiver: a GLMFastTableDataSource
+	Arguments and temporary variables: 
+		aColumn: 	a GLMFastTableColumn
+		anItem: 	File @ export/.DS_Store
+		aRowIndex: 	2
+		rowElements: 	an OrderedCollection()
+	Receiver's instance variables: 
+		table: 	a FTTableMorph(510181376)
+		elements: 	an OrderedCollection(File @ . File @ export/.DS_Store File @ export/a...etc...
+		glamourPresentation: 	a GLMFastTablePresentation(id=97075200 title=Items pane=a ...etc...
+		announcer: 	a GLMAnnouncer
+		tagsToFilterBy: 	an OrderedCollection()
+		dataCache: 	nil
+		columnToSortBy: 	nil
+
+
+GLMFastTableDataSource>>cellColumn:row:
+	Receiver: a GLMFastTableDataSource
+	Arguments and temporary variables: 
+		aColumn: 	a GLMFastTableColumn
+		aRowIndex: 	2
+		item: 	File @ export/.DS_Store
+		cell: 	nil
+	Receiver's instance variables: 
+		table: 	a FTTableMorph(510181376)
+		elements: 	an OrderedCollection(File @ . File @ export/.DS_Store File @ export/a...etc...
+		glamourPresentation: 	a GLMFastTablePresentation(id=97075200 title=Items pane=a ...etc...
+		announcer: 	a GLMAnnouncer
+		tagsToFilterBy: 	an OrderedCollection()
+		dataCache: 	nil
+		columnToSortBy: 	nil
+
+
+FTTableContainerMorph>>updateExposedRows
+	Receiver: a FTTableContainerMorph(736706560)
+	Arguments and temporary variables: 
+		visibleRows: 	30
+		numberOfColumns: 	3
+		columns: 	an Array(a GLMFastTableColumn a GLMFastTableColumn a GLMFastTableColum...etc...
+		columnWidths: 	#(400 100 122.0)
+		startIndex: 	1
+		rowIndex: 	2
+		row: 	a FTTableRowMorph(1028440064)
+		columnIndex: 	2
+		cell: 	nil
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (445.5@724.0)
+		owner: 	a FTTableMorph(510181376)
+		submorphs: 	an Array(a FTColumnResizerMorph(970014720) a FTColumnResizerMorph(41...etc...
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	nil
+		needsRefreshExposedRows: 	true
+		headerRow: 	a FTTableRowMorph(310427648)
+		exposedRows: 	a SmallDictionary(1->a FTTableRowMorph(377307136))
+
+
+FTTableMorph>>resizeAllSubviews
+	Receiver: a FTTableMorph(510181376)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (445.5@724.0)
+		owner: 	a GLMPanelMorph(789921792)
+		submorphs: 	an Array(a FTTableContainerMorph(736706560))
+		fullBounds: 	nil
+		color: 	Color white
+		extension: 	a MorphExtension (396148736) [other:  (announcer -> an Announcer) (k...etc...
+		container: 	a FTTableContainerMorph(736706560)
+		verticalScrollBar: 	a ScrollBar(872497152)
+		selectionColor: 	nil
+		showIndex: 	1
+		dataSource: 	a GLMFastTableDataSource
+		intercellSpacing: 	(3@1)
+		rowHeight: 	20.333333333333336
+		selectedRowIndexes: 	#(0)
+		highlightedRowIndexes: 	#()
+		selectionStrategy: 	a FTSimpleSelection
+		columns: 	an Array(a GLMFastTableColumn a GLMFastTableColumn a GLMFastTableColum...etc...
+		secondarySelectionColor: 	nil
+		headerColor: 	nil
+		showColumnHeaders: 	true
+		allowsDeselection: 	false
+		needToggleAtMouseUp: 	false
+		function: 	a FTNilFunction
+		resizable: 	true
+
+
+FTTableMorph>>extent:
+	Receiver: a FTTableMorph(510181376)
+	Arguments and temporary variables: 
+		aPoint: 	(622.0@649.0)
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (445.5@724.0)
+		owner: 	a GLMPanelMorph(789921792)
+		submorphs: 	an Array(a FTTableContainerMorph(736706560))
+		fullBounds: 	nil
+		color: 	Color white
+		extension: 	a MorphExtension (396148736) [other:  (announcer -> an Announcer) (k...etc...
+		container: 	a FTTableContainerMorph(736706560)
+		verticalScrollBar: 	a ScrollBar(872497152)
+		selectionColor: 	nil
+		showIndex: 	1
+		dataSource: 	a GLMFastTableDataSource
+		intercellSpacing: 	(3@1)
+		rowHeight: 	20.333333333333336
+		selectedRowIndexes: 	#(0)
+		highlightedRowIndexes: 	#()
+		selectionStrategy: 	a FTSimpleSelection
+		columns: 	an Array(a GLMFastTableColumn a GLMFastTableColumn a GLMFastTableColum...etc...
+		secondarySelectionColor: 	nil
+		headerColor: 	nil
+		showColumnHeaders: 	true
+		allowsDeselection: 	false
+		needToggleAtMouseUp: 	false
+		function: 	a FTNilFunction
+		resizable: 	true
+
+
+FTTableMorph(Morph)>>bounds:
+	Receiver: a FTTableMorph(510181376)
+	Arguments and temporary variables: 
+		newBounds: 	(-176.5@75.0) corner: (445.5@724.0)
+		oldExtent: 	(1262.0@671.0)
+		newExtent: 	(622.0@649.0)
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (445.5@724.0)
+		owner: 	a GLMPanelMorph(789921792)
+		submorphs: 	an Array(a FTTableContainerMorph(736706560))
+		fullBounds: 	nil
+		color: 	Color white
+		extension: 	a MorphExtension (396148736) [other:  (announcer -> an Announcer) (k...etc...
+		container: 	a FTTableContainerMorph(736706560)
+		verticalScrollBar: 	a ScrollBar(872497152)
+		selectionColor: 	nil
+		showIndex: 	1
+		dataSource: 	a GLMFastTableDataSource
+		intercellSpacing: 	(3@1)
+		rowHeight: 	20.333333333333336
+		selectedRowIndexes: 	#(0)
+		highlightedRowIndexes: 	#()
+		selectionStrategy: 	a FTSimpleSelection
+		columns: 	an Array(a GLMFastTableColumn a GLMFastTableColumn a GLMFastTableColum...etc...
+		secondarySelectionColor: 	nil
+		headerColor: 	nil
+		showColumnHeaders: 	true
+		allowsDeselection: 	false
+		needToggleAtMouseUp: 	false
+		function: 	a FTNilFunction
+		resizable: 	true
+
+
+FTTableMorph(Morph)>>layoutInBounds:
+	Receiver: a FTTableMorph(510181376)
+	Arguments and temporary variables: 
+		cellBounds: 	(-177@75) corner: (445@724)
+		box: 	(-176.5@75.0) corner: (445.5@724.0)
+		aSymbol: 	#center
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (445.5@724.0)
+		owner: 	a GLMPanelMorph(789921792)
+		submorphs: 	an Array(a FTTableContainerMorph(736706560))
+		fullBounds: 	nil
+		color: 	Color white
+		extension: 	a MorphExtension (396148736) [other:  (announcer -> an Announcer) (k...etc...
+		container: 	a FTTableContainerMorph(736706560)
+		verticalScrollBar: 	a ScrollBar(872497152)
+		selectionColor: 	nil
+		showIndex: 	1
+		dataSource: 	a GLMFastTableDataSource
+		intercellSpacing: 	(3@1)
+		rowHeight: 	20.333333333333336
+		selectedRowIndexes: 	#(0)
+		highlightedRowIndexes: 	#()
+		selectionStrategy: 	a FTSimpleSelection
+		columns: 	an Array(a GLMFastTableColumn a GLMFastTableColumn a GLMFastTableColum...etc...
+		secondarySelectionColor: 	nil
+		headerColor: 	nil
+		showColumnHeaders: 	true
+		allowsDeselection: 	false
+		needToggleAtMouseUp: 	false
+		function: 	a FTNilFunction
+		resizable: 	true
+
+
+FTTableMorph(Morph)>>layoutProportionallyIn:
+	Receiver: a FTTableMorph(510181376)
+	Arguments and temporary variables: 
+		newBounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		box: 	(-177@75) corner: (445@724)
+		frame: 	a LayoutFrame ( (0@0) + (0@0)px corner: (1@1) + (0@0)px ) 
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (445.5@724.0)
+		owner: 	a GLMPanelMorph(789921792)
+		submorphs: 	an Array(a FTTableContainerMorph(736706560))
+		fullBounds: 	nil
+		color: 	Color white
+		extension: 	a MorphExtension (396148736) [other:  (announcer -> an Announcer) (k...etc...
+		container: 	a FTTableContainerMorph(736706560)
+		verticalScrollBar: 	a ScrollBar(872497152)
+		selectionColor: 	nil
+		showIndex: 	1
+		dataSource: 	a GLMFastTableDataSource
+		intercellSpacing: 	(3@1)
+		rowHeight: 	20.333333333333336
+		selectedRowIndexes: 	#(0)
+		highlightedRowIndexes: 	#()
+		selectionStrategy: 	a FTSimpleSelection
+		columns: 	an Array(a GLMFastTableColumn a GLMFastTableColumn a GLMFastTableColum...etc...
+		secondarySelectionColor: 	nil
+		headerColor: 	nil
+		showColumnHeaders: 	true
+		allowsDeselection: 	false
+		needToggleAtMouseUp: 	false
+		function: 	a FTNilFunction
+		resizable: 	true
+
+
+[ :m | m layoutProportionallyIn: newBounds ] in ProportionalLayout>>layout:in:
+	Receiver: a ProportionalLayout
+	Arguments and temporary variables: 
+		aMorph: 	a GLMPanelMorph(789921792)
+		newBounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		m: 	a FTTableMorph(510181376)
+	Receiver's instance variables: 
+a ProportionalLayout
+
+Array(SequenceableCollection)>>do:
+	Receiver: an Array(a FTTableMorph(510181376))
+	Arguments and temporary variables: 
+		aBlock: 	[ :m | m layoutProportionallyIn: newBounds ]
+		index: 	1
+	Receiver's instance variables: 
+an Array(a FTTableMorph(510181376))
+
+GLMPanelMorph(Morph)>>submorphsDo:
+	Receiver: a GLMPanelMorph(789921792)
+	Arguments and temporary variables: 
+		aBlock: 	[ :m | m layoutProportionallyIn: newBounds ]
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		owner: 	a GLMPanelMorph(471646208)
+		submorphs: 	an Array(a FTTableMorph(510181376))
+		fullBounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		color: 	(Color r: 0.901 g: 0.901 b: 0.901 alpha: 1.0)
+		extension: 	a MorphExtension (765280256) [sticky] 
+		borderWidth: 	0
+		borderColor: 	Color black
+
+
+ProportionalLayout>>layout:in:
+	Receiver: a ProportionalLayout
+	Arguments and temporary variables: 
+		aMorph: 	a GLMPanelMorph(789921792)
+		newBounds: 	(-176.5@75.0) corner: (444.5@724.0)
+	Receiver's instance variables: 
+a ProportionalLayout
+
+GLMPanelMorph(Morph)>>doLayoutIn:
+	Receiver: a GLMPanelMorph(789921792)
+	Arguments and temporary variables: 
+		layoutBounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		box: 	nil
+		priorBounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		layout: 	a ProportionalLayout
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		owner: 	a GLMPanelMorph(471646208)
+		submorphs: 	an Array(a FTTableMorph(510181376))
+		fullBounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		color: 	(Color r: 0.901 g: 0.901 b: 0.901 alpha: 1.0)
+		extension: 	a MorphExtension (765280256) [sticky] 
+		borderWidth: 	0
+		borderColor: 	Color black
+
+
+[ self doLayoutIn: self layoutBounds ] in GLMPanelMorph(Morph)>>computeFullBounds
+	Receiver: a GLMPanelMorph(789921792)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		owner: 	a GLMPanelMorph(471646208)
+		submorphs: 	an Array(a FTTableMorph(510181376))
+		fullBounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		color: 	(Color r: 0.901 g: 0.901 b: 0.901 alpha: 1.0)
+		extension: 	a MorphExtension (765280256) [sticky] 
+		borderWidth: 	0
+		borderColor: 	Color black
+
+
+BlockClosure>>on:do:
+	Receiver: [ self doLayoutIn: self layoutBounds ]
+	Arguments and temporary variables: 
+		exception: 	Error
+		handlerAction: 	[ :ex | 
+"This should do it unless you don't screw up the bounds...etc...
+	Receiver's instance variables: 
+		outerContext: 	GLMPanelMorph(Morph)>>computeFullBounds
+		startpc: 	69
+		numArgs: 	0
+
+
+GLMPanelMorph(Morph)>>computeFullBounds
+	Receiver: a GLMPanelMorph(789921792)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		owner: 	a GLMPanelMorph(471646208)
+		submorphs: 	an Array(a FTTableMorph(510181376))
+		fullBounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		color: 	(Color r: 0.901 g: 0.901 b: 0.901 alpha: 1.0)
+		extension: 	a MorphExtension (765280256) [sticky] 
+		borderWidth: 	0
+		borderColor: 	Color black
+
+
+GLMPanelMorph(Morph)>>fullBounds
+	Receiver: a GLMPanelMorph(789921792)
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		owner: 	a GLMPanelMorph(471646208)
+		submorphs: 	an Array(a FTTableMorph(510181376))
+		fullBounds: 	(-176.5@75.0) corner: (444.5@724.0)
+		color: 	(Color r: 0.901 g: 0.901 b: 0.901 alpha: 1.0)
+		extension: 	a MorphExtension (765280256) [sticky] 
+		borderWidth: 	0
+		borderColor: 	Color black
+
+
+GLMPanelMorph(Morph)>>position:
+	Receiver: a GLMPanelMorph(789921792)
+	Arguments and temporary variables: 

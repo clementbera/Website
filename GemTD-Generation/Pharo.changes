@@ -1641,4 +1641,259 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:20' prior: 33687920!exportOn: s	super exportOn: s.	combo ifNil: [ ^ self ].	combo size < 2 ifTrue: [ ^ self ] .	s << '|!! Combination |!! Combination |!! Combination |!! Combination'.	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , ' & ' , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , ' & ' , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.! !----SNAPSHOT----2018-01-27T14:20:49.382902+01:00 Pharo.image priorSource: 134562!----QUIT----2018-01-27T14:20:53.48445+01:00 Pharo.image priorSource: 141482!
+!----End fileIn----!!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:20' prior: 33687920!exportOn: s	super exportOn: s.	combo ifNil: [ ^ self ].	combo size < 2 ifTrue: [ ^ self ] .	s << '|!! Combination |!! Combination |!! Combination |!! Combination'.	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , ' & ' , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , ' & ' , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.! !----SNAPSHOT----2018-01-27T14:20:49.382902+01:00 Pharo.image priorSource: 134562!----QUIT----2018-01-27T14:20:53.48445+01:00 Pharo.image priorSource: 141482!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:54'!exportNamesOn: s	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:54' prior: 33663858!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ]. 	s << '!!!! ' << level << '. ' << (name at: 'en') capitalized.	s cr.	self exportNamesOn: s.	s << '|!! Base HP |!! Base Movement |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << hp 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:55'!exportAbilitiesOn: s	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportOn: s ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:55' prior: 33699422!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ]. 	s << '!!!! ' << level << '. ' << (name at: 'en') capitalized.	s cr.	self exportNamesOn: s.	s << '|!! Base HP |!! Base Movement |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << hp 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	s cr.	self exportAbilitiesOn: s! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:55' prior: 33627816!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=8+'.	s cr.	self exportNamesOn: s.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:55' prior: 33700776!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=8+'.	s cr.	self exportNamesOn: s.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	self exportAbilitiesOn: s! !----SNAPSHOT----2018-01-27T14:55:56.519498+01:00 Pharo.image priorSource: 141565!!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:56' prior: 33699074!exportNamesOn: s	s << '|!! Code |!! English |!! Short name |!! '.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:56' prior: 33701865!exportNamesOn: s	s << '|!! Code |!! English |!! Short name |!! '.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  ''.	s cr.! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 14:56' prior: 33702188!exportNamesOn: s	s << '|!! Code |!! English |!! Short name |!! '.	s cr.	1halt.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  1		<< ' | ' <<  ''.	s cr.! !----QUIT----2018-01-27T14:57:14.799283+01:00 Pharo.image priorSource: 147260!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 15:00'!initialsFrom: n	| s |	s := n splitOn: '/'.	s size = 2 ifTrue: [ s at: 2 ].	1halt.	^ (s substrings collect: [ :e | e first capitalized ])! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 15:00' prior: 33702484!exportNamesOn: s	s << '|!! Code |!! English |!! Short name |!! '.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  (self initialsFrom: (name at: 'en')) 		<< ' | ' <<  ''.	s cr.! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 15:01' prior: 33705748!initialsFrom: n	| s |	s := n splitOn: '/'.	s size = 2 ifTrue: [ s at: 2 ].	self assert: s size = 1.	^ String newFrom: (s first substrings collect: [ :e | e first asUppercase ])  ! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 15:01' prior: 33706286!initialsFrom: n	| s |	s := n splitOn: '/'.	s size = 2 ifTrue: [ ^ s at: 2 ].	self assert: s size = 1.	^ String newFrom: (s first substrings collect: [ :e | e first asUppercase ])  ! !GemTDAbility removeSelector: #shortExportHiddenOn:!!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 1/27/2018 15:02' prior: 33619848!shortExportOn: s	s << '|!! Ability Code |!! Ability English |!! Tooltip English |!! Other' "Name (sch) |!! Tooltip (sch) |!! Name (tch) |!! Tooltip (tch)'".	s cr.	s 		<< '| ' << codeName		<< ' | ' << (name at: 'en')		<< ' | ' << (tooltip at: 'en')		<< ' | ' << ''		"<< ' | ' << (name at: 'sch')		<< ' | ' << (tooltip at: 'sch')		<< ' | ' << (name at: 'tch')		<< ' | ' << (tooltip at: 'tch')".	s cr.! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 15:04' prior: 33705982!exportNamesOn: s	s << '|!! Code |!! English |!! Initials |!! '.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  (self initialsFrom: (name at: 'en')) 		<< ' | ' <<  ''.	s cr.! !!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 15:06' prior: 33695104!exportOn: s	combo ifNil: [ ^ self ].	combo size < 2 ifTrue: [ ^ self ] .	super exportOn: s.	s << '|!! Combination |!! Combination |!! Combination |!! Combination'.	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , ' & ' , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , ' & ' , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.! !----SNAPSHOT----2018-01-27T15:06:43.947852+01:00 Pharo.image priorSource: 148238!----QUIT----2018-01-27T15:07:06.384014+01:00 Pharo.image priorSource: 154082!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 15:11' prior: 33707704!exportOn: s	((combo isNil or: [ combo size < 2 ]) and: [ (name at: 'en') = 'Unavailable' ])		ifTrue: [ ^ self ].	super exportOn: s.	combo ifNil: [ ^ self ].	combo size < 2 ifTrue: [ ^ self ] .	s << '|!! Combination |!! Combination |!! Combination |!! Combination'.	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , ' & ' , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , ' & ' , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.! !!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 15:12' prior: 33711697!exportOn: s	((combo isNil or: [ combo size < 2 ]) and: [ (name at: 'en') = 'Unavailable' ])		ifTrue: [ ^ self ].	super exportOn: s.	combo ifNil: [ ^ self ].	combo size < 2 ifTrue: [ ^ self ] .	s << '|!! Combination |!! Combination |!! Combination |!! Combination'.	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , ' & ' , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , ' & ' , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.! !----SNAPSHOT----2018-01-27T15:12:06.446999+01:00 Pharo.image priorSource: 154165!----SNAPSHOT----2018-01-27T15:12:08.761629+01:00 Pharo.image priorSource: 159187!----SNAPSHOT----2018-01-27T15:12:11.758573+01:00 Pharo.image priorSource: 159270!!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 15:13' prior: 33633120!process	importer := GemTDImporter new.	importer importAll.	self generate.	self clearExport.	self exportBaseTowers.	self exportAdvancedTowers.	self exportCreeps.! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 15:14'!clearExport	'export' asFileReference children do: #delete! !----QUIT----2018-01-27T15:19:10.746718+01:00 Pharo.image priorSource: 159353!

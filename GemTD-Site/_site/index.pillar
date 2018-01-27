@@ -5,6 +5,14 @@ Hi all !
 I wrote scripts to automatically extract from Gem TD's vpk internal data such as tower damage, abilities, etc. The scripts export the data
 in the form of html web pages that are displayed here.
 
-Click on the menu to access the different pages.
+Click on the menu top right to access the different pages.
+
+!!! Versions
+
+v.0: first version 
+
+v.0.1: Added combinations in combined towers, cleaned too awckward creeps
+
+v.0.2: Added initials instead of chinese names that had issues, cleaned too awckward towers
 
 Farine
