@@ -2963,7 +2963,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"9000"
+		"StatusHealth"	"10000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -3379,7 +3379,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"2900"
+		"StatusHealth"	"3200"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -3483,7 +3483,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"2200"
+		"StatusHealth"	"2400"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -3587,7 +3587,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"6600"
+		"StatusHealth"	"6300"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -4448,7 +4448,7 @@
 		// Type of locomotion - ground, air
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		// Speed
-		"MovementSpeed"	"675"
+		"MovementSpeed"	"600"
 		// Turning rate.
 		"MovementTurnRate"	"10"
 		"FollowRange"	"0"
@@ -4523,7 +4523,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"60000"
+		"StatusHealth"	"65000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -4627,7 +4627,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"40000"
+		"StatusHealth"	"45000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -4731,7 +4731,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"16000"
+		"StatusHealth"	"18000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -4835,7 +4835,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"10000"
+		"StatusHealth"	"12000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -6916,7 +6916,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"33000"
+		"StatusHealth"	"45000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -7229,7 +7229,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"350000"
+		"StatusHealth"	"400000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -7935,7 +7935,7 @@
 		// Model.
 		// "Model"	"materials/stone.vmdl"
 		// Model.
-		"Model"	"materials/new_stone.vmdl"
+		"Model"	"models/particle/snowball.vmdl"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -8052,6 +8052,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"ModelScale"	"0.75"
 	}
 
 	// =================================================================================
@@ -14419,8 +14420,8 @@
 		// "Model"	"models/props_gameplay/heart001.vmdl"
 		// "ModelScale"	"6"
 		// Model.
-		"Model"	"models/particle/ice_shards.vmdl"
-		"ModelScale"	"40"
+		"Model"	"models/items/winter_wyvern/winter_wyvern_ti7_immortal/winter_wyvern_ti7_immortal_ice_shards.vmdl"
+		"ModelScale"	"35"
 		// Name of sound set.
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIcon"	"minimap_ancient"

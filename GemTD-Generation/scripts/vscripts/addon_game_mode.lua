@@ -1119,6 +1119,9 @@ function Precache( context )
 		"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf",
 		"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts",
 		"models/props_magic/bad_magic_tower001.vmdl",
+		"models/particle/snowball.vmdl",
+		"models/items/crystal_maiden/snowman/crystal_maiden_snowmaiden.vmdl",
+		"models/items/winter_wyvern/winter_wyvern_ti7_immortal/winter_wyvern_ti7_immortal_ice_shards.vmdl",
     }
      
     print("Precache...")
@@ -1239,8 +1242,7 @@ function GemTD:InitGameMode()
 	u:SetHullRadius(64)
 	u:SetForwardVector(Vector(-1,0,0))
 	GameRules:GetGameModeEntity().gem_castle = u
-	
-	
+
 	--随机数
 	gemtd_randomize()
 	GameRules:GetGameModeEntity().navi = RandomInt(1000,9999)
@@ -1537,7 +1539,6 @@ function GemTD:OnReceiveHeroInfo(keys)
 			hero_new:FindAbilityByName("gemtd_build_stone"):SetActivated(is_can_build)
 			hero_new:FindAbilityByName("gemtd_remove"):SetActivated(is_can_build)
 
-
 			-- hero_new:AddAbility("gemtd_hero_beishuiyizhan")
 			-- hero_new:FindAbilityByName("gemtd_hero_beishuiyizhan"):SetLevel(3)
 			-- hero_new:AddAbility("gemtd_hero_qingyi")
@@ -1639,7 +1640,6 @@ function GemTD:OnReceiveHeroInfo(keys)
 
 			hero_new:AddAbility('no_hp_bar')
 			hero_new:FindAbilityByName('no_hp_bar'):SetLevel(1)
-
 			
 			play_particle("particles/radiant_fx/radiant_tower002_destruction_a2.vpcf",PATTACH_ABSORIGIN_FOLLOW,hero_new,2)
 
@@ -2105,9 +2105,6 @@ function OnThink()
 
 		    u = CreateUnitByName(guai_name, position,true,nil,nil,DOTA_TEAM_BADGUYS) 
 		    u.ftd = 2009
-
-		    
-
 		    
 		    if GameRules.is_debug == true then
 		    	GameRules:SendCustomMessage("PlayerResource里的玩家数: "..PlayerResource:GetPlayerCount(), 0, 0)
@@ -2260,6 +2257,9 @@ function OnThink()
 			if string.find(guai_name, "boss") then
 				--PrecacheResource( "soundfile",  zr[i], context)
 				GameRules.guai_count = GameRules.guai_count -100
+
+				u:AddAbility("e_snow")
+				u:FindAbilityByName("e_snow"):SetLevel(1)
 			end
 
 			if string.find(guai_name, "tester") then		
@@ -2576,11 +2576,13 @@ function GemTD:OnEntityKilled( keys )
 				exp_count = exp_count * 4
 			end
 
-			local killer_unit = EntIndexToHScript(keys.entindex_attacker)
-			local killer_owner = killer_unit:GetOwner()
+			if keys.entindex_attacker ~= nil then
+				local killer_unit = EntIndexToHScript(keys.entindex_attacker)
+				local killer_owner = killer_unit:GetOwner()
 
-			if killer_unit:FindModifierByName("modifier_tower_tanlan") ~= nil and RandomInt(1,100)<=5 then
-				exp_count = exp_count * 10
+				if killer_unit ~= nil and killer_unit:FindModifierByName("modifier_tower_tanlan") ~= nil and RandomInt(1,100)<=5 then
+					exp_count = exp_count * 10
+				end
 			end
 
 			local i = 0
@@ -7582,6 +7584,8 @@ function  gemtd_hero_beishuiyizhan( keys )
 	local target = keys.target
 	local level = caster:FindAbilityByName("gemtd_hero_beishuiyizhan"):GetLevel()
 	local beishui_level = (100-GameRules:GetGameModeEntity().gem_castle_hp)/20+1
+
+	sync_player_gold(caster)
 	
 	-- target:AddNewModifier(caster, caster:FindAbilityByName("gemtd_hero_beishuiyizhan"), "modifier_gemtd_hero_beishuiyizhan1", nil)
 
@@ -7659,6 +7663,24 @@ function SetAbilityActiveStatus(h,is_build_status)
 	end
 
 	
+end
+
+function sync_player_gold(caster)
+	local owner =  caster:GetOwner()
+	local player_id = owner:GetPlayerID()
+	--同步玩家金钱
+	local gold_count = PlayerResource:GetGold(player_id)
+	local ii = 0
+	for ii = 0, 20 do
+		if ( PlayerResource:IsValidPlayer( ii ) ) then
+			local player = PlayerResource:GetPlayer(ii)
+			if player ~= nil then
+				PlayerResource:SetGold(ii, gold_count, true)
+			end
+		end
+	end
+	GameRules.team_gold = gold_count
+	CustomNetTables:SetTableValue( "game_state", "gem_team_gold", { gold = gold_count } );
 end
 
 --光柱道标

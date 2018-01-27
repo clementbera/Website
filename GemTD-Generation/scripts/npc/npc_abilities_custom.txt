@@ -5,6 +5,28 @@
 {
 	"Version"		"1"
 
+	"e_snow"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"wisp_overcharge"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"HotKeyOverride"	"L"
+		"precache"
+		{
+			"particle"	"particles/ui/ui_winter_snow.vpcf"
+		}
+		"Modifiers"
+		{
+			"modifier_e_snow"
+			{
+				"Passive"	"1"
+				"EffectName"	"particles/ui/ui_winter_snow.vpcf"
+				"EffectAttachType"	"follow_eyes"
+				"IsHidden"	"1"
+			}
+		}
+	}
+
 	"gemtd_build_stone"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -5708,7 +5730,7 @@
 				"stone_max_count"	"4 8 12 16"
 			}
 		}
-		"AbilityGoldCost"	"150"
+		"AbilityGoldCost"	"100"
 	}
 
 	"gemtd_hero_xuanfeng"
@@ -5767,7 +5789,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cost"	"250 150 100 75"
+				"cost"	"200 125 75 50"
 			}
 			"02"
 			{
@@ -5775,7 +5797,7 @@
 				"range"	"180"
 			}
 		}
-		"AbilityGoldCost"	"250 150 100 75"
+		"AbilityGoldCost"	"200 125 75 50"
 	}
 
 	"gemtd_hero_lanse"
@@ -6925,34 +6947,6 @@
 		}
 	}
 
-	"shredder_reactive_armor"
-	{
-		"MaxLevel"	"4"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"2 3 4 5"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_hp_regen"	"2 3 4 5"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stack_limit"	"20 30 40 50"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"stack_duration"	"30"
-			}
-		}
-	}
-
 	"phantom_assassin_blur"
 	{
 		"MaxLevel"	"4"
@@ -6994,7 +6988,7 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_guai_chenmo_buff"
-				"Aura_Radius"	"50 80 110 140"
+				"Aura_Radius"	"100 120 140 160"
 				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_RANGED_ONLY"
@@ -7421,7 +7415,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_share_percentage"	"50 60 70 80"
+				"damage_share_percentage"	"70 80 90 100"
 			}
 			"03"
 			{
@@ -11509,12 +11503,12 @@
 			"08"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"2000"
+				"damage"	"1800"
 			}
 			"09"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_scepter"	"2000"
+				"damage_scepter"	"1800"
 			}
 			"10"
 			{
@@ -11606,9 +11600,21 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"AbilityGoldCost"	"450 350 300 275"
+				"AbilityGoldCost"	"350 275 225 200"
 			}
 		}
-		"AbilityGoldCost"	"450 350 300 275"
+		"AbilityGoldCost"	"350 275 225 200"
+	}
+
+	"shredder_reactive_armor"
+	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bonus_armor"	"5.0 5.0 5.0 5.0"
+			}
+		}
 	}
 }
