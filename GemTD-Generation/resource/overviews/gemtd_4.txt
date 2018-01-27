@@ -1,0 +1,8 @@
+gemtd_4
+{
+	material materials/overviews/gemtd_4.vmat
+	pos_x -2800
+	pos_y 2800
+	scale 5.469
+}
+

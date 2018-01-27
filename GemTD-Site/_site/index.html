@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>
+			
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta name="generator" content="Pharo - Pillar - Ecstatic" />
+		<meta name="robots" content="index,follow" />
+		<meta name="keywords" content="" />
+		
+		<link rel="stylesheet" type="text/css" media="screen, projection" href="theme/screen.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="theme/print.css" />
+		<!--[if IE]><link rel="stylesheet" type="text/css" media="screen, projection" href="/wiki/files/PRBlueprintLibrary/ie.css"/><![endif]-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="theme/pure.css" />
+		<!--link rel="canonical" href="http://esug.org/wiki/pier/About/membership" /-->
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	</head>
+	<body class="page viewcommand defaultview">
+		<div class="container">
+			<div class="header">
+				<div class="title">	
+					<div style="float:left; margin-right:15px">
+						<a href="index.html">
+							 <img alt="Dota 2 Gem TD Unofficial Website" src="main.jpg">
+						</a>
+					</div>
+					<div style="margin:15px">
+						<h1>Dota 2 Gem TD Unofficial Website</h1>
+					  	<h2>~</h2>
+					</div>
+				</div>
+				<div class="children">					
+					<ul>
+						
+						<li>
+							<a class="page" href="/index.html">Home</a>
+						</li>
+						
+						<li>
+							<a class="page" href="/baseTowers.html">Base Towers</a>
+						</li>
+						
+						<li>
+							<a class="page" href="/advancedTowers.html">Advanced Towers</a>
+						</li>
+						
+						<li>
+							<a class="page" href="/creeps.html">Creeps</a>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="submenue">
+					<ul>
+						
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="body">
+				<div class="contents">
+					<section>
+<h1> Gem TD unofficial Website</h1>
+
+<p>
+Hi all !
+</p>
+<p>
+I wrote scripts to automatically extract from Gem TD's vpk internal data such as tower damage, abilities, etc. The scripts export the data
+in the form of html web pages that are displayed here.
+</p>
+<p>
+Click on the menu to access the different pages.
+</p>
+<p>
+Farine
+</p></section>
+				</div>
+			</div>
+		</div>
+		<div class="footer container-fluid">
+			<div class="madeby">
+				Pure theme powered by <a class="external" href="http://www.pharo.org">pharo</a> | <a class="external" href="http://www.smalltalkhub.com/#!/~Pier/Pillar">pillar</a> | <a class="external" href="http://guillep.github.io/ecstatic/">Ecstatic</a>
+			</div>
+
+		<script>
+		$(document).ready(function() {
+		    $('dt').each(function() {
+		        var $dt = $(this),
+		        $selection = $dt.next('dd').andSelf();
+		        $selection.wrapAll('<div class="col-md-4">');
+		    });
+			$('dd').find('br').remove();
+			$('dt').contents().unwrap().wrap("<h3/>");
+			$('dd').contents().unwrap().wrap("<p/>");
+			$('dl').wrap("<div class='row multi-columns-row'/>");
+			$('dl').contents().unwrap();
+		});
+		function transformAnnotatedParagraphs(pClass) {
+		    $("p." + pClass).wrap("<div class='alert alert-" + pClass + "' role='alert'/>" );
+		};
+		transformAnnotatedParagraphs('success');
+		transformAnnotatedParagraphs('info');
+		transformAnnotatedParagraphs('warning');
+		transformAnnotatedParagraphs('danger');
+		</script>
+		<script type="text/javascript">
+				/* analytics */
+				/*<![CDATA[*/
+					var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+					document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+				/*]]>*/
+			</script>
+			<script type="text/javascript">
+/*<![CDATA[*/var pageTracker = _gat._getTracker('UA-2892391-1');
+			pageTracker._initData();
+			pageTracker._trackPageview();/*]]>*/
+			</script>
+		</div>
+	</body>
+</html>

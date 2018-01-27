@@ -1,0 +1,8 @@
+gemtd_temple
+{
+	material materials/overviews/gemtd_temple.vmat
+	pos_x -3840
+	pos_y 3840
+	scale 7.500
+}
+

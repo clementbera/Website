@@ -1,0 +1,8 @@
+gemtd_speed
+{
+	material materials/overviews/gemtd_speed.vmat
+	pos_x -2800
+	pos_y 2800
+	scale 5.469
+}
+

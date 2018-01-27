@@ -1,0 +1,1 @@
+GemTDImporter new importResources  '../resource/addon_english.txt' asFileReference 
