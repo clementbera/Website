@@ -4,13 +4,15 @@
 
 - Get me a folder with pictures for creeps, the name of the png file should be the "code" from the website (gemtd_kuangbaoyezhu for Frenzied pig for example), I'll add pictures to the creep page. Get a link to download the folder.
 - Get me a diamond picture that I don't have compatible for base towers page
-- Anything that could improve the site is welcomed.
+- Get me a great stone picture that I don't have compatible for combined towers
+- Anything that could improve the site is welcomed, including ideas for improvements if they're said in a non-aggressive way.
 
-Contact me either on github or on Gem TD reddit
+Post on Gem TD reddit about this
 
 ## I am a developer and I want to understand this non-sense
 
 To generate:
+0) Go to Master branch
 1) Cd to GemTD-Generation folder
 2) Copy the resource and scripts folders from the vpk to GemTD-Generation folder
 3) Remove files in GemTD-Generation/export
@@ -21,6 +23,7 @@ Also, you need to be in GemTD-Generation folder.
 6) Cd to GemTD-Site
 7) Run ../ecstatic generate to generate the html pages in GemTD-Site/_site
 8) Double click on html pages generated to see the result.
+9) Move the html files to gh-pages branch for deployment
 
 PR are welcomed.
 
