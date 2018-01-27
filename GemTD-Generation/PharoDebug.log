@@ -40714,3 +40714,1418 @@ false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
 Processor terminateActive ] in BlockClosure>>newProcess
 -------------------------------------------------------------------------------
 
+THERE_BE_DRAGONS_HERE
+Instance of GemTDLuaParser did not understand #collect:
+27 January 2018 4:25:17.68492 pm
+
+VM: Mac OS - x64 - 1011.6 - CoInterpreter VMMaker.oscog-eem.2265 uuid: 76b62109-629a-4c39-9641-67b53321df9a Aug 27 2017
+StackToRegisterMappingCogit VMMaker.oscog-eem.2262 uuid: 8b531242-de02-48aa-b418-8d2dde0bec6c Aug 27 2017
+VM: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $ Date: Sun Aug 27 21:55:26 2017 +0200 $ Plugins: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $
+
+Image: Pharo7.0alpha [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (64 Bit)]
+
+GemTDLuaParser(Object)>>doesNotUnderstand: #collect:
+	Receiver: a GemTDLuaParser
+	Arguments and temporary variables: 
+		aMessage: 	collect: [ :c | self enNameFor: c importer: importer ]
+		exception: 	MessageNotUnderstood: GemTDLuaParser>>collect:
+		resumeValue: 	nil
+	Receiver's instance variables: 
+		readStream: 	a ReadStream
+		result: 	a Dictionary('gemtd_aijijin'->a GemTDLuaParser 'gemtd_baiyin'->a GemTDL...etc...
+
+
+GemTDAdvancedTower>>importWith:importer:
+	Receiver: a GemTDAdvancedTower
+	Arguments and temporary variables: 
+		details: 	a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' 'Ability12...etc...
+		importer: 	a GemTDImporter
+	Receiver's instance variables: 
+		codeName: 	'gemtd_huangcailanbaoshi'
+		name: 	a Dictionary(#en->'yellow sapphire' #sch->'Äi_Ý[ów' #tch->'Ãi_Íö[ów'...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'20'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'advanced/gemtd_huangcailanbaoshi'
+		combo: 	a GemTDLuaParser
+		comboNames: 	nil
+
+
+GemTDAdvancedTower class(GemTDElement class)>>newFrom:with:importer:
+	Receiver: GemTDAdvancedTower
+	Arguments and temporary variables: 
+		codeName: 	'gemtd_huangcailanbaoshi'
+		details: 	a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' 'Ability12...etc...
+		importer: 	a GemTDImporter
+	Receiver's instance variables: 
+		superclass: 	GemTDTower
+		methodDict: 	a MethodDictionary(#exportOn:->GemTDAdvancedTower>>#exportOn: #impo...etc...
+		format: 	65547
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	#()
+		name: 	#GemTDAdvancedTower
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'GemTD-Analysis'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((details at: 'Model') beginsWith: 'models/items/wards/')
+			ifTrue: [ u last = $1
+					ifTrue: [ GemTDBaseTower ]
+					ifFalse: [ GemTDAdvancedTower ] ]
+			ifFalse: [ GemTDCreep ].
+		units add: (cls newFrom: u with: details importer: importer) ] ] in GemTDGod>>generate
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+		u: 	'gemtd_huangcailanbaoshi'
+		details: 	a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' 'Ability12...etc...
+		cls: 	GemTDAdvancedTower
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower)
+
+
+[ :assoc | aBlock value: assoc key value: assoc value ] in Dictionary>>keysAndValuesDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((de...etc...
+		assoc: 	'gemtd_huangcailanbaoshi'->a Dictionary('Ability1'->'' 'Ability10'->'' '...etc...
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+[ :each | each ifNotNil: [ aBlock value: each ] ] in Dictionary>>associationsDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :assoc | aBlock value: assoc key value: assoc value ]
+		each: 	'gemtd_huangcailanbaoshi'->a Dictionary('Ability1'->'' 'Ability10'->'' 'A...etc...
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+Array(SequenceableCollection)>>do:
+	Receiver: an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' '...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :each | each ifNotNil: [ aBlock value: each ] ]
+		index: 	10
+	Receiver's instance variables: 
+an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' '...etc...
+
+Dictionary>>associationsDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :assoc | aBlock value: assoc key value: assoc value ]
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+Dictionary>>keysAndValuesDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((de...etc...
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+GemTDGod>>generate
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower)
+
+
+GemTDGod>>process
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower)
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	a ReadStream
+		itsSelection: 	a Text for ''
+		itsSelectionString: 	''
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ GemTDGod new process
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+
+
+RubSmalltalkEditor>>evaluate:andDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aStream: 	a ReadStream
+		aBlock: 	[ :result | aBlock value: result ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result |  ]
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+	Receiver: a RubEditingArea(880226816)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+text...etc...
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (580@69)
+		owner: 	a TransformWithLayoutMorph(1031524864)
+		submorphs: 	an Array(a RubPrimarySelectionMorph(139253760) a RubCursor(758274560...etc...
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (79358464) [other:  (announcer -> an Announcer) (km...etc...
+		model: 	a GLMRubricSmalltalkTextModel
+		paragraph: 	a RubShoutStylerDecorator
+		editor: 	a RubSmalltalkEditor
+		scrollPane: 	a RubTextScrollPane(206663680)
+		editingState: 	a RubEditingState
+		textStyle: 	a TextStyle Source Code Pro
+		textColor: 	Color black
+		margins: 	a Margin top: 6 left: 6 bottom: 6 right: 6
+		readOnly: 	false
+		menuAllowed: 	nil
+		editingMode: 	a RubSmalltalkScriptingMode
+		cursor: 	a RubCursor(758274560)
+		segments: 	an OrderedCollection(a RubHighlightSegmentMorph(954440704))
+		getMenuPolicy: 	nil
+		mouseDownPoint: 	nil
+		wrapped: 	true
+		editorClass: 	RubSmalltalkEditor
+
+
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+WorldState>>runStepMethodsIn:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+		queue: 	WaitfreeQueue with 0 items
+		nextInQueue: 	[ textMorph textArea
+	handleEdit: [ textMorph textArea editor high...etc...
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(84536320))(a DropListM...etc...
+		lastStepTime: 	165979
+		lastStepMessage: 	nil
+		lastCycleTime: 	166002
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	165979
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>runStepMethods
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(490979328) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(84536320))(a DropListM...etc...
+		lastStepTime: 	165979
+		lastStepMessage: 	nil
+		lastCycleTime: 	166002
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	165979
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldState>>doOneCycleFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(84536320))(a DropListM...etc...
+		lastStepTime: 	165979
+		lastStepMessage: 	nil
+		lastCycleTime: 	166002
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	165979
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>doOneCycle
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(490979328) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldMorph class>>doOneCycle
+	Receiver: WorldMorph
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	PasteUpMorph
+		methodDict: 	a MethodDictionary(#acceptDroppingMorph:event:->WorldMorph>>#accept...etc...
+		format: 	65549
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	{AthensWorldMorph. OSWindowWorldMorph}
+		name: 	#WorldMorph
+		classPool: 	a Dictionary(#CursorOwnerWorld->a WorldMorph(939862784) [world] #Ext...etc...
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Morphic-Core-Worlds'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+	Receiver: a MorphicUIManager
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		interactiveParser: 	nil
+		activeTranscript: 	Transcript
+
+
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+	Receiver: [ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		outerContext: 	MorphicUIManager>>spawnNewProcess
+		startpc: 	125
+		numArgs: 	0
+
+
+
+--- The full stack ---
+GemTDLuaParser(Object)>>doesNotUnderstand: #collect:
+GemTDAdvancedTower>>importWith:importer:
+GemTDAdvancedTower class(GemTDElement class)>>newFrom:with:importer:
+[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((details at: 'Model') beginsWith: 'models/items/wards/')
+			ifTrue: [ u last = $1
+					ifTrue: [ GemTDBaseTower ]
+					ifFalse: [ GemTDAdvancedTower ] ]
+			ifFalse: [ GemTDCreep ].
+		units add: (cls newFrom: u with: details importer: importer) ] ] in GemTDGod>>generate
+[ :assoc | aBlock value: assoc key value: assoc value ] in Dictionary>>keysAndValuesDo:
+[ :each | each ifNotNil: [ aBlock value: each ] ] in Dictionary>>associationsDo:
+Array(SequenceableCollection)>>do:
+Dictionary>>associationsDo:
+Dictionary>>keysAndValuesDo:
+GemTDGod>>generate
+GemTDGod>>process
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+RubSmalltalkEditor>>evaluate:andDo:
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+WorldState>>runStepMethodsIn:
+WorldMorph>>runStepMethods
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+WorldMorph class>>doOneCycle
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+Instance of GemTDLuaParser did not understand #collect:
+27 January 2018 4:26:22.323268 pm
+
+VM: Mac OS - x64 - 1011.6 - CoInterpreter VMMaker.oscog-eem.2265 uuid: 76b62109-629a-4c39-9641-67b53321df9a Aug 27 2017
+StackToRegisterMappingCogit VMMaker.oscog-eem.2262 uuid: 8b531242-de02-48aa-b418-8d2dde0bec6c Aug 27 2017
+VM: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $ Date: Sun Aug 27 21:55:26 2017 +0200 $ Plugins: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $
+
+Image: Pharo7.0alpha [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (64 Bit)]
+
+GemTDLuaParser(Object)>>doesNotUnderstand: #collect:
+	Receiver: a GemTDLuaParser
+	Arguments and temporary variables: 
+		aMessage: 	collect: [ :c | self enNameFor: c importer: importer ]
+		exception: 	MessageNotUnderstood: GemTDLuaParser>>collect:
+		resumeValue: 	nil
+	Receiver's instance variables: 
+		readStream: 	a ReadStream
+		result: 	a Dictionary('gemtd_aijijin'->a GemTDLuaParser 'gemtd_baiyin'->a GemTDL...etc...
+
+
+GemTDAdvancedTower>>importWith:importer:
+	Receiver: a GemTDAdvancedTower
+	Arguments and temporary variables: 
+		details: 	a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' 'Ability12...etc...
+		importer: 	a GemTDImporter
+	Receiver's instance variables: 
+		codeName: 	'gemtd_huangcailanbaoshi'
+		name: 	a Dictionary(#en->'yellow sapphire' #sch->'Äi_Ý[ów' #tch->'Ãi_Íö[ów'...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'20'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'advanced/gemtd_huangcailanbaoshi'
+		combo: 	a GemTDLuaParser
+		comboNames: 	nil
+
+
+GemTDAdvancedTower class(GemTDElement class)>>newFrom:with:importer:
+	Receiver: GemTDAdvancedTower
+	Arguments and temporary variables: 
+		codeName: 	'gemtd_huangcailanbaoshi'
+		details: 	a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' 'Ability12...etc...
+		importer: 	a GemTDImporter
+	Receiver's instance variables: 
+		superclass: 	GemTDTower
+		methodDict: 	a MethodDictionary(#exportOn:->GemTDAdvancedTower>>#exportOn: #impo...etc...
+		format: 	65547
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	#()
+		name: 	#GemTDAdvancedTower
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'GemTD-Analysis'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((details at: 'Model') beginsWith: 'models/items/wards/')
+			ifTrue: [ u last = $1
+					ifTrue: [ GemTDBaseTower ]
+					ifFalse: [ GemTDAdvancedTower ] ]
+			ifFalse: [ GemTDCreep ].
+		units add: (cls newFrom: u with: details importer: importer) ] ] in GemTDGod>>generate
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+		u: 	'gemtd_huangcailanbaoshi'
+		details: 	a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' 'Ability12...etc...
+		cls: 	GemTDAdvancedTower
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower)
+
+
+[ :assoc | aBlock value: assoc key value: assoc value ] in Dictionary>>keysAndValuesDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((de...etc...
+		assoc: 	'gemtd_huangcailanbaoshi'->a Dictionary('Ability1'->'' 'Ability10'->'' '...etc...
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+[ :each | each ifNotNil: [ aBlock value: each ] ] in Dictionary>>associationsDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :assoc | aBlock value: assoc key value: assoc value ]
+		each: 	'gemtd_huangcailanbaoshi'->a Dictionary('Ability1'->'' 'Ability10'->'' 'A...etc...
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+Array(SequenceableCollection)>>do:
+	Receiver: an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' '...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :each | each ifNotNil: [ aBlock value: each ] ]
+		index: 	10
+	Receiver's instance variables: 
+an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' '...etc...
+
+Dictionary>>associationsDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :assoc | aBlock value: assoc key value: assoc value ]
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+Dictionary>>keysAndValuesDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((de...etc...
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+GemTDGod>>generate
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower)
+
+
+GemTDGod>>process
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower)
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	a ReadStream
+		itsSelection: 	a Text for ''
+		itsSelectionString: 	''
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ GemTDGod new process
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+
+
+RubSmalltalkEditor>>evaluate:andDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aStream: 	a ReadStream
+		aBlock: 	[ :result | aBlock value: result ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result |  ]
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+	Receiver: a RubEditingArea(880226816)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+text...etc...
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (580@69)
+		owner: 	a TransformWithLayoutMorph(1031524864)
+		submorphs: 	an Array(a RubPrimarySelectionMorph(139253760) a RubCursor(758274560...etc...
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (79358464) [other:  (announcer -> an Announcer) (km...etc...
+		model: 	a GLMRubricSmalltalkTextModel
+		paragraph: 	a RubShoutStylerDecorator
+		editor: 	a RubSmalltalkEditor
+		scrollPane: 	a RubTextScrollPane(206663680)
+		editingState: 	a RubEditingState
+		textStyle: 	a TextStyle Source Code Pro
+		textColor: 	Color black
+		margins: 	a Margin top: 6 left: 6 bottom: 6 right: 6
+		readOnly: 	false
+		menuAllowed: 	nil
+		editingMode: 	a RubSmalltalkScriptingMode
+		cursor: 	a RubCursor(758274560)
+		segments: 	an OrderedCollection(a RubHighlightSegmentMorph(126254336))
+		getMenuPolicy: 	nil
+		mouseDownPoint: 	nil
+		wrapped: 	true
+		editorClass: 	RubSmalltalkEditor
+
+
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+WorldState>>runStepMethodsIn:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+		queue: 	WaitfreeQueue with 0 items
+		nextInQueue: 	[ textMorph textArea
+	handleEdit: [ textMorph textArea editor high...etc...
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(976011264))(a DropList...etc...
+		lastStepTime: 	230526
+		lastStepMessage: 	nil
+		lastCycleTime: 	230549
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	230526
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>runStepMethods
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(490979328) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(976011264))(a DropList...etc...
+		lastStepTime: 	230526
+		lastStepMessage: 	nil
+		lastCycleTime: 	230549
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	230526
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldState>>doOneCycleFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(976011264))(a DropList...etc...
+		lastStepTime: 	230526
+		lastStepMessage: 	nil
+		lastCycleTime: 	230549
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	230526
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>doOneCycle
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(490979328) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldMorph class>>doOneCycle
+	Receiver: WorldMorph
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	PasteUpMorph
+		methodDict: 	a MethodDictionary(#acceptDroppingMorph:event:->WorldMorph>>#accept...etc...
+		format: 	65549
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	{AthensWorldMorph. OSWindowWorldMorph}
+		name: 	#WorldMorph
+		classPool: 	a Dictionary(#CursorOwnerWorld->a WorldMorph(939862784) [world] #Ext...etc...
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Morphic-Core-Worlds'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+	Receiver: a MorphicUIManager
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		interactiveParser: 	nil
+		activeTranscript: 	nil
+
+
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+	Receiver: [ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		outerContext: 	MorphicUIManager>>spawnNewProcess
+		startpc: 	125
+		numArgs: 	0
+
+
+
+--- The full stack ---
+GemTDLuaParser(Object)>>doesNotUnderstand: #collect:
+GemTDAdvancedTower>>importWith:importer:
+GemTDAdvancedTower class(GemTDElement class)>>newFrom:with:importer:
+[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((details at: 'Model') beginsWith: 'models/items/wards/')
+			ifTrue: [ u last = $1
+					ifTrue: [ GemTDBaseTower ]
+					ifFalse: [ GemTDAdvancedTower ] ]
+			ifFalse: [ GemTDCreep ].
+		units add: (cls newFrom: u with: details importer: importer) ] ] in GemTDGod>>generate
+[ :assoc | aBlock value: assoc key value: assoc value ] in Dictionary>>keysAndValuesDo:
+[ :each | each ifNotNil: [ aBlock value: each ] ] in Dictionary>>associationsDo:
+Array(SequenceableCollection)>>do:
+Dictionary>>associationsDo:
+Dictionary>>keysAndValuesDo:
+GemTDGod>>generate
+GemTDGod>>process
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+RubSmalltalkEditor>>evaluate:andDo:
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+WorldState>>runStepMethodsIn:
+WorldMorph>>runStepMethods
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+WorldMorph class>>doOneCycle
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+THERE_BE_DRAGONS_HERE
+Halt
+27 January 2018 4:26:46.618705 pm
+
+VM: Mac OS - x64 - 1011.6 - CoInterpreter VMMaker.oscog-eem.2265 uuid: 76b62109-629a-4c39-9641-67b53321df9a Aug 27 2017
+StackToRegisterMappingCogit VMMaker.oscog-eem.2262 uuid: 8b531242-de02-48aa-b418-8d2dde0bec6c Aug 27 2017
+VM: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $ Date: Sun Aug 27 21:55:26 2017 +0200 $ Plugins: 201708271955 https://github.com/OpenSmalltalk/opensmalltalk-vm.git $
+
+Image: Pharo7.0alpha [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (64 Bit)]
+
+GemTDImporter>>parseCombinations:
+	Receiver: a GemTDImporter
+	Arguments and temporary variables: 
+		sub: 	'GameRules.gemtd_merge'
+		i: 	21348
+		combos: 	a Dictionary('gemtd_aijijin'->a GemTDLuaParser 'gemtd_baiyin'->a GemTDL...etc...
+	Receiver's instance variables: 
+		resources: 	a Dictionary(#en->a Dictionary(size 1618) #sch->a Dictionary(size 17...etc...
+		scripts: 	#('--å®ç³TD
+--@author èå°è¾
+if GemTD == nil then
+	GemTD = cla...etc...
+		npcs: 	a Dictionary('DOTAAbilities'->a Dictionary(size 343) 'DOTAUnits'->a Dicti...etc...
+		combinations: 	a Dictionary()
+
+
+GemTDImporter>>combinations
+	Receiver: a GemTDImporter
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		resources: 	a Dictionary(#en->a Dictionary(size 1618) #sch->a Dictionary(size 17...etc...
+		scripts: 	#('--å®ç³TD
+--@author èå°è¾
+if GemTD == nil then
+	GemTD = cla...etc...
+		npcs: 	a Dictionary('DOTAAbilities'->a Dictionary(size 343) 'DOTAUnits'->a Dicti...etc...
+		combinations: 	a Dictionary()
+
+
+GemTDAdvancedTower>>importWith:importer:
+	Receiver: a GemTDAdvancedTower
+	Arguments and temporary variables: 
+		details: 	a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' 'Ability12...etc...
+		importer: 	a GemTDImporter
+	Receiver's instance variables: 
+		codeName: 	'gemtd_huangcailanbaoshi'
+		name: 	a Dictionary(#en->'yellow sapphire' #sch->'Äi_Ý[ów' #tch->'Ãi_Íö[ów'...etc...
+		abilities: 	an OrderedCollection(a GemTDAbility)
+		hiddenAbilities: 	an OrderedCollection()
+		damage: 	'20'
+		range: 	'600'
+		rate: 	'1'
+		projectileSpeed: 	'3000'
+		picture: 	'advanced/gemtd_huangcailanbaoshi'
+		combo: 	nil
+		comboNames: 	nil
+
+
+GemTDAdvancedTower class(GemTDElement class)>>newFrom:with:importer:
+	Receiver: GemTDAdvancedTower
+	Arguments and temporary variables: 
+		codeName: 	'gemtd_huangcailanbaoshi'
+		details: 	a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' 'Ability12...etc...
+		importer: 	a GemTDImporter
+	Receiver's instance variables: 
+		superclass: 	GemTDTower
+		methodDict: 	a MethodDictionary(#exportOn:->GemTDAdvancedTower>>#exportOn: #impo...etc...
+		format: 	65547
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	#()
+		name: 	#GemTDAdvancedTower
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'GemTD-Analysis'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((details at: 'Model') beginsWith: 'models/items/wards/')
+			ifTrue: [ u last = $1
+					ifTrue: [ GemTDBaseTower ]
+					ifFalse: [ GemTDAdvancedTower ] ]
+			ifFalse: [ GemTDCreep ].
+		units add: (cls newFrom: u with: details importer: importer) ] ] in GemTDGod>>generate
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+		u: 	'gemtd_huangcailanbaoshi'
+		details: 	a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' 'Ability12...etc...
+		cls: 	GemTDAdvancedTower
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower)
+
+
+[ :assoc | aBlock value: assoc key value: assoc value ] in Dictionary>>keysAndValuesDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((de...etc...
+		assoc: 	'gemtd_huangcailanbaoshi'->a Dictionary('Ability1'->'' 'Ability10'->'' '...etc...
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+[ :each | each ifNotNil: [ aBlock value: each ] ] in Dictionary>>associationsDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :assoc | aBlock value: assoc key value: assoc value ]
+		each: 	'gemtd_huangcailanbaoshi'->a Dictionary('Ability1'->'' 'Ability10'->'' 'A...etc...
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+Array(SequenceableCollection)>>do:
+	Receiver: an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' '...etc...
+	Arguments and temporary variables: 
+		aBlock: 	[ :each | each ifNotNil: [ aBlock value: each ] ]
+		index: 	10
+	Receiver's instance variables: 
+an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->'' 'Ability11'->'' '...etc...
+
+Dictionary>>associationsDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :assoc | aBlock value: assoc key value: assoc value ]
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+Dictionary>>keysAndValuesDo:
+	Receiver: a Dictionary(size 180)
+	Arguments and temporary variables: 
+		aBlock: 	[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((de...etc...
+	Receiver's instance variables: 
+		tally: 	180
+		array: 	an Array(nil 'gemtd_g11111'->a Dictionary('Ability1'->'' 'Ability10'->''...etc...
+
+
+GemTDGod>>generate
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower)
+
+
+GemTDGod>>process
+	Receiver: a GemTDGod
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		importer: 	a GemTDImporter
+		units: 	an OrderedCollection(a GemTDBaseTower a GemTDCreep a GemTDBaseTower)
+
+
+UndefinedObject>>DoIt
+	Receiver: nil
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+nil
+
+OpalCompiler>>evaluate
+	Receiver: an OpalCompiler
+	Arguments and temporary variables: 
+		value: 	nil
+		selectedSource: 	a ReadStream
+		itsSelection: 	a Text for ''
+		itsSelectionString: 	''
+	Receiver's instance variables: 
+		ast: 	DoIt
+	^ GemTDGod new process
+		source: 	a ReadStream
+		context: 	nil
+		receiver: 	nil
+		compilationContext: 	a CompilationContext
+		compilationContextClass: 	nil
+
+
+RubSmalltalkEditor>>evaluate:andDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aStream: 	a ReadStream
+		aBlock: 	[ :result | aBlock value: result ]
+		result: 	nil
+		rcvr: 	nil
+		ctxt: 	nil
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+	Receiver: a RubSmalltalkEditor
+	Arguments and temporary variables: 
+		aBlock: 	[ :result |  ]
+	Receiver's instance variables: 
+		defaultKeymappingIndex: 	an IdentityDictionary(#command->#(#noop: #cursorHome: #...etc...
+		textArea: 	a RubEditingArea(880226816)
+		selectorChooser: 	nil
+		notificationStrategy: 	a GLMPopperNotificationStrategy
+
+
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+	Receiver: a RubEditingArea(880226816)
+	Arguments and temporary variables: 
+		editBlock: 	[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+text...etc...
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (580@69)
+		owner: 	a TransformWithLayoutMorph(1031524864)
+		submorphs: 	an Array(a RubPrimarySelectionMorph(139253760) a RubCursor(758274560...etc...
+		fullBounds: 	nil
+		color: 	Color transparent
+		extension: 	a MorphExtension (79358464) [other:  (announcer -> an Announcer) (km...etc...
+		model: 	a GLMRubricSmalltalkTextModel
+		paragraph: 	a RubShoutStylerDecorator
+		editor: 	a RubSmalltalkEditor
+		scrollPane: 	a RubTextScrollPane(206663680)
+		editingState: 	a RubEditingState
+		textStyle: 	a TextStyle Source Code Pro
+		textColor: 	Color black
+		margins: 	a Margin top: 6 left: 6 bottom: 6 right: 6
+		readOnly: 	false
+		menuAllowed: 	nil
+		editingMode: 	a RubSmalltalkScriptingMode
+		cursor: 	a RubCursor(758274560)
+		segments: 	an OrderedCollection(a RubHighlightSegmentMorph(300313856))
+		getMenuPolicy: 	nil
+		mouseDownPoint: 	nil
+		wrapped: 	true
+		editorClass: 	RubSmalltalkEditor
+
+
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+	Receiver: a GLMMorphicPharoScriptRenderer
+	Arguments and temporary variables: 
+		ann: 	a GLMHighlightAndEvaluate
+	Receiver's instance variables: 
+		renderer: 	a GLMMorphicRenderer
+		textMorph: 	a RubScrolledTextMorph(915948544)
+		textModel: 	a GLMRubricSmalltalkTextModel
+
+
+WorldState>>runStepMethodsIn:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+		queue: 	WaitfreeQueue with 0 items
+		nextInQueue: 	[ textMorph textArea
+	handleEdit: [ textMorph textArea editor high...etc...
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(976011264))(a DropList...etc...
+		lastStepTime: 	254944
+		lastStepMessage: 	nil
+		lastCycleTime: 	254965
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	254944
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>runStepMethods
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(490979328) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(976011264))(a DropList...etc...
+		lastStepTime: 	254944
+		lastStepMessage: 	nil
+		lastCycleTime: 	254965
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	254944
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldState>>doOneCycleFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(939862784) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(640696320))
+		viewBox: 	(0@0) corner: (1512@979)
+		canvas: 	a FormCanvas on: DisplayScreen(1512x979x32)
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap(StepMessage(#stepAt: -> a DropListMorph(976011264))(a DropList...etc...
+		lastStepTime: 	254944
+		lastStepMessage: 	nil
+		lastCycleTime: 	254965
+		alarms: 	a Heap(MorphicAlarm(#hideShow -> a RubCursor(758274560)))
+		lastAlarmTime: 	254944
+		menuBuilder: 	a PragmaMenuBuilder ( nil ) 
+		activeHand: 	a HandMorph(640696320)
+		currentCursor: 	((CursorWithMask
+	extent: (16@16)
+	depth: 1
+	fromArray: #(
+		2r0...etc...
+
+
+WorldMorph>>doOneCycle
+	Receiver: a WorldMorph(939862784) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (1512@979)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(620569088) a GLMSystemWindow(490979328) a Na...etc...
+		fullBounds: 	(0@0) corner: (1512@979)
+		color: 	(Color r: 0.9400000000000001 g: 0.9400000000000001 b: 0.9400000000000001...etc...
+		extension: 	a MorphExtension (877807104) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.06 g: 0.06 b: 0.06 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+		osWindow: 	nil
+		session: 	nil
+
+
+WorldMorph class>>doOneCycle
+	Receiver: WorldMorph
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		superclass: 	PasteUpMorph
+		methodDict: 	a MethodDictionary(#acceptDroppingMorph:event:->WorldMorph>>#accept...etc...
+		format: 	65549
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	{AthensWorldMorph. OSWindowWorldMorph}
+		name: 	#WorldMorph
+		classPool: 	a Dictionary(#CursorOwnerWorld->a WorldMorph(939862784) [world] #Ext...etc...
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Morphic-Core-Worlds'
+		traitComposition: 	{}
+		localSelectors: 	nil
+		announcer: 	nil
+
+
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+	Receiver: a MorphicUIManager
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		interactiveParser: 	nil
+		activeTranscript: 	nil
+
+
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+	Receiver: [ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		outerContext: 	MorphicUIManager>>spawnNewProcess
+		startpc: 	125
+		numArgs: 	0
+
+
+
+--- The full stack ---
+GemTDImporter>>parseCombinations:
+GemTDImporter>>combinations
+GemTDAdvancedTower>>importWith:importer:
+GemTDAdvancedTower class(GemTDElement class)>>newFrom:with:importer:
+[ :u :details | 
+| cls |
+(u beginsWith: 'gemtd')
+	ifTrue: [ cls := ((details at: 'Model') beginsWith: 'models/items/wards/')
+			ifTrue: [ u last = $1
+					ifTrue: [ GemTDBaseTower ]
+					ifFalse: [ GemTDAdvancedTower ] ]
+			ifFalse: [ GemTDCreep ].
+		units add: (cls newFrom: u with: details importer: importer) ] ] in GemTDGod>>generate
+[ :assoc | aBlock value: assoc key value: assoc value ] in Dictionary>>keysAndValuesDo:
+[ :each | each ifNotNil: [ aBlock value: each ] ] in Dictionary>>associationsDo:
+Array(SequenceableCollection)>>do:
+Dictionary>>associationsDo:
+Dictionary>>keysAndValuesDo:
+GemTDGod>>generate
+GemTDGod>>process
+UndefinedObject>>DoIt
+OpalCompiler>>evaluate
+RubSmalltalkEditor>>evaluate:andDo:
+RubSmalltalkEditor>>highlightEvaluateAndDo:
+[ textMorph textArea editor highlightEvaluateAndDo: ann action.
+textMorph shoutStyler style: textMorph text ] in [ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+RubEditingArea(RubAbstractTextArea)>>handleEdit:
+[ textMorph textArea
+	handleEdit: [ textMorph textArea editor highlightEvaluateAndDo: ann action.
+		textMorph shoutStyler style: textMorph text ] ] in GLMMorphicPharoScriptRenderer(GLMMorphicPharoCodeRenderer)>>actOnHighlightAndEvaluate:
+WorldState>>runStepMethodsIn:
+WorldMorph>>runStepMethods
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+WorldMorph>>doOneCycle
+WorldMorph class>>doOneCycle
+[ [ WorldMorph doOneCycle.
+Processor yield.
+false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
+[ self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
