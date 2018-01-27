@@ -1,1389 +1,0 @@
-'From Pharo7.0alpha of 26 January 2018 [Build information: Pharo-7.0+alpha.build.456.sha.63e0b3f29bf7f31011770e9738c537cbf48fca1f (32 Bit)] on 26 January 2018 at 10:56:32.555832 am'!----QUIT----2018-01-26T10:56:32.558479+01:00 Pharo7.0-32bit-63e0b3f.image priorSource: 0!----QUIT----2018-01-26T10:56:39.895516+01:00 Pharo7.0-32bit-63e0b3f.image priorSource: 183!"This scripts sets the correct versionInfo for loaded Pharo packages. The purpose of it is to ensure 
- iceberg will find an ancestor in history and it will correctly calculate differences."
-| repo commit repositoryReference |
-
-"Create repository"
-
-repositoryReference := (Smalltalk os environment at: 'BOOTSTRAP_REPOSITORY' ifAbsent: ['..']) asFileReference.
-
-repo := IceRepositoryCreator new
-	location: repositoryReference;
-	subdirectory: 'src';
-	createRepository.
-
-repo name: 'pharo'.
-"get loaded commit"
-commit := repo branch lastCommit.
-"using commit as versionInfo for all loaded packages"
-repo savedPackages do: [ :eachPackage | 
-	MCWorkingCopy allManagers
-		detect: [ :each | each packageName = eachPackage packageName ]
-		ifFound: [ :each |
-			each ancestry ancestors: { 
-				IceProxyMCVersionInfo
-					remoteUrl: 'git@github.com:pharo-project/pharo.git'
-					packageName: each packageName
-					commit: commit 
-					message: ('Stub pointing to remote repository git@github.com:pharo-project/pharo.git. 
-Add iceberg repository to have the real version here.')
-					author: 'TheBootstrap' } ] ]!----End fileIn----!----QUIT----2018-01-26T10:56:40.71005+01:00 Pharo7.0-32bit-63e0b3f.image priorSource: 274!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!Object subclass: #GemTDImporter	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:18'!resourcesToImport	^ #(addon_english.txt		 addon_schinese.txt		 addon_tchinese.txt)! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:18'!scriptsToImport	^ #(addon_english.txt		 addon_schinese.txt		 addon_tchinese.txt)! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:21' prior: 33559316!scriptsToImport	^ #(vscripts/addon_game_mode.lua		 npc_abilities_custom.txt		 npc_units_custom.txt)! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:21' prior: 33559506!scriptsToImport	^ #(luaScript 	vscripts/addon_game_mode.lua		 ability 		npc_abilities_custom.txt		 units 		npc_units_custom.txt)! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:22' prior: 33559140!resourcesToImport	^ #(addon_english.txt		 addon_schinese.txt		 addon_tchinese.txt)! !----SNAPSHOT----2018-01-26T11:22:08.39568+01:00 Pharo.image priorSource: 1491!!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:22'!importResources! !Object subclass: #GemTDParser	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDParser methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:25'!parse: readStream	self skipSeparators.	^ self parseKeyValue! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 11:25' prior: 33560423!parse: rs	readStream := rs.	self skipSeparators.	^ self parseKeyValue! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 11:26'!skipSeparators	readStream peek isSeparator whileTrue: [ readStream next ].! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 11:28'!parseString	| ws |	ws := WriteStream on: (ByteString new: 20).	self assert: readStream peek = $".	readStream next. "skip ''"	[readStream peek = $"] whileFalse: [ 		ws nextPut: readStream next].	readStream next. "skip ''"	^ ws contents	! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 11:29'!parseKeyValue	| key val |	key := self parseString.	self skipSeparators.	val := (readStream peek = $"		ifTrue: [ self parseString ]		ifFalse: [ self parseDict ]).	^ key -> val! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 11:31'!parseDict	| assoc dict |	dict := Dictionary new.	self assert: readStream peek = ${.	readStream next. "skip ${"	[self skipSeparators.	readStream peek = $} ] whileFalse: [ 		assoc := self parseKeyValue.		dict at: assoc key put: assoc value ].	readStream next. "skip $}"	^ dict! !----SNAPSHOT----2018-01-26T11:31:48.045157+01:00 Pharo.image priorSource: 5609!!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:33' prior: 33560209!importResources	^ self resourcesToImport collect: [ :id |		GemTDParser new parse: ('resource/' , id) asFileReference readStream ]! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:33' prior: 33561929!importResources	^ self resourcesToImport collect: [ :id |		GemTDParser new parse: ('resource/' , id , '.txt') asFileReference readStream ]! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:33' prior: 33562167!importResources	^ self resourcesToImport collect: [ :id |		GemTDParser new parse: ('resource/' , id ) asFileReference readStream ]! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:34' prior: 33559953!resourcesToImport	^ #('addon_english.txt'		 'addon_schinese.txt'		 'addon_tchinese.txt')! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 11:34' prior: 33562414!importResources	^ self resourcesToImport collect: [ :id |		GemTDParser new parse: ('resource/' , id ) asFileReference readStream contents readStream ]! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 12:03'!skipUntilRelevant	[readStream peek = $" 		or: [ readStream peek = ${		or: [ readStream peek = $} ] ]] whileFalse: [ readStream next ].! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 12:03' prior: 33560577!parse: rs	readStream := rs.	self skipUntilRelevant.	^ self parseKeyValue! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 12:03' prior: 33561457!parseDict	| assoc dict |	dict := Dictionary new.	self assert: readStream peek = ${.	readStream next. "skip ${"	[self skipUntilRelevant.	readStream peek = $} ] whileFalse: [ 		assoc := self parseKeyValue.		dict at: assoc key put: assoc value ].	readStream next. "skip $}"	^ dict! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 12:04' prior: 33561199!parseKeyValue	| key val |	key := self parseString.	self skipUntilRelevant.	val := (readStream peek = $"		ifTrue: [ self parseString ]		ifFalse: [ self parseDict ]).	^ key -> val! !GemTDParser removeSelector: #skipSeparators!----SNAPSHOT----2018-01-26T12:04:19.299262+01:00 Pharo.image priorSource: 7312!!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 12:05' prior: 33562851!importResources	^ self resourcesToImport collect: [ :id |		GemTDParser new parse: ('resource/' , id ) asFileReference readStream binary contents asString readStream ]! !----QUIT----2018-01-26T12:11:53.855358+01:00 Pharo.image priorSource: 9659!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!----QUIT----2018-01-26T16:25:21.291105+01:00 Pharo.image priorSource: 10015!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!----QUIT----2018-01-26T16:28:56.846216+01:00 Pharo.image priorSource: 13017!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!Object subclass: #GemTDGod	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!Object subclass: #GemTDGod	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!Object subclass: #GemTDImporter	instanceVariableNames: 'resources script'	classVariableNames: ''	package: 'GemTD-Analysis'!Object subclass: #GemTDImporter	instanceVariableNames: 'resources scripts'	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:31' prior: 33564276!importResources	^ resources := (self resourcesToImport collect: [ :id |		GemTDParser new parse: ('resource/' , id ) asFileReference readStream binary contents asString readStream ])! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:31'!importNPC	^ resources := (self resourcesToImport collect: [ :id |		GemTDParser new parse: ('resource/' , id ) asFileReference readStream binary contents asString readStream ])! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:31'!npcToImport	^ #(npc_abilities_custom.txt		 npc_units_custom.txt)! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:31' prior: 33559715!scriptsToImport	^ #(scripts/vscripts/addon_game_mode.lua)! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:32' prior: 33574745!scriptsToImport	^ #(vscripts/addon_game_mode.lua)! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:32' prior: 33574304!importNPC	^ npcs := (self npcToImport collect: [ :id |		GemTDParser new parse: ('scripts/' , id ) asFileReference readStream binary contents asString readStream ])! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:32'!importScript	^ scripts := (self scriptsToImport collect: [ :id |		('scripts/' , id ) asFileReference readStream binary contents asString ])! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:33'!importAll	self importResources.	self importNPC.	self importScript.! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:33' prior: 33575067!importNPC	^ npcs := (self npcToImport collect: [ :id |		GemTDParser new parse: ('scripts/npc' , id ) asFileReference readStream binary contents asString readStream ])! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:34' prior: 33575731!importNPC	^ npcs := (self npcToImport collect: [ :id |		GemTDParser new parse: ('scripts/npc/' , id ) asFileReference readStream binary contents asString readStream ])! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:34' prior: 33574572!npcToImport	^ #('npc_abilities_custom.txt'		 'npc_units_custom.txt')! !!GemTDImporter methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:34' prior: 33574910!scriptsToImport	^ #('vscripts/addon_game_mode.lua')! !!GemTDGod methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:36'!process	| importer |	importer := GemTDImporter new.	importer importAll.	! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:36' prior: 33576597!process	| importer |	importer := GemTDImporter new.	importer importAll.	self generateTowers.! !Object subclass: #GemTDElement	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!GemTDElement subclass: #GemTDTower	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!GemTDTower subclass: #GemTDBaseTower	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!GemTDTower subclass: #GemTDAdvancedTower	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!----SNAPSHOT----2018-01-26T16:36:38.055292+01:00 Pharo.image priorSource: 16020!Object subclass: #GemTDElement	instanceVariableNames: 'codeName'	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDElement methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:36'!codeName	^ codeName! !!GemTDElement methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:36'!codeName: anObject	codeName := anObject! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:37'!generateTowers	| towers |	towers := OrderedCollection new.	self units do: [ :u |		towers add: (self genTower: u) ].! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:37'!units	^ importer units! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:38' prior: 33576765!process	importer := GemTDImporter new.	importer importAll.	self generateTowers.! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:38'!units	1halt.	^ npcs at: 'DOTA'! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:39' prior: 33578295!units	^ (npcs at:'DOTAUnits') keys! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:39' prior: 33578132!process	importer := GemTDImporter new.	importer importAll.	self generate.! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:39'!generate	| towers |	towers := OrderedCollection new.	self units do: [ :u |		towers add: (self genTower: u) ].! !GemTDGod removeSelector: #generateTowers!!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:40' prior: 33578703!generate	| units |	self units do: [ :u |		units := ((self unitType: u) newFrom: u with: importer)].! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:41'!unitType: u	1halt.	(importer units at: u)! !!GemTDImporter methodsFor: 'importing' stamp: 'ClementBera 1/26/2018 16:41' prior: 33574030!importResources	^ resources := (self resourcesToImport collect: [ :id |		GemTDParser new parse: ('resource/' , id ) asFileReference readStream binary contents asString readStream ])! !!GemTDImporter methodsFor: 'importing' stamp: 'ClementBera 1/26/2018 16:41' prior: 33576006!importNPC	^ npcs := ((self npcToImport collect: [ :id |		GemTDParser new parse: ('scripts/npc/' , id ) asFileReference readStream binary contents asString readStream ])) asDictionary! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:42' prior: 33578424!units	^ (npcs at:'DOTAUnits')! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:42' prior: 33578951!generate	| units |	self units keysDo: [ :u |		units := ((self unitType: u) newFrom: u with: importer)].! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:42' prior: 33579952!generate	| units |	self units keysDo: [ :u |		u halt.		units := ((self unitType: u) newFrom: u with: importer)].! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:43' prior: 33580150!generate	| units |	self units keysAndValuesDo: [ :u :details |		u halt.		units := ((self unitType: u) newFrom: u with: importer)].! !GemTDElement subclass: #GemTDCreep	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:46' prior: 33580358!generate	| units |	self units keysAndValuesDo: [ :u :details |		| cls |		cls := ((details at: 'Model') beginsWith:'models/items/wards/')			ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]			ifFalse: [ GemTDCreep ].				units := cls newFrom: u with: details importer: importer].! !!GemTDElement class methodsFor: 'instance creation' stamp: 'ClementBera 1/26/2018 16:46'!newFrom: aString with: aCollection importer: aGemTDImporter 	self shouldBeImplemented.! !!GemTDElement class methodsFor: 'instance creation' stamp: 'ClementBera 1/26/2018 16:47' prior: 33581111!newFrom: codeName with: details importer: importer 	^ self new 			codeName: codeName;		importWith: details importer: importer;		yourself! !!GemTDBaseTower methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:47'!importWith: details importer: importer! !!GemTDBaseTower methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:48' prior: 33581540!importWith: details importer: importer	"!!!! Chipped Sapphire / B1+file://wards/crystal_maiden_ward.png|width=10+|!! Code |!! English |!! S. Chinese |!! T. Chinese|| gemtd_b1 || Smalltalk || Hypra cool || baz|!! Damage |!! Rate |!! Range |!! Projectile Speed| 2	| 1 | 600 | 3000|!! Ability |!! Ability Tooltip |!! Ability Code| slow 1 | slows enemy by 60 | tower_slow1"! !Object subclass: #GemTDElement	instanceVariableNames: 'codeName enName schName tchName'	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDElement methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:48'!enName	^ enName! !!GemTDElement methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:48'!enName: anObject	enName := anObject! !!GemTDElement methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:48'!schName	^ schName! !!GemTDElement methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:48'!schName: anObject	schName := anObject! !!GemTDElement methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:48'!tchName	^ tchName! !!GemTDElement methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:48'!tchName: anObject	tchName := anObject! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 16:48'!importWith: details importer: importer	! !!GemTDBaseTower methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:48' prior: 33581686!importWith: details importer: importer	super importWith: details importer: importer.	"!!!! Chipped Sapphire / B1+file://wards/crystal_maiden_ward.png|width=10+|!! Code |!! English |!! S. Chinese |!! T. Chinese|| gemtd_b1 || Smalltalk || Hypra cool || baz|!! Damage |!! Rate |!! Range |!! Projectile Speed| 2	| 1 | 600 | 3000|!! Ability |!! Ability Tooltip |!! Ability Code| slow 1 | slows enemy by 60 | tower_slow1"! !----SNAPSHOT----2018-01-26T16:49:00.102613+01:00 Pharo.image priorSource: 22896!!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 16:49' prior: 33582930!importWith: details importer: importer		"!!!!|!! Ability |!! Ability Tooltip |!! Ability Code| slow 1 | slows enemy by 60 | tower_slow1"! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 16:49' prior: 33583681!importWith: details importer: importer		"names (3 lang) + abilities.|!! Ability |!! Ability Tooltip |!! Ability Code| slow 1 | slows enemy by 60 | tower_slow1"! !!GemTDBaseTower methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 16:49' prior: 33583078!importWith: details importer: importer	super importWith: details importer: importer.	"pic"! !!GemTDTower methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 16:50'!importWith: details importer: importer	super importWith: details importer: importer.	"	|!! Damage |!! Rate |!! Range |!! Projectile Speed| 2	| 1 | 600 | 3000"! !Object subclass: #GemTDElement	instanceVariableNames: 'codeName enName schName tchName abilities'	classVariableNames: ''	package: 'GemTD-Analysis'!GemTDElement subclass: #GemTDAbility	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!----SNAPSHOT----2018-01-26T16:50:32.156965+01:00 Pharo.image priorSource: 29073!----SNAPSHOT----2018-01-26T16:50:34.679073+01:00 Pharo.image priorSource: 30360!!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 16:50' prior: 33583917!importWith: details importer: importer	1halt.		"names (3 lang) + abilities.|!! Ability |!! Ability Tooltip |!! Ability Code| slow 1 | slows enemy by 60 | tower_slow1"! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:51'!resources	^ resources! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:51'!resources: anObject	^ resources := anObject! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:51'!scripts	^ scripts! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:51'!scripts: anObject	^ scripts := anObject! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:51'!npcs	^ npcs! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 16:51'!npcs: anObject	^ npcs := anObject! !!GemTDImporter methodsFor: 'importing' stamp: 'ClementBera 1/26/2018 16:51' prior: 33579269!importResources	resources := (self resourcesToImport collect: [ :id |		GemTDParser new parse: ('resource/' , id ) asFileReference readStream binary contents asString readStream ]).	self reworkResources.	^ resources! !!GemTDImporter methodsFor: 'importing' stamp: 'ClementBera 1/26/2018 16:51'!reworkResources	resources halt.! !!GemTDImporter methodsFor: 'importing' stamp: 'ClementBera 1/26/2018 16:52' prior: 33586272!reworkResources	| newDict |	newDict := Dictionary new.	resources do: [ :res |		res halt. ]! !!GemTDImporter methodsFor: 'importing' stamp: 'ClementBera 1/26/2018 16:53' prior: 33586401!reworkResources	| newDict |	newDict := Dictionary new.	resources do: [ :res |		newDict at: (res value at: 'Language') put: (res value at: 'Tokens') ].	resources := newDict.! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 16:53' prior: 33585050!importWith: details importer: importer	importer resources .	1halt.		"names (3 lang) + abilities.|!! Ability |!! Ability Tooltip |!! Ability Code| slow 1 | slows enemy by 60 | tower_slow1"! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 16:54' prior: 33560878!parseString	| ws str |	ws := WriteStream on: (ByteString new: 20).	self assert: readStream peek = $".	readStream next. "skip ''"	[readStream peek = $"] whileFalse: [ 		ws nextPut: readStream next].	readStream next. "skip ''"	str := ws contents.	str removeAll: Character null.	1halt.	^ str	! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/26/2018 16:55' prior: 33587151!parseString	| ws str |	ws := WriteStream on: (ByteString new: 20).	self assert: readStream peek = $".	readStream next. "skip ''"	[readStream peek = $"] whileFalse: [ 		ws nextPut: readStream next].	readStream next. "skip ''"	^ ws contents reject: [ :e | e = Character null].		! !!GemTDImporter methodsFor: 'importing' stamp: 'ClementBera 1/26/2018 16:57' prior: 33586592!reworkResources	| newDict |	newDict := Dictionary new.	resources with: #(en sch tch)  do: [ :res :l |		newDict at: l put: (res value at: 'Tokens') ].	resources := newDict.! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 16:59' prior: 33586866!importWith: details importer: importer	enName := (importer resources at: 'en') at: codeName ifAbsent: ['Resource imported incorrectly'].		1halt.		"names (3 lang) + abilities.|!! Ability |!! Ability Tooltip |!! Ability Code| slow 1 | slows enemy by 60 | tower_slow1"! !GemTDElement subclass: #GemTDAbility	instanceVariableNames: 'tooltip'	classVariableNames: ''	package: 'GemTD-Analysis'!Object subclass: #GemTDElement	instanceVariableNames: 'codeName name abilities'	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:03' prior: 33588201!importWith: details importer: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: ['Resource imported incorrectly']) ].	abilities := OrderedCollection new.	1 to: 8 do: [ :i |		| ab |		ab := (details at: 'Ability' , i).		ab = '' ifFalse: [ 			abilities add: [ GemTDAbility newFrom: ab importer: importer ] ] ]! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:03' prior: 33588827!importWith: details importer: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: ['Resource imported incorrectly']) ].	abilities := OrderedCollection new.	1 to: 8 do: [ :i |		| ab |		ab := (details at: 'Ability' , i).		ab = '' ifFalse: [ 			abilities add: [ GemTDAbility newFrom: ab importer: importer ] ] ].	hiddenAbilities := OrderedCollection new.! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:03' prior: 33589315!importWith: details importer: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: ['Resource imported incorrectly']) ].	abilities := OrderedCollection new.	1 to: 8 do: [ :i |		| ab |		ab := (details at: 'Ability' , i).		ab = '' ifFalse: [ 			abilities add: [ GemTDAbility newFrom: ab importer: importer ] ] ].	hiddenAbilities := OrderedCollection new.	9 to: 16 do: [ :i |		| ab |		ab := (details at: 'Ability' , i).		ab = '' ifFalse: [ 			hiddenAbilities add: [ GemTDAbility newFrom: ab importer: importer ] ] ].! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:03' prior: 33589847!importWith: details importer: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: ['Resource imported incorrectly']) ].	abilities := OrderedCollection new.	1 to: 8 do: [ :i |		| ab |		ab := (details at: 'Ability' , i printString).		ab = '' ifFalse: [ 			abilities add: [ GemTDAbility newFrom: ab importer: importer ] ] ].	hiddenAbilities := OrderedCollection new.	9 to: 16 do: [ :i |		| ab |		ab := (details at: 'Ability' , i printString).		ab = '' ifFalse: [ 			hiddenAbilities add: [ GemTDAbility newFrom: ab importer: importer ] ] ].! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 17:05' prior: 33580699!generate	| units |	units := OrderedCollection new.	self units keysAndValuesDo: [ :u :details |		| cls |		(u name beginsWith: 'gemtd') ifTrue: [ 			cls := ((details at: 'Model') beginsWith:'models/items/wards/')				ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]				ifFalse: [ GemTDCreep ].		units add: (cls newFrom: u with: details importer: importer)]].! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 17:05' prior: 33591262!generate	| units |	units := OrderedCollection new.	self units keysAndValuesDo: [ :u :details |		| cls |		(u beginsWith: 'gemtd') ifTrue: [ 			cls := ((details at: 'Model') beginsWith:'models/items/wards/')				ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]				ifFalse: [ GemTDCreep ].		units add: (cls newFrom: u with: details importer: importer)]].! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 17:05' prior: 33578551!process	importer := GemTDImporter new.	importer importAll.	self generate.	1halt.! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/26/2018 17:05' prior: 33591752!generate	units := OrderedCollection new.	self units keysAndValuesDo: [ :u :details |		| cls |		(u beginsWith: 'gemtd') ifTrue: [ 			cls := ((details at: 'Model') beginsWith:'models/items/wards/')				ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]				ifFalse: [ GemTDCreep ].		units add: (cls newFrom: u with: details importer: importer)]].! !!GemTDTower methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:06' prior: 33584358!importWith: details importer: importer	super importWith: details importer: importer.	1halt.		"	|!! Damage |!! Rate |!! Range |!! Projectile Speed| 2	| 1 | 600 | 3000"! !!GemTDTower methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:08' prior: 33592890!importWith: details importer: importer	super importWith: details importer: importer.	damage := details at: 'AttackDamageMin'.	range := details at: 'AttackRange'.	rate := details at: 'AttackRate'.	projectileSpeed := details at: 'ProjectileSpeed'.! !!GemTDBaseTower methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:08' prior: 33584178!importWith: details importer: importer	super importWith: details importer: importer.	"pic"	1halt.! !GemTDElement subclass: #GemTDTower	instanceVariableNames: 'damage range rate projectileSpeed picture'	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDBaseTower methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:10' prior: 33593505!importWith: details importer: importer	super importWith: details importer: importer.	picture := ((details at: 'Model') splitOn: '/') last allButLast: 5.! !!GemTDAdvancedTower methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 17:10'!importWith: details importer: importer	super importWith: details importer: importer.	picture := ((details at: 'Model') splitOn: '/') last allButLast: 5.! !!GemTDAdvancedTower methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:10' prior: 33594110!importWith: details importer: importer	super importWith: details importer: importer.	1halt.	picture := ((details at: 'Model') splitOn: '/') last allButLast: 5.! !!GemTDAdvancedTower methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:11' prior: 33594367!importWith: details importer: importer	super importWith: details importer: importer.	picture := codeName.! !----SNAPSHOT----2018-01-26T17:11:55.474281+01:00 Pharo.image priorSource: 30442!----SNAPSHOT----2018-01-26T17:11:58.906938+01:00 Pharo.image priorSource: 40310!----SNAPSHOT----2018-01-26T17:12:00.937399+01:00 Pharo.image priorSource: 40392!----SNAPSHOT----2018-01-26T17:12:04.797246+01:00 Pharo.image priorSource: 40474!!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:12' prior: 33590545!importWith: details importer: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: ['Resource imported incorrectly']) ].	abilities := OrderedCollection new.	1 to: 8 do: [ :i |		| ab |		ab := (details at: 'Ability' , i printString).		ab = '' ifFalse: [ 			abilities add: (GemTDAbility newFrom: ab importer: importer) ] ].	hiddenAbilities := OrderedCollection new.	9 to: 16 do: [ :i |		| ab |		ab := (details at: 'Ability' , i printString).		ab = '' ifFalse: [ 			hiddenAbilities add: (GemTDAbility newFrom: ab importer: importer ) ] ].! !!GemTDAbility class methodsFor: '*Alien-Core' stamp: 'ClementBera 1/26/2018 17:12'!newFrom: aString importer: aGemTDImporter 	self shouldBeImplemented.! !!GemTDAbility class methodsFor: '*Alien-Core' stamp: 'ClementBera 1/26/2018 17:13' prior: 33595874!newFrom: codeName importer: importer	^ self new 				codeName: codeName;			importWith: importer;			yourself ! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 17:13'!importWith: aGemTDImporter 	self shouldBeImplemented.! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:13'!importNameWithImporter: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: ['Resource imported incorrectly']) ].! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/26/2018 17:13' prior: 33595164!importWith: details importer: importer	self importNameWithImporter: importer.	abilities := OrderedCollection new.	1 to: 8 do: [ :i |		| ab |		ab := (details at: 'Ability' , i printString).		ab = '' ifFalse: [ 			abilities add: (GemTDAbility newFrom: ab importer: importer) ] ].	hiddenAbilities := OrderedCollection new.	9 to: 16 do: [ :i |		| ab |		ab := (details at: 'Ability' , i printString).		ab = '' ifFalse: [ 			hiddenAbilities add: (GemTDAbility newFrom: ab importer: importer ) ] ].! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 17:14' prior: 33596248!importWith: importer 	self importNameWithImporter: importer.	! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 17:14' prior: 33597280!importWith: importer 	1halt.	self importNameWithImporter: importer.	! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/26/2018 17:16' prior: 33597449!importWith: importer 	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName ifAbsent: ['Resource imported incorrectly']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName , '_Description' ifAbsent: ['Resource imported incorrectly']) ].! !----QUIT----2018-01-26T17:16:48.058291+01:00 Pharo.image priorSource: 40556!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 10:20' prior: 33597626!importWith: importer 	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName ifAbsent: ['Resource imported incorrectly']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName , '_Description' ifAbsent: ['Resource imported incorrectly']) ].	self! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 10:21' prior: 33601147!importWith: importer 	name := Dictionary s.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName ifAbsent: ['Resource imported incorrectly']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName , '_Description' ifAbsent: ['Resource imported incorrectly']) ].! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 10:21' prior: 33601671!importWith: importer 	name := Dictionary s.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName ifAbsent: ['Unavailable']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName , '_Description' ifAbsent: ['Unavailable']) ].! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 10:21' prior: 33596383!importNameWithImporter: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: ['Unavailable']) ].! !----QUIT----2018-01-27T10:22:13.409502+01:00 Pharo.image priorSource: 43609!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 10:22' prior: 33602187!importWith: importer 	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName ifAbsent: ['Unavailable']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName , '_Description' ifAbsent: ['Unavailable']) ].! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 10:24' prior: 33592237!process	importer := GemTDImporter new.	importer importAll.	self generate.	self exportBaseTowers.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:24'!exportBaseTowers	self shouldBeImplemented.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:25' prior: 33606580!exportBaseTowers	| s |	s := WriteStream on: (WideString new: 10000).	units do: [ :u | u class = GemTDBaseTower ifTrue: [ u exportOn: s ] ].	1halt.! !!GemTDBaseTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:25'!exportOn: s	! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:25'!exportOn: s! !GemTDBaseTower removeSelector: #exportOn:!!GemTDBaseTower methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 10:26' prior: 33593860!importWith: details importer: importer	super importWith: details importer: importer.	1halt.	picture := ((details at: 'Model') splitOn: '/') last allButLast: 5.! !!GemTDBaseTower methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 10:26' prior: 33607183!importWith: details importer: importer	super importWith: details importer: importer.	1halt.	"base/B"	picture := ((details at: 'Model') splitOn: '/') last allButLast: 5.! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:31' prior: 33607029!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=10+'.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  (name at: 'sch')		<< ' | ' <<  (name at: 'tch').	s cr.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ]! !!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:34'!shortExportOn: s	s << '|!! Ability Code |!! Name (en) |!! Tooltip (en) |!! Name (sch) |!! Tooltip (sch) |!! Name (tch) |!! Tooltip (tch)'.	s cr.	s 		<< '| ' << codeName		<< ' | ' << (name at: 'en')		<< ' | ' << (tooltip at: 'en')		<< ' | ' << (name at: 'sch')		<< ' | ' << (tooltip at: 'sch')		<< ' | ' << (name at: 'tch')		<< ' | ' << (tooltip at: 'tch').	s cr.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:34' prior: 33606712!exportBaseTowers	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Base Towers'.	s cr.	units do: [ :u | u class = GemTDBaseTower ifTrue: [ u exportOn: s ] ].	s contents.! !!GemTDBaseTower methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 10:35' prior: 33607444!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'base/' , (codeName at: (codeName indexOf: $_) + 1) asUppercase asString! !!GemTDAdvancedTower methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 10:36' prior: 33594632!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'advanced/' , codeName.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:36' prior: 33608829!exportBaseTowers	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Base Towers'.	s cr.	units do: [ :u | u class = GemTDBaseTower ifTrue: [ u exportOn: s ] ].	s contents.	1halt.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:36' prior: 33609597!exportBaseTowers	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Base Towers'.	s cr.	self orderedBaseTowers do: [ :u |  u exportOn: s ].	s contents.	1halt.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:36'!orderedBaseTowers	self shouldBeImplemented.! !!GemTDBaseTower methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 10:38' prior: 33609114!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'base/' , (codeName at: 7) asUppercase asString! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:39' prior: 33610128!orderedBaseTowers	| baseTowers |	baseTowers := units select: [:u | u class = GemTDBaseTower ].	baseTowers sort: [ :a :b |		"comp type B, G, etc."		(a codeName at: 7) = (b codeName at: 7)			ifFalse: [ (a codeName at: 7) <= (b codeName at: 7) ]			ifTrue: [ a size < b size ]		 ].	^ baseTowers! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:40' prior: 33610505!orderedBaseTowers	| baseTowers |	baseTowers := units select: [:u | u class = GemTDBaseTower ].	baseTowers sort: [ :a :b |		"comp type B, G, etc."		(a codeName at: 7) = (b codeName at: 7)			ifFalse: [ (a codeName at: 7) <= (b codeName at: 7) ]			ifTrue: [ a codeName size < b codeName size ]		 ].	^ baseTowers! !----SNAPSHOT----2018-01-27T10:40:44.631649+01:00 Pharo.image priorSource: 48401!----SNAPSHOT----2018-01-27T10:40:50.647843+01:00 Pharo.image priorSource: 56781!----SNAPSHOT----2018-01-27T10:41:05.095765+01:00 Pharo.image priorSource: 56863!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:43' prior: 33609880!exportBaseTowers	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Base Towers'.	s cr.	self orderedBaseTowers do: [ :u |  u exportOn: s ].	'export/baseTowers.pillar' asFileReference writeStream nextPutAll: s contents.	1halt.! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:44' prior: 33607707!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=8+'.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  (name at: 'sch')		<< ' | ' <<  (name at: 'tch').	s cr.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ]! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 10:45' prior: 33605939!importWith: importer 	name := Dictionary new.	1halt.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName ifAbsent: ['Unavailable']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName , '_Description' ifAbsent: ['Unavailable']) ].! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 10:48' prior: 33612566!importWith: importer 	| details |	name := Dictionary new.	details := (importer npcs at: 'DOTAAbilities') at: codeName.	1halt.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName ifAbsent: ['Unavailable']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_ability_' , codeName , '_Description' ifAbsent: ['Unavailable']) ].! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 10:51' prior: 33613056!importWith: importer 	| details |	name := Dictionary new.	details := (importer npcs at: 'DOTAAbilities') at: codeName.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName ifAbsent: ['Unavailable']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName , '_Description' ifAbsent: ['Unavailable']) ].! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 10:51' prior: 33613621!importWith: importer 	| details |	name := Dictionary new.	"details := (importer npcs at: 'DOTAAbilities') at: codeName."	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName ifAbsent: ['Unavailable']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName , '_Description' ifAbsent: ['Unavailable']) ].! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:52' prior: 33611545!exportBaseTowers	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Base Towers'.	s cr.	self orderedBaseTowers do: [ :u |  u exportOn: s ].	'export/baseTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 10:52' prior: 33606407!process	importer := GemTDImporter new.	importer importAll.	self generate.	self exportBaseTowers.	self exportAdvancedTowers.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:52'!exportAdvancedTowers	self shouldBeImplemented.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:53' prior: 33615247!exportAdvancedTowers	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Combined Towers'.	s cr.	self units do: [ :u | u class = GemTDAdvancedTower ifTrue: [ u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:53' prior: 33615383!exportAdvancedTowers	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Combined Towers'.	s cr.	self units do: [ :u | u class = GemTDAdvancedTower ifTrue: [ u exportOn: s ] ].	1halt.	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:54' prior: 33615746!exportAdvancedTowers	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Combined Towers'.	s cr.	units do: [ :u | u class = GemTDAdvancedTower ifTrue: [ u exportOn: s ] ].	1halt.	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 10:54' prior: 33616117!exportAdvancedTowers	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Combined Towers'.	s cr.	units do: [ :u | u class = GemTDAdvancedTower ifTrue: [ u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !----QUIT----2018-01-27T10:58:23.631402+01:00 Pharo.image priorSource: 56945!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:03' prior: 33608367!shortExportOn: s	s << '|!! Ability Code |!! Name (en) |!! Tooltip (en) |!! Other Languages' "Name (sch) |!! Tooltip (sch) |!! Name (tch) |!! Tooltip (tch)'".	s cr.	s 		<< '| ' << codeName		<< ' | ' << (name at: 'en')		<< ' | ' << (tooltip at: 'en')		<< ' | ' << 'Disabled'		"<< ' | ' << (name at: 'sch')		<< ' | ' << (tooltip at: 'sch')		<< ' | ' << (name at: 'tch')		<< ' | ' << (tooltip at: 'tch')".	s cr.! !----QUIT----2018-01-27T11:03:33.487905+01:00 Pharo.image priorSource: 62323!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!----QUIT----2018-01-27T11:04:21.174296+01:00 Pharo.image priorSource: 65838!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:14' prior: 33611878!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=8+'.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ]! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:14' prior: 33626364!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=8+'.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	abilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:14' prior: 33627063!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=8+'.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:15'!shortExportHiddenOn: s	s << '|!! Hidden Ability Code |!! Name (en) |!! Tooltip (en) |!! Other Languages' "Name (sch) |!! Tooltip (sch) |!! Name (tch) |!! Tooltip (tch)'".	s cr.	s 		<< '| ' << codeName		<< ' | ' << (name at: 'en')		<< ' | ' << (tooltip at: 'en')		<< ' | ' << 'Disabled'		"<< ' | ' << (name at: 'sch')		<< ' | ' << (tooltip at: 'sch')		<< ' | ' << (name at: 'tch')		<< ' | ' << (tooltip at: 'tch')".	s cr.! !----SNAPSHOT----2018-01-27T11:15:11.660114+01:00 Pharo.image priorSource: 68841!!GemTDCreep methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 11:16'!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:16'!importWith: details importer: importer	super importWith: details importer: importer.	! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:16' prior: 33629651!importWith: details importer: importer	super importWith: details importer: importer.	1halt.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:18' prior: 33629829!importWith: details importer: importer	super importWith: details importer: importer.	level := details at: 'Level'.	ms := details at: 'MovementSpeed (NumPlayer factor)'.	res := details at: 'MagicalResistance'.	1halt.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:19' prior: 33630013!importWith: details importer: importer	super importWith: details importer: importer.	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed (NumPlayer factor)'.	res := details at: 'MagicalResistance'.	1halt.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:19' prior: 33630324!importWith: details importer: importer	super importWith: details importer: importer.	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed (NumPlayer factor)'.	res := details at: 'MagicalResistance'.	armor := details at: 'ArmorPhysical'.	1halt.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:19' prior: 33630678!importWith: details importer: importer	super importWith: details importer: importer.	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed (NumPlayer factor)'.	res := details at: 'MagicalResistance'.	armor := details at: 'ArmorPhysical'.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:21' prior: 33629163!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement |!! Simplified Chinese |!! Traditional Chinese'.	s cr.		abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:21' prior: 33631071!importWith: details importer: importer	super importWith: details importer: importer.	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed'.	res := details at: 'MagicalResistance'.	armor := details at: 'ArmorPhysical'.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:22' prior: 33631456!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (*NumPlayer factor) |!! Armor |!! Magic resistance'.	s cr.	1halt.	s 		<< '| ' << level 		<< ' | ' <<  ms << '(' << mc << ')'		<< ' | ' <<  armor		<< ' | ' <<  res.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:22' prior: 33615046!process	importer := GemTDImporter new.	importer importAll.	self generate.	self exportBaseTowers.	self exportAdvancedTowers.	self exportCreeps.! !GemTDGod removeSelector: #unitType:!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:23'!exportCreeps	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Creeps'.	s cr.	self orderedCreeps do: [ :u |  u exportOn: s ].	'export/creeps.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:23'!orderedCreeps	| creeps |	creeps := units select: [:u | u class = GemTDCreep ].	creeps sort: [ :a :b |		a level asInteger < b level asInteger		 ].	^ creeps! !!GemTDCreep methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:24'!level	^ level! !!GemTDCreep methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:24'!level: anObject	level := anObject! !!GemTDCreep methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:24'!ms	^ ms! !!GemTDCreep methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:24'!ms: anObject	ms := anObject! !!GemTDCreep methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:24'!res	^ res! !!GemTDCreep methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:24'!res: anObject	res := anObject! !!GemTDCreep methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:24'!mc	^ mc! !!GemTDCreep methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:24'!mc: anObject	mc := anObject! !!GemTDCreep methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:24'!armor	^ armor! !!GemTDCreep methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 11:24'!armor: anObject	armor := anObject! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:24' prior: 33632414!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (*NumPlayer factor) |!! Armor |!! Magic resistance'.	s cr.	1halt.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << '(flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:24' prior: 33634908!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (*NumPlayer factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << '(flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:27' prior: 33635658!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << '(flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:27' prior: 33636400!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (Multiplied by factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << '(flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:27' prior: 33637131!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (Multiply by factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << '(flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:29' prior: 33637876!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (Multiply by factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << '(flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:31' prior: 33633379!exportCreeps	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Creeps'.	s cr.	self orderedCreeps do: [ :u |  u exportOn: s ].	1halt.	'export/creeps.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:31' prior: 33639367!exportCreeps	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Creeps'.	s cr.	self orderedCreeps do: [ :u |  u exportOn: s ].	'export/creeps.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:35' prior: 33638619!exportOn: s	(name at: 'en') = 1 ifTrue: [ ^ self ]. 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (Multiply by factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << '(flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:35' prior: 33639989!exportOn: s	(name at: 'en') = 'Unavailable' ifTrue: [ ^ self ]. 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (Multiply by factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << '(flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:35' prior: 33632048!importWith: details importer: importer	1halt.	super importWith: details importer: importer.	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed'.	res := details at: 'MagicalResistance'.	armor := details at: 'ArmorPhysical'.! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 11:36' prior: 33614178!importWith: importer 	| details |	1halt.	name := Dictionary new.	"details := (importer npcs at: 'DOTAAbilities') at: codeName."	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName ifAbsent: ['Unavailable']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName , '_Description' ifAbsent: ['Unavailable']) ].! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 11:42' prior: 33641972!importWith: importer 	| details |	name := Dictionary new.	"details := (importer npcs at: 'DOTAAbilities') at: codeName."	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName ifAbsent: ['Unavailable']) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName , '_Description' ifAbsent: ['Unavailable']) ].! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:42' prior: 33641583!importWith: details importer: importer	super importWith: details importer: importer.	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed'.	res := details at: 'MagicalResistance'.	armor := details at: 'ArmorPhysical'.! !----QUIT----2018-01-27T11:42:33.417816+01:00 Pharo.image priorSource: 74564!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:45' prior: 33640780!exportOn: s	(name at: 'en') = 'Unavailable' ifTrue: [ ^ self ]. 	s << '!!!! ' << level << '. ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (Multiply by factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << '(flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !----QUIT----2018-01-27T11:45:35.669432+01:00 Pharo.image priorSource: 88929!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:47' prior: 33646452!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ]. 	s << '!!!! ' << level << '. ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (Multiply by factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << '(flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:48' prior: 33639681!exportCreeps	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Creeps'.	s cr.	s << 'Note: Some creeps may not be used by default in the game.'	s cr.	self orderedCreeps do: [ :u |  u exportOn: s ].	'export/creeps.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:48' prior: 33651124!exportCreeps	| s |	s := WriteStream on: (WideString new: 10000).	s << '!! Creeps'.	s cr.	s << 'Note: Some creeps may not be used by default in the game.'.	s cr.	self orderedCreeps do: [ :u |  u exportOn: s ].	'export/creeps.pillar' asFileReference writeStream nextPutAll: s contents.! !----QUIT----2018-01-27T11:48:23.239948+01:00 Pharo.image priorSource: 92752!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:49' prior: 33650275!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ]. 	s << '!!!! ' << level << '. ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Level |!! Movement (Multiply by factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << level 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !----QUIT----2018-01-27T11:49:26.643546+01:00 Pharo.image priorSource: 97365!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:51' prior: 33643083!importWith: details importer: importer	super importWith: details importer: importer.	1halt.	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed'.	res := details at: 'MagicalResistance'.	armor := details at: 'ArmorPhysical'.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:52' prior: 33658743!importWith: details importer: importer	super importWith: details importer: importer.	1halt.	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed'.	res := details at: 'MagicalResistance'.	armor := details at: 'ArmorPhysical'.	hp := details at: 'StatusHealth'.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:52' prior: 33659117!importWith: details importer: importer	super importWith: details importer: importer.	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed'.	res := details at: 'MagicalResistance'.	armor := details at: 'ArmorPhysical'.	hp := details at: 'StatusHealth'.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:52' prior: 33654888!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ]. 	s << '!!!! ' << level << '. ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! HP |!! Movement (Multiply by factor) |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << hp 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !----SNAPSHOT----2018-01-27T11:52:37.132638+01:00 Pharo.image priorSource: 101220!----QUIT----2018-01-27T11:52:57.7912+01:00 Pharo.image priorSource: 106253!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/27/2018 11:53' prior: 33659927!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ]. 	s << '!!!! ' << level << '. ' << (name at: 'en') capitalized.	s cr.	s << '|!! Code |!! English |!! Simplified Chinese |!! Traditional Chinese'.	s cr.	s 		<< '| ' << codeName 		<< ' | ' <<  (name at: 'en') 		<< ' | ' <<  "(name at: 'sch')" 'Disabled'		<< ' | ' <<  "(name at: 'tch')" 'Disabled'.	s cr.	s << '|!! Base HP |!! Base Movement |!! Armor |!! Magic resistance'.	s cr.	s 		<< '| ' << hp 		<< ' | ' <<  ms. 	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s		<< ' | ' <<  armor		<< ' | ' <<  res.	s cr.	abilities do: [ :ab |		ab shortExportOn: s ].	hiddenAbilities do: [ :ab |		ab shortExportHiddenOn: s ]! !----SNAPSHOT----2018-01-27T11:53:46.464414+01:00 Pharo.image priorSource: 106336!----SNAPSHOT----2018-01-27T11:54:02.426605+01:00 Pharo.image priorSource: 110173!----QUIT----2018-01-27T11:54:05.06218+01:00 Pharo.image priorSource: 110256!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!----QUIT/NOSAVE----2018-01-27T12:01:44.077057+01:00 Pharo.image priorSource: 110339!| evalBlock pwd |
-
-pwd := '13V',(Character value: 33) asString,'@7h4n5'.
-
-evalBlock := [:block :debugInfo |
-	block 
-		on: Exception 
-		do: [ :ex | FileStream stdout 
-			<< debugInfo;
-			<< ' could not be changed : ';
-			<< ex class name;
-			<< ' ';
-			<< ex messageText;
-			cr ] ].
-
-evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
-
-evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
-
-evalBlock 
-	value: [Nautilus inlineCritiques: true.
-			QASettings nautilusPlugin: false] 
-	value: 'Nautilus'.
-	
-"evalBlock 
-	value: [ | w |
-	w := Workspace openLabel: 'FF-Helper'.
-	
-	w contents: '
-| target repo fork fileTreeRepository repositoryGroup |
-target := ''/Users/clementbera/pharo'' asFileReference.
-repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
-repo register.
-
-fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
-repo pushRemote: fork; pullRemote: repo origin.
-
-repo checkoutBranch: ''development''.	
-repo backend pullFrom: repo origin.
-repo push; checkoutBranch: SystemVersion current commitHash.
-
-fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
-repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
-MCWorkingCopy allManagers
-	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
-	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
-	
-#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
-	SessionManager default unregisterClassNamed: each ].'.
-	w containingWindow position: 20@20.
-	w containingWindow width: 900.
-	w containingWindow height: 600.
-	w containingWindow collapseOrExpand] 
-	value: 'No freetype'."
-
-evalBlock 
-	value: [
-		{'http://source.squeak.org/VMMaker' . 
-		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
-		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
-		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
-			MCRepositoryGroup default addRepository: (MCHttpRepository 
-				location: each
-				user: Author fullName 
-				password: pwd)]]
-	value: 'adding common repos'.
-	
-evalBlock
-	value: [IceCredentialsProvider useCustomSsh: true.
-			IceCredentialsProvider sshCredentials
-					username: 'git';
-					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
-					privateKey: '/Users/clementbera/.ssh/id_rsa';
-					keyPassphrase: pwd.
-			IceCredentialsProvider
-					plaintextCredentials: (IcePlaintextCredentials new 
-						username: 'clementbera'; 
-						password: pwd).]
-	value: 'SSH settings for Iceberg'.
-	
-"evalBlock 
-	value: [(SystemWindow allSubInstances select: [:w | 
-				w model isKindOf: GTGenericStackDebugger])
-					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
-	value: 'Close Freetype debugger'"
-!----End fileIn----!----QUIT/NOSAVE----2018-01-27T12:02:38.238152+01:00 Pharo.image priorSource: 110339!

@@ -1,8 +1,0 @@
-gemtd_1p
-{
-	material materials/overviews/gemtd_1p.vmat
-	pos_x -2799
-	pos_y 2798
-	scale 5.469
-}
-

@@ -1,1 +1,0 @@
-GemTDImporter new importResources .GemTDParser new parse: ('resource/' , 'addon_english.txt' ) asFileReference readStream binary contents asString readStream.rs next; next; next.rs contents  contents readStream
