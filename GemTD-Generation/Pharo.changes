@@ -2321,4 +2321,514 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 17:42' prior: 33701318!exportOn: s	| width |	width := codeName = 'gemtd_zhenjiazhishi' ifTrue: [ 12 ] ifFalse: [ 8 ]. 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=' << width printString << '+'.	s cr.	self exportNamesOn: s.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	self exportAbilitiesOn: s! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:44' prior: 33602658!importNameWithImporter: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: [			self getFallBackNames halt.			'Unavailable']) ].! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:44'!getFallBackNames 	^ 'extra/fallBackName.txt' asFileReference readStream contents readStream! !(Smalltalk globals at: #GemTDKikooParser) rename: #GemTDOrderParser!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 17:45' prior: 33726990!exportAdvancedTowers	| s order printed others|	s := WriteStream on: (WideString new: 10000).	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.		towerCodes do: [ :tc |			units detect: [ :u | u codeName = tc ] ifFound: [ :unit |				unit exportOn: s ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | each class = GemTDAdvancedTower and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !GemTDParser subclass: #GemTDNameParser	instanceVariableNames: 'result'	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDNameParser methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 17:46'!parse: rs	readStream := rs.	readStream next. "skip {"	self skipSeparators.! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:46'!skipSeparators	[readStream peek isSeparator] whileTrue: [ readStream next ].! !GemTDLuaParser removeSelector: #skipSeparators!!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:46' prior: 33740867!parse: rs	result := OrderedCollection new.	readStream := rs.	readStream next. "skip {"	self skipSeparators.	! !GemTDOrderParser subclass: #GemTDNameParser	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:47' prior: 33741244!parse: rs	result := OrderedCollection new.	readStream := rs.	readStream next. "skip {"	self skipSeparators.	! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:49' prior: 33741578!parse: rs	result := OrderedCollection new.	readStream := rs.	readStream next. "skip {"	self skipSeparators.	[result add: self parseDirect.	 self skipSeparators.	readStream peek = $}] whileFalse.	^ Dictionary newFromPairs: result! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:49' prior: 33739651!getFallBackNames 	^ GemTDNameParser new parse: ('extra/fallBackName.txt' asFileReference readStream contents readStream)! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:49' prior: 33739363!importNameWithImporter: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: [			self getFallBackNames halt.			'Unavailable']) ].! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:50' prior: 33742339!importNameWithImporter: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: [			self getFallBackNames at: codeName ifAbsent: ['Unavailable'] ]) ].! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:52' prior: 33741788!parse: rs	result := OrderedCollection new.	readStream := rs.	readStream next. "skip {"	self skipSeparators.	[result add: self parseDirect.	 self skipSeparators.	readStream peek = $}] whileFalse.	2 to: result size by: 2 do: [ :i |		result at: i put: (self rework: (result at: i)) ].	^ Dictionary newFromPairs: result! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:54'!rework: string	| ws noUp |	ws := WriteStream on: (string class new: string size + 5).	noUp := false.	string readStreamDo: [ :rs |		rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		 ]! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:55' prior: 33743370!rework: string	| ws noUp |	ws := WriteStream on: (string class new: string size + 5).	noUp := false.	string readStreamDo: [ :rs |		rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: rs next ]! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:55' prior: 33743723!rework: string	| ws noUp |	ws := WriteStream on: (string class new: string size + 5).	noUp := false.	string readStreamDo: [ :rs |		rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: rs next ].	^ ws contents trimBoth! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:55' prior: 33744095!rework: string	| ws noUp |	1halt.	ws := WriteStream on: (string class new: string size + 5).	noUp := false.	string readStreamDo: [ :rs |		rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: rs next ].	^ ws contents trimBoth! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:56' prior: 33744492!rework: string	| ws noUp |	ws := WriteStream on: (string class new: string size + 5).	noUp := false.	string readStreamDo: [ :rs |		[rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !----SNAPSHOT----2018-01-27T17:57:12.562163+01:00 Pharo.image priorSource: 181260!GemTDElement removeSelector: #enName!GemTDElement removeSelector: #enName:!!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:57'!clean: string	! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:00' prior: 33745466!clean: string	| ws upNext |	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:00' prior: 33745578!clean: string	| ws upNext |	1halt.	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:00' prior: 33742643!importNameWithImporter: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: (self clean: ((importer resources at: l) at: codeName ifAbsent: [			self getFallBackNames at: codeName ifAbsent: ['Unavailable'] ])) ].! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:01' prior: 33746006!clean: string	| ws upNext |	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:01' prior: 33746777!clean: string	| ws upNext |	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:02' prior: 33747205!clean: string	| ws upNext |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 18:04' prior: 33738784!exportOn: s	| width |	width := codeName = 'gemtd_zhenjiazhishi' ifTrue: [ 15 ] ifFalse: [ 8 ]. 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=' << width printString << '+'.	s cr.	self exportNamesOn: s.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	self exportAbilitiesOn: s! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:07' prior: 33747644!clean: string	| ws upNext noUp |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[rs peek isUppercase ifTrue: [ noUp ifFalse: [1halt. ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth	! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:08' prior: 33748695!clean: string	| ws upNext noUp |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[rs peek = $/ ifTrue: [ ws space ].		rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		rs peek = $/ ifTrue: [ ws space ].		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth	! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:12' prior: 33749307!clean: string	| ws upNext noUp |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[rs peek = $/ ifTrue: [ ws space ].		rs peek isUppercase ifTrue: [ noUp ifFalse: [rs peekBack = Character space ifFalse: [ws space]] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		rs peek = $/ ifTrue: [ ws space ].		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth	! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:12' prior: 33749984!clean: string	| ws upNext noUp |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	noUp := false.	string readStreamDo: [ :rs |		[rs peek = $/ ifTrue: [ ws space ].		rs peek isUppercase ifTrue: [ noUp ifFalse: [rs peekBack = Character space ifFalse: [ws space]] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		rs peek = $/ ifTrue: [ ws space ].		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth	! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:14' prior: 33750702!clean: string	| ws upNext noUp |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	noUp := false.	string readStreamDo: [ :rs |		[rs peek = $/ ifTrue: [ ws space ].		rs peek isUppercase ifTrue: [ 			noUp ifFalse: [				rs position = 0 ifFalse: [ 					rs peekBack = Character space ifFalse: [ws space] ] ] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		rs peek = $/ ifTrue: [ ws space ].		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth	! !----QUIT----2018-01-27T18:14:57.319624+01:00 Pharo.image priorSource: 190794!
+!----End fileIn----!!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 17:42' prior: 33701318!exportOn: s	| width |	width := codeName = 'gemtd_zhenjiazhishi' ifTrue: [ 12 ] ifFalse: [ 8 ]. 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=' << width printString << '+'.	s cr.	self exportNamesOn: s.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	self exportAbilitiesOn: s! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:44' prior: 33602658!importNameWithImporter: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: [			self getFallBackNames halt.			'Unavailable']) ].! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:44'!getFallBackNames 	^ 'extra/fallBackName.txt' asFileReference readStream contents readStream! !(Smalltalk globals at: #GemTDKikooParser) rename: #GemTDOrderParser!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 17:45' prior: 33726990!exportAdvancedTowers	| s order printed others|	s := WriteStream on: (WideString new: 10000).	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.		towerCodes do: [ :tc |			units detect: [ :u | u codeName = tc ] ifFound: [ :unit |				unit exportOn: s ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | each class = GemTDAdvancedTower and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !GemTDParser subclass: #GemTDNameParser	instanceVariableNames: 'result'	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDNameParser methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 17:46'!parse: rs	readStream := rs.	readStream next. "skip {"	self skipSeparators.! !!GemTDParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:46'!skipSeparators	[readStream peek isSeparator] whileTrue: [ readStream next ].! !GemTDLuaParser removeSelector: #skipSeparators!!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:46' prior: 33740867!parse: rs	result := OrderedCollection new.	readStream := rs.	readStream next. "skip {"	self skipSeparators.	! !GemTDOrderParser subclass: #GemTDNameParser	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:47' prior: 33741244!parse: rs	result := OrderedCollection new.	readStream := rs.	readStream next. "skip {"	self skipSeparators.	! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:49' prior: 33741578!parse: rs	result := OrderedCollection new.	readStream := rs.	readStream next. "skip {"	self skipSeparators.	[result add: self parseDirect.	 self skipSeparators.	readStream peek = $}] whileFalse.	^ Dictionary newFromPairs: result! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:49' prior: 33739651!getFallBackNames 	^ GemTDNameParser new parse: ('extra/fallBackName.txt' asFileReference readStream contents readStream)! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:49' prior: 33739363!importNameWithImporter: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: [			self getFallBackNames halt.			'Unavailable']) ].! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:50' prior: 33742339!importNameWithImporter: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: codeName ifAbsent: [			self getFallBackNames at: codeName ifAbsent: ['Unavailable'] ]) ].! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:52' prior: 33741788!parse: rs	result := OrderedCollection new.	readStream := rs.	readStream next. "skip {"	self skipSeparators.	[result add: self parseDirect.	 self skipSeparators.	readStream peek = $}] whileFalse.	2 to: result size by: 2 do: [ :i |		result at: i put: (self rework: (result at: i)) ].	^ Dictionary newFromPairs: result! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:54'!rework: string	| ws noUp |	ws := WriteStream on: (string class new: string size + 5).	noUp := false.	string readStreamDo: [ :rs |		rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		 ]! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:55' prior: 33743370!rework: string	| ws noUp |	ws := WriteStream on: (string class new: string size + 5).	noUp := false.	string readStreamDo: [ :rs |		rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: rs next ]! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:55' prior: 33743723!rework: string	| ws noUp |	ws := WriteStream on: (string class new: string size + 5).	noUp := false.	string readStreamDo: [ :rs |		rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: rs next ].	^ ws contents trimBoth! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:55' prior: 33744095!rework: string	| ws noUp |	1halt.	ws := WriteStream on: (string class new: string size + 5).	noUp := false.	string readStreamDo: [ :rs |		rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: rs next ].	^ ws contents trimBoth! !!GemTDNameParser methodsFor: 'parsing' stamp: 'ClementBera 1/27/2018 17:56' prior: 33744492!rework: string	| ws noUp |	ws := WriteStream on: (string class new: string size + 5).	noUp := false.	string readStreamDo: [ :rs |		[rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !----SNAPSHOT----2018-01-27T17:57:12.562163+01:00 Pharo.image priorSource: 181260!GemTDElement removeSelector: #enName!GemTDElement removeSelector: #enName:!!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 17:57'!clean: string	! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:00' prior: 33745466!clean: string	| ws upNext |	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:00' prior: 33745578!clean: string	| ws upNext |	1halt.	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:00' prior: 33742643!importNameWithImporter: importer	name := Dictionary new.	#(en sch tch) do: [ :l |		name at: l put: (self clean: ((importer resources at: l) at: codeName ifAbsent: [			self getFallBackNames at: codeName ifAbsent: ['Unavailable'] ])) ].! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:01' prior: 33746006!clean: string	| ws upNext |	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:01' prior: 33746777!clean: string	| ws upNext |	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:02' prior: 33747205!clean: string	| ws upNext |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 18:04' prior: 33738784!exportOn: s	| width |	width := codeName = 'gemtd_zhenjiazhishi' ifTrue: [ 15 ] ifFalse: [ 8 ]. 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=' << width printString << '+'.	s cr.	self exportNamesOn: s.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	s cr.	s		<< '| ' << damage  		<< ' | ' <<  rate		<< ' | ' <<  range		<< ' | ' <<  projectileSpeed.	s cr.	self exportAbilitiesOn: s! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:07' prior: 33747644!clean: string	| ws upNext noUp |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[rs peek isUppercase ifTrue: [ noUp ifFalse: [1halt. ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth	! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:08' prior: 33748695!clean: string	| ws upNext noUp |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[rs peek = $/ ifTrue: [ ws space ].		rs peek isUppercase ifTrue: [ noUp ifFalse: [ws space] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		rs peek = $/ ifTrue: [ ws space ].		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth	! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:12' prior: 33749307!clean: string	| ws upNext noUp |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	string readStreamDo: [ :rs |		[rs peek = $/ ifTrue: [ ws space ].		rs peek isUppercase ifTrue: [ noUp ifFalse: [rs peekBack = Character space ifFalse: [ws space]] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		rs peek = $/ ifTrue: [ ws space ].		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth	! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:12' prior: 33749984!clean: string	| ws upNext noUp |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	noUp := false.	string readStreamDo: [ :rs |		[rs peek = $/ ifTrue: [ ws space ].		rs peek isUppercase ifTrue: [ noUp ifFalse: [rs peekBack = Character space ifFalse: [ws space]] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		rs peek = $/ ifTrue: [ ws space ].		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth	! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:14' prior: 33750702!clean: string	| ws upNext noUp |	string size = 0 ifTrue: [ ^ string ].	ws := WriteStream on: (string class new: string size).	upNext := true.	noUp := false.	string readStreamDo: [ :rs |		[rs peek = $/ ifTrue: [ ws space ].		rs peek isUppercase ifTrue: [ 			noUp ifFalse: [				rs position = 0 ifFalse: [ 					rs peekBack = Character space ifFalse: [ws space] ] ] ].		noUp := false.		rs peek = $- ifTrue: [ noUp := true ].		ws nextPut: (upNext ifTrue: [rs peek asUppercase] ifFalse: [rs peek]).		rs peek = $/ ifTrue: [ ws space ].		upNext := false.		rs peek = Character space ifTrue: [ upNext := true ].		rs next.		rs atEnd ] whileFalse ].	^ ws contents trimBoth	! !----QUIT----2018-01-27T18:14:57.319624+01:00 Pharo.image priorSource: 190794!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!----QUIT/NOSAVE----2018-01-27T18:28:56.691253+01:00 Pharo.image priorSource: 197689!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!----SNAPSHOT----2018-01-27T18:29:13.828975+01:00 Pharo.image priorSource: 197689!!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 18:30' prior: 33592413!generate	units := OrderedCollection new.	1halt.	self units keysAndValuesDo: [ :u :details |		| cls |		(u beginsWith: 'gemtd') ifTrue: [ 			cls := ((details at: 'Model') beginsWith:'models/items/wards/')				ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]				ifFalse: [ GemTDCreep ].		units add: (cls newFrom: u with: details importer: importer)]].! !GemTDElement subclass: #GemTDSlate	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 18:34' prior: 33758308!generate	units := OrderedCollection new.	1halt.	self units keysAndValuesDo: [ :u :details |		| cls |		(u beginsWith: 'gemtd') ifTrue: [ 			cls := ((details at: 'Model') beginsWith:'models/items/wards/')				ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]				ifFalse: [ 					((details at: 'Model') beginsWith:'materials/')						ifFalse: [GemTDCreep]						ifTrue: [GemTDSlate]].		units add: (cls newFrom: u with: details importer: importer)]].! !!GemTDGod methodsFor: 'accessing' stamp: 'ClementBera 1/27/2018 18:34' prior: 33758905!generate	units := OrderedCollection new.	self units keysAndValuesDo: [ :u :details |		| cls |		(u beginsWith: 'gemtd') ifTrue: [ 			cls := ((details at: 'Model') beginsWith:'models/items/wards/')				ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]				ifFalse: [ 					((details at: 'Model') beginsWith:'materials/')						ifFalse: [GemTDCreep]						ifTrue: [GemTDSlate]].		units add: (cls newFrom: u with: details importer: importer)]].! !----SNAPSHOT----2018-01-27T18:34:42.226302+01:00 Pharo.image priorSource: 203704!!GemTDSlate methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 18:35'!importWith: details importer: importer	1halt.	super importWith: details importer: importer.! !!GemTDSlate methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:36' prior: 33760134!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'advanced/' , codeName.! !!GemTDSlate methodsFor: 'initialize' stamp: 'ClementBera 1/27/2018 18:37' prior: 33760322!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'advanced/' , codeName.	combo := importer combinations at: codeName ifAbsent: [ #() ].	comboNames := combo collect: [ :c | self enNameFor: c importer: importer ].! !!GemTDSlate methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/27/2018 18:38'!exportOn: s	super exportOn: s.	! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 1/27/2018 18:38'!exportCombo: combo names: comboNames on: s	combo ifNil: [ ^ self ].	combo size < 2 ifTrue: [ ^ self ] .	s << '|!! Combination |!! Combination |!! Combination |!! Combination'.	s cr.	s 		<< '| ' << comboNames first		<< ' | ' << comboNames second		<< ' | ' << (comboNames size < 3 ifTrue: [ '' ] ifFalse: [ comboNames at: 3 ])		<< ' | ' << (comboNames size < 4 ifTrue: [ '' ] ifFalse: [ 			comboNames size = 5 			ifTrue: [ (comboNames at: 4) , ' & ' , (comboNames at: 5) ]			ifFalse: [comboNames at: 4 ] ]).	s cr.	s 		<< '| ' << combo first		<< ' | ' << combo second		<< ' | ' << (combo size < 3 ifTrue: [ '' ] ifFalse: [ combo at: 3 ])		<< ' | ' << (combo size < 4 ifTrue: [ '' ] ifFalse: [ 			combo size = 5 			ifTrue: [ (combo at: 4) , ' & ' , (combo at: 5) ]			ifFalse: [combo at: 4 ] ]).	s cr.! !!GemTDSlate methodsFor: 'export' stamp: 'ClementBera 1/27/2018 18:38' prior: 33760888!exportOn: s	super exportOn: s.	self exportCombo: combo names: comboNames on: s.! !!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/27/2018 18:38' prior: 33727836!exportOn: s	super exportOn: s.	self exportCombo: combo names: comboNames on: s! !----SNAPSHOT----2018-01-27T18:39:01.406312+01:00 Pharo.image priorSource: 205534!!GemTDSlate methodsFor: 'export' stamp: 'ClementBera 1/27/2018 18:39' prior: 33761907!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=8+'.	s cr.	self exportNamesOn: s.	s << '|!! Attack Damage |!! Attack Rate |!! Attack Range |!! Projectile Speed'.	self exportAbilitiesOn: s.	self exportCombo: combo names: comboNames on: s.! !----SNAPSHOT----2018-01-27T18:39:50.521506+01:00 Pharo.image priorSource: 207738!----SNAPSHOT----2018-01-27T18:39:58.388933+01:00 Pharo.image priorSource: 208222!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/27/2018 18:40' prior: 33739902!exportAdvancedTowers	| s order printed others|	s := WriteStream on: (WideString new: 10000).	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.		towerCodes do: [ :tc |			units detect: [ :u | u codeName = tc ] ifFound: [ :unit |				unit exportOn: s ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | 			(each class = GemTDAdvancedTower or: [ each class = GemTDSlate ]) 			and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !----QUIT----2018-01-27T18:41:23.727722+01:00 Pharo.image priorSource: 208305!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDSlate methodsFor: 'export' stamp: 'ClementBera 1/27/2018 18:42' prior: 33762341!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=8+'.	s cr.	self exportNamesOn: s.	self exportAbilitiesOn: s.	self exportCombo: combo names: comboNames on: s.! !!GemTDSlate methodsFor: 'export' stamp: 'ClementBera 1/27/2018 18:44' prior: 33766790!exportOn: s	"Name incorrect..." 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=8+'.	s cr.	self exportNamesOn: s.	self exportAbilitiesOn: s.	self exportCombo: combo names: comboNames on: s.! !----QUIT----2018-01-27T18:44:13.386008+01:00 Pharo.image priorSource: 209266!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDSlate methodsFor: 'export' stamp: 'ClementBera 1/27/2018 18:46' prior: 33767110!exportOn: s 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=8+'.	s cr.	self exportNamesOn: s.	self exportAbilitiesOn: s.	self exportCombo: combo names: comboNames on: s.! !----SNAPSHOT----2018-01-27T18:46:53.422911+01:00 Pharo.image priorSource: 212931!----QUIT----2018-01-27T18:47:27.152753+01:00 Pharo.image priorSource: 216255!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!----QUIT----2018-01-27T18:50:48.500017+01:00 Pharo.image priorSource: 216338!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!----QUIT----2018-01-27T18:51:31.116872+01:00 Pharo.image priorSource: 219342!
