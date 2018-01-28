@@ -3681,4 +3681,89 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/28/2018 15:21' prior: 33923231!importDetailsWith: importer	| details modifiers |	codeName = 'tower_speed2' ifTrue: [ 1halt ].	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttackLanded' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttackLanded') modifiers: modifiers importer: importer prefix: 'On attack landed, ' ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttack' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttack') modifiers: modifiers importer: importer prefix: 'On attack, ' ].	modifiers values 		detect: [ :m | m includesKey: 'Aura' ]		ifFound: [ :f | 			^ self importAura: f modifiers: modifiers importer: importer ].	modifiers values 		detect: [ :m | m includesKey: 'Properties' ]		ifFound: [ :f | 			^ String streamContents: [:s | self importProperties: f on: s ] ].! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/28/2018 15:22' prior: 33927222!importDetailsWith: importer	| details modifiers |	codeName = 'tower_speed2' ifTrue: [ 1halt ].	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttackLanded' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttackLanded') modifiers: modifiers importer: importer prefix: 'On attack landed, ' ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttack' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttack') modifiers: modifiers importer: importer prefix: 'On attack, ' ].	modifiers values 		detect: [ :m | m includesKey: 'Aura' ]		ifFound: [ :f | 			^ self importAura: f modifiers: modifiers importer: importer ].	modifiers values 		detect: [ :m | m includesKey: 'Properties' ]		ifFound: [ :f | 			^ property := String streamContents: [:s | self importProperties: f on: s ] ].! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/28/2018 15:22' prior: 33928255!importDetailsWith: importer	| details modifiers |	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttackLanded' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttackLanded') modifiers: modifiers importer: importer prefix: 'On attack landed, ' ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttack' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttack') modifiers: modifiers importer: importer prefix: 'On attack, ' ].	modifiers values 		detect: [ :m | m includesKey: 'Aura' ]		ifFound: [ :f | 			^ self importAura: f modifiers: modifiers importer: importer ].	modifiers values 		detect: [ :m | m includesKey: 'Properties' ]		ifFound: [ :f | 			^ property := String streamContents: [:s | self importProperties: f on: s ] ].! !----QUIT----2018-01-28T15:22:28.372869+01:00 Pharo.image priorSource: 369683!
+!----End fileIn----!!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/28/2018 15:21' prior: 33923231!importDetailsWith: importer	| details modifiers |	codeName = 'tower_speed2' ifTrue: [ 1halt ].	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttackLanded' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttackLanded') modifiers: modifiers importer: importer prefix: 'On attack landed, ' ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttack' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttack') modifiers: modifiers importer: importer prefix: 'On attack, ' ].	modifiers values 		detect: [ :m | m includesKey: 'Aura' ]		ifFound: [ :f | 			^ self importAura: f modifiers: modifiers importer: importer ].	modifiers values 		detect: [ :m | m includesKey: 'Properties' ]		ifFound: [ :f | 			^ String streamContents: [:s | self importProperties: f on: s ] ].! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/28/2018 15:22' prior: 33927222!importDetailsWith: importer	| details modifiers |	codeName = 'tower_speed2' ifTrue: [ 1halt ].	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttackLanded' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttackLanded') modifiers: modifiers importer: importer prefix: 'On attack landed, ' ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttack' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttack') modifiers: modifiers importer: importer prefix: 'On attack, ' ].	modifiers values 		detect: [ :m | m includesKey: 'Aura' ]		ifFound: [ :f | 			^ self importAura: f modifiers: modifiers importer: importer ].	modifiers values 		detect: [ :m | m includesKey: 'Properties' ]		ifFound: [ :f | 			^ property := String streamContents: [:s | self importProperties: f on: s ] ].! !!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/28/2018 15:22' prior: 33928255!importDetailsWith: importer	| details modifiers |	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttackLanded' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttackLanded') modifiers: modifiers importer: importer prefix: 'On attack landed, ' ].	modifiers values 		detect: [ :m | m includesKey: 'OnAttack' ]		ifFound: [ :f | 			^ self import: (f at: 'OnAttack') modifiers: modifiers importer: importer prefix: 'On attack, ' ].	modifiers values 		detect: [ :m | m includesKey: 'Aura' ]		ifFound: [ :f | 			^ self importAura: f modifiers: modifiers importer: importer ].	modifiers values 		detect: [ :m | m includesKey: 'Properties' ]		ifFound: [ :f | 			^ property := String streamContents: [:s | self importProperties: f on: s ] ].! !----QUIT----2018-01-28T15:22:28.372869+01:00 Pharo.image priorSource: 369683!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDAbility methodsFor: 'as yet unclassified' stamp: 'ClementBera 1/28/2018 15:31' prior: 33873520!importWith: importer 	name := Dictionary new.	self importDetailsWith: importer.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName ifAbsent: [nil]) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName , '_Description' ifAbsent: [nil]) ].! !!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 1/28/2018 15:32' prior: 33916796!shortExportOn: s i: i	| num |	num := i printString.	s 		<< '|!! Ability ' << num << ' Code | '		<< codeName.	s cr.	(name at: 'en') ifNotNil: [ 		s 			<< '|!! Ability ' << num << ' Name | ' 			<< (name at: 'en').		s cr].	(tooltip at: 'en') ifNotNil: [		s 			<< '|!! Ability ' << num << ' Tooltip | '			<< (tooltip at: 'en').		s cr].	property ifNotNil: [ :p |		s << '|!! Ability ' << num << ' Raw | =='.		s << property.		s << '=='.		s cr ]! !----SNAPSHOT----2018-01-28T15:32:38.424377+01:00 Pharo.image priorSource: 375764!----SNAPSHOT----2018-01-28T15:32:40.417493+01:00 Pharo.image priorSource: 379817!----SNAPSHOT----2018-01-28T15:32:45.881405+01:00 Pharo.image priorSource: 379900!!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/28/2018 15:33' prior: 33914362!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	s << '+file://wards/' << codeName << '.png|width=' << 8 printString << '+'.	s cr.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! Base HP | ' << hp.	s cr.	s << '|!! Base Movement | ' << ms.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s cr.	s << '|!! Armor | ' << armor.	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !----SNAPSHOT----2018-01-28T15:33:23.590285+01:00 Pharo.image priorSource: 379983!!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/28/2018 15:34' prior: 33934586!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	s << '+file://creeps/' << codeName << '.png|width=' << 8 printString << '+'.	s cr.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! Base HP | ' << hp.	s cr.	s << '|!! Base Movement | ' << ms.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s cr.	s << '|!! Armor | ' << armor.	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/28/2018 15:34' prior: 33935260!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	s << '+file://creeps/' << codeName << '.png|width=8+'.	s cr.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! Base HP | ' << hp.	s cr.	s << '|!! Base Movement | ' << ms.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s cr.	s << '|!! Armor | ' << armor.	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/28/2018 15:34' prior: 33935852!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	s << '+file://creeps/' << codeName << '.png|width=8+'.	s cr.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! Base HP | ' << hp.	s cr.	s << '|!! Base Movement | ' << ms.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s cr.	s << '|!! Armor | ' << armor. 	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/28/2018 15:35' prior: 33936422!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	s << '+file://creeps/' << codeName << '.png|width=10+'.	s cr.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! Base HP | ' << hp.	s cr.	s << '|!! Base Movement | ' << ms.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s cr.	s << '|!! Armor | ' << armor. 	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !----QUIT----2018-01-28T15:35:37.338166+01:00 Pharo.image priorSource: 380657!
