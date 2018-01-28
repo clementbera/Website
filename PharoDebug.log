@@ -587,3 +587,216 @@ false ] whileFalse: [  ] ] in MorphicUIManager>>spawnNewProcess
 Processor terminateActive ] in BlockClosure>>newProcess
 -------------------------------------------------------------------------------
 
+
+*** Warning: PRLinkWarning: Reference :  chipped topaz/Y1  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_y1  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed aquamarine/Q2  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_q11  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  normal topaz/Y3  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_y111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  silver knight  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_baiyinqishi  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  huge diamond/D6  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_d111111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  chipped aquamarine/Q1  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_q1  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed diamond/D2  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_d11  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed opal/E2  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_e11  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  huge malachite  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_xianyandekongqueshi  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  huge topaz/Y6  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_y111111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  chipped ruby/R1  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_r1  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  ruby/R4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_r1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  aquamarine/Q4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_q1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  volcano  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_xuehonghuoshan  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  huge ruby/R6  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_r111111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  normal opal/E3  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_e111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  normal ruby/R3  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_r111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  sapphire/B4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_b1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  emerald/G4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_g1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  quartz  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_furongshi  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  amethyst/P4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_p1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  amethyst/P4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_p1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  perfect amethyst/P5  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_p11111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  sapphire/B4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_b1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  dark emerald  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_heianfeicui  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  opal/E4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_e1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  dark emerald  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_heianfeicui  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  diamond/D4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_d1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  diamond/D4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_d1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  DeepSea Pearl  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_shenhaizhenzhu  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  perfect emerald/G5  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_g11111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  topaz/Y4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_y1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  bloodstone  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_jixueshi  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  huge sapphire/B6  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_b111111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed diamond/D2
+gemtd_youbushiban = gemtd_y111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed opal/E2
+gemtd_zhangqishiban = gemtd_g111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed aquamarine/Q2
+gemtd_hongliushiban = gemtd_b111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed ruby/R2
+gemtd_haojiaoshiban = gemtd_p111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed topaz/Y2
+gemtd_suanwushiban = gemtd_q111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed emerald/G2
+gemtd_mabishiban = gemtd_r111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  perfect topaz/Y5  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_y11111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  perfect opal/E5  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_e11111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  perfect emerald/G5  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_g11111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  perfect amethyst/P5  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  amethyst/P4
+gemtd_ranshaozhishi = gemtd_r11111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_r1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed opal/E2  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  opal/E4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_e11  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_e1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed topaz/Y2  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  topaz/Y4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_y11  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_y1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed diamond/D2  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  diamond/D4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_d11  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_d1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed sapphire/B2  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  sapphire/B4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_b11  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_b1111  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawed amethyst/P2  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  flawless  amethyst/P4  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_p11  should end with .pillar or .pier
+
+*** Warning: PRLinkWarning: Reference :  gemtd_p1111  should end with .pillar or .pier

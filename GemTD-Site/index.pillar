@@ -25,4 +25,6 @@ v.0.5: Added slates.
 v.0.6: Added more lua script analysis to detect more accurately creep skills and pop chance. 
 Added Diamond picture (Thanks to leQ4specialist).
 
+v.0.7: Reworked a bit the UI, remove projectile speed which was not very relevant and started to analyse ablities (Raw field)
+
 Farine
