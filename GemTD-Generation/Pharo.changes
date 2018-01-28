@@ -3086,4 +3086,174 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:37' prior: 33818975!exportCreeps	| s printed others |	s := WriteStream on: (WideString new: 10000).	s << '!! Creeps'.	s cr.	s << 'Note: The creeps are displayed in order according to the Game rules in the Lua script, with special cases for in-script transformation (For example, Boss 30 has a chance to be Zard instead of Carpet rider). Other creeps implemented in-game are at the bottom in the Others section. This can include event creeps (Halloween event boss, etc.), past creeps (the testers, etc.) or future creeps. In case of an update breaking my analysis, more creeps may be shown in the Others section instead of normal order (but at least they will be shown).'	s cr.	importer orderedCreeps withIndexDo: [ :col :index |		s << '!!!! Level ' << index printString << ' '.		(col collect: [ :u | "u is {random.codeName}"			self unitNamed: u second do: [ :unit | 				(unit name at: 'en') , (u first 					ifNil: [ '' ] 					ifNotNil: [ :it | ' (' , it printString , '%)' ]) ] ifNone: [ '' ] ]) 			do: [ :n | s << n ]			separatedBy: [ s << ' & ' ].		s cr.		col do: [ :u | self unitNamed: u second do: [ :unit | unit exportOn: s ] ifNone: [ ] ] separatedBy: [ s cr ] ].	s << '!!!! Others '.	s cr.	printed := importer orderedCreeps flattened asSet.	others := self orderedCreeps reject: [ :u | printed includes: u codeName ].	others do: [ :u | u exportOn: s ] separatedBy: [s cr].	'export/creeps.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:37' prior: 33802297!exportAdvancedTowers	| s order printed others |	s := WriteStream on: (WideString new: 10000).	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.	s << 'Note: The creeps are displayed in order according to the Game rules in the Lua script, with special cases for in-script transformation (For example, Boss 30 has a chance to be Zard instead of Carpet rider). Other creeps implemented in-game are at the bottom in the Others section. This can include event creeps (Halloween event boss, etc.), past creeps (the testers, etc.) or future creeps. In case of an update breaking my analysis, more creeps may be shown in the Others section instead of normal order (but at least they will be shown).'.	s cr.		towerCodes do: [ :tc |			self unitNamed: tc do: [ :unit | unit exportOn: s ] ifNone: [ ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | 			(each class = GemTDAdvancedTower or: [ each class = GemTDSlate ]) 			and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:38' prior: 33832608!exportAdvancedTowers	| s order printed others |	s := WriteStream on: (WideString new: 10000).	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.	s << 'Note: The towers are displayed based on fan-provided order. Hence, updates may break temporarily (until manual update) the order. To solve this problem, unordered towers are displayed at the bottom in the Others section. The Other section also includes experimental towers not necessarily present in-game (Currently there is a super emerald golem for example)'.	s cr.		towerCodes do: [ :tc |			self unitNamed: tc do: [ :unit | unit exportOn: s ] ifNone: [ ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | 			(each class = GemTDAdvancedTower or: [ each class = GemTDSlate ]) 			and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:38' prior: 33834026!exportAdvancedTowers	| s order printed others |	s := WriteStream on: (WideString new: 10000).	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.	s << 'Note: The towers are displayed based on fan-provided order. Hence, updates may break temporarily (until manual update) the order. To solve this problem, unordered towers are displayed at the bottom in the Others section. The Other section also includes experimental towers not necessarily available in-game (Currently there is a super emerald golem for example)'.	s cr.		towerCodes do: [ :tc |			self unitNamed: tc do: [ :unit | unit exportOn: s ] ifNone: [ ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | 			(each class = GemTDAdvancedTower or: [ each class = GemTDSlate ]) 			and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:39' prior: 33831063!exportCreeps	| s printed others |	s := WriteStream on: (WideString new: 10000).	s << '!! Creeps'.	s cr.	s << 'Note: The creeps are displayed in order according to the Game rules in the Lua script, with special cases for in-script transformation (For example, Boss 30 has a chance to be Zard instead of Carpet rider). Other creeps implemented in-game are at the bottom in the Others section. This can include event creeps (Halloween event boss, etc.), past creeps (the testers, etc.) or future creeps. In case of an update breaking my analysis, more creeps may be shown in the Others section instead of normal order (but at least they will be shown).'.	s cr.	importer orderedCreeps withIndexDo: [ :col :index |		s << '!!!! Level ' << index printString << ' '.		(col collect: [ :u | "u is {random.codeName}"			self unitNamed: u second do: [ :unit | 				(unit name at: 'en') , (u first 					ifNil: [ '' ] 					ifNotNil: [ :it | ' (' , it printString , '%)' ]) ] ifNone: [ '' ] ]) 			do: [ :n | s << n ]			separatedBy: [ s << ' & ' ].		s cr.		col do: [ :u | self unitNamed: u second do: [ :unit | unit exportOn: s ] ifNone: [ ] ] separatedBy: [ s cr ] ].	s << '!!!! Others '.	s cr.	printed := importer orderedCreeps flattened asSet.	others := self orderedCreeps reject: [ :u | printed includes: u codeName ].	others do: [ :u | u exportOn: s ] separatedBy: [s cr].	'export/creeps.pillar' asFileReference writeStream nextPutAll: s contents.! !----QUIT----2018-01-28T10:39:21.368237+01:00 Pharo.image priorSource: 273542!
+!----End fileIn----!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:37' prior: 33818975!exportCreeps	| s printed others |	s := WriteStream on: (WideString new: 10000).	s << '!! Creeps'.	s cr.	s << 'Note: The creeps are displayed in order according to the Game rules in the Lua script, with special cases for in-script transformation (For example, Boss 30 has a chance to be Zard instead of Carpet rider). Other creeps implemented in-game are at the bottom in the Others section. This can include event creeps (Halloween event boss, etc.), past creeps (the testers, etc.) or future creeps. In case of an update breaking my analysis, more creeps may be shown in the Others section instead of normal order (but at least they will be shown).'	s cr.	importer orderedCreeps withIndexDo: [ :col :index |		s << '!!!! Level ' << index printString << ' '.		(col collect: [ :u | "u is {random.codeName}"			self unitNamed: u second do: [ :unit | 				(unit name at: 'en') , (u first 					ifNil: [ '' ] 					ifNotNil: [ :it | ' (' , it printString , '%)' ]) ] ifNone: [ '' ] ]) 			do: [ :n | s << n ]			separatedBy: [ s << ' & ' ].		s cr.		col do: [ :u | self unitNamed: u second do: [ :unit | unit exportOn: s ] ifNone: [ ] ] separatedBy: [ s cr ] ].	s << '!!!! Others '.	s cr.	printed := importer orderedCreeps flattened asSet.	others := self orderedCreeps reject: [ :u | printed includes: u codeName ].	others do: [ :u | u exportOn: s ] separatedBy: [s cr].	'export/creeps.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:37' prior: 33802297!exportAdvancedTowers	| s order printed others |	s := WriteStream on: (WideString new: 10000).	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.	s << 'Note: The creeps are displayed in order according to the Game rules in the Lua script, with special cases for in-script transformation (For example, Boss 30 has a chance to be Zard instead of Carpet rider). Other creeps implemented in-game are at the bottom in the Others section. This can include event creeps (Halloween event boss, etc.), past creeps (the testers, etc.) or future creeps. In case of an update breaking my analysis, more creeps may be shown in the Others section instead of normal order (but at least they will be shown).'.	s cr.		towerCodes do: [ :tc |			self unitNamed: tc do: [ :unit | unit exportOn: s ] ifNone: [ ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | 			(each class = GemTDAdvancedTower or: [ each class = GemTDSlate ]) 			and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:38' prior: 33832608!exportAdvancedTowers	| s order printed others |	s := WriteStream on: (WideString new: 10000).	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.	s << 'Note: The towers are displayed based on fan-provided order. Hence, updates may break temporarily (until manual update) the order. To solve this problem, unordered towers are displayed at the bottom in the Others section. The Other section also includes experimental towers not necessarily present in-game (Currently there is a super emerald golem for example)'.	s cr.		towerCodes do: [ :tc |			self unitNamed: tc do: [ :unit | unit exportOn: s ] ifNone: [ ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | 			(each class = GemTDAdvancedTower or: [ each class = GemTDSlate ]) 			and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:38' prior: 33834026!exportAdvancedTowers	| s order printed others |	s := WriteStream on: (WideString new: 10000).	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.	s << 'Note: The towers are displayed based on fan-provided order. Hence, updates may break temporarily (until manual update) the order. To solve this problem, unordered towers are displayed at the bottom in the Others section. The Other section also includes experimental towers not necessarily available in-game (Currently there is a super emerald golem for example)'.	s cr.		towerCodes do: [ :tc |			self unitNamed: tc do: [ :unit | unit exportOn: s ] ifNone: [ ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | 			(each class = GemTDAdvancedTower or: [ each class = GemTDSlate ]) 			and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:39' prior: 33831063!exportCreeps	| s printed others |	s := WriteStream on: (WideString new: 10000).	s << '!! Creeps'.	s cr.	s << 'Note: The creeps are displayed in order according to the Game rules in the Lua script, with special cases for in-script transformation (For example, Boss 30 has a chance to be Zard instead of Carpet rider). Other creeps implemented in-game are at the bottom in the Others section. This can include event creeps (Halloween event boss, etc.), past creeps (the testers, etc.) or future creeps. In case of an update breaking my analysis, more creeps may be shown in the Others section instead of normal order (but at least they will be shown).'.	s cr.	importer orderedCreeps withIndexDo: [ :col :index |		s << '!!!! Level ' << index printString << ' '.		(col collect: [ :u | "u is {random.codeName}"			self unitNamed: u second do: [ :unit | 				(unit name at: 'en') , (u first 					ifNil: [ '' ] 					ifNotNil: [ :it | ' (' , it printString , '%)' ]) ] ifNone: [ '' ] ]) 			do: [ :n | s << n ]			separatedBy: [ s << ' & ' ].		s cr.		col do: [ :u | self unitNamed: u second do: [ :unit | unit exportOn: s ] ifNone: [ ] ] separatedBy: [ s cr ] ].	s << '!!!! Others '.	s cr.	printed := importer orderedCreeps flattened asSet.	others := self orderedCreeps reject: [ :u | printed includes: u codeName ].	others do: [ :u | u exportOn: s ] separatedBy: [s cr].	'export/creeps.pillar' asFileReference writeStream nextPutAll: s contents.! !----QUIT----2018-01-28T10:39:21.368237+01:00 Pharo.image priorSource: 273542!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/28/2018 10:40' prior: 33835264!exportAdvancedTowers	| s order printed others |	s := WriteStream on: (WideString new: 10000).	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.	s << 'Note: The towers are displayed based on fan-provided order. Hence, updates may break temporarily (until manual update) the order. To solve this problem, unordered towers are displayed at the bottom in the Others section. The Other section also includes experimental towers not necessarily available in-game (Currently there is a super emerald golem for example).'.	s cr.		towerCodes do: [ :tc |			self unitNamed: tc do: [ :unit | unit exportOn: s ] ifNone: [ ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | 			(each class = GemTDAdvancedTower or: [ each class = GemTDSlate ]) 			and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].	'export/advancedTowers.pillar' asFileReference writeStream nextPutAll: s contents.! !----QUIT----2018-01-28T10:40:53.065545+01:00 Pharo.image priorSource: 283532!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!----QUIT----2018-01-28T10:41:00.99359+01:00 Pharo.image priorSource: 287777!
