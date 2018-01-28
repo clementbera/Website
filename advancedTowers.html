@@ -107,16 +107,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_slow2</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> slow 2</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease enemy's movement speed by 90.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[MOVESPEED: -90]</code></td>
 </tr>
 </table>
@@ -155,31 +155,31 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_jianshe3</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> cleave 3</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Deals 50%% damage around 400 range of the target.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, run script jianshe3 (addon_game_mode.lua) with parameters: [Damage: %attack_damage]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_slow3</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> slow 3</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease enemy's movement speed by 120.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[MOVESPEED: -120]</code></td>
 </tr>
 </table>
@@ -218,25 +218,28 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_baoji1</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> crit 1</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> 10%% chance to deal 5x damage.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
-<td> <code>On Attack Start, [10%] ~ On Attack Landed, [CRITICALSTRIKE: 500]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Start, [10%][CRITICALSTRIKE: 500]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_attack3</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 80]</code></td>
 </tr>
 </table>
@@ -275,40 +278,43 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_jianshe3</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> cleave 3</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Deals 50%% damage around 400 range of the target.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, run script jianshe3 (addon_game_mode.lua) with parameters: [Damage: %attack_damage]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_baoji1</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> crit 1</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> 10%% chance to deal 5x damage.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
-<td> <code>On Attack Start, [10%] ~ On Attack Landed, [CRITICALSTRIKE: 500]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Start, [10%][CRITICALSTRIKE: 500]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_attack4</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 160]</code></td>
 </tr>
 </table>
@@ -347,61 +353,64 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_jianshe3</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> cleave 3</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Deals 50%% damage around 400 range of the target.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, run script jianshe3 (addon_game_mode.lua) with parameters: [Damage: %attack_damage]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_baoji1</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> crit 1</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> 10%% chance to deal 5x damage.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
-<td> <code>On Attack Start, [10%] ~ On Attack Landed, [CRITICALSTRIKE: 500]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Start, [10%][CRITICALSTRIKE: 500]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_attack7</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 1280]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 4 Code </th>
+<tr><th> Ability 4 </th>
 <td> tower_jianjia6</td>
 </tr>
-<tr><th> Ability 4 Name </th>
+<tr><th> Name </th>
 <td> pierce MAX</td>
 </tr>
-<tr><th> Ability 4 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease enemy's armor by 64.</td>
 </tr>
-<tr><th> Ability 4 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, [PHYSICAL ARMOR: -64]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 5 Code </th>
+<tr><th> Ability 5 </th>
 <td> e301</td>
 </tr>
 </table>
@@ -440,16 +449,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_fenliejian</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> split 1</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks up to 3 enemies at the same time.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack, run script DuoChongGongJi (fenliejian.lua) with parameters: [Damage: %attack_damage, attack_count: 2]</code></td>
 </tr>
 </table>
@@ -488,16 +497,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_fenliejian_xianyan</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> split 2</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks up to 5 enemies at the same time.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack, run script DuoChongGongJi (fenliejian.lua) with parameters: [attack_count: 4]</code></td>
 </tr>
 </table>
@@ -536,16 +545,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_fenliejian_you</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> radiation</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks up to 10 enemies at the same time.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack, run script DuoChongGongJi_you (fenliejian.lua) with parameters: [attack_count: 10]</code></td>
 </tr>
 </table>
@@ -584,25 +593,25 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_fenliejian_you</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> radiation</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks up to 10 enemies at the same time.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack, run script DuoChongGongJi_you (fenliejian.lua) with parameters: [attack_count: 10]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_attack4</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 160]</code></td>
 </tr>
 </table>
@@ -641,31 +650,31 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_attack5</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 320]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_fenliejian_you</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> radiation</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks up to 10 enemies at the same time.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack, run script DuoChongGongJi_you (fenliejian.lua) with parameters: [attack_count: 10]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> e10003</td>
 </tr>
 </table>
@@ -704,16 +713,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_huiyao</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> burn 1</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Deals 60 magical damage every second to nearby enemies.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 500 Effect: during 1 seconds, every 0.5 seconds, deals 30 magic damage.</code></td>
 </tr>
 </table>
@@ -752,16 +761,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_huiyao2</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> burn 2</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Deals 320 magical damage every second to nearby enemies.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: during 1 seconds, every 0.5 seconds, deals 160 magic damage.</code></td>
 </tr>
 </table>
@@ -800,17 +809,20 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_shandianlian</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> lightning chain</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks have a 30%% chance to spark a damaging lightning that jumps accross enemies.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
-<td> <code>On Attack Landed, [30%] ~ </code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Landed, [30%]run script jn_D3_00 (shandianlian.lua) with parameters: [Damage: 100, Radius: 3000, AttackCount: 1, Count: 5] ~ </code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>false</code></td>
 </tr>
 </table>
 </section><section>
@@ -848,31 +860,37 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_chazhuangshandian</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> forked Lightning</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks have a 50%% chance to spark a forked lightning.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
-<td> <code>On Attack Landed, [50%]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Landed, [50%]run script Shock (shock.lua) with parameters: []</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[damage: 1000][targets: 5][start_radius: 100][chance: 40][end_distance: 5000][end_radius: 3000]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>false</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_huiyao2</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> burn 2</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Deals 320 magical damage every second to nearby enemies.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: during 1 seconds, every 0.5 seconds, deals 160 magic damage.</code></td>
 </tr>
 </table>
@@ -911,52 +929,58 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_chazhuangshandian</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> forked Lightning</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks have a 50%% chance to spark a forked lightning.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
-<td> <code>On Attack Landed, [50%]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Landed, [50%]run script Shock (shock.lua) with parameters: []</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[damage: 1000][targets: 5][start_radius: 100][chance: 40][end_distance: 5000][end_radius: 3000]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>false</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_huiyao3</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> burn 3</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Deals 1600 magical damage every second to nearby enemies.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 700 Effect: during 1 seconds, every 0.5 seconds, deals 800 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_du6</td>
 </tr>
-<tr><th> Ability 3 Name </th>
+<tr><th> Name </th>
 <td> poison MAX</td>
 </tr>
-<tr><th> Ability 3 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Enemies take 64 damage every second. Lasts 5 seconds.</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 64 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 4 Code </th>
+<tr><th> Ability 4 </th>
 <td> e10002</td>
 </tr>
 </table>
@@ -995,16 +1019,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_du4</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> poison 4</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Enemies take 8 damage every second. Lasts 5 seconds.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 8 magic damage.</code></td>
 </tr>
 </table>
@@ -1043,16 +1067,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_zheyi</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> anti-fly 1</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Flying enemies' armor decreased by 10 and movement speed decreased by 150.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: [PHYSICAL ARMOR: -10][MOVESPEED: -250]</code></td>
 </tr>
 </table>
@@ -1091,22 +1115,22 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_shechengguanghuan</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_du5</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> poison 5</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Enemies take 16 damage every second. Lasts 5 seconds.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 16 magic damage.</code></td>
 </tr>
 </table>
@@ -1145,32 +1169,32 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_du5</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> poison 5</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Enemies take 16 damage every second. Lasts 5 seconds.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 16 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_shechengguanghuan</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_jingzhun</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
-<td> <code>Aura: Range 300 Effect: </code></td>
+<tr><th> Raw </th>
+<td> <code>Aura: Range 300 Effect: [CANNOT MISS: true]</code></td>
 </tr>
 </table>
 </section><section>
@@ -1208,46 +1232,46 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_du5</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> poison 5</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Enemies take 16 damage every second. Lasts 5 seconds.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 16 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_zhongguoyu</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> recover</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks have a 1%% chance to heal Gem Castle by 1.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
-<td> <code>On Attack Landed, [1%]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Landed, [1%]run script huichun (huichun.lua) with parameters: []</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_zheyi</td>
 </tr>
-<tr><th> Ability 3 Name </th>
+<tr><th> Name </th>
 <td> anti-fly 1</td>
 </tr>
-<tr><th> Ability 3 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Flying enemies' armor decreased by 10 and movement speed decreased by 150.</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: [PHYSICAL ARMOR: -10][MOVESPEED: -250]</code></td>
 </tr>
 </table>
@@ -1286,17 +1310,20 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_zheyi2</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> anti-fly 2</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Flying enemies' armor decreased by 10 and movement speed decreased by 250 and magic resistance decreased by 50.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: [PHYSICAL ARMOR: -10][MOVESPEED: -250][MAGICAL RESISTANCE: -50]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 </table>
 </section><section>
@@ -1334,17 +1361,20 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_jin</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> corrupt 1</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease target enemy's armor by 20.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, [PHYSICAL ARMOR: -20]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 </table>
 </section><section>
@@ -1382,31 +1412,34 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_jin2</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> corrupt 2</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease target enemy's armor by 30.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, [PHYSICAL ARMOR: -30]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_tanlan</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> greedy</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Grant towers around: 5%% chance to get 10x gold in a kill.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 800 Effect: </code></td>
 </tr>
 </table>
@@ -1445,16 +1478,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_10jiyun</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> stun</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks have a 10%% chance to stun the enemy.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, [10%]</code></td>
 </tr>
 </table>
@@ -1493,41 +1526,47 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_10jiyun</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> stun</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks have a 10%% chance to stun the enemy.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, [10%]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_jin</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> corrupt 1</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease target enemy's armor by 20.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, [PHYSICAL ARMOR: -20]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_5shihua</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
-<td> <code>On Attack Landed, [1%]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Landed, [1%]run script shihua (addon_game_mode.lua) with parameters: []</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[bonus_magic_resist: 0][bonus_physical_damage: 100]</code></td>
 </tr>
 </table>
 </section><section>
@@ -1565,17 +1604,20 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_bixi</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> decadent</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease nearby enemies' armor by 15.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 800 Effect: [PHYSICAL ARMOR: -15]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>false</code></td>
 </tr>
 </table>
 </section><section>
@@ -1613,32 +1655,35 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_10jiyun</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> stun</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks have a 10%% chance to stun the enemy.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, [10%]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_bixi2</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> decadent2</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease enemy's armor by 30 nearby, ignore magic immune.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 1200 Effect: [PHYSICAL ARMOR: -30]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 </table>
 </section><section>
@@ -1676,7 +1721,7 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_chenmoguanghuan</td>
 </tr>
 </table>
@@ -1715,43 +1760,43 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_speed_aura5</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> aura 5</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Allies's attack speed+60 nearby.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: [ATTACKSPEED: 60]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_true_sight</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> true sight</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Grants true sight around the gem.</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_maoyan</td>
 </tr>
-<tr><th> Ability 3 Name </th>
+<tr><th> Name </th>
 <td> inspire</td>
 </tr>
-<tr><th> Ability 3 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Increase nearby gems' attack damage by 50%%.</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 500 Effect: [DAMAGEOUTGOING: 50%]</code></td>
 </tr>
 </table>
@@ -1790,64 +1835,64 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_speed_aura5</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> aura 5</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Allies's attack speed+60 nearby.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: [ATTACKSPEED: 60]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_speed_aura4</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> aura 4</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Allies's attack speed+50 nearby.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: [ATTACKSPEED: 50]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_true_sight</td>
 </tr>
-<tr><th> Ability 3 Name </th>
+<tr><th> Name </th>
 <td> true sight</td>
 </tr>
-<tr><th> Ability 3 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Grants true sight around the gem.</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 4 Code </th>
+<tr><th> Ability 4 </th>
 <td> tower_maoyan</td>
 </tr>
-<tr><th> Ability 4 Name </th>
+<tr><th> Name </th>
 <td> inspire</td>
 </tr>
-<tr><th> Ability 4 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Increase nearby gems' attack damage by 50%%.</td>
 </tr>
-<tr><th> Ability 4 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 500 Effect: [DAMAGEOUTGOING: 50%]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 5 Code </th>
+<tr><th> Ability 5 </th>
 <td> tower_chenmoguanghuan</td>
 </tr>
 </table>
@@ -1919,16 +1964,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_lanbaoshi</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> ice</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease nearby enemies' movement by 75%%.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 300 Effect: [MOVESPEED: -75%]</code></td>
 </tr>
 </table>
@@ -1967,22 +2012,22 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_lanbaoshi</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> ice</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease nearby enemies' movement by 75%%.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 300 Effect: [MOVESPEED: -75%]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_chain_frost</td>
 </tr>
 </table>
@@ -2021,58 +2066,58 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_true_sight</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> true sight</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Grants true sight around the gem.</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_speed_aura6</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> aura MAX</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Allies's attack speed+70 nearby.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: [ATTACKSPEED: 70]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_slow6</td>
 </tr>
-<tr><th> Ability 3 Name </th>
+<tr><th> Name </th>
 <td> slow MAX</td>
 </tr>
-<tr><th> Ability 3 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease enemy's movement speed by 480.</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[MOVESPEED: -480]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 4 Code </th>
+<tr><th> Ability 4 </th>
 <td> tower_lanbaoshi2</td>
 </tr>
-<tr><th> Ability 4 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 556 Effect: [MOVESPEED: -75%]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 5 Code </th>
+<tr><th> Ability 5 </th>
 <td> e10001</td>
 </tr>
 </table>
@@ -2259,46 +2304,46 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_jianshe5</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> cleave 5</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Deals 70%% damage around 500 range of the target.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, run script jianshe5 (addon_game_mode.lua) with parameters: [Damage: %attack_damage]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_slow5</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> slow 5</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease enemy's movement speed by 180.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[MOVESPEED: -180]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> e10011</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 4 Code </th>
+<tr><th> Ability 4 </th>
 <td> tower_attack6</td>
 </tr>
-<tr><th> Ability 4 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 640]</code></td>
 </tr>
 </table>
@@ -2337,31 +2382,31 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_fenliejian_xianyan</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> split 2</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks up to 5 enemies at the same time.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack, run script DuoChongGongJi (fenliejian.lua) with parameters: [attack_count: 4]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> e10012</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_attack5</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 320]</code></td>
 </tr>
 </table>
@@ -2400,55 +2445,64 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_aojiao</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
-<td> <code>On Attack Start, [3%] ~ </code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Start, [3%] [Duration: 5][DISARMED: true]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_shandianlian</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> lightning chain</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks have a 30%% chance to spark a damaging lightning that jumps accross enemies.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
-<td> <code>On Attack Landed, [30%] ~ </code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Landed, [30%]run script jn_D3_00 (shandianlian.lua) with parameters: [Damage: 100, Radius: 3000, AttackCount: 1, Count: 5] ~ </code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>false</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_chazhuangshandian</td>
 </tr>
-<tr><th> Ability 3 Name </th>
+<tr><th> Name </th>
 <td> forked Lightning</td>
 </tr>
-<tr><th> Ability 3 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Attacks have a 50%% chance to spark a forked lightning.</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
-<td> <code>On Attack Landed, [50%]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Landed, [50%]run script Shock (shock.lua) with parameters: []</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[damage: 1000][targets: 5][start_radius: 100][chance: 40][end_distance: 5000][end_radius: 3000]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>false</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 4 Code </th>
+<tr><th> Ability 4 </th>
 <td> e10008</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 5 Code </th>
+<tr><th> Ability 5 </th>
 <td> tower_attack6</td>
 </tr>
-<tr><th> Ability 5 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 640]</code></td>
 </tr>
 </table>
@@ -2487,22 +2541,22 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_huiyao3</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> burn 3</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Deals 1600 magical damage every second to nearby enemies.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 700 Effect: during 1 seconds, every 0.5 seconds, deals 800 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> e10010</td>
 </tr>
 </table>
@@ -2541,49 +2595,49 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_speed_aura_guichu</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> otomad</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Allies's attack speed+500 nearby.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 150 Effect: [ATTACKSPEED: 500]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_speed_aura6</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> aura MAX</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Allies's attack speed+70 nearby.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: [ATTACKSPEED: 70]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_true_sight</td>
 </tr>
-<tr><th> Ability 3 Name </th>
+<tr><th> Name </th>
 <td> true sight</td>
 </tr>
-<tr><th> Ability 3 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Grants true sight around the gem.</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 4 Code </th>
+<tr><th> Ability 4 </th>
 <td> e10009</td>
 </tr>
 </table>
@@ -2622,13 +2676,13 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_ranjin</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> e10006</td>
 </tr>
 </table>
@@ -2667,31 +2721,34 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_attack7</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 1280]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_baoji1</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> crit 1</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> 10%% chance to deal 5x damage.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
-<td> <code>On Attack Start, [10%] ~ On Attack Landed, [CRITICALSTRIKE: 500]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Start, [10%][CRITICALSTRIKE: 500]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> e10005</td>
 </tr>
 </table>
@@ -2730,16 +2787,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_jihan</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
-<td> <code>On Attack Landed, [MOVESPEED: -75%][DISABLE HEALING: 1]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Landed,  [Duration: 3][MOVESPEED: -75%][DISABLE HEALING: 1(could mean true)]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> e10004</td>
 </tr>
 </table>
@@ -2778,46 +2835,52 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_bixi2</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> decadent2</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease enemy's armor by 30 nearby, ignore magic immune.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 1200 Effect: [PHYSICAL ARMOR: -30]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_jianjia6</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> pierce MAX</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease enemy's armor by 64.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, [PHYSICAL ARMOR: -64]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_zheyi3</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
+<tr><th> Raw </th>
 <td> <code>Aura: Range 600 Effect: [PHYSICAL ARMOR: -64][MOVESPEED: -480][MAGICAL RESISTANCE: -100]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 4 Code </th>
+<tr><th> Ability 4 </th>
 <td> e10013</td>
 </tr>
 </table>
@@ -2853,61 +2916,64 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> tower_baoji1</td>
 </tr>
-<tr><th> Ability 1 Name </th>
+<tr><th> Name </th>
 <td> crit 1</td>
 </tr>
-<tr><th> Ability 1 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> 10%% chance to deal 5x damage.</td>
 </tr>
-<tr><th> Ability 1 Raw </th>
-<td> <code>On Attack Start, [10%] ~ On Attack Landed, [CRITICALSTRIKE: 500]</code></td>
+<tr><th> Raw </th>
+<td> <code>On Attack Start, [10%][CRITICALSTRIKE: 500]</code></td>
+</tr>
+<tr><th> Raw: Pierce Spell Immunity </th>
+<td> <code>true</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> tower_slow6</td>
 </tr>
-<tr><th> Ability 2 Name </th>
+<tr><th> Name </th>
 <td> slow MAX</td>
 </tr>
-<tr><th> Ability 2 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Decrease enemy's movement speed by 480.</td>
 </tr>
-<tr><th> Ability 2 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[MOVESPEED: -480]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> tower_jianshe6</td>
 </tr>
-<tr><th> Ability 3 Name </th>
+<tr><th> Name </th>
 <td> cleave MAX</td>
 </tr>
-<tr><th> Ability 3 Tooltip </th>
+<tr><th> Tooltip </th>
 <td> Deals full damage around 700 range of the target.</td>
 </tr>
-<tr><th> Ability 3 Raw </th>
+<tr><th> Raw </th>
 <td> <code>On Attack Landed, run script jianshe6 (addon_game_mode.lua) with parameters: [Damage: %attack_damage]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 4 Code </th>
+<tr><th> Ability 4 </th>
 <td> e10007</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 5 Code </th>
+<tr><th> Ability 5 </th>
 <td> tower_attack7</td>
 </tr>
-<tr><th> Ability 5 Raw </th>
+<tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 1280]</code></td>
 </tr>
 </table>
@@ -2975,25 +3041,31 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 1 Code </th>
+<tr><th> Ability 1 </th>
 <td> medusa_stone_gaze</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 2 Code </th>
+<tr><th> Ability 2 </th>
 <td> no_hp_bar</td>
 </tr>
+<tr><th> Raw </th>
+<td> <code>[NO HEALTH BAR: true]</code></td>
+</tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 3 Code </th>
+<tr><th> Ability 3 </th>
 <td> no_selectable</td>
 </tr>
+<tr><th> Raw </th>
+<td> <code>[UNSELECTABLE: true]</code></td>
+</tr>
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><th> Ability 4 Code </th>
+<tr><th> Ability 4 </th>
 <td> naga_siren_ensnare</td>
 </tr>
 </table>
