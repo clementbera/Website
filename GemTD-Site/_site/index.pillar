@@ -22,4 +22,7 @@ Added clean-up function for names (Everything capitalized, with space, etc.). Ma
 
 v.0.5: Added slates.
 
+v.0.6: Added more lua script analysis to detect more accurately creep skills and pop chance. 
+Added Diamond picture (Thanks to leQ4specialist).
+
 Farine
