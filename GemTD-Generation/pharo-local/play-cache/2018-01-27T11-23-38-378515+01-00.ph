@@ -1,1 +1,1 @@
-GemTDGod new process.truncated1.8 rounded 
+GemTDGod new process.truncated1.8 rounded importDetailsWith: 
