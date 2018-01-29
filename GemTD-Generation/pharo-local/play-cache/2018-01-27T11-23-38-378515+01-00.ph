@@ -1,1 +1,1 @@
-GemTDGod new process."tower_zheyi2"
+GemTDGod new process.truncated1.8 rounded 
