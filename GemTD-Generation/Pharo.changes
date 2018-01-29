@@ -4617,4 +4617,344 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
-!----End fileIn----!!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/29/2018 14:22' prior: 34040595!exportOn: s	self exportHeaderOn: s.	self exportNamesOn: s.	self exSplit: s.	self exportDamageOn: s.	self exSplit: s.	self exportCombo: combo names: comboNames on: s.	self exportAbilitiesOn: s.	codeName = 'gemtd_tianranzumulv' ifTrue: [ 		s << '*Spells to steal>steal.pillar*'.		s cr. ]! !----SNAPSHOT----2018-01-29T14:22:16.174227+01:00 Pharo.image priorSource: 498950!----QUIT----2018-01-29T14:22:23.432069+01:00 Pharo.image priorSource: 505359!
+!----End fileIn----!!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 1/29/2018 14:22' prior: 34040595!exportOn: s	self exportHeaderOn: s.	self exportNamesOn: s.	self exSplit: s.	self exportDamageOn: s.	self exSplit: s.	self exportCombo: combo names: comboNames on: s.	self exportAbilitiesOn: s.	codeName = 'gemtd_tianranzumulv' ifTrue: [ 		s << '*Spells to steal>steal.pillar*'.		s cr. ]! !----SNAPSHOT----2018-01-29T14:22:16.174227+01:00 Pharo.image priorSource: 498950!----QUIT----2018-01-29T14:22:23.432069+01:00 Pharo.image priorSource: 505359!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/29/2018 14:36' prior: 33798686!importExtraAbilities: importer	| assoc |	assoc := importer creepExtraAbilities at: codeName ifAbsent: [		1halt.		0->#()].	hiddenLevel := assoc key.	assoc value do: [:ab |		abilities add: (GemTDAbility newFrom: ab importer: importer) ].! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/29/2018 14:38' prior: 34062966!importExtraAbilities: importer	| assoc cea |	cea := importer creepExtraAbilities.	assoc := cea at: codeName ifAbsent: [		cea values		 	detect: [ :a | a key = level ]			ifFound: [ :b | b ]			ifNone: [ 0->#() ] ].	hiddenLevel := assoc key.	assoc value do: [:ab |		abilities add: (GemTDAbility newFrom: ab importer: importer) ].! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/29/2018 14:38' prior: 34017294!importWith: details importer: importer	super importWith: details importer: importer.	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed'.	res := details at: 'MagicalResistance'.	armor := details at: 'ArmorPhysical'.	hp := details at: 'StatusHealth'.	self importExtraAbilities: importer.	self difficultyPatchWith: importer.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/29/2018 14:38' prior: 34063299!importExtraAbilities: importer	| assoc cea |	1halt.	cea := importer creepExtraAbilities.	assoc := cea at: codeName ifAbsent: [		cea values		 	detect: [ :a | a key = level ]			ifFound: [ :b | b ]			ifNone: [ 0->#() ] ].	hiddenLevel := assoc key.	assoc value do: [:ab |		abilities add: (GemTDAbility newFrom: ab importer: importer) ].! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/29/2018 14:39' prior: 34064201!importExtraAbilities: importer	| assoc cea l |	l := level asInteger.	cea := importer creepExtraAbilities.	assoc := cea at: codeName ifAbsent: [		cea values		 	detect: [ :a | a key = l ]			ifFound: [ :b | b ]			ifNone: [ 0->#() ] ].	hiddenLevel := assoc key.	assoc value do: [:ab |		abilities add: (GemTDAbility newFrom: ab importer: importer) ].! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/29/2018 14:39' prior: 34064635!importExtraAbilities: importer	| assoc cea l |	l := level asInteger.	cea := importer creepExtraAbilities.	assoc := cea at: codeName ifAbsent: [		cea values		 	detect: [ :a | a key = l ]			ifFound: [ :b | b logCr. b ]			ifNone: [ 0->#() ] ].	hiddenLevel := assoc key.	assoc value do: [:ab |		abilities add: (GemTDAbility newFrom: ab importer: importer) ].! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 1/29/2018 14:40' prior: 34065082!importExtraAbilities: importer	| assoc cea l |	l := level asInteger.	cea := importer creepExtraAbilities.	assoc := cea at: codeName ifAbsent: [		cea values		 	detect: [ :a | a key = l ]			ifFound: [ :b | b ]			ifNone: [ 0->#() ] ].	hiddenLevel := assoc key.	assoc value do: [:ab |		abilities add: (GemTDAbility newFrom: ab importer: importer) ].! !----QUIT----2018-01-29T14:40:46.298012+01:00 Pharo.image priorSource: 505442!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDSlate methodsFor: 'initialize' stamp: 'ClementBera 1/29/2018 14:42' prior: 33909678!importWith: details importer: importer	super importWith: details importer: importer.	1halt.	picture := 'advanced/' , codeName.	combo := importer combinations at: codeName ifAbsent: [ #() ].	comboNames := self comboNamesFrom: combo importer: importer! !!GemTDSlate methodsFor: 'initialize' stamp: 'ClementBera 1/29/2018 14:45' prior: 34068993!importWith: details importer: importer	super importWith: details importer: importer.	picture := 'advanced/' , codeName.	combo := importer combinations at: codeName ifAbsent: [ #() ].	comboNames := self comboNamesFrom: combo importer: importer.	self importSlateAbility: importer! !!GemTDSlate methodsFor: 'initialize' stamp: 'ClementBera 1/29/2018 14:45'!importSlateAbility: importer	importer slateAbilityMapping.	1halt.! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 14:45'!slateAbilityMapping	1halt.! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 14:51' prior: 34069851!slateAbilityMapping	| script last parsed |	script := scripts at: 1.	last := 1.	parsed := OrderedCollection new.	[last := (script indexOfSubCollection: 'merge_shiban(' startingAt: last) + 'merge_shiban(' size.	parsed add: (GemTDLuaParser new parsePair: (script copyFrom: last to: last + 150) readStream).	last = 'merge_shiban(' size] whileFalse.	^ parsed! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/29/2018 14:52'!parsePair: rs	| s1 s2 |	readStream := rs.	self skipSeparators.	s1 := self parseString.	self skipSeparators.	self assert: readStream peek = $, .	self skipSeparators.	s2 := self parseString.	^ s1 -> s2! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 14:52' prior: 34069975!slateAbilityMapping	| script last parsed |	script := scripts at: 1.	last := 1.	parsed := OrderedCollection new.	[last := (script indexOfSubCollection: 'merge_shiban(' startingAt: last) + 'merge_shiban(' size.	parsed add: (GemTDLuaParser new parsePair: (script copyFrom: last to: last + 150) readStream).	last = 'merge_shiban(' size] whileFalse.1halt.	^ parsed! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 1/29/2018 14:53' prior: 34070416!parsePair: rs	| s1 s2 |	readStream := rs.	self skipSeparators.	s1 := self parseString.	self skipSeparators.	self assert: readStream peek = $, .	readStream next.	self skipSeparators.	s2 := self parseString.	^ s1 -> s2! !----SNAPSHOT----2018-01-29T14:54:21.034707+01:00 Pharo.image priorSource: 511465!!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 14:55' prior: 34070721!slateAbilityMapping	| script last parsed |	script := scripts at: 1.	last := 1.	parsed := OrderedCollection new.	[last := (script indexOfSubCollection: 'merge_shiban(' startingAt: last) + 'merge_shiban(' size.	last = 'merge_shiban(' size] whileFalse: [		parsed add: (GemTDLuaParser new parsePair: (script copyFrom: last to: last + 150) readStream).].	^ parsed! !!GemTDGod methodsFor: 'analysis' stamp: 'ClementBera 1/29/2018 14:56' prior: 33759484!generate	units := OrderedCollection new.	self units keysAndValuesDo: [ :u :details |		| cls |		u = 'gemtd_feidanshiban' ifTrue: [ 1halt ].		(u beginsWith: 'gemtd') ifTrue: [ 			cls := ((details at: 'Model') beginsWith:'models/items/wards/')				ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]				ifFalse: [ 					((details at: 'Model') beginsWith:'materials/')						ifFalse: [GemTDCreep]						ifTrue: [GemTDSlate]].		units add: (cls newFrom: u with: details importer: importer)]].! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 14:58' prior: 34071591!slateAbilityMapping	| script last parsed |	script := scripts at: 1.	last := 1.	parsed := OrderedCollection new.	[last := (script indexOfSubCollection: 'merge_shiban( "' startingAt: last) + 'merge_shiban(' size.	last = 'merge_shiban(' size] whileFalse: [		parsed add: (GemTDLuaParser new parsePair: (script copyFrom: last to: last + 150) readStream).].	^ parsed! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 14:58' prior: 34072670!slateAbilityMapping	| script last parsed |	script := scripts at: 1.	last := 1.	parsed := OrderedCollection new.	[last := (script indexOfSubCollection: 'merge_shiban( "' startingAt: last) + 'merge_shiban(' size.	last = 'merge_shiban(' size] whileFalse: [		parsed add: (GemTDLuaParser new parsePair: (script copyFrom: last to: last + 150) readStream).].	^ parsed! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 14:58'!parseSlateAbilityMapping	| script last parsed |	script := scripts at: 1.	last := 1.	parsed := OrderedCollection new.	[last := (script indexOfSubCollection: 'merge_shiban( "' startingAt: last) + 'merge_shiban(' size.	last = 'merge_shiban(' size] whileFalse: [		parsed add: (GemTDLuaParser new parsePair: (script copyFrom: last to: last + 150) readStream).].	^ parsed! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 14:58' prior: 34073135!slateAbilityMapping	slateMap ifNotNil: [ ^ slateMap ].	^ slateMap := self parseSlateAbilityMapping! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 14:59' prior: 34074054!slateAbilityMapping	slateMap ifNotNil: [ ^ slateMap ].	^ slateMap := self parseSlateAbilityMapping asDictionary! !!GemTDSlate methodsFor: 'initialize' stamp: 'ClementBera 1/29/2018 14:59' prior: 34069703!importSlateAbility: importer	| map |	map := importer slateAbilityMapping.	map at: 'codeName'.	1halt.! !!GemTDSlate methodsFor: 'initialize' stamp: 'ClementBera 1/29/2018 15:00' prior: 34074459!importSlateAbility: importer	| map |	map := importer slateAbilityMapping.	abilities add: (GemTDAbility newFrom: (map at: codeName) importer: importer)! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:02' prior: 34028935!importThinkAbility: modifier prefix: prefix	| think |	think := (modifier at: 'OnIntervalThink' ifAbsent: [^self addProperty: prefix]) at: 'Damage'.	self addProperty: (String streamContents: [:s |		s  			<< prefix.		(modifier includesKey: 'Duration') ifTrue: 			[s				<< 'during ' << (modifier at: 'Duration') << ' seconds, every ' 				<< (modifier at: 'ThinkInterval') << ' seconds,'].		s << ' deals ' << (think at: 'Damage')			<< ' ' << (self damageKeywordFrom: (think at: 'Type')) << ' damage.' ]).! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:03' prior: 34030456!importAura: aura editing: modifiers	| auraModif prefix |	modifiers removeKey: (aura at: 'Aura').	modifiers removeKey: (modifiers keyAtValue: aura).	prefix := 'Aura: Range ' , (aura at: 'Aura_Radius') , ' Effect: '.	auraModif := modifiers at: (aura at: 'Aura') ifAbsent: [^ self addProperty: prefix].	self importSecondMod: auraModif prefix: prefix! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:03' prior: 34075520!importAura: aura editing: modifiers	| auraModif prefix |	modifiers removeKey: (aura at: 'Aura') ifAbsent: [].	modifiers removeKey: (modifiers keyAtValue: aura).	prefix := 'Aura: Range ' , (aura at: 'Aura_Radius') , ' Effect: '.	auraModif := modifiers at: (aura at: 'Aura') ifAbsent: [^ self addProperty: prefix].	self importSecondMod: auraModif prefix: prefix! !!GemTDGod methodsFor: 'analysis' stamp: 'ClementBera 1/29/2018 15:03' prior: 34072048!generate	units := OrderedCollection new.	self units keysAndValuesDo: [ :u :details |		| cls |		1halt.		u = 'gemtd_feidanshiban' ifTrue: [ 1halt ].		(u beginsWith: 'gemtd') ifTrue: [ 			cls := ((details at: 'Model') beginsWith:'models/items/wards/')				ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]				ifFalse: [ 					((details at: 'Model') beginsWith:'materials/')						ifFalse: [GemTDCreep]						ifTrue: [GemTDSlate]].		units add: (cls newFrom: u with: details importer: importer)]].! !!GemTDGod methodsFor: 'analysis' stamp: 'ClementBera 1/29/2018 15:05' prior: 34076427!generate	units := OrderedCollection new.	self units keysAndValuesDo: [ :u :details |		| cls |		(u beginsWith: 'gemtd') ifTrue: [ 			cls := ((details at: 'Model') beginsWith:'models/items/wards/')				ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]				ifFalse: [ 					((details at: 'Model') beginsWith:'materials/')						ifFalse: [GemTDCreep]						ifTrue: [GemTDSlate]].		units add: (cls newFrom: u with: details importer: importer)]].	#(gemtd_bingfengshiban gemtd_feidanshiban) do: [ :each |		(self units keys includes: each) ifFalse: [ units add: (GemTDSlate newFrom: each with: Dictionary new importer: importer) ] ]! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 1/29/2018 15:06' prior: 33786639!importAbilities: details importer: importer	1 to: 16 do: [ :i |		| ab |		ab := details at: 'Ability' , i printString ifAbsent: [''].		ab = '' ifFalse: [ 			abilities add: (GemTDAbility newFrom: ab importer: importer) ] ].! !!GemTDGod methodsFor: 'analysis' stamp: 'ClementBera 1/29/2018 15:07' prior: 34077052!generate	units := OrderedCollection new.	self units keysAndValuesDo: [ :u :details |		| cls |		(u beginsWith: 'gemtd') ifTrue: [ 			cls := ((details at: 'Model') beginsWith:'models/items/wards/')				ifTrue: [ u last = $1 ifTrue: [ GemTDBaseTower ] ifFalse: [ GemTDAdvancedTower ] ]				ifFalse: [ 					((details at: 'Model') beginsWith:'materials/')						ifFalse: [GemTDCreep]						ifTrue: [GemTDSlate]].		units add: (cls newFrom: u with: details importer: importer)]].! !----QUIT----2018-01-29T15:07:45.627496+01:00 Pharo.image priorSource: 516982!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:11' prior: 34075971!importAura: aura editing: modifiers	| auraModif prefix |	codeName = 'tower_lanbaoshi2' ifTrue: [ 1halt ].	modifiers removeKey: (aura at: 'Aura') ifAbsent: [].	modifiers removeKey: (modifiers keyAtValue: aura).	prefix := 'Aura: Range ' , (aura at: 'Aura_Radius') , ' Effect: '.	auraModif := modifiers at: (aura at: 'Aura') ifAbsent: [^ self addProperty: prefix].	self importSecondMod: auraModif prefix: prefix! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:11' prior: 34081714!importAura: aura editing: modifiers	| auraModif prefix |	codeName = 'tower_lanbaoshi2' ifTrue: [ 1halt ].	modifiers removeKey: (aura at: 'Aura') ifAbsent: [].	modifiers removeKey: (modifiers keyAtValue: aura).	prefix := 'Aura: Range ' , (aura at: 'Aura_Radius') , ' Effect: '.	auraModif := modifiers at: (aura at: 'Aura') ifAbsent: [1halt. ^ self addProperty: prefix].	self importSecondMod: auraModif prefix: prefix! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:12' prior: 34082228!importAura: aura editing: modifiers	| auraModif prefix |	modifiers removeKey: (aura at: 'Aura') ifAbsent: [].	prefix := 'Aura: Range ' , (aura at: 'Aura_Radius') , ' Effect: '.	auraModif := modifiers at: (aura at: 'Aura') ifAbsent: [ ^ self addProperty: prefix].	modifiers removeKey: (modifiers keyAtValue: aura).	self importSecondMod: auraModif prefix: prefix! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:13' prior: 34082749!importAura: aura editing: modifiers	| auraModif prefix |	modifiers removeKey: (modifiers keyAtValue: aura).	prefix := 'Aura: Range ' , (aura at: 'Aura_Radius') , ' Effect: '.	auraModif := modifiers at: (aura at: 'Aura') ifAbsent: [ ^ self addProperty: prefix].	modifiers removeKey: (aura at: 'Aura') ifAbsent: [].	self importSecondMod: auraModif prefix: prefix! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:14' prior: 34046030!importDetailsWith: importer	| details modifiers | 	codeName = 'new_cask' ifTrue: [ 1halt ].	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ]	! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:15' prior: 34083679!importDetailsWith: importer	| details modifiers | 	codeName = 'new_cask' ifTrue: [ 1halt ].	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:15' prior: 34084233!importDetailsWith: importer	| details modifiers | 	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:18' prior: 34084788!importDetailsWith: importer	| details modifiers | 	codeName = 'tower_chain_frost' ifTrue: [ 1halt ].	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:20' prior: 34085301!importDetailsWith: importer	| details modifiers | 	codeName = 'naga_siren_ensnare' ifTrue: [ 1halt ].	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 15:23' prior: 34074251!slateAbilityMapping	1halt.	slateMap ifNotNil: [ ^ slateMap ].	^ slateMap := self parseSlateAbilityMapping asDictionary! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 1/29/2018 15:24' prior: 34086428!slateAbilityMapping	slateMap ifNotNil: [ ^ slateMap ].	^ slateMap := self parseSlateAbilityMapping asDictionary! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 1/29/2018 15:26' prior: 34085865!importDetailsWith: importer	| details modifiers | 	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !----SNAPSHOT----2018-01-29T15:26:04.835439+01:00 Pharo.image priorSource: 524182!----QUIT----2018-01-29T15:28:29.873804+01:00 Pharo.image priorSource: 532843!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 1/29/2018 15:30' prior: 34040189!exportStealable	| abilities s |	abilities := importer stealable collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	s := WriteStream on: (String new: 10000).	s << '!! Abilities to steal'.	s cr.	abilities withIndexDo: [ :ab :i | 		ab shortExportOn: s i: i.		i = abilities size ifFalse: [ 			s << '| ~ | ~'.			s cr ] ].	self export: s to: 'steal'! !----QUIT----2018-01-29T15:31:10.14807+01:00 Pharo.image priorSource: 532926!
