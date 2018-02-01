@@ -321,9 +321,9 @@ GameRules.gem_difficulty = {
 
 GameRules.gem_difficulty_speed = {
 	[1] = 0.85,
-	[2] = 1.12,
-	[3] = 1.31,
-	[4] = 1.47
+	[2] = 1.14,
+	[3] = 1.34,
+	[4] = 1.51
 }
 
 GameRules.gem_path_show = {}
@@ -1291,12 +1291,12 @@ function GemTD:OnPlayerConnectFull (keys)
 
 	--重连
 	if GameRules.is_debug == true then
-		GameRules:SendCustomMessage("PlayerID="..keys.PlayerID.." 的玩家加入了游戏。", 0, 0)
+		-- GameRules:SendCustomMessage("PlayerID="..keys.PlayerID.." 的玩家加入了游戏。", 0, 0)
 	end
 
 	if isConnected[keys.index + 1] == true then
 		local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
-		GameRules:SendCustomMessage("PlayerID="..keys.PlayerID.." 的玩家加入了游戏。", 0, 0)
+		-- GameRules:SendCustomMessage("PlayerID="..keys.PlayerID.." 的玩家加入了游戏。", 0, 0)
 		GameRules:SendCustomMessage(hero:GetUnitName(), 0, 0)
 		hero:RemoveAbility("silence_self")
 		hero:RemoveModifierByName("modifier_tower_chenmo")
@@ -1313,7 +1313,7 @@ function GemTD:OnPlayerConnectFull (keys)
 		end
 		
 		if GameRules.is_debug == true then
-			GameRules:SendCustomMessage("PlayerID="..keys.PlayerID.." 的玩家是断线重连的。", 0, 0)
+			-- GameRules:SendCustomMessage("PlayerID="..keys.PlayerID.." 的玩家是断线重连的。", 0, 0)
 		end
 
 		--同步玩家金钱
@@ -1358,8 +1358,8 @@ function GemTD:OnPlayerDisconnect (keys)
 	end
 
 	local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
-	GameRules:SendCustomMessage("PlayerID="..keys.PlayerID.." 的玩家离开了游戏。", 0, 0)
-	GameRules:SendCustomMessage(hero:GetUnitName(), 0, 0)
+	-- GameRules:SendCustomMessage("PlayerID="..keys.PlayerID.." 的玩家离开了游戏。", 0, 0)
+	-- GameRules:SendCustomMessage(hero:GetUnitName(), 0, 0)
 	hero:AddAbility("silence_self")
 	hero:FindAbilityByName("silence_self"):SetLevel(1)
 	-- PauseGame(true)
