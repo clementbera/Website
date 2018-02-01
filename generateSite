@@ -1,0 +1,28 @@
+#MSG
+echo 'Script expect resource and scripts files from Gem TD vpk to be copied in GemTD-Generation folder' 
+# generate pillar files
+cd GemTD-Generation
+bash pharo Pharo.image eval 'GemTDGod new process'
+cp export/*.pillar ../GemTD-Site/
+# generate html files
+cd ../GemTD-Site/
+../ecstatic generate
+# copy generated files to tmp dir
+mkdir ~/Desktop/TMP_GemTD_HTML
+cp _site/*.html ~/Desktop/TMP_GemTD_HTML
+# push on github master
+cd ..
+git add -u
+git commit -m 'Automatic update ~ new sources'
+git push origin master
+#Switching to deploy branch
+git checkout gh-pages
+cp ~/Desktop/TMP_GemTD_HTML/*.html .
+#push on github gh-pages
+git add -u
+git commit -m 'Automatic update ~ new sources'
+git push origin gh-pages
+#Switch back to master
+git checkout master
+# remove temp folder
+rm -r ~/Desktop/TMP_GemTD_HTML
