@@ -5467,4 +5467,174 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
+!----End fileIn----!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 2/5/2018 21:08' prior: 34086858!importDetailsWith: importer	| details modifiers | 	codeName = 'shredder_reactive_armor' ifTrue: [ 1halt ].	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 2/5/2018 21:09' prior: 34114869!importDetailsWith: importer	| details modifiers | 	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !!GemTDAbility methodsFor: 'import' stamp: 'ClementBera 2/5/2018 21:10' prior: 33933303!importWith: importer 	name := Dictionary new.	codeName = 'tower_ranjin' ifTrue: [ 1halt ].	self importDetailsWith: importer.	#(en sch tch) do: [ :l |		name at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName ifAbsent: [nil]) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: ((importer resources at: l) at: 'DOTA_Tooltip_Ability_' , codeName , '_Description' ifAbsent: [nil]) ].! !!GemTDAbility methodsFor: 'import' stamp: 'ClementBera 2/5/2018 21:14'!abilityResourceLang: l importer: importer keyword: keyword	^ (importer resources at: l) 			at: 'DOTA_Tooltip_Ability_' , codeName 			ifAbsent: [				(importer resources at: l) 					at: 'DOTA_Tooltip_ability_' , codeName 					ifAbsent: [nil]]! !!GemTDAbility methodsFor: 'import' stamp: 'ClementBera 2/5/2018 21:15' prior: 34115944!importWith: importer 	name := Dictionary new.	codeName = 'tower_ranjin' ifTrue: [ 1halt ].	self importDetailsWith: importer.	#(en sch tch) do: [ :l |		name at: l put: (self abilityResourceLang: l importer: importer keyword: codeName) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: (self abilityResourceLang: l importer: importer keyword: codeName , '_Description') ].! !!GemTDAbility methodsFor: 'import' stamp: 'ClementBera 2/5/2018 21:15' prior: 34116795!importWith: importer 	name := Dictionary new.	self importDetailsWith: importer.	#(en sch tch) do: [ :l |		name at: l put: (self abilityResourceLang: l importer: importer keyword: codeName) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: (self abilityResourceLang: l importer: importer keyword: codeName , '_Description') ].! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 2/5/2018 21:16' prior: 33870644!cleanNameFor: key lang: lang importer: importer	^ self clean: ((importer resources at: lang) 			at: key 			ifAbsent: [ 1halt. self getFallBackNames 							at: key 							ifAbsent: ['Unavailable'] ])! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 2/5/2018 21:17' prior: 34117743!cleanNameFor: key lang: lang importer: importer	^ self clean: ((importer resources at: lang) 			at: key 			ifAbsent: [ (codeName beginsWith: 'Kooh') ifTrue: [1halt]. self getFallBackNames 							at: key 							ifAbsent: ['Unavailable'] ])! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 2/5/2018 21:17' prior: 34118042!cleanNameFor: key lang: lang importer: importer	^ self clean: ((importer resources at: lang) 			at: key 			ifAbsent: [ (codeName = 'gemtd_keyinuoerguangmingzhishan') ifTrue: [1halt]. self getFallBackNames 							at: key 							ifAbsent: ['Unavailable'] ])! !!GemTDElement methodsFor: 'initialize' stamp: 'ClementBera 2/5/2018 21:19' prior: 34118381!cleanNameFor: key lang: lang importer: importer	^ self clean: ((importer resources at: lang) 			at: key 			ifAbsent: [ self getFallBackNames 							at: key 							ifAbsent: ['Unavailable'] ])! !----QUIT----2018-02-05T21:20:05.832587+01:00 Pharo.image priorSource: 554413!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
 !----End fileIn----!
