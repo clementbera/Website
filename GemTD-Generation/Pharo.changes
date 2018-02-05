@@ -5127,4 +5127,174 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
+!----End fileIn----!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/5/2018 20:57' prior: 33867915!exportAdvancedTowersOn: s	| printed order others |	printed := #().	order := GemTDOrderParser new parse: 'extra/combinedTowerOrder.txt' asFileReference readStream contents readStream.	order keysAndValuesDo: [ :title :towerCodes |		s << '!! ' << title.		s cr.		s << '!!!!!! Memo '.		s cr.		towerCodes do: [ :tc |			self unitNamed: tc do: [ :unit | unit comboExportOn: s ] ifNone: [ ] ].		s cr.		towerCodes do: [ :tc |			self unitNamed: tc do: [ :unit | unit exportOn: s ] ifNone: [ ] ].		printed := printed , towerCodes. ].	others := units select: [ :each | 			(each class = GemTDAdvancedTower or: [ each class = GemTDSlate ]) 			and: [ (printed includes: each codeName) not ] ].	others ifNotEmpty: [ 		s << '!! Others'.		s cr.		others do: [ :u | u exportOn: s ] ].! !!GemTDAdvancedTower methodsFor: 'export' stamp: 'ClementBera 2/5/2018 20:58'!comboExportOn: s	combo ifNil: [ ^ self ].	combo size < 2 ifTrue: [ ^ self ] .	s << (name at: 'en').	s << ' = '.	comboNames 		do: [ :cn | s << cn ]		separatedBy: [ s << ' \+ ' ].	s cr.! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 2/5/2018 20:58'!comboExportOn: s	combo ifNil: [ ^ self ].	combo size < 2 ifTrue: [ ^ self ] .	s << (name at: 'en').	s << ' = '.	comboNames 		do: [ :cn | s << cn ]		separatedBy: [ s << ' \+ ' ].	s cr.! !GemTDAdvancedTower removeSelector: #comboExportOn:!!GemTDElement methodsFor: 'export' stamp: 'ClementBera 2/5/2018 20:59' prior: 34100895!comboExportOn: s	self combo ifNil: [ ^ self ].	self combo size < 2 ifTrue: [ ^ self ] .	s << (name at: 'en').	s << ' = '.	self comboNames 		do: [ :cn | s << cn ]		separatedBy: [ s << ' \+ ' ].	s cr.! !!GemTDSlate methodsFor: 'accessing' stamp: 'ClementBera 2/5/2018 20:59'!picture	^ picture! !!GemTDSlate methodsFor: 'accessing' stamp: 'ClementBera 2/5/2018 20:59'!picture: anObject	picture := anObject! !!GemTDSlate methodsFor: 'accessing' stamp: 'ClementBera 2/5/2018 20:59'!combo	^ combo! !!GemTDSlate methodsFor: 'accessing' stamp: 'ClementBera 2/5/2018 20:59'!combo: anObject	combo := anObject! !!GemTDSlate methodsFor: 'accessing' stamp: 'ClementBera 2/5/2018 20:59'!comboNames	^ comboNames! !!GemTDSlate methodsFor: 'accessing' stamp: 'ClementBera 2/5/2018 20:59'!comboNames: anObject	comboNames := anObject! !!GemTDAdvancedTower methodsFor: 'accessing' stamp: 'ClementBera 2/5/2018 20:59'!combo	^ combo! !!GemTDAdvancedTower methodsFor: 'accessing' stamp: 'ClementBera 2/5/2018 20:59'!combo: anObject	combo := anObject! !!GemTDAdvancedTower methodsFor: 'accessing' stamp: 'ClementBera 2/5/2018 20:59'!comboNames	^ comboNames! !!GemTDAdvancedTower methodsFor: 'accessing' stamp: 'ClementBera 2/5/2018 20:59'!comboNames: anObject	comboNames := anObject! !----QUIT----2018-02-05T20:59:32.198499+01:00 Pharo.image priorSource: 536392!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
 !----End fileIn----!
