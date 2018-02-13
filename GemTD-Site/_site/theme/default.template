@@ -36,7 +36,7 @@
 					  	<h2>{{site_short_description}}</h2>
 					</div>
 				</div>
-				<div class="children">					
+				<div class="children" style="width:85%">					
 					<ul>
 						{{#menu}}
 						<li>
