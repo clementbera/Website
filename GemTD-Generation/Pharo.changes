@@ -6997,4 +6997,174 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
-!----End fileIn----!----QUIT----2018-02-06T10:37:12.579127+01:00 Pharo.image priorSource: 1890076!
+!----End fileIn----!----QUIT----2018-02-06T10:37:12.579127+01:00 Pharo.image priorSource: 1890076!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 07:57'!exportHeroAbilities	| s |	s := WriteStream on: (String new: 10000).	self exportHeroAbilitiesHeaderOn: s.	self exportHeroAbilitiesOn: s.	self export: s to: 'heroAbilities'! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 07:57'!exportHeroAbilitiesHeaderOn: s	s << '!! Hero abilities'.	s cr.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 07:58'!exportHeroAbilitiesOn: s	| printed order others |	importer heroAbilities do: [ :abName | 				]	! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 07:58' prior: 35450974!exportHeroAbilitiesOn: s	importer heroAbilities do: [ :abName | 				]	! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 07:59' prior: 35451163!exportHeroAbilitiesOn: s	| abilities |	abilities := importer heroAbilities collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 07:59' prior: 35451326!exportHeroAbilitiesOn: s	| abilities |	abilities := importer stealable collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	abilities withIndexDo: [ :ab :i | 		ab shortExportOn: s i: i.		i = abilities size ifFalse: [ 			s << '| ~ | ~'.			s cr ] ].! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:00' prior: 35451563!exportHeroAbilitiesOn: s	| abilities |	abilities := importer heroAbilities collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	abilities withIndexDo: [ :ab :i | 		ab shortExportOn: s i: i.		i = abilities size ifFalse: [ 			s << '| ~ | ~'.			s cr ] ].! !!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:01'!shortExportOn: s 	s 		<< '|!! Ability | '		<< codeName.	s cr.	(name at: 'en') ifNotNil: [ 		s 			<< '|!! Name | ' 			<< (name at: 'en').		s cr].	(tooltip at: 'en') ifNotNil: [		s 			<< '|!! Tooltip | '			<< (tooltip at: 'en').		s cr].	(property notNil and: [ property isEmpty not ]) ifTrue: [		s << '|!! Raw | =='.		s << property.		s << '=='.		s cr ].	abilitySpecial ifNotNil: [ 		| count |		count := 0.		s << '|!! Raw: Special | =='.		abilitySpecial keysAndValuesDo: [ :k :v |			count = 6 ifTrue: [ 				s << '=='.				s cr.				s << '|!! Raw: Special 2 | =='. ].			s << '[' << k << ': ' << v << ']'.			count := count + 1. ].		s << '=='.		s cr ].	spellImmunityType ifNotNil: [ 		s 			<< '|!! Pierce Spell Immunity | '			<< spellImmunityType printString.		s cr  ]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:01' prior: 35451923!exportHeroAbilitiesOn: s	| abilities |	abilities := importer heroAbilities collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	abilities withIndexDo: [ :ab :i | 		ab shortExportOn: s .		i = abilities size ifFalse: [ 			s << '| ~ | ~'.			s cr ] ].! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:01' prior: 34090448!exportStealable	| abilities s |	abilities := importer stealable collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	s := WriteStream on: (String new: 10000).	s << '!! Abilities to steal'.	s cr.	abilities withIndexDo: [ :ab :i | 		ab shortExportOn: s.		i = abilities size ifFalse: [ 			s << '| ~ | ~'.			s cr ] ].	self export: s to: 'steal'! !----SNAPSHOT----2018-02-13T08:01:35.591236+01:00 Pharo.image priorSource: 1893081!----SNAPSHOT----2018-02-13T08:01:37.71236+01:00 Pharo.image priorSource: 1899461!----SNAPSHOT----2018-02-13T08:01:40.029104+01:00 Pharo.image priorSource: 1899545!----SNAPSHOT----2018-02-13T08:01:43.818824+01:00 Pharo.image priorSource: 1899628!----SNAPSHOT----2018-02-13T08:01:46.646794+01:00 Pharo.image priorSource: 1899712!----SNAPSHOT----2018-02-13T08:01:50.748543+01:00 Pharo.image priorSource: 1899796!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:02' prior: 35453162!exportHeroAbilitiesOn: s	| abilities |	abilities := importer heroAbilities collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	abilities withIndexDo: [ :ab :i | 		ab shortExportOn: s.		i = abilities size ifFalse: [ 			s << '| ~ | ~'.			s cr ] ].! !GemTDAbility removeSelector: #shortExportOn:!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:02' prior: 35454482!exportHeroAbilitiesOn: s	| abilities |	abilities := importer heroAbilities collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	abilities withIndexDo: [ :ab :i | 		ab shortExportOn: s i: i.		i = abilities size ifFalse: [ 			s << '| ~ | ~'.			s cr ] ].! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:02' prior: 35453522!exportStealable	| abilities s |	abilities := importer stealable collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	s := WriteStream on: (String new: 10000).	s << '!! Abilities to steal'.	s cr.	abilities withIndexDo: [ :ab :i | 		ab shortExportOn: s i: i.		i = abilities size ifFalse: [ 			s << '| ~ | ~'.			s cr ] ].	self export: s to: 'steal'! !----SNAPSHOT----2018-02-13T08:02:49.100426+01:00 Pharo.image priorSource: 1899880!----SNAPSHOT----2018-02-13T08:02:52.424823+01:00 Pharo.image priorSource: 1901196!!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 2/13/2018 08:04'!heroAbilities	heroAbilities ifNotNil: [ ^ heroAbilities ].	heroAbilities := Dictionary new.	self parseCombinations: 'GameRules.gemtd_merge'.	self parseCombinations: 'GameRules.gemtd_merge_secret'.	self parseCombinations: 'GameRules.gemtd_merge_shiban'.	^ heroAbilities! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 2/13/2018 08:04' prior: 35455874!heroAbilities	heroAbilities ifNotNil: [ ^ heroAbilities ].	heroAbilities := self parseCombinations: 'GameRules.ability_sea'.	^ heroAbilities! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 2/13/2018 08:08'!parseKeyStringDict: rs	readStream := rs.	rs skipUntil: ${.	rs next.	self skipSeparators.	! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 2/13/2018 08:09' prior: 35456468!parseKeyStringDict: rs	result := self dictClass new.	readStream := rs.	rs skipUntil: ${.	rs next.	self skipSeparators.		! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 2/13/2018 08:10' prior: 35456658!parseKeyStringDict: rs	result := self dictClass new.	readStream := rs.	rs skipUntil: ${.	rs next.	[self skipSeparators.	rs peek = $}] whileFalse: [ self parsePair ].		! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 2/13/2018 08:11'!parsePair	| res combo |	res := self parseRes.	combo := self parseString.	self skipUntil: Character cr.	self skipSeparators.	readStream peek = $- ifTrue: [ readStream next: 2. self skipSeparators. ].	result at: res put: combo.! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 2/13/2018 08:11' prior: 35456245!heroAbilities	heroAbilities ifNotNil: [ ^ heroAbilities ].	heroAbilities := self parseAB: 'GameRules.ability_sea'.	^ heroAbilities! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 2/13/2018 08:11'!parseAB: id	GemTDLuaParser new parseKeyStringDict: 1! !!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 2/13/2018 08:12' prior: 35457679!parseAB: sub	| i |	i := scripts first indexOfSubCollection: sub.	i := i + sub size.	^ GemTDLuaParser new parseKeyStringDict: (scripts first copyFrom: i to: i + 10000) readStream! !----SNAPSHOT----2018-02-13T08:12:27.010282+01:00 Pharo.image priorSource: 1901280!!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 2/13/2018 08:12' prior: 35457465!heroAbilities	heroAbilities ifNotNil: [ ^ heroAbilities ].	heroAbilities := self parseAB: 'GameRules.ability_sea'.	1halt.	^ heroAbilities! !!GemTDGod methodsFor: 'public' stamp: 'ClementBera 2/13/2018 08:12' prior: 34038306!process	importer := GemTDImporter new.	importer importAll.	self generate.	self clearExport.	self exportHeroAbilities.	self exportBaseTowers.	self exportAdvancedTowers.	self exportCreeps.	self exportStealable.! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:13' prior: 35454888!exportHeroAbilitiesOn: s	| abilities |	abilities := importer heroAbilities collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	1halt.	abilities withIndexDo: [ :ab :i | 		ab shortExportOn: s i: i.		i = abilities size ifFalse: [ 			s << '| ~ | ~'.			s cr ] ].! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 2/13/2018 08:13' prior: 35456881!parseKeyStringDict: rs	result := self dictClass new.	readStream := rs.	self skipUntil: ${.	rs next.	[self skipSeparators.	rs peek = $}] whileFalse: [ self parsePair ].		! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 2/13/2018 08:13' prior: 35457136!parsePair	| res combo |	res := self parseRes.	self skipSeparators.	combo := self parseString.	self skipUntil: Character cr.	self skipSeparators.	readStream peek = $- ifTrue: [ readStream next: 2. self skipSeparators. ].	result at: res put: combo.! !----SNAPSHOT----2018-02-13T08:14:18.58775+01:00 Pharo.image priorSource: 1903581!!GemTDImporter methodsFor: 'accessing' stamp: 'ClementBera 2/13/2018 08:14' prior: 35458191!heroAbilities	heroAbilities ifNotNil: [ ^ heroAbilities ].	heroAbilities := self parseAB: 'GameRules.ability_sea'.	^ heroAbilities! !!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:16'!shortExportOn: s	s 		<< '|!! Ability code | '		<< codeName.	s cr.	(name at: 'en') ifNotNil: [ 		s 			<< '|!! Name | ' 			<< (name at: 'en').		s cr].	(tooltip at: 'en') ifNotNil: [		s 			<< '|!! Tooltip | '			<< (tooltip at: 'en').		s cr].	(property notNil and: [ property isEmpty not ]) ifTrue: [		s << '|!! Raw | =='.		s << property.		s << '=='.		s cr ].	abilitySpecial ifNotNil: [ 		| count |		count := 0.		s << '|!! Raw: Special | =='.		abilitySpecial keysAndValuesDo: [ :k :v |			count = 6 ifTrue: [ 				s << '=='.				s cr.				s << '|!! Raw: Special 2 | =='. ].			s << '[' << k << ': ' << v << ']'.			count := count + 1. ].		s << '=='.		s cr ].	spellImmunityType ifNotNil: [ 		s 			<< '|!! Pierce Spell Immunity | '			<< spellImmunityType printString.		s cr  ]! !!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:16' prior: 35460023!shortExportOn: s	s 		<< '|!! Ability | '		<< codeName.	s cr.	(name at: 'en') ifNotNil: [ 		s 			<< '|!! Name | ' 			<< (name at: 'en').		s cr].	(tooltip at: 'en') ifNotNil: [		s 			<< '|!! Tooltip | '			<< (tooltip at: 'en').		s cr].	(property notNil and: [ property isEmpty not ]) ifTrue: [		s << '|!! Raw | =='.		s << property.		s << '=='.		s cr ].	abilitySpecial ifNotNil: [ 		| count |		count := 0.		s << '|!! Raw: Special | =='.		abilitySpecial keysAndValuesDo: [ :k :v |			count = 6 ifTrue: [ 				s << '=='.				s cr.				s << '|!! Raw: Special 2 | =='. ].			s << '[' << k << ': ' << v << ']'.			count := count + 1. ].		s << '=='.		s cr ].	spellImmunityType ifNotNil: [ 		s 			<< '|!! Pierce Spell Immunity | '			<< spellImmunityType printString.		s cr  ]! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:16' prior: 33913573!exportAbilitiesOn: s	abilities withIndexDo: [ :ab :i |		self exSplit: s.		ab shortExportOn: s ]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:16' prior: 35455252!exportStealable	| abilities s |	abilities := importer stealable collect: [ :each |		GemTDAbility newFrom: each importer: importer ].	s := WriteStream on: (String new: 10000).	s << '!! Abilities to steal'.	s cr.	abilities withIndexDo: [ :ab :i | 		ab shortExportOn: s.		i = abilities size ifFalse: [ 			s << '| ~ | ~'.			s cr ] ].	self export: s to: 'steal'! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:18' prior: 35458727!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		s << '|!! Network code | ' << key.		(GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer) shortExportOn: s.		s cr ]! !----SNAPSHOT----2018-02-13T08:18:10.014079+01:00 Pharo.image priorSource: 1905204!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:18' prior: 35462452!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.				s << '|!! Network code | ' << key.		ab shortExportOn: s.		s cr ]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:19' prior: 35462855!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << (ab name at: 'en').		s << '|!! Network code | ' << key.		ab shortExportOn: s.		s cr ]! !!GemTDLuaParser methodsFor: 'parsing' stamp: 'ClementBera 2/13/2018 08:20' prior: 35459106!parseKeyStringDict: rs	result := self dictClass new.	readStream := rs.	self skipUntil: ${.	rs next.	[self skipSeparators.	rs peek = $}] whileFalse: [ self parsePair ].	^ result	! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:21' prior: 35463196!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: ['Unavailable'] ifNotNil: [:it | it]).		s << '|!! Network code | ' << key.		ab shortExportOn: s.		s cr ]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:21' prior: 35463853!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s << '|!! Network code | ' << key.		ab shortExportOn: s.		s cr ]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:21' prior: 35464275!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s << '|!! Network code | ' << key.		ab shortExportOn: s.]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:22' prior: 35464687!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s << '|!! Network code | ' << key.		ab shortExportOn: s.]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:23' prior: 35465091!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s cr.		s << '|!! Network code | ' << key.		ab shortExportOn: s.]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:23' prior: 35465495!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s cr.		s << '|!! Network code | ' << key.		s cr.		ab shortExportOn: s.]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:24' prior: 35465907!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		| ab |		1halt.		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s cr.		s << '|!! Network code | ' << key.		s cr.		ab shortExportOn: s.]! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 2/13/2018 08:24' prior: 34115438!importDetailsWith: importer	| details modifiers | 	1halt.	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 2/13/2018 08:26' prior: 35466766!importDetailsWith: importer	| details modifiers | 	1halt.	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'AbilityGoldCost' ifPresent: [ :it |		goldCost := it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 2/13/2018 08:26' prior: 35467287!importDetailsWith: importer	| details modifiers | 	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'AbilityGoldCost' ifPresent: [ :it |		goldCost := it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !GemTDAbility removeSelector: #shortExportOn:i:!!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:27' prior: 35460918!shortExportOn: s	s 		<< '|!! Ability | '		<< codeName.	s cr.	(name at: 'en') ifNotNil: [ 		s 			<< '|!! Name | ' 			<< (name at: 'en').		s cr].	(tooltip at: 'en') ifNotNil: [		s 			<< '|!! Tooltip | '			<< (tooltip at: 'en').		s cr].	(property notNil and: [ property isEmpty not ]) ifTrue: [		s << '|!! Raw | =='.		s << property.		s << '=='.		s cr ].	goldCost notNil ifTrue: [		s << '|!! Gold cost | '.		s << goldCost.		s cr ].	abilitySpecial ifNotNil: [ 		| count |		count := 0.		s << '|!! Raw: Special | =='.		abilitySpecial keysAndValuesDo: [ :k :v |			count = 6 ifTrue: [ 				s << '=='.				s cr.				s << '|!! Raw: Special 2 | =='. ].			s << '[' << k << ': ' << v << ']'.			count := count + 1. ].		s << '=='.		s cr ].	spellImmunityType ifNotNil: [ 		s 			<< '|!! Pierce Spell Immunity | '			<< spellImmunityType printString.		s cr  ]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:27' prior: 35466327!exportHeroAbilitiesOn: s	| abilities |	importer heroAbilities keys sorted do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s cr.		s << '|!! Network code | ' << key.		s cr.		ab shortExportOn: s.]! !!GemTDAbility methodsFor: 'import' stamp: 'ClementBera 2/13/2018 08:28' prior: 34127879!abilityResourceLang: l importer: importer keyword: keyword	codeName = 'gemtd_hero_xuanfeng' ifTrue: [ 1halt ].	^ (importer resources at: l) 			at: 'DOTA_Tooltip_Ability_' , keyword 			ifAbsent: [				(importer resources at: l) 					at: 'DOTA_Tooltip_ability_' , keyword 					ifAbsent: [nil]]! !!GLMBrickPropertiesTrait methodsFor: 'brick-properties-events' stamp: 'ClementBera 2/13/2018 08:30' prior: 65299280!announce: aSymbol event: anEvent	[self announcer subscriptions glmSubscriptions do: [ :each |		each announcementClass = aSymbol ifTrue: [			(each handlesAnnouncement: aSymbol ) ifTrue: [				[ each action cull: anEvent cull: self ] 					on: UnhandledError fork: [:ex | ex pass ] ] ] ]] on: Error do: [  ]! !!Trait method!announce: aSymbol event: anEvent	[self announcer subscriptions glmSubscriptions do: [ :each |		each announcementClass = aSymbol ifTrue: [			(each handlesAnnouncement: aSymbol ) ifTrue: [				[ each action cull: anEvent cull: self ] 					on: UnhandledError fork: [:ex | ex pass ] ] ] ]] on: Error do: [  ]! !!GemTDAbility methodsFor: 'import' stamp: 'ClementBera 2/13/2018 08:33' prior: 35469895!abilityResourceLang: l importer: importer keyword: keyword	^ (importer resources at: l) 			at: 'DOTA_Tooltip_Ability_' , keyword 			ifAbsent: [				(importer resources at: l) 					at: 'DOTA_Tooltip_ability_' , keyword 					ifAbsent: [nil]]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/13/2018 08:34' prior: 35469471!exportHeroAbilitiesOn: s	(importer heroAbilities keys sort: [ :a :b | a size = b size 			ifTrue: [ a < b ]			ifFalse: [ a size < b size ] ]) do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s cr.		s << '|!! Network code | ' << key.		s cr.		ab shortExportOn: s.]! !----SNAPSHOT----2018-02-13T08:34:43.076127+01:00 Pharo.image priorSource: 1908253!----QUIT----2018-02-13T08:38:39.485541+01:00 Pharo.image priorSource: 1917346!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!
