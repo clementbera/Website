@@ -7337,4 +7337,259 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
+!----End fileIn----!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:38' prior: 35468504!shortExportOn: s	s 		<< '|!! Ability | '		<< codeName.	s cr.	(name at: 'en') ifNotNil: [ 		s 			<< '|!! Name | ' 			<< (name at: 'en').		s cr].	(tooltip at: 'en') ifNotNil: [		s 			<< '|!! Tooltip | '			<< (tooltip at: 'en').		s cr].	goldCost notNil ifTrue: [		s << '|!! Gold cost | '.		s << goldCost.		s cr ].	(property notNil and: [ property isEmpty not ]) ifTrue: [		s << '|!! Raw | =='.		s << property.		s << '=='.		s cr ].	abilitySpecial ifNotNil: [ 		| count |		count := 0.		s << '|!! Raw: Special | =='.		abilitySpecial keysAndValuesDo: [ :k :v |			count = 6 ifTrue: [ 				s << '=='.				s cr.				s << '|!! Raw: Special 2 | =='. ].			s << '[' << k << ': ' << v << ']'.			count := count + 1. ].		s << '=='.		s cr ].	spellImmunityType ifNotNil: [ 		s 			<< '|!! Pierce Spell Immunity | '			<< spellImmunityType printString.		s cr  ]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:40' prior: 35471376!exportHeroAbilitiesOn: s	| prices |	prices := {  }.		(importer heroAbilities keys sort: [ :a :b | a size = b size 			ifTrue: [ a < b ]			ifFalse: [ a size < b size ] ]) do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s cr.		s << '|!! Network code | ' << key.		s cr.		ab shortExportOn: s.		s << '|!! Shell price | ' << (prices at: (key at: 2) asInteger).		s cr.]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:40' prior: 35484699!exportHeroAbilitiesOn: s	| prices |	prices := { 		 }.	(importer heroAbilities keys sort: [ :a :b | a size = b size 			ifTrue: [ a < b ]			ifFalse: [ a size < b size ] ]) do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s cr.		s << '|!! Network code | ' << key.		s cr.		ab shortExportOn: s.		s << '|!! Shell price | ' << (prices at: (key at: 2) asInteger).		s cr.]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:43' prior: 35485293!exportHeroAbilitiesOn: s	| prices |	prices := { 		'5 10 20 40 (Sale: 2 5 10 20)' .		'10 20 40 80 (Sale: 5 10 20 40)' .		'15 30 60 120 (Sale: 7 15 30 60)' .		'20 40 80 160 (Sale: 10 20 40 80)' }.	(importer heroAbilities keys sort: [ :a :b | a size = b size 			ifTrue: [ a < b ]			ifFalse: [ a size < b size ] ]) do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		s << '!!!! ' << ((ab name at: 'en') ifNil: [key] ifNotNil: [:it | it]).		s cr.		s << '|!! Network code | ' << key.		s cr.		ab shortExportOn: s.		s << '|!! Shell price | ' << (prices at: (key at: 2) asInteger ifAbsent: ['Not purchaseable']).		s cr.]! !!GemTDAbility methodsFor: 'import' stamp: 'ClementBera 2/14/2018 08:43' prior: 34117290!importWith: importer 	name := Dictionary new.	self importDetailsWith: importer.	codeName = 'gemtd_hero_jingying' ifTrue: [ 1halt ].	#(en sch tch) do: [ :l |		name at: l put: (self abilityResourceLang: l importer: importer keyword: codeName) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: (self abilityResourceLang: l importer: importer keyword: codeName , '_Description') ].! !GemTDAbility subclass: #GemTDHeroAbility	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!GemTDElement subclass: #GemTDAbility	instanceVariableNames: 'tooltip property abilitySpecial spellImmunityType bonusDamage'	classVariableNames: ''	package: 'GemTD-Analysis'!GemTDAbility subclass: #GemTDHeroAbility	instanceVariableNames: 'goldCost'	classVariableNames: ''	package: 'GemTD-Analysis'!GemTDAbility subclass: #GemTDHeroAbility	instanceVariableNames: ''	classVariableNames: ''	package: 'GemTD-Analysis'!GemTDElement subclass: #GemTDAbility	instanceVariableNames: 'tooltip property abilitySpecial spellImmunityType bonusDamage goldCost'	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDAbility methodsFor: 'import' stamp: 'ClementBera 2/14/2018 08:48' prior: 35486662!importWith: importer 	name := Dictionary new.	self importDetailsWith: importer.	#(en sch tch) do: [ :l |		name at: l put: (self abilityResourceLang: l importer: importer keyword: codeName) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: (self abilityResourceLang: l importer: importer keyword: codeName , '_Description') ].! !!GemTDAbility methodsFor: 'import' stamp: 'ClementBera 2/14/2018 08:48' prior: 35487901!importWith: importer 	name := Dictionary new. 	self importDetailsWith: importer.	#(en sch tch) do: [ :l |		name at: l put: (self abilityResourceLang: l importer: importer keyword: codeName) ].	tooltip := Dictionary new.	#(en sch tch) do: [ :l |		tooltip at: l put: (self abilityResourceLang: l importer: importer keyword: codeName , '_Description') ].! !!GemTDAbility methodsFor: 'import modif' stamp: 'ClementBera 2/14/2018 08:49' prior: 35467878!importDetailsWith: importer	| details modifiers | 	details := (importer npcs at: 'DOTAAbilities') at: codeName ifAbsent: [^ self].	details at: 'AbilitySpecial' ifPresent: [ :it |		self importAbilitySpecial: it ].	details at: 'AbilityGoldCost' ifPresent: [ :it | 		goldCost := it ].	details at: 'SpellImmunityType' ifPresent: [ :it |		spellImmunityType := it endsWith: 'YES' ].	modifiers := details at: 'Modifiers' ifAbsent: [ ^ self ].	self importModifiers: modifiers copy.	! !!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:49' prior: 35483732!shortExportOn: s	s 		<< '|!! Ability | '		<< codeName.	s cr.	(name at: 'en') ifNotNil: [ 		s 			<< '|!! Name | ' 			<< (name at: 'en'). 		s cr].	(tooltip at: 'en') ifNotNil: [		s 			<< '|!! Tooltip | '			<< (tooltip at: 'en').		s cr].	goldCost notNil ifTrue: [		s << '|!! Gold cost | '.		s << goldCost.		s cr ].	(property notNil and: [ property isEmpty not ]) ifTrue: [		s << '|!! Raw | =='.		s << property.		s << '=='.		s cr ].	abilitySpecial ifNotNil: [ 		| count |		count := 0.		s << '|!! Raw: Special | =='.		abilitySpecial keysAndValuesDo: [ :k :v |			count = 6 ifTrue: [ 				s << '=='.				s cr.				s << '|!! Raw: Special 2 | =='. ].			s << '[' << k << ': ' << v << ']'.			count := count + 1. ].		s << '=='.		s cr ].	spellImmunityType ifNotNil: [ 		s 			<< '|!! Pierce Spell Immunity | '			<< spellImmunityType printString.		s cr  ]! !GemTDAbility subclass: #GemTDHeroAbility	instanceVariableNames: 'networkName'	classVariableNames: ''	package: 'GemTD-Analysis'!!GemTDHeroAbility methodsFor: 'accessing' stamp: 'ClementBera 2/14/2018 08:49'!networkName	^ networkName! !!GemTDHeroAbility methodsFor: 'accessing' stamp: 'ClementBera 2/14/2018 08:49'!networkName: anObject	networkName := anObject! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:49' prior: 35485888!exportHeroAbilitiesOn: s	| prices |	prices := { 		'5 10 20 40 (Sale: 2 5 10 20)' .		'10 20 40 80 (Sale: 5 10 20 40)' .		'15 30 60 120 (Sale: 7 15 30 60)' .		'20 40 80 160 (Sale: 10 20 40 80)' }.	(importer heroAbilities keys sort: [ :a :b | a size = b size 			ifTrue: [ a < b ]			ifFalse: [ a size < b size ] ]) do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		ab networkName: key.		ab shortExportOn: s.		s << '|!! Shell price | ' << (prices at: (key at: 2) asInteger ifAbsent: ['Not purchaseable']).		s cr.]! !!GemTDHeroAbility methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:50'!shortExportOn: s	s << '!!!! ' << ((name at: 'en') ifNil: [networkName] ifNotNil: [:it | it]).	s cr.	s << '|!! Network code | ' << networkName.	s cr.	super shortExportOn: s! !----SNAPSHOT----2018-02-14T08:51:03.277453+01:00 Pharo.image priorSource: 1917430!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:51' prior: 35490726!exportHeroAbilitiesOn: s	| prices |	prices := { 		'5 10 20 40 (Sale: 2 5 10 20)' .		'10 20 40 80 (Sale: 5 10 20 40)' .		'15 30 60 120 (Sale: 7 15 30 60)' .		'20 40 80 160 (Sale: 10 20 40 80)' }.	(importer heroAbilities keys sort: [ :a :b | a size = b size 			ifTrue: [ a < b ]			ifFalse: [ a size < b size ] ]) do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		ab networkName: key.		ab shortExportOn: s ]! !!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:51' prior: 35491733!exportHeroAbilitiesOn: s	(importer heroAbilities keys sort: [ :a :b | a size = b size 			ifTrue: [ a < b ]			ifFalse: [ a size < b size ] ]) do: [ :key |		| ab |		ab := GemTDAbility newFrom: (importer heroAbilities at: key) importer: importer.		ab networkName: key.		ab shortExportOn: s ]! !!GemTDHeroAbility methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:52' prior: 35491384!shortExportOn: s	| prices |	s << '!!!! ' << ((name at: 'en') ifNil: [networkName] ifNotNil: [:it | it]).	s cr.	s << '|!! Network code | ' << networkName.	s cr.	super shortExportOn: s.	prices := #( 		'5 10 20 40 (Sale: 2 5 10 20)' 		'10 20 40 80 (Sale: 5 10 20 40)' 		'15 30 60 120 (Sale: 7 15 30 60)' 		'20 40 80 160 (Sale: 10 20 40 80)' ).	s << '|!! Shell price | ' << (prices 		at: (networkName at: 2) asInteger 		ifAbsent: ['Not purchaseable']).	s cr.! !----SNAPSHOT----2018-02-14T08:52:56.369204+01:00 Pharo.image priorSource: 1937131!----SNAPSHOT----2018-02-14T08:53:04.635706+01:00 Pharo.image priorSource: 1938725!!GemTDGod methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:54' prior: 35492293!exportHeroAbilitiesOn: s	(importer heroAbilities keys sort: [ :a :b | a size = b size 			ifTrue: [ a < b ]			ifFalse: [ a size < b size ] ]) do: [ :key |		| ab |		ab := GemTDHeroAbility newFrom: (importer heroAbilities at: key) importer: importer networkName: key.		ab shortExportOn: s ]! !!GemTDHeroAbility class methodsFor: 'as yet unclassified' stamp: 'ClementBera 2/14/2018 08:54'!newFrom: codeName importer: importer networkName: key	^ self new 			networkName: key;			codeName: codeName;			importWith: importer;			yourself ! !!GemTDHeroAbility methodsFor: 'name' stamp: 'ClementBera 2/14/2018 08:56'!abilityResourceLang: l importer: importer keyword: keyword	^ (importer resources at: l) 			at: 'DOTA_Tooltip_Ability_' , keyword 			ifAbsent: [				(importer resources at: l) 					at: 'DOTA_Tooltip_ability_' , keyword 					ifAbsent: [						1halt.						(importer resources at: l) 							at: 'DOTA_Tooltip_Ability_' , keyword 							ifAbsent: [nil]]]! !!GemTDHeroAbility methodsFor: 'name' stamp: 'ClementBera 2/14/2018 08:57' prior: 35494031!abilityResourceLang: l importer: importer keyword: keyword	^ (importer resources at: l) 			at: 'DOTA_Tooltip_Ability_' , keyword 			ifAbsent: [				(importer resources at: l) 					at: 'DOTA_Tooltip_ability_' , keyword 					ifAbsent: [						(importer resources at: l) 							at: networkName							ifAbsent: [nil]]]! !!GemTDHeroAbility methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:57' prior: 35492685!shortExportOn: s	| prices |	s << '!!!! ' << ((name at: 'en') ifNil: [networkName] ifNotNil: [:it | it]).	s cr.	s << '|!! Network code | ' << networkName.	s cr.	super shortExportOn: s.	prices := #( 		'5 10 20 40 (Sale: 2 5 10 20)' 		'10 20 40 80 (Sale: 5 10 20 40)' 		'15 30 60 120 (Sale: 7 15 30 60)' 		'20 40 80 160 (Sale: 10 20 40 80)' ).		1halt.	s << '|!! Shell price | ' << (prices 		at: (networkName at: 2) asInteger 		ifAbsent: ['Not purchaseable']).	s cr.! !!GemTDHeroAbility methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:58' prior: 35494901!shortExportOn: s	| prices |	s << '!!!! ' << ((name at: 'en') ifNil: [networkName] ifNotNil: [:it | it]).	s cr.	s << '|!! Network code | ' << networkName.	s cr.	super shortExportOn: s.	prices := #( 		'5 10 20 40 (Sale: 2 5 10 20)' 		'10 20 40 80 (Sale: 5 10 20 40)' 		'15 30 60 120 (Sale: 7 15 30 60)' 		'20 40 80 160 (Sale: 10 20 40 80)' ).		1halt.	s << '|!! Shell price | ' << (prices 		at: (networkName at: 2) asString asInteger 		ifAbsent: ['Not purchaseable']).	s cr.! !!GemTDHeroAbility methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:58' prior: 35495476!shortExportOn: s	| prices |	s << '!!!! ' << ((name at: 'en') ifNil: [networkName] ifNotNil: [:it | it]).	s cr.	s << '|!! Network code | ' << networkName.	s cr.	super shortExportOn: s.	prices := #( 		'5 10 20 40 (Sale: 2 5 10 20)' 		'10 20 40 80 (Sale: 5 10 20 40)' 		'15 30 60 120 (Sale: 7 15 30 60)' 		'20 40 80 160 (Sale: 10 20 40 80)' ).	s << '|!! Shell price | ' << (prices 		at: (networkName at: 2) asString asInteger 		ifAbsent: ['Not purchaseable']).	s cr.! !!GemTDAbility methodsFor: 'export' stamp: 'ClementBera 2/14/2018 08:58' prior: 35489386!shortExportOn: s	s 		<< '|!! Ability | '		<< codeName.	s cr.	(name at: 'en') ifNotNil: [ 		s 			<< '|!! Name | ' 			<< (name at: 'en'). 		s cr].	(tooltip at: 'en') ifNotNil: [		s 			<< '|!! Tooltip | '			<< (tooltip at: 'en').		s cr].	(property notNil and: [ property isEmpty not ]) ifTrue: [		s << '|!! Raw | =='.		s << property.		s << '=='.		s cr ].	abilitySpecial ifNotNil: [ 		| count |		count := 0.		s << '|!! Raw: Special | =='.		abilitySpecial keysAndValuesDo: [ :k :v |			count = 6 ifTrue: [ 				s << '=='.				s cr.				s << '|!! Raw: Special 2 | =='. ].			s << '[' << k << ': ' << v << ']'.			count := count + 1. ].		s << '=='.		s cr ].	spellImmunityType ifNotNil: [ 		s 			<< '|!! Pierce Spell Immunity | '			<< spellImmunityType printString.		s cr ].	goldCost notNil ifTrue: [		s << '|!! Gold cost | '.		s << goldCost.		s cr ].! !----SNAPSHOT----2018-02-14T08:58:59.433615+01:00 Pharo.image priorSource: 1938809!!GemTDHeroAbility methodsFor: 'name' stamp: 'ClementBera 2/14/2018 09:00' prior: 35494483!abilityResourceLang: l importer: importer keyword: keyword	^ (importer resources at: l) 			at: 'DOTA_Tooltip_Ability_' , keyword 			ifAbsent: [				(importer resources at: l) 					at: 'DOTA_Tooltip_ability_' , keyword 					ifAbsent: [						l = 'en' ifTrue: [ 1halt ].						(importer resources at: l) 							at: networkName							ifAbsent: [nil]]]! !!GemTDHeroAbility methodsFor: 'name' stamp: 'ClementBera 2/14/2018 09:03' prior: 35497689!abilityResourceLang: l importer: importer keyword: keyword	^ (importer resources at: l) 			at: 'DOTA_Tooltip_Ability_' , keyword 			ifAbsent: [				(importer resources at: l) 					at: 'DOTA_Tooltip_ability_' , keyword 					ifAbsent: [						(importer resources at: l) 							at: networkName							ifAbsent: [nil]]]! !----QUIT----2018-02-14T09:04:01.969383+01:00 Pharo.image priorSource: 1943081!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDHeroAbility methodsFor: 'export' stamp: 'ClementBera 2/14/2018 09:05' prior: 35496060!shortExportOn: s	| prices |	s << '!!!! ' << ((name at: 'en') ifNil: [networkName] ifNotNil: [:it | it]).	s cr.	s << '|!! Network code | ' << networkName.	s cr.	super shortExportOn: s.	networkName size > 4 ifTrue: [ ^ self ].	prices := #( 		'5 10 20 40 (Sale: 2 5 10 20)' 		'10 20 40 80 (Sale: 5 10 20 40)' 		'15 30 60 120 (Sale: 7 15 30 60)' 		'20 40 80 160 (Sale: 10 20 40 80)' ).	s << '|!! Shell price | ' << (prices 		at: (networkName at: 2) asString asInteger 		ifAbsent: ['Not purchaseable']).	s cr.! !----QUIT----2018-02-14T09:05:50.041047+01:00 Pharo.image priorSource: 1944031!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
 !----End fileIn----!
