@@ -60,6 +60,7 @@ rm -r ~/Desktop/TMP_GemTD_HTML
 echo 'OK'
 
 echo 'Commit & Push' 
+echo '\033[33m Note: \033[0m the following commands may show some files as being not staged for commit due to interaction with Mac file system, please ignore.' 
 git add -u
 git commit -m 'Automatic update ~ new sources'
 git push origin gh-pages
