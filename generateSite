@@ -12,7 +12,7 @@ echo 'OK'
 
 echo -e '\033[33m Important note: \033[0m Script expects resource and scripts files from Gem TD vpk to be copied in GemTD-Generation folder. This has to be done manually. If not, the resource and scripts files from the last push will be used (potentially outdated)' 
 
-echo -e '\033[33m Important note: \033[0m Do not mess with the files in website while running the script.'
+echo -e '\033[33m Important note: \033[0m Do not mess with the files in the Website folder nor with the temp files on Desktop while running the script.'
 
 #########################################
 echo -e '\033[32m Phase 1: GemTD source analysis & Pillar files generation \033[0m' 
