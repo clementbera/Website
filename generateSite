@@ -1,19 +1,32 @@
-echo -e '\033[33m Important note: Script expects resource and scripts files from Gem TD vpk to be copied in GemTD-Generation folder. \033[0m ' 
+echo -e '\033[32m Checks \033[0m' 
+echo -n 'Checking on master branch...'
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [[ "$BRANCH" != "master" ]]; then
+  echo -e "\033[31m Aborting script: Expecting to be on branch master, while on branch $BRANCH \033[0m. Try 'git checkout master' ?";
+  exit 1;
+fi
+echo 'OK'
+
+echo -e '\033[33m Important note: Script expects resource and scripts files from Gem TD vpk to be copied in GemTD-Generation folder. This has to be done manually. If not, the resource and scripts files from the last push will be used (potentially outdated) \033[0m' 
 
 echo -e '\033[32m Pillar files generation \033[0m' 
 cd GemTD-Generation
 bash pharo Pharo.image eval 'GemTDGod new process'
-
-echo -e '\033[32m Copying generated pillar files for html page generation \033[0m' 
+echo -n 'Copying *.pillar files from GemTD-Generation/export to GemTD-Site...'
 cp export/*.pillar ../GemTD-Site/
+echo 'OK'
 
 echo -e '\033[32m Html page generation \033[0m' 
 cd ../GemTD-Site/
 ../ecstatic generate
 
-echo -e '\033[32m Temp copy of generated files on desktop for gh-pages push \033[0m' 
+echo -e '\033[32m Temp copy of html files on desktop for gh-pages push \033[0m' 
+echo -n 'Creating ~/Desktop/TMP_GemTD_HTML...'
 mkdir ~/Desktop/TMP_GemTD_HTML
+echo 'OK'
+echo -n 'Storing html temp files...'
 cp _site/*.html ~/Desktop/TMP_GemTD_HTML
+echo 'OK'
 
 echo -e '\033[32m Pushing code on master branch \033[0m' 
 cd ..
@@ -21,17 +34,22 @@ git add -u
 git commit -m 'Automatic update ~ new sources'
 git push origin master
 
-echo -e '\033[32m Switching to deployment branch \033[0m' 
+echo -e '\033[32m Deployment Phase \033[0m' 
+echo 'Switching to deployment branch' 
 git checkout gh-pages
+echo -n 'Copy temp files...' 
 cp ~/Desktop/TMP_GemTD_HTML/*.html .
-
-echo -e '\033[32m Pushing deployment code \033[0m' 
+echo 'OK'
+echo -n 'Removing temp folder ~/Desktop/TMP_GemTD_HTML...'
+rm -r ~/Desktop/TMP_GemTD_HTML
+echo 'OK'
+echo 'Commit & Push' 
 git add -u
 git commit -m 'Automatic update ~ new sources'
 git push origin gh-pages
-
-echo -e '\033[32m Switch back to master for further developments \033[0m' 
+echo 'Switch back to master for further developments' 
 git checkout master
 
-echo -e '\033[32m Remove temp folder \033[0m' 
-rm -r ~/Desktop/TMP_GemTD_HTML
+echo 'SUCCESS: The new version was successfully generated, committed, pushed and deployed.' 
+echo -e '\033[33m Important note: Although it is in most case immediate, Github may take up to a few minutes to update the website. Clean your web browser cache to see the latest version (Manual page refresh on Chrome for example). \033[0m ' 
+
