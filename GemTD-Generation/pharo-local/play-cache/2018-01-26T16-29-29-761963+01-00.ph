@@ -1,1 +1,0 @@
-GemTDImporter new importNPC

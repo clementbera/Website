@@ -1,1 +1,0 @@
-GemTDGod new process 	level := details at: 'Level'.	mc := details at: 'MovementCapabilities'.	ms := details at: 'MovementSpeed (NumPlayer factor)'.	res := details at: 'MagicalResistance'.	armor := details at: 'ArmorPhysical'.
