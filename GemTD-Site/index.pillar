@@ -48,6 +48,8 @@ v.1.4: Added hero ability parsing.
 
 v.1.5: Added shell prices to abilities, parsed some more ability names.
 
+v.1.6: Added global settings at the beginning of creeps page (to ease update analysis).
+
 !!! Made by
 
 Farine
