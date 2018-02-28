@@ -38,7 +38,7 @@ git push origin master
 #########################################
 echo -e '\033[32m Phase 4: Deployment \033[0m' 
 
-echo '\033[33m Important note: \033[0m This phase temporarily copies the html files on desktop' 
+echo -e '\033[33m Important note: \033[0m This phase temporarily copies the html files on desktop' 
 
 echo -n 'Creating ~/Desktop/TMP_GemTD_HTML...'
 mkdir ~/Desktop/TMP_GemTD_HTML
@@ -69,5 +69,5 @@ git checkout master
 
 #########################################
 echo -e '\033[32m SUCCESS: \033[0m The new version was successfully generated, committed, pushed and deployed.' 
-echo -e '\033[33m Important note: \033[0m Although it is in most case immediate, Github may take up to a few minutes to update the website. Clean your web browser cache to see the latest version (Manual page refresh on Chrome for example). ' 
+echo -e '\033[33m Important note: \033[0m Although it is in most case immediate, Github may take up to a few minutes to update the website. You need to clean your web browser cache to see the latest version (Manual page refresh on Chrome for example). ' 
 
