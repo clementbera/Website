@@ -1,6 +1,14 @@
+# This script re-generates, commits, pushes and deploys the website.
 #########################################
 echo -e '\033[32m Phase 0: Checks \033[0m' 
-#########################################
+
+echo -n 'Checking if internet available...'
+if ping -c 1 google.com >> /dev/null 2>&1; then
+    echo "OK"
+else
+    echo -e "\033[31m Aborting script: No internet connection ?";
+    exit 1;
+fi
 
 echo -n 'Checking on master branch...'
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
