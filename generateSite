@@ -1,4 +1,7 @@
 # This script re-generates, commits, pushes and deploys the website.
+
+COMMIT_MESSAGE=$1
+
 #########################################
 echo -e '\033[32m Phase 0: Checks \033[0m' 
 
@@ -49,7 +52,7 @@ echo -e '\033[32m Phase 3: Pushing development code/files on master branch \033[
 
 cd ..
 git add -u
-git commit -m 'Automatic update ~ new sources'
+git commit -m COMMIT_MESSAGE
 git push origin master
 
 #########################################
@@ -76,7 +79,7 @@ rm -r ~/Desktop/TMP_GemTD_HTML
 echo 'OK'
 
 git add -u
-git commit -uno -m 'Automatic update ~ new sources'
+git commit -uno -m COMMIT_MESSAGE
 git push origin gh-pages
 
 git checkout master
