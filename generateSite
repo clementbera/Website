@@ -45,7 +45,7 @@ mkdir ~/Desktop/TMP_GemTD_HTML
 echo 'OK'
 
 echo -n 'Storing html temp files...'
-cp _site/*.html ~/Desktop/TMP_GemTD_HTML
+cp GemTD-Site/_site/*.html ~/Desktop/TMP_GemTD_HTML
 echo 'OK'
 
 echo 'Switching to deployment branch' 
