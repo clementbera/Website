@@ -1,37 +1,37 @@
-echo '$(tput setaf 2)Important note:$(tput setaf 7) Script expect resource and scripts files from Gem TD vpk to be copied in GemTD-Generation folder.' 
+echo -e '\033[33m Important note: \033[0m Script expect resource and scripts files from Gem TD vpk to be copied in GemTD-Generation folder.' 
 
-echo '1] Pillar files generation...' 
+echo -e '\033[32m 1] Pillar files generation \033[0m' 
 cd GemTD-Generation
 bash pharo Pharo.image eval 'GemTDGod new process'
 
-echo '2] Copying generated pillar files for html page generation...' 
+echo -e '\033[32m 2] Copying generated pillar files for html page generation \033[0m' 
 cp export/*.pillar ../GemTD-Site/
 
-echo '3] Html page generation...' 
+echo -e '\033[32m 3] Html page generation \033[0m' 
 cd ../GemTD-Site/
 ../ecstatic generate
 
-echo '4] Temp copy of generated files on desktop for gh-pages push...' 
+echo -e '\033[32m 4] Temp copy of generated files on desktop for gh-pages push \033[0m' 
 mkdir ~/Desktop/TMP_GemTD_HTML
 cp _site/*.html ~/Desktop/TMP_GemTD_HTML
 
-echo '5] Pushing code on master branch...' 
+echo -e '\033[32m 5] Pushing code on master branch \033[0m' 
 cd ..
 git add -u
 git commit -m 'Automatic update ~ new sources'
 git push origin master
 
-echo '5] Switching to deployment branch...' 
+echo -e '\033[32m 6] Switching to deployment branch \033[0m' 
 git checkout gh-pages
 cp ~/Desktop/TMP_GemTD_HTML/*.html .
 
-echo '6] Pushing deployment code...' 
+echo -e '\033[32m 7] Pushing deployment code \033[0m' 
 git add -u
 git commit -m 'Automatic update ~ new sources'
 git push origin gh-pages
 
-echo '7] Switch back to master for further developments...' 
+echo -e '\033[32m 8] Switch back to master for further developments \033[0m' 
 git checkout master
 
-echo '8] Remove temp folder...' 
+echo -e '\033[32m 9] Remove temp folder \033[0m' 
 rm -r ~/Desktop/TMP_GemTD_HTML
