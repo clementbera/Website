@@ -2,11 +2,18 @@
 #########################################
 echo -e '\033[32m Phase 0: Checks \033[0m' 
 
+echo -n 'Checking commit message...'
+if [ $# -eq 0 ]; then
+    echo -e "\033[31m Aborting script: No commit message provided. Call script with commit message parameter \033[0m";
+    exit 1;
+fi
+echo "OK"
+
 echo -n 'Checking if internet available...'
 if ping -c 1 google.com >> /dev/null 2>&1; then
     echo "OK"
 else
-    echo -e "\033[31m Aborting script: No internet connection ?";
+    echo -e "\033[31m Aborting script: No internet connection ? \033[0m";
     exit 1;
 fi
 
