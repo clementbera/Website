@@ -61,7 +61,7 @@ echo 'OK'
 
 echo 'Commit & Push' 
 git add -u
-git commit -m 'Automatic update ~ new sources'
+git commit -uno -m 'Automatic update ~ new sources'
 git push origin gh-pages
 
 echo 'Switch back to master for further developments' 
