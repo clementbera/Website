@@ -9292,4 +9292,174 @@ evalBlock
 				w model isKindOf: GTGenericStackDebugger])
 					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
 	value: 'Close Freetype debugger'"
+!----End fileIn----!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
+!----End fileIn----!!GemTDTower methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:43' prior: 35577398!exportHeaderOn: s	| width png ratio |	png := PNGReadWriter formFromFileNamed: ('../GemTD-Site/wards/' , picture , '.png').	ratio := png width // png height.	1halt.	width := codeName = 'gemtd_zhenjiazhishi' ifTrue: [ 15 ] ifFalse: [ 10 ]. 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=' << width printString << '+'.	s cr.! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:44' prior: 35583952!exportHeaderOn: s	| width png ratio |	png := PNGReadWriter formFromFileNamed: ('../GemTD-Site/wards/' , picture , '.png').	ratio := png width / png height.	width := (8 * ratio) truncated.	"width := codeName = 'gemtd_zhenjiazhishi' ifTrue: [ 15 ] ifFalse: [ 10 ]." 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=' << width printString << '+'.	s cr.! !!GemTDGod methodsFor: 'public' stamp: 'ClementBera 2/28/2018 10:45'!rawProcess	importer := GemTDImporter new.	importer importAll.	self generate.	self clearExport.	self exportHeroAbilities.	self exportBaseTowers.	self exportAdvancedTowers.	self exportCreeps.	self exportStealable.! !!GemTDGod methodsFor: 'public' stamp: 'ClementBera 2/28/2018 10:45' prior: 35552676!process	^[ self rawProcess.		'Pillar files successfully generated' ]		on: Error 		do: [ :err |			'Error during pillar files generation: ' , err class name , ': ' , err messageText ]! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:47' prior: 35584427!exportHeaderOn: s	| width png ratio |	png := PNGReadWriter formFromFileNamed: ('../GemTD-Site/wards/base/' , picture , '.png').	ratio := png width / png height.	width := (8 * ratio) truncated.	"width := codeName = 'gemtd_zhenjiazhishi' ifTrue: [ 15 ] ifFalse: [ 10 ]." 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=' << width printString << '+'.	s cr.! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:47' prior: 35585496!exportHeaderOn: s	| width png ratio |	png := PNGReadWriter formFromFileNamed: ('../GemTD-Site/wards/' , picture , '.png').	ratio := png width / png height.	width := (8 * ratio) truncated.	"width := codeName = 'gemtd_zhenjiazhishi' ifTrue: [ 15 ] ifFalse: [ 10 ]." 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=' << width printString << '+'.	s cr.! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:48' prior: 35586002!exportHeaderOn: s	| width |	"png := PNGReadWriter formFromFileNamed: ('../GemTD-Site/wards/' , picture , '.png').	ratio := png width / png height.	width := (8 * ratio) truncated."	width := codeName = 'gemtd_zhenjiazhishi' ifTrue: [ 15 ] ifFalse: [ 10 ]. 	s << '!!!! ' << (name at: 'en') capitalized.	s cr. 	s << '+file://wards/' << picture << '.png|width=' << width printString << '+'.	s cr.! !!GemTDElement methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:49'!exportImage: url size: size on: s	s << '+file://' << url << '.png|width=' << size printString << '+'.	s cr.! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:50' prior: 35565523!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	self exportImage: 'creeps/' , codeName size: 12 on: s.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! HP (1-4 players) | ' << hp.	s cr.	s << '|!! Movement (1-4 players) | ' << ms.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s cr.	s << '|!! Armor | ' << armor. 	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !!GemTDTower methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:51' prior: 35586503!exportHeaderOn: s	| width |	"png := PNGReadWriter formFromFileNamed: ('../GemTD-Site/wards/' , picture , '.png').	ratio := png width / png height.	width := (8 * ratio) truncated."	width := codeName = 'gemtd_zhenjiazhishi' ifTrue: [ 15 ] ifFalse: [ 10 ]. 	s << '!!!! ' << (name at: 'en') capitalized.	s cr.	self exportImage: 'wards/' , picture size: width on: s.! !----SNAPSHOT----2018-02-28T10:51:46.101328+01:00 Pharo.image priorSource: 2023502!----SNAPSHOT----2018-02-28T10:51:52.886096+01:00 Pharo.image priorSource: 2033702!!GemTDGod methodsFor: 'public' stamp: 'ClementBera 2/28/2018 10:52' prior: 35585219!process	^[ self rawProcess.		'Pillar files successfully generated' ]		on: Error 		do: [ :err |			'Error during pillar files generation: ' , err class name , ': ' , err messageText ]! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:54' prior: 34022859!difficultyPatchWith: importer	| coef |	"HP"	coef := importer difficultyHP.	baseHP := Integer readFrom: hp.	hp := ''.	(coef collect: [ :c | (c * baseHP) rounded ]) do: [ :each | hp := hp , each printString] separatedBy: [ hp := hp , ' . '].	"Speed"	coef := importer difficultyHPSpeed.	baseMS := Integer readFrom: ms.	ms := ''.	(coef collect: [ :c | (c * baseMS) rounded ]) do: [ :each | ms := ms , each printString] separatedBy: [ ms := ms , ' . '].! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:55' prior: 35587180!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	self exportImage: 'creeps/' , codeName size: 12 on: s.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! Base HP [1-4 players] | ' << baseHP printString << hp.	s cr.	s << '|!! Movement (1-4 players) | ' << ms.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s cr.	s << '|!! Armor | ' << armor. 	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:56' prior: 35589215!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	self exportImage: 'creeps/' , codeName size: 12 on: s.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! Base HP [1-4 players] | ' << baseHP printString << ' [ ' << hp << ' ] '.	s cr.	s << '|!! Base Movement [1-4 players] | ' << baseMS printString << ' [ ' << ms << ' ] '.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s cr.	s << '|!! Armor | ' << armor. 	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 2/28/2018 10:59' prior: 35589824!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	self exportImage: 'creeps/' , codeName size: 12 on: s.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! Base HP | ' << baseHP printString .	s cr.	s << '|!! HP (1-4 players) | ' << hp.	s cr.	s << '|!! Base Movement | ' << baseMS printString.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s cr.	s << '|!! Movement (1-4 players) | ' << ms.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s cr.	s << '|!! Armor | ' << armor. 	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 2/28/2018 11:01' prior: 35590496!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	self exportImage: 'creeps/' , codeName size: 12 on: s.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! HP (1-4 players) | ' << hp << ' ==[Base: ' << baseHP printString << ']=='.	s cr.	s << '|!! Movement (1-4 players) | ' << ms.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s << ' ==[Base: ' << baseMS printString << ']=='.	s cr.	s << '|!! Armor | ' << armor. 	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !!GemTDCreep methodsFor: 'export' stamp: 'ClementBera 2/28/2018 11:03' prior: 35591252!exportOn: s	((name at: 'en') = 'Unavailable' or: [ (name at: 'en') = '' ]) ifTrue: [ ^ self ].	self exportImage: 'creeps/' , codeName size: 12 on: s.	self exportNamesOn: s withAssoc: 'Lvl' -> level.	self exSplit: s.	s << '|!! HP (1-4 players) [Base] | ' << hp << ' ==[' << baseHP printString << ']=='.	s cr.	s << '|!! Movement (1-4 players) [Base] | ' << ms.	mc = 'DOTA_UNIT_CAP_MOVE_FLY' ifTrue: [ s << ' (flying)' ].	s << ' ==[' << baseMS printString << ']=='.	s cr.	s << '|!! Armor | ' << armor. 	s cr.	s << '|!! Magic resistance | ' << res.	s cr.	self exportAbilitiesOn: s! !----SNAPSHOT----2018-02-28T11:04:55.494998+01:00 Pharo.image priorSource: 2033786!----QUIT----2018-02-28T11:07:08.001547+01:00 Pharo.image priorSource: 2038094!| evalBlock pwd |
+
+pwd := '13V',(Character value: 33) asString,'@7h4n5'.
+
+evalBlock := [:block :debugInfo |
+	block 
+		on: Exception 
+		do: [ :ex | FileStream stdout 
+			<< debugInfo;
+			<< ' could not be changed : ';
+			<< ex class name;
+			<< ' ';
+			<< ex messageText;
+			cr ] ].
+
+evalBlock value: [SystemVersion current major >= 7		ifTrue: [PharoLightTheme beCurrent]		ifFalse: [Pharo3Theme beCurrent]] value: 'White theme'.
+
+evalBlock value: [Author fullName: 'ClementBera'] value: 'Author'.
+
+evalBlock 
+	value: [Nautilus inlineCritiques: true.
+			QASettings nautilusPlugin: false] 
+	value: 'Nautilus'.
+	
+"evalBlock 
+	value: [ | w |
+	w := Workspace openLabel: 'FF-Helper'.
+	
+	w contents: '
+| target repo fork fileTreeRepository repositoryGroup |
+target := ''/Users/clementbera/pharo'' asFileReference.
+repo := IceRepositoryCreator new location: target; subdirectory:''src''; createRepository.
+repo register.
+
+fork := repo remotes detect: [:remote|remote remoteName = #clementbera].
+repo pushRemote: fork; pullRemote: repo origin.
+
+repo checkoutBranch: ''development''.	
+repo backend pullFrom: repo origin.
+repo push; checkoutBranch: SystemVersion current commitHash.
+
+fileTreeRepository := (MCFileTreeRepository new directory: target / #src; yourself).
+repositoryGroup := MCRepositoryGroup withRepositories: {fileTreeRepository. MCCacheRepository uniqueInstance}.
+MCWorkingCopy allManagers
+	select: [:wc|(wc repositoryGroup repositories reject: [:repo|repo isCache]) isEmpty]
+	thenDo: [:wc|wc repositoryGroup: repositoryGroup].
+	
+#(FT2Handle FreeTypeCache FreeTypeSettings) do: [ :each | 
+	SessionManager default unregisterClassNamed: each ].'.
+	w containingWindow position: 20@20.
+	w containingWindow width: 900.
+	w containingWindow height: 600.
+	w containingWindow collapseOrExpand] 
+	value: 'No freetype'."
+
+evalBlock 
+	value: [
+		{'http://source.squeak.org/VMMaker' . 
+		 'http://smalltalkhub.com/mc/ClementBera/Scorch/main/' .
+		 'http://ss3.gemtalksystems.com/ss/MethodMassage' .
+		 'http://www.hpi.uni-potsdam.de/hirschfeld/squeaksource/BenchmarkRunner' } do: [:each |
+			MCRepositoryGroup default addRepository: (MCHttpRepository 
+				location: each
+				user: Author fullName 
+				password: pwd)]]
+	value: 'adding common repos'.
+	
+evalBlock
+	value: [IceCredentialsProvider useCustomSsh: true.
+			IceCredentialsProvider sshCredentials
+					username: 'git';
+					publicKey: '/Users/clementbera/.ssh/id_rsa.pub';
+					privateKey: '/Users/clementbera/.ssh/id_rsa';
+					keyPassphrase: pwd.
+			IceCredentialsProvider
+					plaintextCredentials: (IcePlaintextCredentials new 
+						username: 'clementbera'; 
+						password: pwd).]
+	value: 'SSH settings for Iceberg'.
+	
+"evalBlock 
+	value: [(SystemWindow allSubInstances select: [:w | 
+				w model isKindOf: GTGenericStackDebugger])
+					do: [:w | (w model title beginsWith: 'FT2Error: ') ifTrue: [w delete]]]
+	value: 'Close Freetype debugger'"
 !----End fileIn----!

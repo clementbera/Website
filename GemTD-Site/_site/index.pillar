@@ -37,7 +37,7 @@ v.0.11: All towers abilities are now parsed (with a couple rare exceptions which
 
 v.1.0: Parsed Slate abilities. What remains cannot be parsed easily. There is some creeps abilities that I could still parse, but I am lazy and it's not that useful.
 
-v.1.1: Update with Feb 1st update.
+v.1.1: Update with Feb 1st update. Added generation script so I can just run it to update the website instead of doing lots of commands.
 
 v.1.2: Added Memos in advanced tower page (mainly useful for secret towers). 
 Parsed more ability names and tooltips.
@@ -48,7 +48,7 @@ v.1.4: Added hero ability parsing.
 
 v.1.5: Added shell prices to abilities, parsed some more ability names.
 
-v.1.6: Added global settings at the beginning of creeps page (to ease update analysis).
+v.1.6: Added global settings at the beginning of creeps page & creep base HP/MS (to ease update analysis up-coming). Added color to generation script in command line.
 
 !!! Made by
 
