@@ -12,6 +12,8 @@ echo 'OK'
 
 echo -e '\033[33m Important note: \033[0m Script expects resource and scripts files from Gem TD vpk to be copied in GemTD-Generation folder. This has to be done manually. If not, the resource and scripts files from the last push will be used (potentially outdated)' 
 
+echo -e '\033[33m Important note: \033[0m Do not mess with the files in website while running the script.'
+
 #########################################
 echo -e '\033[32m Phase 1: GemTD source analysis & Pillar files generation \033[0m' 
 
@@ -48,7 +50,6 @@ echo -n 'Storing html temp files...'
 cp GemTD-Site/_site/*.html ~/Desktop/TMP_GemTD_HTML
 echo 'OK'
 
-echo 'Switching to deployment branch' 
 git checkout gh-pages
 
 echo -n 'Copy back temp files...' 
@@ -59,15 +60,14 @@ echo -n 'Removing temp folder ~/Desktop/TMP_GemTD_HTML...'
 rm -r ~/Desktop/TMP_GemTD_HTML
 echo 'OK'
 
-echo 'Commit & Push' 
 git add -u
 git commit -uno -m 'Automatic update ~ new sources'
 git push origin gh-pages
 
-echo 'Switch back to master for further developments' 
 git checkout master
 
 #########################################
-echo -e '\033[32m SUCCESS: \033[0m The new version was successfully generated, committed, pushed and deployed.' 
+echo -e '\033[32m SUCCESS \033[0m'
+echo 'The new version was successfully generated, committed, pushed and deployed. You are back on master branch so you can keep developing the website.' 
 echo -e '\033[33m Important note: \033[0m Although it is in most case immediate, Github may take up to a few minutes to update the website. You need to clean your web browser cache to see the latest version (Manual page refresh on Chrome for example). ' 
 
