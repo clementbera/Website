@@ -4009,7 +4009,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"1"
-		"AbilityCastRange"	"700"
+		"AbilityCastRange"	"600"
 		"precache"
 		{
 			"particle"	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
@@ -6861,7 +6861,7 @@
 				"States"	{}
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-200"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-150"
 				}
 			}
 		}

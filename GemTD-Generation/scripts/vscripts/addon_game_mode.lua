@@ -314,16 +314,16 @@ isConnected = {}
 
 GameRules.gem_difficulty = {
 	[1] = 0.62,
-	[2] = 2.3,
-	[3] = 4.7,
-	[4] = 6.2
+	[2] = 2.2,
+	[3] = 4.5,
+	[4] = 5.9
 }
 
 GameRules.gem_difficulty_speed = {
 	[1] = 0.85,
-	[2] = 1.14,
-	[3] = 1.34,
-	[4] = 1.51
+	[2] = 1.15,
+	[3] = 1.36,
+	[4] = 1.58
 }
 
 GameRules.gem_path_show = {}
@@ -1183,6 +1183,11 @@ function GemTD:InitGameMode()
 		}
 	)
 	GameRules:GetGameModeEntity().quest = {}
+	GameRules:GetGameModeEntity().wave_enemy_count = 5
+	GameRules:GetGameModeEntity().win_streak = 0
+	GameRules:GetGameModeEntity().kuangbao_time = 0
+	GameRules:GetGameModeEntity().win_streak_time = 0
+	GameRules:GetGameModeEntity().perfect_this_level = true
 
 	GameRules:SetUseCustomHeroXPValues(true)
 
@@ -1447,6 +1452,7 @@ end
 
 --接收客户端发来的玩家服务器数据
 function GemTD:OnReceiveHeroInfo(keys)
+	DeepPrintTable(keys)
 	local heroindex = tonumber(keys.heroindex)
 	local steam_id = keys.steam_id
 	local onduty_hero = keys.onduty_hero.hero_id;
@@ -1478,6 +1484,9 @@ function GemTD:OnReceiveHeroInfo(keys)
 	if hero.pet ~= nil then
 		change_pet = hero.pet
 	end
+
+	print(onduty_hero)
+	print(GameRules.hero_sea[onduty_hero])
 
 		PrecacheUnitByNameAsync( GameRules.hero_sea[onduty_hero], function()
 			local pppp = hero:GetAbsOrigin()
@@ -1856,7 +1865,8 @@ function GemTD:OnReceiveSteamIDs(keys)
 	-- print(keys.steam_ids)
 	GameRules.steam_ids = keys.steam_ids
 
-	local url = "http://101.200.189.65:430/gemtd/heros/get/@"..keys.steam_ids.."?ver=v1&compen_shell=1"
+	local url = "http://101.200.189.65:430/gemtd/201803/heros/get/@"..keys.steam_ids.."?ver=v1&compen_shell=2"
+	print(url)
 
 	local req = CreateHTTPRequestScriptVM("GET", url)
 	req:SetHTTPRequestAbsoluteTimeoutMS(20000)
@@ -1865,6 +1875,8 @@ function GemTD:OnReceiveSteamIDs(keys)
 		GemTD:OnLobster2({
 			data = t["data"]
 		})
+		GameRules:GetGameModeEntity().kuangbao_time = PlayerResource:GetPlayerCount()*120 + 60
+		GameRules:GetGameModeEntity().win_streak_time = GameRules:GetGameModeEntity().kuangbao_time/2
 	end)
 
 	-- CustomNetTables:SetTableValue( "game_state", "lobster", {url = url, hehe = RandomInt(0,10000)})
@@ -1935,7 +1947,7 @@ function GemTD:OnLobster2(t)
 	GameRules.is_lobster_ok = true
 	-- DeepPrintTable(t.data)
 	for u,v in pairs(t["data"]) do
-		if v["steam_id"] == "76561198101849234" or v["steam_id"] == "76561198090931971" or v["steam_id"] == "76561198090961025" or v["steam_id"] == "76561198132023205" then
+		if u == "76561198101849234" or u == "76561198090931971" or u == "76561198090961025" or u == "76561198132023205" or u == "76561198079679584" then
 			GameRules.myself = true
 		end
 
@@ -1950,13 +1962,19 @@ function GemTD:OnLobster2(t)
 
 		GemTD:OnReceiveHeroInfo({
 			heroindex = tonumber(v["hero_index"]),
-			steam_id = v["steam_id"],
+			steam_id = u,
 			hero_sea = v["hero_sea"],
 			onduty_hero = v["onduty_hero"],
 			is_black = v["is_black"],
 			pet = v["pet"],
 		})
 	end
+
+	-- if GameRules.myself ~= true then
+	-- 	--测试模式不允许外人参与
+	-- 	GameRules:SendCustomMessage('对不起，您没有参与测试模式的资格！',0,0)
+	-- 	GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
+	-- end
 
 	-- print("set_hero_sea......")
 	t["data"]["hehe"] = RandomInt(1,10000)
@@ -1993,7 +2011,7 @@ function GemTD:OnPlayerGainedLevel(keys)
 		if ( PlayerResource:IsValidPlayer( i ) ) then
 			local player = PlayerResource:GetPlayer(i)
 			if player ~= nil then
-				local h = player:GetAssignedHero()
+			local h = player:GetAssignedHero()
 				if h ~= nil and h:GetAbilityPoints() ~=0 then
 					SetHeroLevelShow(h)
 					CustomNetTables:SetTableValue( "game_state", "gem_team_level", { level = h:GetLevel() } );
@@ -2020,35 +2038,42 @@ function OnThink()
 
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 
-		local i = 0
-		for i = 0, 9 do
-			if ( PlayerResource:IsValidPlayer( i ) ) then
-				local player = PlayerResource:GetPlayer(i)
-				if player ~= nil then
-					local h = player:GetAssignedHero()
-					if h ~= nil and h:GetAbilityPoints() ~=0 then
-						--h:DestroyAllSpeechBubbles()
-						--h:AddSpeechBubble(2,"#text_i_level_up",3,0,30)
-						if h:GetLevel() > 1 then
-							-- createHintBubble(h,"#text_i_level_up")
-						end
-						SetHeroLevelShow(h)
-						CustomNetTables:SetTableValue( "game_state", "gem_team_level", { level = h:GetLevel() } );
+		-- local i = 0
+		-- for i = 0, 9 do
+		-- 	if ( PlayerResource:IsValidPlayer( i ) ) then
+		-- 		local player = PlayerResource:GetPlayer(i)
+		-- 		if player ~= nil then
+		-- 			local h = player:GetAssignedHero()
+		-- 			if h ~= nil and h:GetAbilityPoints() ~=0 then
+		-- 				--h:DestroyAllSpeechBubbles()
+		-- 				--h:AddSpeechBubble(2,"#text_i_level_up",3,0,30)
+		-- 				if h:GetLevel() > 1 then
+		-- 					-- createHintBubble(h,"#text_i_level_up")
+		-- 				end
+		-- 				SetHeroLevelShow(h)
+		-- 				CustomNetTables:SetTableValue( "game_state", "gem_team_level", { level = h:GetLevel() } );
 						
 
-					end
-				end
-			end
-		end
+		-- 			end
+		-- 		end
+		-- 	end
+		-- end
 
 		--超时加狂暴
+		local time_this_level = 0
+		if GameRules.stop_watch == nil then
+			time_this_level = 0
+		else
+			time_this_level = math.floor(GameRules:GetGameTime() - GameRules.stop_watch)
+		end
+
 		if GameRules.stop_watch ~= nil then
-			local time_this_level = math.floor(GameRules:GetGameTime() - GameRules.stop_watch)
 
-			local kuangbao_time = PlayerResource:GetPlayerCount()*120 + 90
-			-- local kuangbao_time = PlayerResource:GetPlayerCount()*1 + 10
+			GameRules:GetGameModeEntity().kuangbao_time = PlayerResource:GetPlayerCount()*120 + 60
+			GameRules:GetGameModeEntity().win_streak_time = GameRules:GetGameModeEntity().kuangbao_time/2
 
-			if time_this_level > kuangbao_time and not GameRules.is_crazy == true then
+			--触发狂暴
+			if time_this_level > GameRules:GetGameModeEntity().kuangbao_time and not GameRules.is_crazy == true then
 				GameRules.is_crazy = true
 				GameRules:SendCustomMessage("#text_enemy_crazy", 0, 0)
 				EmitGlobalSound("diretide_eventstart_Stinger")
@@ -2056,7 +2081,21 @@ function OnThink()
 				GameRules:GetGameModeEntity().gem_castle:AddAbility("enemy_crazy")
 				GameRules:GetGameModeEntity().gem_castle:FindAbilityByName("enemy_crazy"):SetLevel(1)
 			end
+
+			
 		end
+
+		--发送当前游戏时间给客户端
+		if GameRules:GetGameModeEntity().game_time ~= nil then
+			CustomGameEventManager:Send_ServerToAllClients("show_time",{
+				total_time = math.floor(GameRules:GetGameTime() - GameRules:GetGameModeEntity().game_time),
+				wave_time = time_this_level,
+				win_streak = GameRules:GetGameModeEntity().win_streak, 
+				kuangbao_time = GameRules:GetGameModeEntity().kuangbao_time,
+				win_streak_time = GameRules:GetGameModeEntity().win_streak_time,
+			})
+		end
+
 
 		--刷怪
 		if ( GameRules.gem_is_shuaguaiing==true and not GameRules:IsGamePaused()) then
@@ -2157,7 +2196,7 @@ function OnThink()
 		    	end
 
 		    	if string.find(guai_name, "fly") then
-					maxhealth = maxhealth * 0.8
+					maxhealth = maxhealth * 0.6
 				end
 		    	u:SetModelScale(u:GetModelScale()*2)
 
@@ -2258,8 +2297,8 @@ function OnThink()
 				--PrecacheResource( "soundfile",  zr[i], context)
 				GameRules.guai_count = GameRules.guai_count -100
 
-				u:AddAbility("e_snow")
-				u:FindAbilityByName("e_snow"):SetLevel(1)
+				-- u:AddAbility("e_snow")
+				-- u:FindAbilityByName("e_snow"):SetLevel(1)
 			end
 
 			if string.find(guai_name, "tester") then		
@@ -2362,10 +2401,16 @@ function OnThink()
 
 			CustomNetTables:SetTableValue( "game_state", "gem_life", { gem_life = GameRules:GetGameModeEntity().gem_castle_hp } );
 			if damage > 0 then
-				if GameRules.is_passed == false then
-					GameRules.quest_status["q107"] = false
-					show_quest()
+
+				GameRules:GetGameModeEntity().wave_enemy_count = GameRules:GetGameModeEntity().wave_enemy_count - 1
+				GameRules:GetGameModeEntity().win_streak = 0
+				GameRules:GetGameModeEntity().perfect_this_level = false
+				if GameRules:GetGameModeEntity().wave_enemy_count < 5 then
+					GameRules:GetGameModeEntity().wave_enemy_count = 5
 				end
+
+
+				
 
 				EmitGlobalSound("DOTA_Item.Maim")
 				play_particle("particles/econ/items/ancient_apparition/aa_blast_ti_5/ancient_apparition_ice_blast_sphere_final_explosion_smoke_ti5.vpcf",PATTACH_OVERHEAD_FOLLOW,GameRules:GetGameModeEntity().gem_castle,2)
@@ -2546,16 +2591,19 @@ function GemTD:OnEntityKilled( keys )
 			--给玩家经验
 			local exp_count = 5
 			if GameRules.level ==10 then
-				exp_count = 200
+				exp_count = 300
 			end
 			if GameRules.level ==20 then
 				exp_count = 300
 			end
 			if GameRules.level ==30 then
-				exp_count = 400
+				exp_count = 300
 			end
 			if GameRules.level ==40 then
-				exp_count = 500
+				exp_count = 300
+			end
+			if GameRules.level ==50 then
+				exp_count = 300
 			end
 			if GameRules.level >=11 and GameRules.level <=19 then
 				exp_count = 10
@@ -2635,6 +2683,28 @@ function GemTD:OnEntityKilled( keys )
 
 			Timers:CreateTimer(1, function()
 
+				--统计过关时间，计算怪数量的增加
+				local time_this_level = math.floor(GameRules:GetGameTime() - GameRules.stop_watch)
+				-- GameRules:SendCustomMessage('time_this_level:'..time_this_level,0,0)
+				-- GameRules:SendCustomMessage('win_streak_time:'..GameRules:GetGameModeEntity().win_streak_time,0,0)
+				if time_this_level < GameRules:GetGameModeEntity().win_streak_time and GameRules:GetGameModeEntity().perfect_this_level then
+					GameRules:GetGameModeEntity().win_streak = GameRules:GetGameModeEntity().win_streak + 1
+					if GameRules:GetGameModeEntity().win_streak >= 3 then
+						GameRules:SendCustomMessage('#text_win_streak_3',0,0)
+						EmitGlobalSound("ui.courier_in_use")
+						
+						GameRules:GetGameModeEntity().win_streak = 0
+						GameRules:GetGameModeEntity().wave_enemy_count = GameRules:GetGameModeEntity().wave_enemy_count + 1
+
+						-- ameRules:SendCustomMessage('win_streak:'..GameRules:GetGameModeEntity().win_streak,0,0)
+					end
+				else
+					GameRules:GetGameModeEntity().win_streak = 0
+					-- GameRules:SendCustomMessage('no win_streak:'..GameRules:GetGameModeEntity().win_streak,0,0)
+				end
+
+				-- GameRules:SendCustomMessage('wave_enemy_count:'..GameRules:GetGameModeEntity().wave_enemy_count,0,0)
+
 				if GameRules.level <= 50 then
 
 					--统计本关mvp
@@ -2678,6 +2748,7 @@ function GemTD:OnEntityKilled( keys )
 				CustomNetTables:SetTableValue( "game_state", "damage_stat", { level = GameRules.level, damage_table = GameRules.damage , hehe = RandomInt(1,100000) } )
 				
 				GameRules.damage = {}
+				GameRules:GetGameModeEntity().perfect_this_level = true
 
 
 
@@ -4056,14 +4127,14 @@ function gemtd_build_stone(keys)
 		--Say(owner,"level:"..hero_level,false)
 		for per,lv in pairs(GameRules.gem_gailv[hero_level]) do
 			--Say(owner,ran..">"..per.."--"..lv,false)
-			if ran>=per and curr_per<per then
+			if ran>per and curr_per<=per then
 				curr_per = per
 				stone_level = lv
 			end
 		end
 	end
 	if caster.pray_level ~= nil and GameRules.perfected ~= true then
-		if RandomInt(1,100) <= tonumber(caster.pray_l) then
+		if RandomInt(1,100) < tonumber(caster.pray_l) then
 			stone_level = tonumber(caster.pray_level)
 			-- createHintBubble(caster,"#renpinbaofa")
 			GameRules.perfected = true
@@ -4078,7 +4149,7 @@ function gemtd_build_stone(keys)
 	--随机决定石头种类
 	local ran = RandomInt(1,table.maxn(GameRules.gem_tower_basic))
 	if caster.pray ~= nil then
-		if RandomInt(1,100) <= tonumber(caster.pray) then
+		if RandomInt(1,100) < tonumber(caster.pray) then
 			ran = tonumber(caster.pray_color)
 			-- createHintBubble(caster,"#renpinbaofa")
 		end
@@ -6646,9 +6717,15 @@ function ShowErrorMessage( msg )
 end
 
 --在屏幕中央上方显示大字
-function ShowCenterMessage( msg, dur )
+function ShowCenterMessage( msg, dur, wave, count )
 	if msg == nil then
 		return
+	end
+	if wave == nil then
+		wave = 0
+	end
+	if count == nil then
+		count = 0
 	end
 
 	-- local msg = {
@@ -6657,12 +6734,15 @@ function ShowCenterMessage( msg, dur )
 	-- }
 	--print( "Sending message to all clients." )
 	-- FireGameEvent("show_center_message",msg)
-	CustomNetTables:SetTableValue( "game_state", "show_top_tips", { text = msg, time= dur, hehe = RandomInt(1,10000) } );
+	
 	if msg == "youwin" then
+		CustomNetTables:SetTableValue( "game_state", "show_top_tips", { text = msg, time= dur, hehe = RandomInt(1,10000) } );
 		play_particle("particles/econ/events/killbanners/screen_killbanner_compendium16_triplekill.vpcf",PATTACH_EYES_FOLLOW, GameRules:GetGameModeEntity().gem_castle,8)
 	elseif string.find(msg, "boss") then
+		CustomNetTables:SetTableValue( "game_state", "show_top_tips", { text = msg, time= dur, wave = wave, count= 1, hehe = RandomInt(1,10000) } );
 		play_particle("particles/econ/events/killbanners/screen_killbanner_compendium14_triplekill.vpcf",PATTACH_EYES_FOLLOW, GameRules:GetGameModeEntity().gem_castle,5)
 	else
+		CustomNetTables:SetTableValue( "game_state", "show_top_tips", { text = msg, time= dur, wave = wave, count=count, hehe = RandomInt(1,10000) } );
 		play_particle("particles/econ/events/killbanners/screen_killbanner_compendium14_rampage_swipe1.vpcf",PATTACH_EYES_FOLLOW, GameRules:GetGameModeEntity().gem_castle,5)
 	end
 end
@@ -6783,7 +6863,7 @@ function start_shuaguai()
 	else
 		GameRules.guai_level = GameRules.level
 	end
-	ShowCenterMessage(GameRules.guai[GameRules.guai_level], 5)
+	ShowCenterMessage(GameRules.guai[GameRules.guai_level], 5,GameRules.level,GameRules:GetGameModeEntity().wave_enemy_count)
 
 	CustomNetTables:SetTableValue( "game_state", "victory_condition", { kills_to_win = GameRules.level, enemy_show = GameRules.guai[GameRules.level] } );
 
@@ -6792,7 +6872,7 @@ function start_shuaguai()
 
 	GameRules.gem_is_shuaguaiing=true
 	GameRules.guai_live_count = 0
-	GameRules.guai_count = 10 --(player_count-1)*3 + 9
+	GameRules.guai_count = GameRules:GetGameModeEntity().wave_enemy_count
 
 
 	-- GameRules:GetGameModeEntity().gem_castle:RemoveAbility("enemy_buff1")
@@ -6848,8 +6928,8 @@ function send_ranking ()
 				GameRules.player_count = GameRules.player_count + 1
 			end
 		end
-		GameRules:SendCustomMessage("#text_jiluchengji", 0, 0)
-		GameRules:SendCustomMessage("Lv"..(GameRules.level-1)..", "..GameRules.kills.."kills, "..math.floor(g_time).."s", 0, 0)
+		-- GameRules:SendCustomMessage("#text_jiluchengji", 0, 0)
+		-- GameRules:SendCustomMessage("Lv"..(GameRules.level-1)..", "..GameRules.kills.."kills, "..math.floor(g_time).."s", 0, 0)
 
 		--统计任务完成情况
 		if g_time/60 <= 60 then
@@ -6864,6 +6944,15 @@ function send_ranking ()
 			GameRules.quest_status["q302"] = true
 			show_quest()
 		end
+
+		if GameRules:GetGameModeEntity().gem_castle_hp >=100 then
+			GameRules.quest_status["q107"] = true
+			show_quest()
+		else
+			GameRules.quest_status["q107"] = false
+			show_quest()
+		end
+		
 
 		local no_color_count = 0
 		if GameRules.quest_status["q201"] == true then
@@ -7306,8 +7395,8 @@ function GemTD:OnCatchCrab(keys)
 	end
 	local user = keys.user
 
-	url = string.gsub(url,"gemtd/ranking/add/","gemtd/ranking/add/201712/")
-	-- print('catch_crab>>>>>>>>>>'..url)
+	url = string.gsub(url,"gemtd/ranking/add/","gemtd/ranking/add/201803/")
+	print('catch_crab>>>>>>>>>>'..url)
 	local r = RandomFloat(0,1)
 	-- print('>>>'..r)
 	

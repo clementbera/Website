@@ -37,5 +37,13 @@
 	{
 		"timer_reminder"			"short"
 	}
+	"show_time"
+	{
+		"total_time"					"short"
+		"wave_time"						"short"
+		"win_streak"					"short"
+		"kuangbao_time"					"short"
+		"win_streak_time"				"short"
+	}
 }
 
