@@ -1122,6 +1122,7 @@ function Precache( context )
 		"models/particle/snowball.vmdl",
 		"models/items/crystal_maiden/snowman/crystal_maiden_snowmaiden.vmdl",
 		"models/items/winter_wyvern/winter_wyvern_ti7_immortal/winter_wyvern_ti7_immortal_ice_shards.vmdl",
+		"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl",
     }
      
     print("Precache...")
@@ -2230,25 +2231,25 @@ function OnThink()
 			u:FindAbilityByName("no_pengzhuang"):SetLevel(1)
 
 			u:SetContextNum("step",1,0)
-			u.damage = 1+RandomInt(0,3)
+			u.damage = 1+RandomInt(0,2)
 			if GameRules.level >10 and GameRules.level <20 then
-				u.damage = 1+RandomInt(0,7)
+				u.damage = 1+RandomInt(0,6)
 			elseif GameRules.level >20 and GameRules.level <30 then
-				u.damage = 1+RandomInt(0,11)
+				u.damage = 1+RandomInt(0,10)
 			elseif GameRules.level >30 and GameRules.level <40 then
-				u.damage = 1+RandomInt(0,15)
-			elseif GameRules.level >40 then
-				u.damage = 1+RandomInt(0,19)
+				u.damage = 1+RandomInt(0,14)
+			elseif GameRules.level >40 and GameRules.level <50 then
+				u.damage = 1+RandomInt(0,18)
 			elseif GameRules.level >50 and GameRules.level <60 then
-				u.damage = 1+RandomInt(0,23)
+				u.damage = 1+RandomInt(0,22)
 			elseif GameRules.level >60 and GameRules.level <70 then
-				u.damage = 1+RandomInt(0,27)
+				u.damage = 1+RandomInt(0,26)
 			elseif GameRules.level >70 and GameRules.level <80 then
-				u.damage = 1+RandomInt(0,31)
+				u.damage = 1+RandomInt(0,30)
 			elseif GameRules.level >80 and GameRules.level <90 then
-				u.damage = 1+RandomInt(0,35)
+				u.damage = 1+RandomInt(0,34)
 			elseif GameRules.level >90 and GameRules.level <100 then
-				u.damage = 1+RandomInt(0,39)
+				u.damage = 1+RandomInt(0,38)
 			end
 
 			if GameRules.level ==10 then

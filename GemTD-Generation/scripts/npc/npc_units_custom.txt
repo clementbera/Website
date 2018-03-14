@@ -2445,7 +2445,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"36000"
+		"StatusHealth"	"34000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -8063,8 +8063,8 @@
 		//
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/wards/esl_wardchest_four_armed_observer/esl_wardchest_four_armed_observer.vmdl"
-		"ModelScale"	"0.9"
+		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
+		"ModelScale"	"1.2"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -8970,8 +8970,8 @@
 		//
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/wards/esl_wardchest_four_armed_observer/esl_wardchest_four_armed_observer.vmdl"
-		"ModelScale"	"1.1"
+		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
+		"ModelScale"	"1.4"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -10135,8 +10135,8 @@
 		//
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/wards/esl_wardchest_four_armed_observer/esl_wardchest_four_armed_observer.vmdl"
-		"ModelScale"	"1.4"
+		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
+		"ModelScale"	"1.7"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -11172,8 +11172,8 @@
 		//
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/wards/esl_wardchest_four_armed_observer/esl_wardchest_four_armed_observer.vmdl"
-		"ModelScale"	"1.7"
+		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
+		"ModelScale"	"2.0"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -12209,8 +12209,8 @@
 		//
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/wards/esl_wardchest_four_armed_observer/esl_wardchest_four_armed_observer.vmdl"
-		"ModelScale"	"2.0"
+		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
+		"ModelScale"	"2.3"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -13246,8 +13246,8 @@
 		//
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/wards/esl_wardchest_four_armed_observer/esl_wardchest_four_armed_observer.vmdl"
-		"ModelScale"	"2.5"
+		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
+		"ModelScale"	"2.8"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
