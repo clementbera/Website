@@ -4301,7 +4301,7 @@
 		// Ability 7 - Extra.
 		"Ability7"	"enemy_momian"
 		// Ability 8 - Extra.
-		"Ability8"	"abaddon_borrowed_time"
+		"Ability8"	""
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
@@ -4315,7 +4315,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"10000"
+		"StatusHealth"	"17000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -6069,7 +6069,7 @@
 		// Ability 7 - Extra.
 		"Ability7"	""
 		// Ability 8 - Extra.
-		"Ability8"	"abaddon_borrowed_time"
+		"Ability8"	""
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
@@ -6083,7 +6083,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"115000"
+		"StatusHealth"	"180000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -6173,7 +6173,7 @@
 		// Ability 7 - Extra.
 		"Ability7"	""
 		// Ability 8 - Extra.
-		"Ability8"	"abaddon_borrowed_time"
+		"Ability8"	""
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
@@ -6187,7 +6187,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"240000"
+		"StatusHealth"	"350000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -6693,7 +6693,7 @@
 		// Ability 7 - Extra.
 		"Ability7"	""
 		// Ability 8 - Extra.
-		"Ability8"	"abaddon_borrowed_time"
+		"Ability8"	""
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
@@ -6707,7 +6707,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"550000"
+		"StatusHealth"	"650000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.

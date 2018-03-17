@@ -570,7 +570,7 @@ GameRules.guai_50_ability = {
 	"guai_jiaoxieguanghuan",
 	"shredder_reactive_armor",
 	"enemy_recharge",
-	"abaddon_borrowed_time",
+	-- "abaddon_borrowed_time",
 	"riki_permanent_invisibility",
 	"tidehunter_kraken_shell",
 	"enemy_wumian",

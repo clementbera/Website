@@ -5697,7 +5697,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cost"	"750 600 450 300"
+				"cost"	"600 500 400 300"
 			}
 		}
 		"AbilityGoldCost"	"600 500 400 300"
@@ -6323,7 +6323,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"last_time"	"120"
+				"last_time"	"60"
 			}
 		}
 		"AbilityGoldCost"	"100"
