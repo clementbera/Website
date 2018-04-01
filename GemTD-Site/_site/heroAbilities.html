@@ -397,7 +397,7 @@
 <td> Increase chance for common next gem.</td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[gailv: 30 45 60 75]</code></td>
+<td> <code>[gailv: 50 65 75 80]</code></td>
 </tr>
 <tr><th> Gold cost </th>
 <td> 100</td>
@@ -431,18 +431,24 @@
 </tr>
 </table>
 </section><section>
-<h2> a212</h2>
+<h2> StoneHenge</h2>
 <table style="border: solid thin"><tr><th> Network code </th>
 <td> a212</td>
 </tr>
 <tr><th> Ability </th>
 <td> gemtd_hero_shitou</td>
 </tr>
+<tr><th> Name </th>
+<td> StoneHenge</td>
+</tr>
+<tr><th> Tooltip </th>
+<td> Create stones along the way due to your hero's orientation until blocked or reach the max amount.</td>
+</tr>
 <tr><th> Raw: Special </th>
 <td> <code>[stone_max_count: 4 8 12 16]</code></td>
 </tr>
 <tr><th> Gold cost </th>
-<td> 100</td>
+<td> 50</td>
 </tr>
 <tr><th> Shell price </th>
 <td> 10 . 20 . 40 . 80 ~ Sale:  5 . 10 . 20 . 40</td>
@@ -565,7 +571,7 @@
 <td> Increase chance for flawless next gem.</td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[gailv: 20 30 40 50]</code></td>
+<td> <code>[gailv: 29 41 47 50]</code></td>
 </tr>
 <tr><th> Gold cost </th>
 <td> 200</td>
@@ -604,37 +610,46 @@
 <td> a307</td>
 </tr>
 <tr><th> Ability </th>
-<td> warlock_fatal_bonds</td>
+<td> gemtd_hero_lianjie</td>
 </tr>
 <tr><th> Name </th>
 <td> Fatal Bonds</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Bond adjacent enemies to share a percentage of damage when one of the targets takes damage</td>
+<td> Grant a tower the buff which can also deal pure damage to the farthest enemy when attacks.</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>On Attack Landed, run script gemtd_hero_lianjie (fenliejian.lua) with [attacker: %attacker, caster: %caster, damage: %attack_damage]</code></td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[duration: 60.0][count: 3][search_aoe: 1200][damage_share_percentage: 70 80 90 100]</code></td>
+<td> <code>[damage_per: 70 80 90 100]</code></td>
 </tr>
 <tr><th> Gold cost </th>
-<td> 100</td>
+<td> 200</td>
 </tr>
 <tr><th> Shell price </th>
 <td> 15 . 30 . 60 . 120 ~ Sale:  7 . 15 . 30 . 60</td>
 </tr>
 </table>
 </section><section>
-<h2> a308</h2>
+<h2> Ursol Whirl</h2>
 <table style="border: solid thin"><tr><th> Network code </th>
 <td> a308</td>
 </tr>
 <tr><th> Ability </th>
 <td> gemtd_hero_xuanfeng</td>
 </tr>
+<tr><th> Name </th>
+<td> Ursol Whirl</td>
+</tr>
+<tr><th> Tooltip </th>
+<td> Swirl all the stones and towers counter-clockwise by one grid, center at casting point.</td>
+</tr>
 <tr><th> Raw: Special </th>
-<td> <code>[cost: 200 125 75 50][range: 180]</code></td>
+<td> <code>[cost: 250 175 125 100]</code></td>
 </tr>
 <tr><th> Gold cost </th>
-<td> 200 125 75 50</td>
+<td> 250 175 125 100</td>
 </tr>
 <tr><th> Shell price </th>
 <td> 15 . 30 . 60 . 120 ~ Sale:  7 . 15 . 30 . 60</td>
@@ -679,7 +694,7 @@
 <td> Increase chance for perfect next gem.</td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[gailv: 10 15 20 25]</code></td>
+<td> <code>[gailv: 6 14 18 20]</code></td>
 </tr>
 <tr><th> Gold cost </th>
 <td> 400</td>
