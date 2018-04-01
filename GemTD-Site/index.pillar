@@ -50,7 +50,9 @@ v.1.5: Added shell prices to abilities, parsed some more ability names.
 
 v.1.6: Added global settings at the beginning of creeps page & creep base HP/MS (to ease update analysis up-coming). Added color to generation script in command line.
 
-v.1.7: Update March 14
+v.1.7: Update March 14.
+
+v.1.8: Update Aprl 1st, new towers & combinations management.
 
 !!! Made by
 
