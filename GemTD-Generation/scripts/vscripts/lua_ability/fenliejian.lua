@@ -132,3 +132,65 @@ function DuoChongGongJiDamage_you( keys )
     damage=attack_damage}
     ApplyDamage(damageTable)
 end
+
+
+
+function gemtd_hero_lianjie (keys)
+    local damage = keys.damage
+    local attacker = keys.attacker
+    local caster = keys.caster
+
+    local direUnits = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
+                              keys.target:GetAbsOrigin(),
+                              nil,
+                              FIND_UNITS_EVERYWHERE,
+                              DOTA_UNIT_TARGET_TEAM_FRIENDLY,
+                              DOTA_UNIT_TARGET_ALL,
+                              DOTA_UNIT_TARGET_FLAG_NONE,
+                              FIND_FARTHEST,
+                              false)
+    local unluckydog = direUnits[1]
+    if unluckydog == nil then
+        return
+    end
+    if unluckydog:GetEntityIndex() == keys.target:GetEntityIndex() then
+        return
+    end
+
+    -- GameRules:SendCustomMessage('lianjie:'..table.maxn(direUnits)..' '..unluckydog:GetUnitName(),0,0)
+
+    local info =
+    {
+        Target = unluckydog,
+        Source = keys.target,
+        Ability = nil,
+        EffectName = "particles/units/heroes/hero_warlock/warlock_fatal_bonds_base.vpcf",
+        bDodgeable = false,
+        iMoveSpeed = 3000,
+        bProvidesVision = false,
+        iVisionRadius = 0,
+        iVisionTeamNumber = keys.target:GetTeamNumber(),
+        iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_1
+    }
+    projectile = ProjectileManager:CreateTrackingProjectile(info)
+
+    local ability_level = caster:FindAbilityByName('gemtd_hero_lianjie'):GetLevel()
+
+    damage = damage * (ability_level*0.1 + 0.6)
+
+    --获取攻击伤害
+    local damageTable = {
+        victim = unluckydog,
+        attacker = attacker,
+        damage_type = DAMAGE_TYPE_PURE,
+        damage = damage
+    }
+    ApplyDamage(damageTable)
+end
+
+function Blink(keys)
+    local p = keys.target_points[1]
+    local caster = keys.caster
+
+    caster:SetAbsOrigin(p)
+end

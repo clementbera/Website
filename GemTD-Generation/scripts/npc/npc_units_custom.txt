@@ -1263,7 +1263,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		// Model.
-		"Model"	"models/courier/defense3_sheep/defense3_sheep.vmdl"
+		"Model"	"models/items/courier/courier_faun/courier_faun.vmdl"
 		// Name of sound set.
 		"SoundSet"	"Undying_Zombie"
 		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
@@ -1613,7 +1613,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"1300"
+		"StatusHealth"	"1100"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -2341,7 +2341,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"4000"
+		"StatusHealth"	"3700"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -2475,6 +2475,110 @@
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		// Speed
 		"MovementSpeed"	"900"
+		// Turning rate.
+		"MovementTurnRate"	"10"
+		"FollowRange"	"0"
+		// Team
+		// ----------------------------------------------------------------
+		// Team name.
+		"TeamName"	"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// Vision
+		// ----------------------------------------------------------------
+		// Range of vision during day light.
+		"VisionDaytimeRange"	"1000"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1000"
+		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIconSize"	"768"
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
+	// 20
+	"gemtd_yuediyang_boss"
+	{
+		// General5
+		//
+		// Class of entity of link to.
+		"BaseClass"	"npc_dota_creature"
+		// Model.
+		"Model"	"models/courier/defense3_sheep/defense3_sheep.vmdl"
+		// Name of sound set.
+		"SoundSet"	"Undying_Zombie"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"ModelScale"	"2.9"
+		"Level"	"20"
+		"IsAncient"	"1"
+		// Abilities
+		// ----------------------------------------------------------------
+		// Ability 1.
+		"Ability1"	"gemtd_guai_base"
+		// Ability 2.
+		"Ability2"	""
+		// Ability 3.
+		"Ability3"	""
+		// Ability 4.
+		"Ability4"	""
+		// Ability 5.
+		"Ability5"	""
+		// Ability 6 - Extra.
+		"Ability6"	""
+		// Ability 7 - Extra.
+		"Ability7"	""
+		// Ability 8 - Extra.
+		"Ability8"	""
+		// Armor
+		// ----------------------------------------------------------------
+		// Physical protection.
+		"ArmorPhysical"	"0"
+		// Magical protection.
+		"MagicalResistance"	"10"
+		// Attack
+		// ----------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"DisableClumpingBehavior"	"0"
+		// Status
+		// ----------------------------------------------------------------
+		// Base health.
+		"StatusHealth"	"40000"
+		// Health regeneration rate.
+		"StatusHealthRegen"	"0"
+		// Base mana.
+		"StatusMana"	"0"
+		// Mana regeneration rate.
+		"StatusManaRegen"	"0"
+		"HasAggressiveStance"	"1"
+		// Bounty
+		// ----------------------------------------------------------------
+		// Experience earn.
+		"BountyXP"	"0"
+		// Gold earned min.
+		"BountyGoldMin"	"0"
+		// Gold earned max.
+		"BountyGoldMax"	"0"
+		"SoundSet"	"Hero_ChaosKnight"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+		"IdleSoundLoop"	"Hero_ChaosKnight.Tutorial_Intro"
+		// Bounds
+		// ----------------------------------------------------------------
+		"RingRadius"	"70"
+		"HealthBarOffset"	"160"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		// Movement
+		// ----------------------------------------------------------------
+		// Type of locomotion - ground, air
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// Speed
+		"MovementSpeed"	"850"
 		// Turning rate.
 		"MovementTurnRate"	"10"
 		"FollowRange"	"0"
@@ -2963,7 +3067,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"13000"
+		"StatusHealth"	"10000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -2993,6 +3097,110 @@
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		// Speed
 		"MovementSpeed"	"625"
+		// Turning rate.
+		"MovementTurnRate"	"10"
+		"FollowRange"	"0"
+		// Team
+		// ----------------------------------------------------------------
+		// Team name.
+		"TeamName"	"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// Vision
+		// ----------------------------------------------------------------
+		// Range of vision during day light.
+		"VisionDaytimeRange"	"1000"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1000"
+		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIconSize"	"768"
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
+	// 21
+	"gemtd_xiexiaowo"
+	{
+		// General
+		//
+		// Class of entity of link to.
+		"BaseClass"	"npc_dota_creature"
+		// Model.
+		"Model"	"models/items/courier/hermit_crab/hermit_crab.vmdl"
+		// Name of sound set.
+		"SoundSet"	"Undying_Zombie"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"ModelScale"	"1.6"
+		"Level"	"23"
+		"IsAncient"	"1"
+		// Abilities
+		// ----------------------------------------------------------------
+		// Ability 1.
+		"Ability1"	"gemtd_guai_base"
+		// Ability 2.
+		"Ability2"	"enemy_wumian"
+		// Ability 3.
+		"Ability3"	""
+		// Ability 4.
+		"Ability4"	""
+		// Ability 5.
+		"Ability5"	""
+		// Ability 6 - Extra.
+		"Ability6"	""
+		// Ability 7 - Extra.
+		"Ability7"	""
+		// Ability 8 - Extra.
+		"Ability8"	""
+		// Armor
+		// ----------------------------------------------------------------
+		// Physical protection.
+		"ArmorPhysical"	"8"
+		// Magical protection.
+		"MagicalResistance"	"10"
+		// Attack
+		// ----------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"DisableClumpingBehavior"	"0"
+		// Status
+		// ----------------------------------------------------------------
+		// Base health.
+		"StatusHealth"	"6000"
+		// Health regeneration rate.
+		"StatusHealthRegen"	"0"
+		// Base mana.
+		"StatusMana"	"0"
+		// Mana regeneration rate.
+		"StatusManaRegen"	"0"
+		"HasAggressiveStance"	"1"
+		// Bounty
+		// ----------------------------------------------------------------
+		// Experience earn.
+		"BountyXP"	"0"
+		// Gold earned min.
+		"BountyGoldMin"	"0"
+		// Gold earned max.
+		"BountyGoldMax"	"0"
+		"SoundSet"	"Hero_ChaosKnight"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+		"IdleSoundLoop"	"Hero_ChaosKnight.Tutorial_Intro"
+		// Bounds
+		// ----------------------------------------------------------------
+		"RingRadius"	"70"
+		"HealthBarOffset"	"160"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		// Movement
+		// ----------------------------------------------------------------
+		// Type of locomotion - ground, air
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// Speed
+		"MovementSpeed"	"700"
 		// Turning rate.
 		"MovementTurnRate"	"10"
 		"FollowRange"	"0"
@@ -3749,6 +3957,110 @@
 		"Ability16"	""
 	}
 
+	// 27
+	"gemtd_ruxingshuimu_fly"
+	{
+		// General
+		//
+		// Class of entity of link to.
+		"BaseClass"	"npc_dota_creature"
+		// Model.
+		"Model"	"models/items/courier/echo_wisp/echo_wisp_flying.vmdl"
+		// Name of sound set.
+		"SoundSet"	"Undying_Zombie"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"ModelScale"	"1.75"
+		"Level"	"27"
+		"IsAncient"	"0"
+		// Abilities
+		// ----------------------------------------------------------------
+		// Ability 1.
+		"Ability1"	"gemtd_guai_base"
+		// Ability 2.
+		"Ability2"	"enemy_wumian"
+		// Ability 3.
+		"Ability3"	""
+		// Ability 4.
+		"Ability4"	""
+		// Ability 5.
+		"Ability5"	""
+		// Ability 6 - Extra.
+		"Ability6"	""
+		// Ability 7 - Extra.
+		"Ability7"	""
+		// Ability 8 - Extra.
+		"Ability8"	""
+		// Armor
+		// ----------------------------------------------------------------
+		// Physical protection.
+		"ArmorPhysical"	"8"
+		// Magical protection.
+		"MagicalResistance"	"50"
+		// Attack
+		// ----------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"DisableClumpingBehavior"	"0"
+		// Status
+		// ----------------------------------------------------------------
+		// Base health.
+		"StatusHealth"	"2000"
+		// Health regeneration rate.
+		"StatusHealthRegen"	"0"
+		// Base mana.
+		"StatusMana"	"0"
+		// Mana regeneration rate.
+		"StatusManaRegen"	"0"
+		"HasAggressiveStance"	"1"
+		// Bounty
+		// ----------------------------------------------------------------
+		// Experience earn.
+		"BountyXP"	"0"
+		// Gold earned min.
+		"BountyGoldMin"	"0"
+		// Gold earned max.
+		"BountyGoldMax"	"0"
+		"SoundSet"	"Hero_ChaosKnight"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+		"IdleSoundLoop"	"Hero_ChaosKnight.Tutorial_Intro"
+		// Bounds
+		// ----------------------------------------------------------------
+		"RingRadius"	"70"
+		"HealthBarOffset"	"160"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		// Movement
+		// ----------------------------------------------------------------
+		// Type of locomotion - ground, air
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		// Speed
+		"MovementSpeed"	"625"
+		// Turning rate.
+		"MovementTurnRate"	"10"
+		"FollowRange"	"0"
+		// Team
+		// ----------------------------------------------------------------
+		// Team name.
+		"TeamName"	"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// Vision
+		// ----------------------------------------------------------------
+		// Range of vision during day light.
+		"VisionDaytimeRange"	"1000"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1000"
+		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIconSize"	"768"
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
 	// 28
 	"gemtd_youniekesizhinu_fly"
 	{
@@ -4061,6 +4373,110 @@
 		"Ability16"	""
 	}
 
+	// 29
+	"gemtd_yingwuchuanfu_fly"
+	{
+		// General
+		//
+		// Class of entity of link to.
+		"BaseClass"	"npc_dota_creature"
+		// Model.
+		"Model"	"models/courier/skippy_parrot/skippy_parrot_flying_sailboat.vmdl"
+		// Name of sound set.
+		"SoundSet"	"Undying_Zombie"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"ModelScale"	"1.65"
+		"Level"	"29"
+		"IsAncient"	"0"
+		// Abilities
+		// ----------------------------------------------------------------
+		// Ability 1.
+		"Ability1"	"gemtd_guai_base"
+		// Ability 2.
+		"Ability2"	""
+		// Ability 3.
+		"Ability3"	""
+		// Ability 4.
+		"Ability4"	""
+		// Ability 5.
+		"Ability5"	""
+		// Ability 6 - Extra.
+		"Ability6"	""
+		// Ability 7 - Extra.
+		"Ability7"	""
+		// Ability 8 - Extra.
+		"Ability8"	""
+		// Armor
+		// ----------------------------------------------------------------
+		// Physical protection.
+		"ArmorPhysical"	"8"
+		// Magical protection.
+		"MagicalResistance"	"10"
+		// Attack
+		// ----------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"DisableClumpingBehavior"	"0"
+		// Status
+		// ----------------------------------------------------------------
+		// Base health.
+		"StatusHealth"	"4500"
+		// Health regeneration rate.
+		"StatusHealthRegen"	"0"
+		// Base mana.
+		"StatusMana"	"0"
+		// Mana regeneration rate.
+		"StatusManaRegen"	"0"
+		"HasAggressiveStance"	"1"
+		// Bounty
+		// ----------------------------------------------------------------
+		// Experience earn.
+		"BountyXP"	"0"
+		// Gold earned min.
+		"BountyGoldMin"	"0"
+		// Gold earned max.
+		"BountyGoldMax"	"0"
+		"SoundSet"	"Hero_ChaosKnight"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+		"IdleSoundLoop"	"Hero_ChaosKnight.Tutorial_Intro"
+		// Bounds
+		// ----------------------------------------------------------------
+		"RingRadius"	"70"
+		"HealthBarOffset"	"160"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		// Movement
+		// ----------------------------------------------------------------
+		// Type of locomotion - ground, air
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		// Speed
+		"MovementSpeed"	"1000"
+		// Turning rate.
+		"MovementTurnRate"	"10"
+		"FollowRange"	"0"
+		// Team
+		// ----------------------------------------------------------------
+		// Team name.
+		"TeamName"	"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// Vision
+		// ----------------------------------------------------------------
+		// Range of vision during day light.
+		"VisionDaytimeRange"	"1000"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1000"
+		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIconSize"	"768"
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
 	// 30
 	"gemtd_mofafeitanxiaoemo_boss_fly"
 	{
@@ -4315,7 +4731,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"17000"
+		"StatusHealth"	"14000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -4345,6 +4761,110 @@
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		// Speed
 		"MovementSpeed"	"900"
+		// Turning rate.
+		"MovementTurnRate"	"10"
+		"FollowRange"	"0"
+		// Team
+		// ----------------------------------------------------------------
+		// Team name.
+		"TeamName"	"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// Vision
+		// ----------------------------------------------------------------
+		// Range of vision during day light.
+		"VisionDaytimeRange"	"1000"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1000"
+		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIconSize"	"768"
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
+	// 31
+	"gemtd_talongaosiji"
+	{
+		// General
+		//
+		// Class of entity of link to.
+		"BaseClass"	"npc_dota_creature"
+		// Model.
+		"Model"	"models/courier/otter_dragon/otter_dragon.vmdl"
+		// Name of sound set.
+		"SoundSet"	"Undying_Zombie"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"ModelScale"	"2.0"
+		"Level"	"31"
+		"IsAncient"	"1"
+		// Abilities
+		// ----------------------------------------------------------------
+		// Ability 1.
+		"Ability1"	"gemtd_guai_base"
+		// Ability 2.
+		"Ability2"	""
+		// Ability 3.
+		"Ability3"	""
+		// Ability 4.
+		"Ability4"	""
+		// Ability 5.
+		"Ability5"	""
+		// Ability 6 - Extra.
+		"Ability6"	""
+		// Ability 7 - Extra.
+		"Ability7"	"enemy_wumian"
+		// Ability 8 - Extra.
+		"Ability8"	""
+		// Armor
+		// ----------------------------------------------------------------
+		// Physical protection.
+		"ArmorPhysical"	"12"
+		// Magical protection.
+		"MagicalResistance"	"10"
+		// Attack
+		// ----------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"DisableClumpingBehavior"	"0"
+		// Status
+		// ----------------------------------------------------------------
+		// Base health.
+		"StatusHealth"	"21000"
+		// Health regeneration rate.
+		"StatusHealthRegen"	"0"
+		// Base mana.
+		"StatusMana"	"0"
+		// Mana regeneration rate.
+		"StatusManaRegen"	"0"
+		"HasAggressiveStance"	"1"
+		// Bounty
+		// ----------------------------------------------------------------
+		// Experience earn.
+		"BountyXP"	"0"
+		// Gold earned min.
+		"BountyGoldMin"	"0"
+		// Gold earned max.
+		"BountyGoldMax"	"0"
+		"SoundSet"	"Hero_ChaosKnight"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+		"IdleSoundLoop"	"Hero_ChaosKnight.Tutorial_Intro"
+		// Bounds
+		// ----------------------------------------------------------------
+		"RingRadius"	"70"
+		"HealthBarOffset"	"160"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		// Movement
+		// ----------------------------------------------------------------
+		// Type of locomotion - ground, air
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// Speed
+		"MovementSpeed"	"800"
 		// Turning rate.
 		"MovementTurnRate"	"10"
 		"FollowRange"	"0"
@@ -4552,7 +5072,7 @@
 		// Type of locomotion - ground, air
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		// Speed
-		"MovementSpeed"	"900"
+		"MovementSpeed"	"700"
 		// Turning rate.
 		"MovementTurnRate"	"10"
 		"FollowRange"	"0"
@@ -5355,7 +5875,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"120000"
+		"StatusHealth"	"100000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -5934,6 +6454,110 @@
 	}
 
 	// 40
+	"gemtd_gugubiao_boss_fly"
+	{
+		// General
+		//
+		// Class of entity of link to.
+		"BaseClass"	"npc_dota_creature"
+		// Model.
+		"Model"	"models/items/courier/white_the_crystal_courier/white_the_crystal_courier_flying.vmdl"
+		// Name of sound set.
+		"SoundSet"	"Undying_Zombie"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"ModelScale"	"4.5"
+		"Level"	"40"
+		"IsAncient"	"0"
+		// Abilities
+		// ----------------------------------------------------------------
+		// Ability 1.
+		"Ability1"	"gemtd_guai_base"
+		// Ability 2.
+		"Ability2"	""
+		// Ability 3.
+		"Ability3"	""
+		// Ability 4.
+		"Ability4"	""
+		// Ability 5.
+		"Ability5"	""
+		// Ability 6 - Extra.
+		"Ability6"	""
+		// Ability 7 - Extra.
+		"Ability7"	""
+		// Ability 8 - Extra.
+		"Ability8"	""
+		// Armor
+		// ----------------------------------------------------------------
+		// Physical protection.
+		"ArmorPhysical"	"0"
+		// Magical protection.
+		"MagicalResistance"	"10"
+		// Attack
+		// ----------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"DisableClumpingBehavior"	"0"
+		// Status
+		// ----------------------------------------------------------------
+		// Base health.
+		"StatusHealth"	"330000"
+		// Health regeneration rate.
+		"StatusHealthRegen"	"0"
+		// Base mana.
+		"StatusMana"	"0"
+		// Mana regeneration rate.
+		"StatusManaRegen"	"0"
+		"HasAggressiveStance"	"1"
+		// Bounty
+		// ----------------------------------------------------------------
+		// Experience earn.
+		"BountyXP"	"0"
+		// Gold earned min.
+		"BountyGoldMin"	"0"
+		// Gold earned max.
+		"BountyGoldMax"	"0"
+		"SoundSet"	"Hero_ChaosKnight"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+		"IdleSoundLoop"	"Hero_ChaosKnight.Tutorial_Intro"
+		// Bounds
+		// ----------------------------------------------------------------
+		"RingRadius"	"70"
+		"HealthBarOffset"	"160"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		// Movement
+		// ----------------------------------------------------------------
+		// Type of locomotion - ground, air
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		// Speed
+		"MovementSpeed"	"1200"
+		// Turning rate.
+		"MovementTurnRate"	"10"
+		"FollowRange"	"0"
+		// Team
+		// ----------------------------------------------------------------
+		// Team name.
+		"TeamName"	"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// Vision
+		// ----------------------------------------------------------------
+		// Range of vision during day light.
+		"VisionDaytimeRange"	"1000"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1000"
+		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIconSize"	"768"
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
+	// 40
 	"gemtd_moke_boss_fly"
 	{
 		// General
@@ -6083,7 +6707,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"180000"
+		"StatusHealth"	"100000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -6187,7 +6811,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"350000"
+		"StatusHealth"	"200000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -6499,7 +7123,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"240000"
+		"StatusHealth"	"200000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -6787,7 +7411,7 @@
 		// Ability 2.
 		"Ability2"	""
 		// Ability 3.
-		"Ability3"	"riki_permanent_invisibility"
+		"Ability3"	""
 		// Ability 4.
 		"Ability4"	""
 		// Ability 5.
@@ -6869,6 +7493,110 @@
 		"Ability16"	""
 	}
 
+	// 47
+	"gemtd_xunjieyuanzumaolv"
+	{
+		// General
+		//
+		// Class of entity of link to.
+		"BaseClass"	"npc_dota_creature"
+		// Model.
+		"Model"	"models/courier/donkey_ti7/donkey_ti7.vmdl"
+		// Name of sound set.
+		"SoundSet"	"Undying_Zombie"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"ModelScale"	"2.2"
+		"Level"	"47"
+		"IsAncient"	"1"
+		// Abilities
+		// ----------------------------------------------------------------
+		// Ability 1.
+		"Ability1"	"gemtd_guai_base"
+		// Ability 2.
+		"Ability2"	"enemy_momian"
+		// Ability 3.
+		"Ability3"	""
+		// Ability 4.
+		"Ability4"	""
+		// Ability 5.
+		"Ability5"	""
+		// Ability 6 - Extra.
+		"Ability6"	""
+		// Ability 7 - Extra.
+		"Ability7"	""
+		// Ability 8 - Extra.
+		"Ability8"	""
+		// Armor
+		// ----------------------------------------------------------------
+		// Physical protection.
+		"ArmorPhysical"	"16"
+		// Magical protection.
+		"MagicalResistance"	"100"
+		// Attack
+		// ----------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"DisableClumpingBehavior"	"0"
+		// Status
+		// ----------------------------------------------------------------
+		// Base health.
+		"StatusHealth"	"300000"
+		// Health regeneration rate.
+		"StatusHealthRegen"	"0"
+		// Base mana.
+		"StatusMana"	"0"
+		// Mana regeneration rate.
+		"StatusManaRegen"	"0"
+		"HasAggressiveStance"	"1"
+		// Bounty
+		// ----------------------------------------------------------------
+		// Experience earn.
+		"BountyXP"	"0"
+		// Gold earned min.
+		"BountyGoldMin"	"0"
+		// Gold earned max.
+		"BountyGoldMax"	"0"
+		"SoundSet"	"Hero_ChaosKnight"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+		"IdleSoundLoop"	"Hero_ChaosKnight.Tutorial_Intro"
+		// Bounds
+		// ----------------------------------------------------------------
+		"RingRadius"	"70"
+		"HealthBarOffset"	"160"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		// Movement
+		// ----------------------------------------------------------------
+		// Type of locomotion - ground, air
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// Speed
+		"MovementSpeed"	"500"
+		// Turning rate.
+		"MovementTurnRate"	"10"
+		"FollowRange"	"0"
+		// Team
+		// ----------------------------------------------------------------
+		// Team name.
+		"TeamName"	"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// Vision
+		// ----------------------------------------------------------------
+		// Range of vision during day light.
+		"VisionDaytimeRange"	"1000"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1000"
+		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIconSize"	"768"
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
 	// 48
 	"gemtd_xiaofeixia_fly"
 	{
@@ -6916,7 +7644,7 @@
 		// Status
 		// ----------------------------------------------------------------
 		// Base health.
-		"StatusHealth"	"55000"
+		"StatusHealth"	"60000"
 		// Health regeneration rate.
 		"StatusHealthRegen"	"0"
 		// Base mana.
@@ -6946,6 +7674,111 @@
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
 		// Speed
 		"MovementSpeed"	"550"
+		// Turning rate.
+		"MovementTurnRate"	"10"
+		"FollowRange"	"0"
+		// Team
+		// ----------------------------------------------------------------
+		// Team name.
+		"TeamName"	"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		// Vision
+		// ----------------------------------------------------------------
+		// Range of vision during day light.
+		"VisionDaytimeRange"	"1000"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"1000"
+		"MinimapIcon"	"minimap_candybucket"
+		"MinimapIconSize"	"768"
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+
+	// 48
+	"gemtd_jiwanghaidao_fly"
+	{
+		// General
+		//
+		// Class of entity of link to.
+		"BaseClass"	"npc_dota_creature"
+		// Model.
+		"Model"	"models/items/courier/g1_courier/g1_courier_flying.vmdl"
+		// Name of sound set.
+		"SoundSet"	"Undying_Zombie"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"ModelScale"	"2.2"
+		"Level"	"48"
+		"IsAncient"	"0"
+		"Skin"	"3"
+		// Abilities
+		// ----------------------------------------------------------------
+		// Ability 1.
+		"Ability1"	"gemtd_guai_base"
+		// Ability 2.
+		"Ability2"	""
+		// Ability 3.
+		"Ability3"	""
+		// Ability 4.
+		"Ability4"	"enemy_momian"
+		// Ability 5.
+		"Ability5"	""
+		// Ability 6 - Extra.
+		"Ability6"	""
+		// Ability 7 - Extra.
+		"Ability7"	""
+		// Ability 8 - Extra.
+		"Ability8"	""
+		// Armor
+		// ----------------------------------------------------------------
+		// Physical protection.
+		"ArmorPhysical"	"16"
+		// Magical protection.
+		"MagicalResistance"	"10"
+		// Attack
+		// ----------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"DisableClumpingBehavior"	"0"
+		// Status
+		// ----------------------------------------------------------------
+		// Base health.
+		"StatusHealth"	"100000"
+		// Health regeneration rate.
+		"StatusHealthRegen"	"0"
+		// Base mana.
+		"StatusMana"	"0"
+		// Mana regeneration rate.
+		"StatusManaRegen"	"0"
+		"HasAggressiveStance"	"1"
+		// Bounty
+		// ----------------------------------------------------------------
+		// Experience earn.
+		"BountyXP"	"0"
+		// Gold earned min.
+		"BountyGoldMin"	"0"
+		// Gold earned max.
+		"BountyGoldMax"	"0"
+		"SoundSet"	"Hero_ChaosKnight"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+		"IdleSoundLoop"	"Hero_ChaosKnight.Tutorial_Intro"
+		// Bounds
+		// ----------------------------------------------------------------
+		"RingRadius"	"70"
+		"HealthBarOffset"	"160"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
+		// Movement
+		// ----------------------------------------------------------------
+		// Type of locomotion - ground, air
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		// Speed
+		"MovementSpeed"	"400"
 		// Turning rate.
 		"MovementTurnRate"	"10"
 		"FollowRange"	"0"
@@ -8064,7 +8897,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
-		"ModelScale"	"1.2"
+		"ModelScale"	"1.15"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -8971,7 +9804,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
-		"ModelScale"	"1.4"
+		"ModelScale"	"1.3"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -10136,7 +10969,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
-		"ModelScale"	"1.7"
+		"ModelScale"	"1.6"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -11173,7 +12006,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
-		"ModelScale"	"2.0"
+		"ModelScale"	"1.9"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -12210,7 +13043,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
-		"ModelScale"	"2.3"
+		"ModelScale"	"2.2"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -13247,7 +14080,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
-		"ModelScale"	"2.8"
+		"ModelScale"	"2.7"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -14290,7 +15123,7 @@
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"Level"	"10"
+		"Level"	"9"
 		// Abilities
 		// ----------------------------------------------------------------
 		// Ability 1.
@@ -15103,7 +15936,7 @@
 		"AttackDamageMax"	"0"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
-		"AttackRate"	"0.5"
+		"AttackRate"	"1"
 		// Normalized time in animation cycle to attack.
 		"AttackAnimationPoint"	"0"
 		// Range within a target can be acquired.
@@ -15231,7 +16064,7 @@
 		"AttackDamageMax"	"0"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
-		"AttackRate"	"0.5"
+		"AttackRate"	"1"
 		// Normalized time in animation cycle to attack.
 		"AttackAnimationPoint"	"0"
 		// Range within a target can be acquired.
@@ -15741,9 +16574,9 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"20"
+		"AttackDamageMin"	"30"
 		// Damage range max.
-		"AttackDamageMax"	"20"
+		"AttackDamageMax"	"30"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
 		"AttackRate"	"0.6"
@@ -15999,9 +16832,9 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"150"
+		"AttackDamageMin"	"170"
 		// Damage range max.
-		"AttackDamageMax"	"150"
+		"AttackDamageMax"	"170"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
 		"AttackRate"	"0.5"
@@ -16646,9 +17479,9 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"100"
+		"AttackDamageMin"	"130"
 		// Damage range max.
-		"AttackDamageMax"	"100"
+		"AttackDamageMax"	"130"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
 		"AttackRate"	"0.6"
@@ -16904,9 +17737,9 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"80"
+		"AttackDamageMin"	"120"
 		// Damage range max.
-		"AttackDamageMax"	"80"
+		"AttackDamageMax"	"120"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
 		"AttackRate"	"0.6"
@@ -18037,7 +18870,7 @@
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"Level"	"9"
+		"Level"	"8"
 		"skin"	"1"
 		// Abilities
 		// ----------------------------------------------------------------
@@ -18048,9 +18881,9 @@
 		// Ability 3.
 		"Ability3"	""
 		// Ability 4.
-		"Ability4"	""
+		"Ability4"	"tower_chenmoguanghuan"
 		// Ability 5.
-		"Ability5"	""
+		"Ability5"	"tower_maoyan"
 		// Ability 6 - Extra.
 		"Ability6"	"tower_speed_aura_guichu"
 		// Ability 7 - Extra.
@@ -18168,7 +19001,7 @@
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"Level"	"9"
+		"Level"	"8"
 		"skin"	"0"
 		// Abilities
 		// ----------------------------------------------------------------
@@ -18181,7 +19014,7 @@
 		// Ability 4.
 		"Ability4"	""
 		// Ability 5.
-		"Ability5"	""
+		"Ability5"	"tower_zheyi2"
 		// Ability 6 - Extra.
 		"Ability6"	"tower_ranjin"
 		// Ability 7 - Extra.
@@ -18203,13 +19036,13 @@
 		"AttackDamageMax"	"1"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
-		"AttackRate"	"2"
+		"AttackRate"	"0.6"
 		// Normalized time in animation cycle to attack.
 		"AttackAnimationPoint"	"0"
 		// Range within a target can be acquired.
 		"AttackAcquisitionRange"	"700"
 		// Range within a target can be attacked.
-		"AttackRange"	"600"
+		"AttackRange"	"800"
 		"ProjectileModel"	"particles/units/heroes/hero_lion/lion_spell_finger_of_death.vpcf"
 		// Speed of projectile.
 		"ProjectileSpeed"	"3000"
@@ -18298,7 +19131,7 @@
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"Level"	"6"
+		"Level"	"7"
 		"skin"	"1"
 		// Abilities
 		// ----------------------------------------------------------------
@@ -18427,7 +19260,7 @@
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"Level"	"8"
+		"Level"	"7"
 		// Abilities
 		// ----------------------------------------------------------------
 		// Ability 1.
@@ -18461,7 +19294,7 @@
 		"AttackDamageMax"	"180"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
-		"AttackRate"	"1"
+		"AttackRate"	"0.8"
 		// Normalized time in animation cycle to attack.
 		"AttackAnimationPoint"	"0"
 		// Range within a target can be acquired.
@@ -18556,7 +19389,7 @@
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"Level"	"8"
+		"Level"	"7"
 		// Abilities
 		// ----------------------------------------------------------------
 		// Ability 1.
@@ -18590,7 +19423,7 @@
 		"AttackDamageMax"	"110"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
-		"AttackRate"	"0.4"
+		"AttackRate"	"0.3"
 		// Normalized time in animation cycle to attack.
 		"AttackAnimationPoint"	"0"
 		// Range within a target can be acquired.
@@ -18814,7 +19647,7 @@
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"Level"	"6"
+		"Level"	"7"
 		// Abilities
 		// ----------------------------------------------------------------
 		// Ability 1.
@@ -19072,7 +19905,7 @@
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"Level"	"9"
+		"Level"	"8"
 		"skin"	"0"
 		// Abilities
 		// ----------------------------------------------------------------
@@ -19083,11 +19916,11 @@
 		// Ability 3.
 		"Ability3"	""
 		// Ability 4.
-		"Ability4"	""
+		"Ability4"	"tower_jingzhun"
 		// Ability 5.
-		"Ability5"	""
+		"Ability5"	"tower_shechengguanghuan"
 		// Ability 6 - Extra.
-		"Ability6"	"tower_attack7"
+		"Ability6"	"tower_attack6"
 		// Ability 7 - Extra.
 		"Ability7"	"tower_baoji1"
 		// Ability 8 - Extra.
@@ -19102,18 +19935,18 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"1874"
+		"AttackDamageMin"	"2514"
 		// Damage range max.
-		"AttackDamageMax"	"1874"
+		"AttackDamageMax"	"2514"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
-		"AttackRate"	"0.4"
+		"AttackRate"	"0.5"
 		// Normalized time in animation cycle to attack.
 		"AttackAnimationPoint"	"0"
 		// Range within a target can be acquired.
 		"AttackAcquisitionRange"	"1600"
 		// Range within a target can be attacked.
-		"AttackRange"	"1600"
+		"AttackRange"	"1200"
 		"ProjectileModel"	"particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf"
 		// Speed of projectile.
 		"ProjectileSpeed"	"3000"
@@ -19203,7 +20036,7 @@
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"Level"	"9"
+		"Level"	"8"
 		"skin"	"0"
 		// Abilities
 		// ----------------------------------------------------------------
@@ -19214,9 +20047,9 @@
 		// Ability 3.
 		"Ability3"	""
 		// Ability 4.
-		"Ability4"	""
+		"Ability4"	"tower_10jiyun"
 		// Ability 5.
-		"Ability5"	""
+		"Ability5"	"tower_bixi2"
 		// Ability 6 - Extra.
 		"Ability6"	"tower_jihan"
 		// Ability 7 - Extra.
@@ -19364,9 +20197,9 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"50"
+		"AttackDamageMin"	"80"
 		// Damage range max.
-		"AttackDamageMax"	"50"
+		"AttackDamageMax"	"80"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
 		"AttackRate"	"0.5"
@@ -19462,7 +20295,7 @@
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
 		"MinimapIconSize"	"256"
-		"Level"	"9"
+		"Level"	"7"
 		"skin"	"0"
 		// Abilities
 		// ----------------------------------------------------------------
@@ -20525,7 +21358,7 @@
 		// Ability 7 - Extra.
 		"Ability7"	"tower_baoji1"
 		// Ability 8 - Extra.
-		"Ability8"	"tower_attack7"
+		"Ability8"	"tower_attack6"
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
@@ -20536,9 +21369,9 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"20"
+		"AttackDamageMin"	"660"
 		// Damage range max.
-		"AttackDamageMax"	"20"
+		"AttackDamageMax"	"660"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
 		"AttackRate"	"0.8"

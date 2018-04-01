@@ -31,7 +31,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/gemtd_build"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"0.5"
@@ -2117,6 +2117,32 @@
 	}
 
 	// 隐藏的
+	"gemtd_yijiazhishi"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/gemtd_yijiazhishi"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"HotKeyOverride"	"E"
+		"MaxLevel"	"1"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		// 事件：开始施放技能
+		"OnSpellStart"
+		{
+			// 动作：运行脚本
+			"RunScript"
+			{
+				// 脚本路径
+				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
+				// 传递进去的单位
+				"Target"	"CASTER"
+				// 要运行的函数
+				"Function"	"gemtd_yijiazhishi"
+			}
+		}
+	}
+
 	"gemtd_yijiazhishi1"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -2139,6 +2165,32 @@
 				"Target"	"CASTER"
 				// 要运行的函数
 				"Function"	"gemtd_yijiazhishi1"
+			}
+		}
+	}
+
+	"gemtd_huguoshenyishi"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/gemtd_huguoshenyishi"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"HotKeyOverride"	"E"
+		"MaxLevel"	"1"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		// 事件：开始施放技能
+		"OnSpellStart"
+		{
+			// 动作：运行脚本
+			"RunScript"
+			{
+				// 脚本路径
+				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
+				// 传递进去的单位
+				"Target"	"CASTER"
+				// 要运行的函数
+				"Function"	"gemtd_huguoshenyishi"
 			}
 		}
 	}
@@ -2169,6 +2221,32 @@
 		}
 	}
 
+	"gemtd_jingangshikulinan"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/gemtd_jingangshikulinan"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"HotKeyOverride"	"E"
+		"MaxLevel"	"1"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		// 事件：开始施放技能
+		"OnSpellStart"
+		{
+			// 动作：运行脚本
+			"RunScript"
+			{
+				// 脚本路径
+				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
+				// 传递进去的单位
+				"Target"	"CASTER"
+				// 要运行的函数
+				"Function"	"gemtd_jingangshikulinan"
+			}
+		}
+	}
+
 	"gemtd_jingangshikulinan1"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -2191,6 +2269,32 @@
 				"Target"	"CASTER"
 				// 要运行的函数
 				"Function"	"gemtd_jingangshikulinan1"
+			}
+		}
+	}
+
+	"gemtd_sililankazhixing"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/gemtd_sililankazhixing"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"HotKeyOverride"	"E"
+		"MaxLevel"	"1"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		// 事件：开始施放技能
+		"OnSpellStart"
+		{
+			// 动作：运行脚本
+			"RunScript"
+			{
+				// 脚本路径
+				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
+				// 传递进去的单位
+				"Target"	"CASTER"
+				// 要运行的函数
+				"Function"	"gemtd_sililankazhixing"
 			}
 		}
 	}
@@ -2853,7 +2957,7 @@
 				"EffectAttachType"	"follow_overhead"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"500"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"400"
 				}
 			}
 		}
@@ -3097,18 +3201,13 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"OnAttacklanded"
+				"OnAttackLanded"
 				{
-					"Damage"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Radius"	"100"
-						}
-						"Type"	"DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
+						"Function"	"ranjin"
 						"Damage"	"%attack_damage"
 					}
 					"FireSound"
@@ -4082,13 +4181,13 @@
 				"IsHidden"	"1"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Duration"	"1"
-				"ThinkInterval"	"0.5"
+				"ThinkInterval"	"1"
 				"OnIntervalThink"
 				{
 					"Damage"
 					{
 						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"800"
+						"Damage"	"2000"
 						"Target"	"TARGET"
 					}
 					"AttachEffect"
@@ -4489,7 +4588,7 @@
 				"EffectAttachType"	"follow_origin"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-75"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-50"
 					"MODIFIER_PROPERTY_DISABLE_HEALING"	"1"
 				}
 				"States"	{}
@@ -5397,7 +5496,7 @@
 								"ScriptFile"	"scripts/vscripts/lua_ability/shandianlian.lua"
 								"Function"	"jn_D3_00"
 								"Count"	"5"
-								"Damage"	"100"
+								"Damage"	"150"
 								"Radius"	"3000"
 								"AttackCount"	"1"
 							}
@@ -5416,7 +5515,7 @@
 					{
 						"Target"	"TARGET"
 						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"100"
+						"Damage"	"150"
 					}
 				}
 			}
@@ -5499,7 +5598,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"chance"	"40"
+				"chance"	"50"
 			}
 		}
 	}
@@ -5730,14 +5829,14 @@
 				"stone_max_count"	"4 8 12 16"
 			}
 		}
-		"AbilityGoldCost"	"100"
+		"AbilityGoldCost"	"50"
 	}
 
 	"gemtd_hero_xuanfeng"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"invoker_tornado"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
@@ -5789,15 +5888,10 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cost"	"200 125 75 50"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"range"	"180"
+				"cost"	"250 175 125 100"
 			}
 		}
-		"AbilityGoldCost"	"200 125 75 50"
+		"AbilityGoldCost"	"250 175 125 100"
 	}
 
 	"gemtd_hero_lanse"
@@ -7242,7 +7336,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"gailv"	"30 45 60 75"
+				"gailv"	"50 65 75 80"
 			}
 		}
 		"AbilityGoldCost"	"100"
@@ -7291,7 +7385,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"gailv"	"20 30 40 50"
+				"gailv"	"29 41 47 50"
 			}
 		}
 		"AbilityGoldCost"	"200"
@@ -7340,7 +7434,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"gailv"	"10 15 20 25"
+				"gailv"	"6 14 18 20"
 			}
 		}
 		"AbilityGoldCost"	"400"
@@ -9048,7 +9142,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"speed"	"1000"
+				"speed"	"1800"
 			}
 			"07"
 			{
@@ -11614,6 +11708,281 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"bonus_armor"	"5.0 5.0 5.0 5.0"
+			}
+		}
+	}
+
+	"gemtd_hero_lianjie"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"warlock_fatal_bonds"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_RANGED_ONLY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"500"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_warlock/warlock_fatal_bonds_icon.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_gemtd_hero_lianjie"
+				"Duration"	"60"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_gemtd_hero_lianjie"
+			{
+				"Duration"	"60"
+				"TextureName"	"warlock_fatal_bonds"
+				"EffectName"	"particles/units/heroes/hero_warlock/warlock_fatal_bonds_icon.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/lua_ability/fenliejian.lua"
+						"Function"	"gemtd_hero_lianjie"
+						"damage"	"%attack_damage"
+						"attacker"	"%attacker"
+						"caster"	"%caster"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_per"	"70 80 90 100"
+			}
+		}
+		"AbilityGoldCost"	"200"
+	}
+
+	"enemy_zheguang"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"templar_assassin_refraction"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"	"4"
+	}
+
+	"enemy_shanshuo"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"antimage_blink"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"	"4"
+	}
+
+	// Rewrite of the Antimage Blink ability
+	// Author: Pizzalol
+	// Date: October 13, 2015
+	// Version: 6.85
+	// Type: Datadriven
+	//
+	// ----- FILE REQUIREMENTS -----
+	// Script files:
+	// scripts/vscripts/heroes/hero_antimage/blink.lua
+	"antimage_blink_new"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"antimage_blink"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"12"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"0"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_antimage/antimage_blink_start.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+			"particle"	"particles/units/heroes/hero_antimage/antimage_blink_end.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/lua_ability/fenliejian.lua"
+				"Function"	"Blink"
+				"Target"	"POINT"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Antimage.Blink_out"
+				"Target"	"CASTER"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Antimage.Blink_in"
+				"Target"	"CASTER"
+			}
+			"AttachEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_antimage/antimage_blink_end.vpcf"
+				"Target"	"CASTER"
+				"EffectAttachType"	"follow_origin"
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"blink_range"	"925 1000 1075 1150"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"min_blink_range"	"200"
+			}
+		}
+	}
+
+	// Rewrite of Templar Assasssin Refraction
+	// Author: YOLOSPAGHETTI
+	// Date: April 2, 2016
+	// Version: 6.86
+	// Type: Datadriven
+	//
+	// ----- FILE REQUIREMENTS -----
+	// Script files:
+	// scripts/vscripts/heroes/hero_templar_assassin/refraction.lua
+	//
+	// Notes: Still plays default take damage sounds when refraction is on
+	"templar_assassin_refraction_new"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"templar_assassin_refraction"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.0 0.0 0.0 0.0"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"5"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"0"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_templar_assassin/templar_assassin_refraction.vpcf"
+			"soundfile"	"sounds/weapons/hero/templar_assassin/refraction.vsnd"
+			"soundfile"	"sounds/weapons/hero/templar_assassin/refraction_absorb.vsnd"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_TemplarAssassin.Refraction"
+				"Target"	"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/hero_templar_assassin/refraction.lua"
+				"Function"	"ApplyModifiers"
+				"particle"	"particles/units/heroes/hero_templar_assassin/templar_assassin_refraction.vpcf"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_damage_absorb"
+			{
+				"Duration"	"%duration"
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/hero_templar_assassin/refraction.lua"
+						"Function"	"RemoveDamageAbsorbStack"
+						"damage"	"%attack_damage"
+						"sound"	"Hero_TemplarAssassin.Refraction.Absorb"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/hero_templar_assassin/refraction.lua"
+						"Function"	"RemoveDamageAbsorbStack"
+					}
+				}
+			}
+			"modifier_bonus_damage"
+			{
+				"Duration"	"%duration"
+				"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/hero_templar_assassin/refraction.lua"
+						"Function"	"RemoveBonusDamageStack"
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+				}
+			}
+			"modifier_bonus_damage_visual"
+			{
+				"Duration"	"%duration"
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"instances"	"6 8 10 12"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"0 0 0 0"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_threshold"	"0 0 0 0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"60 60 60 60"
 			}
 		}
 	}
