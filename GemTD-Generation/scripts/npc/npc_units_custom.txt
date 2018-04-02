@@ -15152,9 +15152,9 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"729"
+		"AttackDamageMin"	"1369"
 		// Damage range max.
-		"AttackDamageMax"	"729"
+		"AttackDamageMax"	"1369"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
 		"AttackRate"	"0.6"
@@ -15228,7 +15228,7 @@
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"600"
 		"Ability9"	"e10007"
-		"Ability10"	"tower_attack7"
+		"Ability10"	"tower_attack6"
 		"Ability11"	""
 		"Ability12"	""
 		"Ability13"	""

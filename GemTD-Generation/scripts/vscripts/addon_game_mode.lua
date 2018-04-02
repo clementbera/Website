@@ -624,8 +624,8 @@ GameRules.gemtd_merge = {
 	--超级塔
 	gemtd_keyinuoerguangmingzhishan = { "gemtd_juxingfenhongzuanshi","gemtd_p111111","gemtd_d111111" },
 	gemtd_shuaibiankaipayou = { "gemtd_you235","gemtd_q111111","gemtd_y111111" },
-	gemtd_heiwangzihuangguanhongbaoshi = { "gemtd_gudaidejixueshi","gemtd_r111111","gemtd_e111111" },
-	gemtd_xingguanglanbaoshi = { "gemtd_huangcailanbaoshi","gemtd_b111111","gemtd_g111111" },
+	gemtd_heiwangzihuangguanhongbaoshi = { "gemtd_gudaidejixueshi","gemtd_r111111","gemtd_g111111" },
+	gemtd_xingguanglanbaoshi = { "gemtd_huangcailanbaoshi","gemtd_b111111","gemtd_e111111" },
 	gemtd_yijiazhishi = { "gemtd_hongshanhu","gemtd_e111111","gemtd_q111111" },
 	gemtd_huguoshenyishi = { "gemtd_mirendeqingjinshi","gemtd_y111111","gemtd_r111111" },
 	gemtd_jingangshikulinan = { "gemtd_huaguoshanxiandan","gemtd_d111111","gemtd_b111111" },
@@ -2178,12 +2178,6 @@ function OnThink()
 					maxhealth = maxhealth * 0.4
 				end
 
-		    	if maxhealth > 12000 then
-		    		maxhealth = 999999999
-		    	else
-		    		maxhealth = maxhealth * 80000
-		    	end
-
 		    	u:SetModelScale(u:GetModelScale()*2)
 
 		    	--随机给2个技能
@@ -2201,6 +2195,12 @@ function OnThink()
 						u:FindAbilityByName(aaaaa):SetLevel(GameRules.gem_nandu)
 					end
 				end
+
+				if maxhealth > 12000 then
+		    		maxhealth = 999999999
+		    	else
+		    		maxhealth = maxhealth * 80000
+		    	end
 
 		    	speed_t = speed_t * 2
 		    end
@@ -7603,9 +7603,7 @@ function build_1_stone(keys)
                               DOTA_UNIT_TARGET_FLAG_NONE,
                               FIND_ANY_ORDER,
                               false)
-	if table.getn(uuu) == 1 and uuu[1]:GetUnitName() == 'gemtd_stone' then
-		uuu[1]:Destroy()
-	elseif table.getn(uuu) > 0 then
+	if table.getn(uu) > 0 then
 		return false
 	end
 	--附近有友军单位了，不能造
@@ -7618,9 +7616,7 @@ function build_1_stone(keys)
                               DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS,
                               FIND_ANY_ORDER,
                               false)
-	if table.getn(uuu) == 1 and uuu[1]:GetUnitName() == 'gemtd_stone' then
-		uuu[1]:Destroy()
-	elseif table.getn(uuu) > 0 then
+	if table.getn(uuu) > 0 then
 		return false
 	end
 	--路径点，不能造
