@@ -2336,12 +2336,12 @@ function OnThink()
 
 							return 0.1
 						elseif u.target > 1 and u:FindAbilityByName('enemy_shanshuo') ~= nil and 
-							(u:FindAbilityByName('antimage_blink_new') == nil or u:FindAbilityByName('antimage_blink_new'):IsCooldownReady()) and RandomInt(1,100)<=20 then
+							(u:FindAbilityByName('antimage_blink_new') == nil or u:FindAbilityByName('antimage_blink_new'):IsCooldownReady()) and RandomInt(1,100)<=10 then
 							if u:FindAbilityByName('antimage_blink_new') == nil then
 								u:AddAbility('antimage_blink_new')
 								u:FindAbilityByName('antimage_blink_new'):SetLevel(u:FindAbilityByName('enemy_shanshuo'):GetLevel())
 							end
-							local shanshuo_steps = math.ceil(table.maxn(GameRules.gem_path_all) / 20)
+							local shanshuo_steps = math.ceil(table.maxn(GameRules.gem_path_all) / 25)
 							u.target = u.target + shanshuo_steps
 							if u.target > table.maxn(GameRules.gem_path_all) then
 								u.target = table.maxn(GameRules.gem_path_all)
@@ -2356,7 +2356,7 @@ function OnThink()
 						 	}
 							ExecuteOrderFromTable(newOrder)
 
-							return 0.1
+							return 0.5
 						else
 							--继续走
 							u.target = u.target + 1
@@ -5390,6 +5390,13 @@ function merge_tower( tower_name, caster )
 	--u:DestroyAllSpeechBubbles()
 	--u:AddSpeechBubble(1,"#"..tower_name,3,0,-30)
 	createHintBubble(u,"#"..tower_name)
+
+	if tower_name == "gemtd_huguoshenyishi" then
+		local random_attack = RandomInt(1,1024)
+		u:SetBaseDamageMin(random_attack)
+		u:SetBaseDamageMax(random_attack)
+		GameRules:SendCustomMessage("-random: "..random_attack,0,0)
+	end
 	
 	u:SetOwner(owner)
 	u:SetControllableByPlayer(player_id, true)
