@@ -275,10 +275,10 @@
 <td> otomad</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Allies's attack speed+400 nearby.</td>
+<td> Allies's attack speed+250 nearby.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 150 Effect: [ATTACKSPEED: 400]</code></td>
+<td> <code>Aura: Range 150 Effect: [ATTACKSPEED: 250]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -635,10 +635,10 @@
 <td> burn 3</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Deals 2000 magical damage every second to nearby enemies.</td>
+<td> Deals 2500 magical damage every second to nearby enemies.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 700 Effect: during 1 seconds, every 1 seconds, deals 2000 magic damage.</code></td>
+<td> <code>Aura: Range 700 Effect: during 1 seconds, every 2 seconds, deals 5000 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -917,13 +917,13 @@
 <td> forked Lightning</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Attacks have a 50%% chance to spark a forked lightning.</td>
+<td> Attacks have a 25%% chance to spark a forked lightning.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, [50%]run script Shock (shock.lua) with []</code></td>
+<td> <code>On Attack Landed, [25%]run script Shock (shock.lua) with []</code></td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[damage: 1000][targets: 5][start_radius: 100][chance: 50][end_distance: 5000][end_radius: 3000]</code></td>
+<td> <code>[damage: 4000][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> false</td>
@@ -1116,24 +1116,6 @@
 </tr>
 <tr><th> Raw </th>
 <td> <code>[ATTACKSPEED: 500]</code></td>
-</tr>
-<tr><td> ~ </td>
-<td> ~</td>
-</tr>
-<tr><th> Ability </th>
-<td> chain_frost</td>
-</tr>
-<tr><th> Raw </th>
-<td> <code>[MOVESPEED: %slow_attack_speed%][ATTACKSPEED: %slow_movement_speed]</code></td>
-</tr>
-<tr><th> Raw: Special </th>
-<td> <code>[slow_duration: 5][jumps: 10][mini_stun: 0.1][slow_movement_speed: -50][jump_interval: 0.2][damage: 1800]</code></td>
-</tr>
-<tr><th> Raw: Special 2 </th>
-<td> <code>[slow_attack_speed: -50][projectile_speed: 2000][jump_range: 9999]</code></td>
-</tr>
-<tr><th> Pierce Spell Immunity </th>
-<td> true</td>
 </tr>
 </table>
 </section>
