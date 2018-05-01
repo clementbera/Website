@@ -250,7 +250,7 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> R5 + G5 + B5</td>
 </tr>
 <tr><th> Yaphets Stone </th>
-<td> G5 + R5 + P5</td>
+<td> B5 + G5 + B4 + G4</td>
 </tr>
 <tr><th> Burning Stone </th>
 <td> R5 + P5 + R4 + P4</td>
@@ -457,7 +457,7 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> 100 <code>[+160]</code></td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.8</td>
+<td> 0.7</td>
 </tr>
 <tr><th> Attack Range </th>
 <td> 700</td>
@@ -538,7 +538,7 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> 660 <code>[+640]</code></td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.8</td>
+<td> 0.6</td>
 </tr>
 <tr><th> Attack Range </th>
 <td> 700</td>
@@ -790,7 +790,7 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> 90 <code>[+160]</code></td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.6</td>
+<td> 0.7</td>
 </tr>
 <tr><th> Attack Range </th>
 <td> 800</td>
@@ -850,10 +850,10 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> ~</td>
 </tr>
 <tr><th> Attack Damage </th>
-<td> 80 <code>[+320]</code></td>
+<td> 90 <code>[+320]</code></td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.45</td>
+<td> 0.4</td>
 </tr>
 <tr><th> Attack Range </th>
 <td> 5000</td>
@@ -1096,13 +1096,13 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> forked Lightning</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Attacks have a 50%% chance to spark a forked lightning.</td>
+<td> Attacks have a 25%% chance to spark a forked lightning.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, [50%]run script Shock (shock.lua) with []</code></td>
+<td> <code>On Attack Landed, [25%]run script Shock (shock.lua) with []</code></td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[damage: 1000][targets: 5][start_radius: 100][chance: 50][end_distance: 5000][end_radius: 3000]</code></td>
+<td> <code>[damage: 4000][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> false</td>
@@ -1165,13 +1165,13 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> forked Lightning</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Attacks have a 50%% chance to spark a forked lightning.</td>
+<td> Attacks have a 25%% chance to spark a forked lightning.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, [50%]run script Shock (shock.lua) with []</code></td>
+<td> <code>On Attack Landed, [25%]run script Shock (shock.lua) with []</code></td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[damage: 1000][targets: 5][start_radius: 100][chance: 50][end_distance: 5000][end_radius: 3000]</code></td>
+<td> <code>[damage: 4000][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> false</td>
@@ -1186,10 +1186,10 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> burn 3</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Deals 2000 magical damage every second to nearby enemies.</td>
+<td> Deals 2500 magical damage every second to nearby enemies.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 700 Effect: during 1 seconds, every 1 seconds, deals 2000 magic damage.</code></td>
+<td> <code>Aura: Range 700 Effect: during 1 seconds, every 2 seconds, deals 5000 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -1471,7 +1471,7 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> 2514 <code>[+640]</code></td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.5</td>
+<td> 0.6</td>
 </tr>
 <tr><th> Attack Range </th>
 <td> 1200</td>
@@ -1702,7 +1702,7 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> 1</td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.6</td>
+<td> 0.7</td>
 </tr>
 <tr><th> Attack Range </th>
 <td> 800</td>
@@ -2155,16 +2155,31 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> ~</td>
 </tr>
 <tr><th> Ability </th>
-<td> tower_10jiyun</td>
+<td> tower_du6</td>
 </tr>
 <tr><th> Name </th>
-<td> stun</td>
+<td> poison MAX</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Attacks have a 10%% chance to stun the enemy.</td>
+<td> Enemies take 64 damage every second. Lasts 5 seconds.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, [10%][Stun 2 seconds]</code></td>
+<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 64 magic damage.</code></td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> tower_jianjia6</td>
+</tr>
+<tr><th> Name </th>
+<td> pierce MAX</td>
+</tr>
+<tr><th> Tooltip </th>
+<td> Decrease enemy's armor by 64.</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>On Attack Landed, [PHYSICAL ARMOR: -64]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -2541,10 +2556,10 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> otomad</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Allies's attack speed+400 nearby.</td>
+<td> Allies's attack speed+250 nearby.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 150 Effect: [ATTACKSPEED: 400]</code></td>
+<td> <code>Aura: Range 150 Effect: [ATTACKSPEED: 250]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -2685,7 +2700,7 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> Chain Frost</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> When a nearby pedal triggered, 50% chance to throw out a frost ball which bounces among enemies for 10 times and each bounce deal magical damage and speed decrement.</td>
+<td> When a nearby pedal triggered, 25% chance to throw out a frost ball which bounces among enemies for 10 times and each bounce deal magical damage and speed decrement.</td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> false</td>
@@ -2818,12 +2833,6 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><td> ~ </td>
-<td> ~</td>
-</tr>
-<tr><th> Ability </th>
-<td> naga_siren_ensnare</td>
-</tr>
 </table>
 </section><section>
 <h2> Gale Pedal</h2>
@@ -2847,24 +2856,6 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
-</tr>
-<tr><td> ~ </td>
-<td> ~</td>
-</tr>
-<tr><th> Ability </th>
-<td> new_venomous_gale</td>
-</tr>
-<tr><th> Raw </th>
-<td> <code> deals %tick_damage magic damage.</code></td>
-</tr>
-<tr><th> Raw: Special </th>
-<td> <code>[tick_interval: 3.0 3.0 3.0 3.0][strike_damage: 0][radius: 125 125 125 125][duration: 4 6 8 10][tick_damage: 0][movement_slow: -50 -50 -50 -50]</code></td>
-</tr>
-<tr><th> Raw: Special 2 </th>
-<td> <code>[distance: 800 800 800 800][speed: 600]</code></td>
-</tr>
-<tr><th> Pierce Spell Immunity </th>
-<td> false</td>
 </tr>
 </table>
 </section><section>
@@ -2890,24 +2881,6 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><td> ~ </td>
-<td> ~</td>
-</tr>
-<tr><th> Ability </th>
-<td> new_torrent</td>
-</tr>
-<tr><th> Raw </th>
-<td> <code>during %stun_duration seconds, every %stun_duration / %tick_count seconds, deals 0 magic damage. ~ [MOVESPEED: %movespeed_bonus%]</code></td>
-</tr>
-<tr><th> Raw: Special </th>
-<td> <code>[stun_duration: 2][tick_count: 10][movespeed_bonus: -40][vision_duration: 4.73][delay: 1.6 1.6 1.6 1.6][torrent_height: 400]</code></td>
-</tr>
-<tr><th> Raw: Special 2 </th>
-<td> <code>[slow_duration: 8 10 12 14][radius: 225]</code></td>
-</tr>
-<tr><th> Pierce Spell Immunity </th>
-<td> false</td>
-</tr>
 </table>
 </section><section>
 <h2> Howl Pedal</h2>
@@ -2931,18 +2904,6 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
-</tr>
-<tr><td> ~ </td>
-<td> ~</td>
-</tr>
-<tr><th> Ability </th>
-<td> new_haojiao</td>
-</tr>
-<tr><th> Raw </th>
-<td> <code>Aura: Range %aura_radius Effect:  ~ [DAMAGEOUTGOING: %unit_bonus_damage%]</code></td>
-</tr>
-<tr><th> Raw: Special </th>
-<td> <code>[hero_bonus_damage: 20 30 40 50][aura_radius: 256][think_interval: 0.5][howl_duration: 10.0][unit_bonus_damage: 20 30 40 50]</code></td>
 </tr>
 </table>
 </section><section>
@@ -2968,21 +2929,6 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
-<tr><td> ~ </td>
-<td> ~</td>
-</tr>
-<tr><th> Ability </th>
-<td> new_acid_spray</td>
-</tr>
-<tr><th> Raw </th>
-<td> <code>Aura: Range %radius Effect:  deals %damage physical damage.</code></td>
-</tr>
-<tr><th> Raw: Special </th>
-<td> <code>[duration: 15.0][damage: 0][radius: 625][armor_reduction: -10 -12 -14 -16][tick_rate: 1.0]</code></td>
-</tr>
-<tr><th> Pierce Spell Immunity </th>
-<td> true</td>
-</tr>
 </table>
 </section><section>
 <h2> Paralysis Pedal</h2>
@@ -3006,21 +2952,6 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
-</tr>
-<tr><td> ~ </td>
-<td> ~</td>
-</tr>
-<tr><th> Ability </th>
-<td> new_cask</td>
-</tr>
-<tr><th> Raw: Special </th>
-<td> <code>[bounce_delay: 0.2][hero_duration: 1][creep_duration: 1][bounces_tooltip: 6 8 10 12][hero_damage: 0][bounces: 6 8 10 12]</code></td>
-</tr>
-<tr><th> Raw: Special 2 </th>
-<td> <code>[bounce_range: 9999][speed: 1800]</code></td>
-</tr>
-<tr><th> Pierce Spell Immunity </th>
-<td> false</td>
 </tr>
 </table>
 </section></section><section>
@@ -3253,13 +3184,13 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> forked Lightning</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Attacks have a 50%% chance to spark a forked lightning.</td>
+<td> Attacks have a 25%% chance to spark a forked lightning.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, [50%]run script Shock (shock.lua) with []</code></td>
+<td> <code>On Attack Landed, [25%]run script Shock (shock.lua) with []</code></td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[damage: 1000][targets: 5][start_radius: 100][chance: 50][end_distance: 5000][end_radius: 3000]</code></td>
+<td> <code>[damage: 4000][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> false</td>
@@ -3316,7 +3247,7 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> ~</td>
 </tr>
 <tr><th> Combination </th>
-<td> G5 + R5 + P5</td>
+<td> B5 + G5 + B4 + G4</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -3418,10 +3349,10 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> burn 3</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Deals 2000 magical damage every second to nearby enemies.</td>
+<td> Deals 2500 magical damage every second to nearby enemies.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 700 Effect: during 1 seconds, every 1 seconds, deals 2000 magic damage.</code></td>
+<td> <code>Aura: Range 700 Effect: during 1 seconds, every 2 seconds, deals 5000 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -3451,10 +3382,10 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> 1369 <code>[+640]</code></td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.6</td>
+<td> 1</td>
 </tr>
 <tr><th> Attack Range </th>
-<td> 1000</td>
+<td> 800</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -3481,16 +3412,16 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <td> ~</td>
 </tr>
 <tr><th> Ability </th>
-<td> tower_slow6</td>
+<td> tower_attack6</td>
 </tr>
 <tr><th> Name </th>
-<td> slow MAX</td>
+<td> damage MAX</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Decrease enemy's movement speed by 480.</td>
+<td> +640 attack damage.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>[MOVESPEED: -480]</code></td>
+<td> <code>[BASEATTACK BONUSDAMAGE: 640]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -3513,25 +3444,97 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 <tr><th> Ability </th>
 <td> e10007</td>
 </tr>
-<tr><td> ~ </td>
-<td> ~</td>
-</tr>
-<tr><th> Ability </th>
-<td> tower_attack6</td>
-</tr>
-<tr><th> Name </th>
-<td> damage MAX</td>
-</tr>
-<tr><th> Tooltip </th>
-<td> +640 attack damage.</td>
-</tr>
-<tr><th> Raw </th>
-<td> <code>[BASEATTACK BONUSDAMAGE: 640]</code></td>
-</tr>
 </table>
 </section></section><section>
 <h1> Others</h1>
 <section>
+<h2> Terrorize Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_kongheshiban.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_kongheshiban</td>
+</tr>
+<tr><th> English </th>
+<td> Terrorize Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Combination </th>
+<td> D3 + P2</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Blingbling Ensnare Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_youbushiban_jin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_youbushiban_jin</td>
+</tr>
+<tr><th> English </th>
+<td> Blingbling Ensnare Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Sparkling Torrent Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_hongliushiban_yin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_hongliushiban_yin</td>
+</tr>
+<tr><th> English </th>
+<td> Sparkling Torrent Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Blingbling Torrent Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_hongliushiban_jin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_hongliushiban_jin</td>
+</tr>
+<tr><th> English </th>
+<td> Blingbling Torrent Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
 <h2> Unavailable</h2>
 <p>
 
@@ -3556,6 +3559,198 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 </tr>
 <tr><th> Attack Range </th>
 <td> 600</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Decrepify Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_xuwushiban.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_xuwushiban</td>
+</tr>
+<tr><th> English </th>
+<td> Decrepify Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Combination </th>
+<td> E3 + B2</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Sparkling Howl Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_haojiaoshiban_yin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_haojiaoshiban_yin</td>
+</tr>
+<tr><th> English </th>
+<td> Sparkling Howl Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Blingbling Howl Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_haojiaoshiban_jin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_haojiaoshiban_jin</td>
+</tr>
+<tr><th> English </th>
+<td> Blingbling Howl Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Sparkling Decrepify Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_xuwushiban_yin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_xuwushiban_yin</td>
+</tr>
+<tr><th> English </th>
+<td> Sparkling Decrepify Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Blingbling Decrepify Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_xuwushiban_jin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_xuwushiban_jin</td>
+</tr>
+<tr><th> English </th>
+<td> Blingbling Decrepify Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Sparkling Terrorize Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_kongheshiban_yin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_kongheshiban_yin</td>
+</tr>
+<tr><th> English </th>
+<td> Sparkling Terrorize Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Sparkling Gale Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_zhangqishiban_yin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_zhangqishiban_yin</td>
+</tr>
+<tr><th> English </th>
+<td> Sparkling Gale Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Sparkling Acid Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_suanwushiban_yin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_suanwushiban_yin</td>
+</tr>
+<tr><th> English </th>
+<td> Sparkling Acid Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Blingbling Acid Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_suanwushiban_jin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_suanwushiban_jin</td>
+</tr>
+<tr><th> English </th>
+<td> Blingbling Acid Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -3625,6 +3820,111 @@ Note: The towers are displayed based on fan-provided order. Hence, updates may b
 </tr>
 <tr><th> Ability </th>
 <td> naga_siren_ensnare</td>
+</tr>
+</table>
+</section><section>
+<h2> Blingbling Terrorize Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_kongheshiban_jin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_kongheshiban_jin</td>
+</tr>
+<tr><th> English </th>
+<td> Blingbling Terrorize Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Blingbling Gale Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_zhangqishiban_jin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_zhangqishiban_jin</td>
+</tr>
+<tr><th> English </th>
+<td> Blingbling Gale Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Sparkling Ensnare Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_youbushiban_yin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_youbushiban_yin</td>
+</tr>
+<tr><th> English </th>
+<td> Sparkling Ensnare Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Sparkling Paralyze Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_mabishiban_yin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_mabishiban_yin</td>
+</tr>
+<tr><th> English </th>
+<td> Sparkling Paralyze Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+</table>
+</section><section>
+<h2> Blingbling Paralyze Pedal</h2>
+<p>
+
+<figure>
+	<img src="wards/advanced/gemtd_mabishiban_jin.png" width="8%"/>
+	<figcaption></figcaption>
+</figure>
+</p><table style="border: solid thin"><tr><th> Code </th>
+<td> gemtd_mabishiban_jin</td>
+</tr>
+<tr><th> English </th>
+<td> Blingbling Paralyze Pedal</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
 </tr>
 </table>
 </section></section>
