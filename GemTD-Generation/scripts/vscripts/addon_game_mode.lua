@@ -174,7 +174,7 @@ GameRules.stealable_ability_pool = {
 	"tower_baoji1","tower_lanbaoshi","tower_jihan","tower_jingzhun","tower_10jiyun","tower_5shihua",
 	"tower_maoyan","tower_jin","tower_jin2","tower_shandianlian","tower_chazhuangshandian",
 	"tower_fenliejian_you","tower_chenmoguanghuan","tower_lanbaoshi2","tower_aojiao",
-	"tower_attack1","tower_attack2","tower_attack3","tower_attack4","tower_attack5","tower_attack6","tower_attack7","tower_speed1","tower_speed2","chain_frost",
+	"tower_attack1","tower_attack2","tower_attack3","tower_attack4","tower_attack5","tower_attack6","tower_attack7","tower_speed1","tower_speed2",
 }
 
 GameRules.pet_list = {
@@ -315,7 +315,7 @@ isConnected = {}
 GameRules.gem_difficulty = {
 	[1] = 0.6,
 	[2] = 2.0,
-	[3] = 4.2,
+	[3] = 4.1,
 	[4] = 5.6
 }
 
@@ -535,7 +535,7 @@ GameRules.guai_ability = {
 	[16] = {},
 	[17] = {"enemy_bukeqinfan"},
 	[18] = {"guai_jiaoxieguanghuan"},
-	[19] = {"enemy_shanshuo"},
+	[19] = {"runrunrun"},
 	[20] = {},
 	[21] = {},
 	[22] = {"enemy_high_armor"},
@@ -558,12 +558,12 @@ GameRules.guai_ability = {
 	[39] = {"enemy_bukeqinfan","tidehunter_kraken_shell","guai_shanbi"},
 	[40] = {"tidehunter_kraken_shell"},
 	[41] = {"enemy_zheguang"},
-	[42] = {},
+	[42] = {"runrunrun"},
 	[43] = {"enemy_bukeqinfan","guai_shanbi","enemy_recharge"},
 	[44] = {"enemy_shanshuo"},
 	[45] = {"guai_jiaoxieguanghuan"},
 	[46] = {},
-	[47] = {"enemy_bukeqinfan","enemy_shanshuo"},
+	[47] = {"enemy_bukeqinfan","runrunrun"},
 	[48] = {"guai_jiaoxieguanghuan","guai_shanbi"},
 	[49] = {"tidehunter_kraken_shell","enemy_recharge"},
 	[50] = {"tidehunter_kraken_shell"},
@@ -575,12 +575,12 @@ GameRules.guai_50_ability = {
 	"guai_jiaoxieguanghuan",
 	"shredder_reactive_armor",
 	"enemy_recharge",
-	"riki_permanent_invisibility",
 	"tidehunter_kraken_shell",
 	"enemy_wumian",
 	"enemy_momian",
 	"enemy_zheguang",
 	"enemy_shanshuo",
+	"runrunrun",
 }
 
 --合成配方
@@ -644,20 +644,37 @@ GameRules.gemtd_merge_secret = {
 	--其他
 	gemtd_heiyaoshi = { "gemtd_b11111", "gemtd_y11111", "gemtd_d11111" },
 	gemtd_manao = { "gemtd_q11111", "gemtd_e11111", "gemtd_g11111" },
-	gemtd_ranshaozhishi = { "gemtd_r11111", "gemtd_p11111", "gemtd_r1111", "gemtd_p1111" },
 	gemtd_xiameishi = { "gemtd_r11111", "gemtd_g11111", "gemtd_b11111" },
-	gemtd_geluanshi = { "gemtd_g11111", "gemtd_r11111", "gemtd_p11111" },
+	gemtd_ranshaozhishi = { "gemtd_r11111", "gemtd_p11111", "gemtd_r1111", "gemtd_p1111" },
+	gemtd_geluanshi = { "gemtd_b11111", "gemtd_g11111", "gemtd_b1111", "gemtd_g1111" },
 }
 GameRules.gemtd_merge_shiban = {
-	gemtd_youbushiban = { "gemtd_y111", "gemtd_d11" }, --诱捕石板√
-	gemtd_zhangqishiban = { "gemtd_g111", "gemtd_e11" }, --瘴气石板√
-	gemtd_hongliushiban = { "gemtd_b111", "gemtd_q11" }, --洪流石板√
-
-	gemtd_haojiaoshiban = { "gemtd_p111", "gemtd_r11" }, --嗥叫石板(狼人技能，给周围塔+25%攻)
-	-- gemtd_feidanshiban = { "gemtd_d111", "gemtd_p11" }, --飞弹石板(飞机的大招)
-	-- gemtd_bingfengshiban = { "gemtd_e111", "gemtd_b11" }, --冰封石板(双头龙冰封路径)
-	gemtd_suanwushiban = { "gemtd_q111", "gemtd_y11" }, --酸雾石板(炼金酸雾)
-	gemtd_mabishiban = { "gemtd_r111", "gemtd_g11" }, --麻痹石板(巫医麻痹药剂)
+	gemtd_youbushiban = { "gemtd_y111", "gemtd_d11" }, --诱捕石板√ 单控
+	gemtd_zhangqishiban = { "gemtd_g111", "gemtd_e11" }, --瘴气石板√ 群减速
+	gemtd_hongliushiban = { "gemtd_b111", "gemtd_q11" }, --洪流石板√ 群控群减速
+	gemtd_haojiaoshiban = { "gemtd_p111", "gemtd_r11" }, --嗥叫石板√ 加塔攻击力
+	gemtd_suanwushiban = { "gemtd_q111", "gemtd_y11" }, --酸雾石板√ 减怪护甲
+	gemtd_mabishiban = { "gemtd_r111", "gemtd_g11" }, --麻痹石板√ 群控
+	gemtd_kongheshiban = { "gemtd_d111", "gemtd_p11" }, --恐吓石板 加速加伤害
+	gemtd_xuwushiban = { "gemtd_e111", "gemtd_b11" }, --虚无石板 减速加魔法伤害
+}
+GameRules.gemtd_merge_shiban_update = {
+	gemtd_youbushiban = "gemtd_youbushiban_yin",
+	gemtd_zhangqishiban = "gemtd_zhangqishiban_yin",
+	gemtd_hongliushiban = "gemtd_hongliushiban_yin",
+	gemtd_haojiaoshiban = "gemtd_haojiaoshiban_yin",
+	gemtd_suanwushiban = "gemtd_suanwushiban_yin",
+	gemtd_mabishiban = "gemtd_mabishiban_yin",
+	gemtd_kongheshiban = "gemtd_kongheshiban_yin",
+	gemtd_xuwushiban = "gemtd_xuwushiban_yin",
+	gemtd_youbushiban_yin = "gemtd_youbushiban_jin",
+	gemtd_zhangqishiban_yin = "gemtd_zhangqishiban_jin",
+	gemtd_hongliushiban_yin = "gemtd_hongliushiban_jin",
+	gemtd_haojiaoshiban_yin = "gemtd_haojiaoshiban_jin",
+	gemtd_suanwushiban_yin = "gemtd_suanwushiban_jin",
+	gemtd_mabishiban_yin = "gemtd_mabishiban_jin",
+	gemtd_kongheshiban_yin = "gemtd_kongheshiban_jin",
+	gemtd_xuwushiban_yin = "gemtd_xuwushiban_jin",
 }
 GameRules.gem_gailv = {
 	[1] = { },
@@ -1112,6 +1129,13 @@ function Precache( context )
 		"models/items/courier/white_the_crystal_courier/white_the_crystal_courier_flying.vmdl",
 		"models/courier/defense3_sheep/defense3_sheep.vmdl",
 		"models/items/courier/courier_faun/courier_faun.vmdl",
+		"particles/units/heroes/hero_siren/siren_net_projectile.vpcf",
+		"particles/units/heroes/hero_siren/siren_net.vpcf",
+		"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts",
+		"particles/units/heroes/hero_dark_willow/dark_willow_bramble_projectile.vpcf",
+		"particles/units/heroes/hero_dark_willow/dark_willow_wisp_spell_debuff.vpcf",
+		"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts",
+		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf",
     }
      
     print("Precache...")
@@ -1178,7 +1202,7 @@ function GemTD:InitGameMode()
 	GameRules:GetGameModeEntity().kuangbao_time = 0
 	GameRules:GetGameModeEntity().win_streak_time = 0
 	GameRules:GetGameModeEntity().perfect_this_level = true
-
+	GameRules:GetGameModeEntity().last_g_time = 0
 	GameRules:SetUseCustomHeroXPValues(true)
 
 	--设置玩家颜色
@@ -1216,6 +1240,8 @@ function GemTD:InitGameMode()
 	CustomGameEventManager:RegisterListener("click_ggsimida", Dynamic_Wrap(GemTD, "OnGGsimida") )
 	CustomGameEventManager:RegisterListener("catch_crab", Dynamic_Wrap(GemTD, "OnCatchCrab") )
 
+	CustomGameEventManager:RegisterListener("preview_effect", Dynamic_Wrap(GemTD, "OnPreviewEffect") )
+
 	GameRules:GetGameModeEntity().gem_castle_hp = 100
 	GameRules:GetGameModeEntity().gem_castle_hp_speed = { 100,100,100,100 }
 	GameRules:GetGameModeEntity().gem_castle = nil
@@ -1244,6 +1270,7 @@ function GemTD:InitGameMode()
 	GameRules:GetGameModeEntity().hero = {}
 
 	GameRules:GetGameModeEntity().online_player_count = 0
+	GameRules:GetGameModeEntity().shiban_index = {}
 
 	--检测作弊
 	GameRules:GetGameModeEntity():SetThink("DetectCheatsThinker")
@@ -1403,8 +1430,16 @@ function GemTD:OnPlayerPickHero(keys)
 	end
 
 	-- 技能测试
-	-- hero:AddAbility("axe_berserkers_call_new")
-	-- hero:FindAbilityByName("axe_berserkers_call_new"):SetLevel(4)
+	-- hero:AddAbility("naga_siren_ensnare")
+	-- hero:FindAbilityByName("naga_siren_ensnare"):SetLevel(4)
+	-- hero:AddAbility("new_youbu2")
+	-- hero:FindAbilityByName("new_youbu2"):SetLevel(4)
+	-- hero:AddAbility("new_youbu3")
+	-- hero:FindAbilityByName("new_youbu3"):SetLevel(4)
+	-- hero:AddAbility("new_konghe")
+	-- hero:FindAbilityByName("new_konghe"):SetLevel(4)
+	-- hero:AddAbility("new_xuwu")
+	-- hero:FindAbilityByName("new_xuwu"):SetLevel(4)
 	-- hero:AddAbility("antimage_blink_new")
 	-- hero:FindAbilityByName("antimage_blink_new"):SetLevel(4)
 	-- hero:AddAbility("templar_assassin_refraction_new")
@@ -1419,7 +1454,7 @@ function GemTD:OnPlayerPickHero(keys)
 
     if playercount == PlayerResource:GetPlayerCount() then
     	--GameRules:SendCustomMessage("发请求", 0, 0)
-    	CustomNetTables:SetTableValue( "game_state", "startgame",{})
+    	CustomNetTables:SetTableValue( "game_state", "startgame",{ map_name = GetMapName() } )
 
    --  	Timers:CreateTimer(5,function()
 			
@@ -1865,6 +1900,11 @@ function GemTD:OnReceiveSteamIDs(keys)
 	req:SetHTTPRequestAbsoluteTimeoutMS(20000)
 	req:Send(function (result)
 		local t = json.decode(result["Body"])
+
+		if t['err'] == nil or t['err'] ~= 0 then
+			GameRules:SendCustomMessage('Connect Server ERROR: '..t['err'],0,0)
+			GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
+		end
 		GemTD:OnLobster2({
 			data = t["data"]
 		})
@@ -1877,7 +1917,7 @@ function GemTD:OnReceiveSteamIDs(keys)
 	GameRules.is_lobster_ok = false;
 	Timers:CreateTimer(10,function ()
 		if GameRules.is_lobster_ok == false then
-			GameRules:SendCustomMessage('连接服务器失败',0,0)
+			GameRules:SendCustomMessage('Connect Server Failed.',0,0)
 			GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
 		end
 	end)
@@ -1937,8 +1977,9 @@ function GemTD:OnReceiveSteamIDs(keys)
 end
 
 function GemTD:OnLobster2(t)
+	DeepPrintTable(t)
 	GameRules.is_lobster_ok = true
-	-- DeepPrintTable(t.data)
+	DeepPrintTable(t.data)
 	for u,v in pairs(t["data"]) do
 		if u == "76561198101849234" or u == "76561198090931971" or u == "76561198090961025" or u == "76561198132023205" or u == "76561198079679584" then
 			GameRules.myself = true
@@ -2188,6 +2229,9 @@ function OnThink()
 			    	local random_a = RandomInt(1,table.maxn(GameRules.guai_50_ability))
 			    	local aaaaa = GameRules.guai_50_ability[random_a]
 			    	if aaaaa == "enemy_momian" then
+			    		maxhealth = maxhealth / 3
+			    	end
+			    	if aaaaa == "enemy_wumian" then
 			    		maxhealth = maxhealth / 2
 			    	end
 			    	if u:FindAbilityByName(aaaaa) == nil then
@@ -2357,6 +2401,23 @@ function OnThink()
 							ExecuteOrderFromTable(newOrder)
 
 							return 0.5
+						elseif u.target > 1 and u:FindAbilityByName('runrunrun') ~= nil and u:FindModifierByName('modifier_runrunrun') == nil and RandomInt(1,100)<=80 then
+
+							if u:FindAbilityByName('runrunrun') == nil then
+								u:AddAbility('runrunrun')
+								u:FindAbilityByName('runrunrun'):SetLevel(u:FindAbilityByName('runrunrun'):GetLevel())
+							end
+							local newOrder = {
+						 		UnitIndex = u:entindex(), 
+						 		OrderType = DOTA_UNIT_ORDER_CAST_NO_TARGET,
+						 		TargetIndex = nil, --Optional.  Only used when targeting units
+						 		AbilityIndex = u:FindAbilityByName('runrunrun'):entindex(), --Optional.  Only used when casting abilities
+						 		Position = nil, --Optional.  Only used when targeting the ground
+						 		Queue = 0 --Optional.  Used for queueing up abilities
+						 	}
+							ExecuteOrderFromTable(newOrder)
+
+							return 0.01
 						else
 							--继续走
 							u.target = u.target + 1
@@ -3057,6 +3118,30 @@ function GemTD:OnPlayerSay( keys )
 	-- end
 end
 
+--特效预览
+function GemTD:OnPreviewEffect(keys)
+	local h = EntIndexToHScript(keys.hero_index)
+	local e = keys.effect
+
+	DeepPrintTable(keys)
+
+	if h.effect ~= nil then
+		h:RemoveAbility(h.effect)
+		h:RemoveModifierByName('modifier_texiao_star')
+	end
+	h:AddAbility(e)
+	h:FindAbilityByName(e):SetLevel(1)
+
+	Timers:CreateTimer(5,function()
+		h:RemoveAbility(e)
+		h:RemoveModifierByName('modifier_texiao_star')
+		if h.effect ~= nil then
+			h:AddAbility(h.effect)
+			h:FindAbilityByName(h.effect):SetLevel(1)
+		end
+	end)
+end
+
 function gemtd_randomize(s)
 	if (not s) then
 		s = tostring(RandomInt(100000, 999999))
@@ -3164,19 +3249,19 @@ function start_build()
 			-- GameRules:SendCustomMessage("放置初始石头", 0, 0)
 		-- end
 
-		local url = "http://101.200.189.65:430/gemtd/welcome?hehe="..RandomInt(1,10000).."&host="..tostring(GameRules.hostid)
+		-- local url = "http://101.200.189.65:430/gemtd/welcome?hehe="..RandomInt(1,10000).."&host="..tostring(GameRules.hostid)
 
-		local req = CreateHTTPRequestScriptVM("GET", url)
-		req:SetHTTPRequestAbsoluteTimeoutMS(20000)
-		req:Send(function (result)
-			local t = json.decode(result["Body"])
-			if t~=nil and t["msg_schinese"]~= nil then
-				GameRules:SendCustomMessage(t["msg_schinese"], 0, 0)
-			end
-			if t~=nil and t["msg_english"]~= nil then
-				GameRules:SendCustomMessage(t["msg_english"], 0, 0)
-			end
-		end)
+		-- local req = CreateHTTPRequestScriptVM("GET", url)
+		-- req:SetHTTPRequestAbsoluteTimeoutMS(20000)
+		-- req:Send(function (result)
+		-- 	local t = json.decode(result["Body"])
+		-- 	if t~=nil and t["msg_schinese"]~= nil then
+		-- 		GameRules:SendCustomMessage(t["msg_schinese"], 0, 0)
+		-- 	end
+		-- 	if t~=nil and t["msg_english"]~= nil then
+		-- 		GameRules:SendCustomMessage(t["msg_english"], 0, 0)
+		-- 	end
+		-- end)
 
 		GameRules:GetGameModeEntity().gem_map ={}
 		for i=1,37 do
@@ -6230,42 +6315,69 @@ function gemtd_xiameishi1( keys )
 	show_quest()
 end
 
+--石板技能
+GameRules.shiban_ability_list = {
+	gemtd_youbushiban = "naga_siren_ensnare",
+	gemtd_youbushiban_yin = "new_youbu2",
+	gemtd_youbushiban_jin = "new_youbu3",
+	gemtd_zhangqishiban = "new_venomous_gale",
+	gemtd_zhangqishiban_yin = "new_venomous_gale2",
+	gemtd_zhangqishiban_jin = "new_venomous_gale3",
+	gemtd_hongliushiban = "new_torrent",
+	gemtd_hongliushiban_yin = "new_torrent2",
+	gemtd_hongliushiban_jin = "new_torrent3",
+	gemtd_haojiaoshiban = "new_haojiao",
+	gemtd_haojiaoshiban_yin = "new_haojiao2",
+	gemtd_haojiaoshiban_jin = "new_haojiao3",
+	gemtd_suanwushiban = "new_acid_spray",
+	gemtd_suanwushiban_yin = "new_acid_spray2",
+	gemtd_suanwushiban_jin = "new_acid_spray3",
+	gemtd_mabishiban = "new_cask",
+	gemtd_mabishiban_yin = "new_cask2",
+	gemtd_mabishiban_jin = "new_cask3",
+	gemtd_kongheshiban = "new_konghe",
+	gemtd_kongheshiban_yin = "new_konghe2",
+	gemtd_kongheshiban_jin = "new_konghe3",
+	gemtd_xuwushiban = "new_xuwu",
+	gemtd_xuwushiban_yin = "new_xuwu2",
+	gemtd_xuwushiban_jin = "new_xuwu3",
+}
+
 --石板
 function gemtd_youbushiban_sb( keys )
 	local caster = keys.caster
-	merge_shiban( "gemtd_youbushiban", "naga_siren_ensnare", 10, caster )
+	merge_shiban( "gemtd_youbushiban", GameRules.shiban_ability_list["gemtd_youbushiban"], 10, caster )
 end
 function gemtd_zhangqishiban_sb( keys )
 	local caster = keys.caster
-	merge_shiban( "gemtd_zhangqishiban", "new_venomous_gale", 10, caster )
-end
-function gemtd_zuzhoushiban_sb( keys )
-	local caster = keys.caster
-	merge_shiban( "gemtd_zuzhoushiban", "new_maledict", 10, caster )
+	merge_shiban( "gemtd_zhangqishiban", GameRules.shiban_ability_list["gemtd_zhangqishiban"], 10, caster )
 end
 function gemtd_hongliushiban_sb( keys )
 	local caster = keys.caster
-	merge_shiban( "gemtd_hongliushiban", "new_torrent", 10, caster )
+	merge_shiban( "gemtd_hongliushiban", GameRules.shiban_ability_list["gemtd_hongliushiban"], 10, caster )
 end
 function gemtd_haojiaoshiban_sb( keys )
 	local caster = keys.caster
-	merge_shiban( "gemtd_haojiaoshiban", "new_haojiao", 10, caster )
+	merge_shiban( "gemtd_haojiaoshiban", GameRules.shiban_ability_list["gemtd_haojiaoshiban"], 10, caster )
 end
--- function gemtd_fukongshiban_sb( keys )
--- 	local caster = keys.caster
--- 	merge_shiban( "gemtd_fukongshiban", "new_telekinesis", 10, caster )
--- end
 function gemtd_suanwushiban_sb( keys )
 	local caster = keys.caster
-	merge_shiban( "gemtd_suanwushiban", "new_acid_spray", 10, caster )
+	merge_shiban( "gemtd_suanwushiban", GameRules.shiban_ability_list["gemtd_suanwushiban"], 10, caster )
 end
 function gemtd_mabishiban_sb( keys )
 	local caster = keys.caster
-	merge_shiban( "gemtd_mabishiban", "new_cask", 10, caster )
+	merge_shiban( "gemtd_mabishiban", GameRules.shiban_ability_list["gemtd_mabishiban"], 10, caster )
+end
+function gemtd_kongheshiban_sb( keys )
+	local caster = keys.caster
+	merge_shiban( "gemtd_kongheshiban", GameRules.shiban_ability_list["gemtd_kongheshiban"], 10, caster )
+end
+function gemtd_xuwushiban_sb( keys )
+	local caster = keys.caster
+	merge_shiban( "gemtd_xuwushiban", GameRules.shiban_ability_list["gemtd_xuwushiban"], 10, caster )
 end
 
 function merge_shiban( shiban_name, shiban_ability, shiban_cd, caster )
-
 	local owner =  caster:GetOwner()
 	local player_id = owner:GetPlayerID()
 
@@ -6281,7 +6393,6 @@ function merge_shiban( shiban_name, shiban_ability, shiban_cd, caster )
 		EmitGlobalSound("ui.crafting_gem_drop")
 		--caster:DestroyAllSpeechBubbles()
 		--caster:AddSpeechBubble(1,"#text_cannot_build_here",2,0,30)
-		createHintBubble(caster,"#text_cannot_build_here")
 		return
 	end
 
@@ -6289,7 +6400,6 @@ function merge_shiban( shiban_name, shiban_ability, shiban_cd, caster )
 		EmitGlobalSound("ui.crafting_gem_drop")
 		--caster:DestroyAllSpeechBubbles()
 		--caster:AddSpeechBubble(1,"#text_cannot_build_here",2,0,30)
-		createHintBubble(caster,"#text_cannot_build_here")
 		return
 	end
 
@@ -6326,11 +6436,9 @@ function merge_shiban( shiban_name, shiban_ability, shiban_cd, caster )
 		EmitGlobalSound("ui.crafting_gem_drop")
 		--caster:DestroyAllSpeechBubbles()
 		--caster:AddSpeechBubble(1,"#text_cannot_build_here",2,0,30)
-		createHintBubble(caster,"#text_cannot_build_here")
 		--GameRules:SendCustomMessage("附近有友军单位了，不能造", 0, 0)
 		return
 	end
-
 	
 	--路径点，不能造
 	for i=1,7 do
@@ -6341,12 +6449,10 @@ function merge_shiban( shiban_name, shiban_ability, shiban_cd, caster )
 			EmitGlobalSound("ui.crafting_gem_drop")
 			--caster:DestroyAllSpeechBubbles()
 			--caster:AddSpeechBubble(1,"#text_cannot_build_here",2,0,30)
-			createHintBubble(caster,"#text_cannot_build_here")
 			--GameRules:SendCustomMessage("路径点，不能造", 0, 0)
 			return
 		end
 	end
-		
 
 	--地图范围外，不能造
 	if xxx<1 or xxx>37 or yyy<1 or yyy>37 then
@@ -6361,8 +6467,11 @@ function merge_shiban( shiban_name, shiban_ability, shiban_cd, caster )
 	--local caster = keys.caster
 	--merge_tower1( "gemtd_zhiliushiban", caster )
 
+	--建造石板
 	local u = CreateUnitByName(shiban_name, p,false,nil,nil,DOTA_TEAM_GOODGUYS) 
 	u.ftd = 2009
+
+	GameRules:GetGameModeEntity().shiban_index[xxx..'_'..yyy] = u
 
 	u:SetOwner(owner)
 	u:SetControllableByPlayer(player_id, true)
@@ -6382,6 +6491,8 @@ function merge_shiban( shiban_name, shiban_ability, shiban_cd, caster )
 	u:AddAbility("gemtd_tower_merge")
 	u:FindAbilityByName("gemtd_tower_merge"):SetLevel(1)
 	EmitGlobalSound("Loot_Drop_Stinger_Rare")
+
+	local shiban = u
 
 	for i=0,4 do
 		local p = GameRules.build_curr[player_id][i]:GetAbsOrigin()
@@ -6432,68 +6543,184 @@ function merge_shiban( shiban_name, shiban_ability, shiban_cd, caster )
 	end
 	CustomNetTables:SetTableValue( "game_state", "gem_merge_board_curr", send_pool )
 
-	
 	finish_build()
 
-	--开启石板的计时器
+	--检测能否合成高级石板
+	Timers:CreateTimer(1,function()
+		merge_shiban_update(xxx,yyy)
+	end)
+
+	start_shiban_timer(shiban,shiban_ability,shiban_cd)
+end
+
+function Youbu2(keys)
+	local target = keys.target
+	local caster = keys.caster
+	local target_count = 4
+	if (target==nil or target:IsNull()==true or target:IsAlive()==false) then
+		return
+	end
+	local uuu = FindUnitsInRadius(DOTA_TEAM_GOODGUYS,
+			target:GetAbsOrigin(),
+			nil,
+			512,
+			DOTA_UNIT_TARGET_TEAM_ENEMY,
+			DOTA_UNIT_TARGET_BASIC,
+			DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+			FIND_ANY_ORDER,
+			false)
+	if table.maxn(uuu) > 0 then
+		local unluckydog_count = table.maxn(uuu)
+		if unluckydog_count > target_count then unluckydog_count = target_count end
+		for i=1,unluckydog_count do
+			local unluckydog = uuu[i]
+			--对unluckydog施暴
+			Timers:CreateTimer(RandomInt(1,50)/100,function()
+				InvisibleUnitCast({
+					caster = caster,
+					ability = 'naga_siren_ensnare',
+					level = caster:FindAbilityByName('new_youbu2'):GetLevel(),
+					unluckydog = unluckydog,
+					position = unluckydog:GetAbsOrigin(),
+				})
+			end)
+			
+		end
+	end
+end
+function Youbu3(keys)
+	local target = keys.target
+	local caster = keys.caster
+	local target_count = 16
+	if (target==nil or target:IsNull()==true or target:IsAlive()==false) then
+		return
+	end
+	local uuu = FindUnitsInRadius(DOTA_TEAM_GOODGUYS,
+			target:GetAbsOrigin(),
+			nil,
+			1024,
+			DOTA_UNIT_TARGET_TEAM_ENEMY,
+			DOTA_UNIT_TARGET_BASIC,
+			DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+			FIND_ANY_ORDER,
+			false)
+	if table.maxn(uuu) > 0 then
+		local unluckydog_count = table.maxn(uuu)
+		if unluckydog_count > target_count then unluckydog_count = target_count end
+		for i=1,unluckydog_count do
+			local unluckydog = uuu[i]
+			--对unluckydog施暴
+			Timers:CreateTimer(RandomInt(1,50)/100,function()
+				InvisibleUnitCast({
+					caster = caster,
+					ability = 'naga_siren_ensnare',
+					level = caster:FindAbilityByName('new_youbu3'):GetLevel(),
+					unluckydog = unluckydog,
+					position = unluckydog:GetAbsOrigin(),
+				})
+			end)
+			
+		end
+	end
+end
+function Cask2(keys)
+	local target = keys.target
+	local caster = keys.caster
+	local target_count = 3
+	if (target==nil or target:IsNull()==true or target:IsAlive()==false) then
+		return
+	end
+	local uuu = FindUnitsInRadius(DOTA_TEAM_GOODGUYS,
+			target:GetAbsOrigin(),
+			nil,
+			512,
+			DOTA_UNIT_TARGET_TEAM_ENEMY,
+			DOTA_UNIT_TARGET_BASIC,
+			DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+			FIND_ANY_ORDER,
+			false)
+	if table.maxn(uuu) > 0 then
+		local unluckydog_count = table.maxn(uuu)
+		if unluckydog_count > target_count then unluckydog_count = target_count end
+		for i=1,unluckydog_count do
+			local unluckydog = uuu[i]
+			--对unluckydog施暴
+			Timers:CreateTimer(RandomInt(1,50)/100,function()
+				InvisibleUnitCast({
+					caster = caster,
+					ability = 'new_cask_sub2',
+					level = caster:FindAbilityByName('new_cask2'):GetLevel(),
+					unluckydog = unluckydog,
+					position = unluckydog:GetAbsOrigin(),
+				})
+			end)
+			
+		end
+	end
+end
+function Cask3(keys)
+	local target = keys.target
+	local caster = keys.caster
+	local target_count = 9
+	if (target==nil or target:IsNull()==true or target:IsAlive()==false) then
+		return
+	end
+	local uuu = FindUnitsInRadius(DOTA_TEAM_GOODGUYS,
+			target:GetAbsOrigin(),
+			nil,
+			1024,
+			DOTA_UNIT_TARGET_TEAM_ENEMY,
+			DOTA_UNIT_TARGET_BASIC,
+			DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+			FIND_ANY_ORDER,
+			false)
+	if table.maxn(uuu) > 0 then
+		local unluckydog_count = table.maxn(uuu)
+		if unluckydog_count > target_count then unluckydog_count = target_count end
+		for i=1,unluckydog_count do
+			local unluckydog = uuu[i]
+			--对unluckydog施暴
+			Timers:CreateTimer(RandomInt(1,50)/100,function()
+				InvisibleUnitCast({
+					caster = caster,
+					ability = 'new_cask_sub3',
+					level = caster:FindAbilityByName('new_cask3'):GetLevel(),
+					unluckydog = unluckydog,
+					position = unluckydog:GetAbsOrigin(),
+				})
+			end)
+			
+		end
+	end
+end
+
+--开启石板的计时器
+function start_shiban_timer(shiban,shiban_ability,shiban_cd)
 	Timers:CreateTimer(0.1,function()
+
+		if (shiban==nil or shiban:IsNull()==true or shiban:IsAlive()==false) then
+			return
+		end
 		
 		local uuu = FindUnitsInRadius(DOTA_TEAM_GOODGUYS,
-                          u:GetAbsOrigin(),
-                          nil,
-                          128,
-                          DOTA_UNIT_TARGET_TEAM_ENEMY,
-                          DOTA_UNIT_TARGET_BASIC,
-                          DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
-                          FIND_ANY_ORDER,
-                          false)
+				shiban:GetAbsOrigin(),
+				nil,
+				128,
+				DOTA_UNIT_TARGET_TEAM_ENEMY,
+				DOTA_UNIT_TARGET_BASIC,
+				DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+				FIND_ANY_ORDER,
+				false)
 		if table.maxn(uuu) > 0 then
-
 			local unluckydog = uuu[1]
-			-- GameRules:SendCustomMessage(unluckydog:GetUnitName(),0,0)
 			--对unluckydog施暴
-			local uu = CreateUnitByName("gemtd_feicuimoxiang_yinxing", u:GetAbsOrigin() ,false,nil,nil, DOTA_TEAM_GOODGUYS) 
-			uu.ftd = 2009
-
-			uu:AddAbility(shiban_ability)
-			uu:FindAbilityByName(shiban_ability):SetLevel(5-PlayerResource:GetPlayerCount())
-			Timers:CreateTimer(0.05,function()
-				if shiban_ability == "naga_siren_ensnare" or shiban_ability == "new_telekinesis" or shiban_ability == "new_cask" then
-					local newOrder = {
-				 		UnitIndex = uu:entindex(), 
-				 		OrderType = DOTA_UNIT_ORDER_CAST_TARGET,
-				 		TargetIndex = unluckydog:entindex(), --Optional.  Only used when targeting units
-				 		AbilityIndex = uu:FindAbilityByName(shiban_ability):entindex(), --Optional.  Only used when casting abilities
-				 		Position = nil, --Optional.  Only used when targeting the ground
-				 		Queue = 0 --Optional.  Used for queueing up abilities
-				 	}
-					ExecuteOrderFromTable(newOrder)
-				elseif shiban_ability == "new_haojiao" then
-					local newOrder = {
-				 		UnitIndex = uu:entindex(), 
-				 		OrderType = DOTA_UNIT_ORDER_CAST_NO_TARGET,
-				 		TargetIndex = unluckydog:entindex(), --Optional.  Only used when targeting units
-				 		AbilityIndex = uu:FindAbilityByName(shiban_ability):entindex(), --Optional.  Only used when casting abilities
-				 		Position = nil, --Optional.  Only used when targeting the ground
-				 		Queue = 0 --Optional.  Used for queueing up abilities
-				 	}
-					ExecuteOrderFromTable(newOrder)
-				else
-					local newOrder = {
-				 		UnitIndex = uu:entindex(), 
-				 		OrderType = DOTA_UNIT_ORDER_CAST_POSITION,
-				 		TargetIndex = unluckydog:entindex(), --Optional.  Only used when targeting units
-				 		AbilityIndex = uu:FindAbilityByName(shiban_ability):entindex(), --Optional.  Only used when casting abilities
-				 		Position = unluckydog:GetAbsOrigin(), --Optional.  Only used when targeting the ground
-				 		Queue = 0 --Optional.  Used for queueing up abilities
-				 	}
-					ExecuteOrderFromTable(newOrder)
-				end
-				Timers:CreateTimer(shiban_cd,function()
-					uu:ForceKill(false)
-					uu:Destroy()
-				end)
-			end)
+			InvisibleUnitCast({
+				caster = shiban,
+				ability = shiban_ability,
+				level = 5-PlayerResource:GetPlayerCount(),
+				unluckydog = unluckydog,
+				position = unluckydog:GetAbsOrigin(),
+			})
 
 			TriggerShiban(unluckydog)
 
@@ -6504,8 +6731,156 @@ function merge_shiban( shiban_name, shiban_ability, shiban_cd, caster )
 	end)
 end
 
+function InvisibleUnitCast(keys)
+	local shiban = keys.caster
+	local shiban_ability = keys.ability
+	local ability_level = keys.level
+	local unluckydog = keys.unluckydog
+	local position = keys.position
+
+	local uu = CreateUnitByName("gemtd_feicuimoxiang_yinxing", shiban:GetAbsOrigin() ,false,nil,nil, DOTA_TEAM_GOODGUYS) 
+	uu.ftd = 2009
+
+	uu:AddAbility(shiban_ability)
+	uu:FindAbilityByName(shiban_ability):SetLevel(ability_level)
+	Timers:CreateTimer(0.05,function()
+		if uu:FindAbilityByName(shiban_ability):GetBehavior() == DOTA_ABILITY_BEHAVIOR_UNIT_TARGET then
+			local newOrder = {
+		 		UnitIndex = uu:entindex(), 
+		 		OrderType = DOTA_UNIT_ORDER_CAST_TARGET,
+		 		TargetIndex = unluckydog:entindex(), --Optional.  Only used when targeting units
+		 		AbilityIndex = uu:FindAbilityByName(shiban_ability):entindex(), --Optional.  Only used when casting abilities
+		 		Position = nil, --Optional.  Only used when targeting the ground
+		 		Queue = 0 --Optional.  Used for queueing up abilities
+		 	}
+			ExecuteOrderFromTable(newOrder)
+		elseif uu:FindAbilityByName(shiban_ability):GetBehavior() == DOTA_ABILITY_BEHAVIOR_NO_TARGET then
+			local newOrder = {
+		 		UnitIndex = uu:entindex(), 
+		 		OrderType = DOTA_UNIT_ORDER_CAST_NO_TARGET,
+		 		TargetIndex = unluckydog:entindex(), --Optional.  Only used when targeting units
+		 		AbilityIndex = uu:FindAbilityByName(shiban_ability):entindex(), --Optional.  Only used when casting abilities
+		 		Position = nil, --Optional.  Only used when targeting the ground
+		 		Queue = 0 --Optional.  Used for queueing up abilities
+		 	}
+			ExecuteOrderFromTable(newOrder)
+		else
+			local newOrder = {
+		 		UnitIndex = uu:entindex(), 
+		 		OrderType = DOTA_UNIT_ORDER_CAST_POSITION,
+		 		TargetIndex = unluckydog:entindex(), --Optional.  Only used when targeting units
+		 		AbilityIndex = uu:FindAbilityByName(shiban_ability):entindex(), --Optional.  Only used when casting abilities
+		 		Position = unluckydog:GetAbsOrigin(), --Optional.  Only used when targeting the ground
+		 		Queue = 0 --Optional.  Used for queueing up abilities
+		 	}
+			ExecuteOrderFromTable(newOrder)
+		end
+		Timers:CreateTimer(10,function()
+			uu:ForceKill(false)
+			uu:Destroy()
+		end)
+	end)
+end
+
+function merge_shiban_update(xxx,yyy)
+	local x1 = xxx-1
+	local x2 = xxx+1
+	local y1 = yyy-1
+	local y2 = yyy+1
+	if x1 < 1 then x1 = 1 end
+	if y1 < 1 then y1 = 1 end
+	if x2 > 37 then x2 = 37 end
+	if y2 > 37 then y2 = 37 end
+
+	for i=x1,x2 do
+		for j=y1,y2 do
+			local curr_shiban = GameRules:GetGameModeEntity().shiban_index[i..'_'..j]
+			if curr_shiban ~= nil then
+				shiban_update_one(curr_shiban,i,j)
+			end
+		end
+	end
+end
+
+function shiban_update_one(shiban,i,j)
+	local loop_table = {
+		[1] = { x = 1, y = 1},
+		[2] = { x = 1, y = 0},
+		[3] = { x = 0, y = 1},
+		[4] = { x = -1, y = 1},
+	}
+	local shiban_name = shiban:GetUnitName()
+	local p = shiban:GetAbsOrigin()
+	local owner = shiban:GetOwner()
+	local player_id = shiban:GetOwner():GetPlayerID()
+
+	for u,v in pairs(loop_table) do
+		local u1 = GameRules:GetGameModeEntity().shiban_index[(i+v.x)..'_'..(j+v.y)]
+		local u2 = GameRules:GetGameModeEntity().shiban_index[(i-v.x)..'_'..(j-v.y)]
+		if u1~=nil and u2~=nil and u1:GetUnitName() ==shiban_name and u2:GetUnitName() ==shiban_name then
+			--合成
+			local shengji_shiban = GameRules.gemtd_merge_shiban_update[shiban_name]
+			if shengji_shiban ~= nil then
+				--移除三个石板
+				GameRules:GetGameModeEntity().shiban_index[(i+v.x)..'_'..(j+v.y)] = nil
+				GameRules:GetGameModeEntity().shiban_index[(i-v.x)..'_'..(j-v.y)] = nil
+				for jj,j_unit in pairs(GameRules.gemtd_pool) do
+					if j_unit:entindex() == shiban:entindex() then
+						table.remove(GameRules.gemtd_pool, jj)
+					end
+				end
+				for jj,j_unit in pairs(GameRules.gemtd_pool) do
+					if j_unit:entindex() == u1:entindex() then
+						table.remove(GameRules.gemtd_pool, jj)
+					end
+				end
+				for jj,j_unit in pairs(GameRules.gemtd_pool) do
+					if j_unit:entindex() == u2:entindex() then
+						table.remove(GameRules.gemtd_pool, jj)
+					end
+				end
+				shiban:Destroy()
+				u1:Destroy()
+				u2:Destroy()
+
+				--造高级石板
+				local u = CreateUnitByName(shengji_shiban, p,false,nil,nil,DOTA_TEAM_GOODGUYS) 
+				u.ftd = 2009
+				GameRules:GetGameModeEntity().shiban_index[i..'_'..j] = u
+
+				u:SetOwner(owner)
+				u:SetControllableByPlayer(player_id, true)
+
+				u:AddAbility("no_hp_bar")
+				u:FindAbilityByName("no_hp_bar"):SetLevel(1)
+				u:RemoveModifierByName("modifier_invulnerable")
+				u:SetHullRadius(64)
+
+				table.insert(GameRules.gemtd_pool, u)
+
+				u:SetForwardVector(Vector(1,0,0))
+
+				u.is_merged = true
+				u.kill_count = 0
+
+				u:AddAbility("gemtd_tower_merge")
+				u:FindAbilityByName("gemtd_tower_merge"):SetLevel(1)
+				EmitGlobalSound("Loot_Drop_Stinger_Rare")
+
+				--检测能否合成高级石板
+				Timers:CreateTimer(1,function()
+					merge_shiban_update(i,j)
+				end)
+
+				--开高级石板的计时器
+				start_shiban_timer(u,GameRules.shiban_ability_list[shengji_shiban],10)
+			end
+		end
+	end
+end
+
 function TriggerShiban(dog)
-	if RandomInt(1,100) >= 50 then
+	if RandomInt(1,100) >= 25 then
 		return
 	end
 	local uuu = FindUnitsInRadius(DOTA_TEAM_GOODGUYS,
@@ -6871,6 +7246,7 @@ function ColorIt( sStr, sColor )
 end
 
 --伤害显示
+
 function show_damage( keys )
 	local caster = keys.caster
 	local attacker = keys.attacker
@@ -6904,6 +7280,15 @@ function show_damage( keys )
 	curr_damage = curr_damage + damage
 	GameRules.damage[attacker_id] = curr_damage
 
+	local g_time = GameRules:GetGameTime() - GameRules:GetGameModeEntity().game_time
+	if GameRules:GetGameModeEntity().last_g_time == nil then
+		GameRules:GetGameModeEntity().last_g_time = 0
+	end
+	local time_this_level = math.floor(GameRules:GetGameTime() - GameRules.stop_watch)
+	if g_time - GameRules:GetGameModeEntity().last_g_time > 1 then
+		GameRules:GetGameModeEntity().last_g_time = g_time
+		CustomNetTables:SetTableValue( "game_state", "damage_stat", { level = GameRules.level, damage_table = GameRules.damage , time_this_level = time_this_level, hehe = RandomInt(1,100000) } )
+	end
 
 end
 
@@ -7477,8 +7862,6 @@ function ranjin( keys )
     local caster = keys.caster
     local target = keys.target
 
-    GameRules:SendCustomMessage(target:GetUnitName(),0,0)
-
 	--获取攻击伤害
     local damage = keys.Damage
     local damageTable = {
@@ -7513,7 +7896,7 @@ function GemTD:OnCatchCrab(keys)
 	end
 	local user = keys.user
 
-	url = string.gsub(url,"gemtd/ranking/add/","gemtd/201804/ranking/add/")
+	url = string.gsub(url,"gemtd/ranking/add/","gemtd/201805/ranking/add/")
 	local r = RandomFloat(0,1)
 	
 	Timers:CreateTimer(r,function()
