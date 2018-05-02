@@ -208,6 +208,12 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> naga_siren_ensnare</td>
+</tr>
 </table>
 </section><section>
 <h2> Gale Pedal</h2>
@@ -231,6 +237,24 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_venomous_gale</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code> deals %tick_damage magic damage.</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[tick_interval: 3.0 3.0 3.0 3.0][strike_damage: 0][radius: 125 125 125 125][duration: 5 7 9 11][tick_damage: 0][movement_slow: -50 -50 -50 -50]</code></td>
+</tr>
+<tr><th> Raw: Special 2 </th>
+<td> <code>[distance: 800 800 800 800][speed: 600]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> false</td>
 </tr>
 </table>
 </section><section>
@@ -256,6 +280,24 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_torrent</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>during %stun_duration seconds, every %stun_duration / %tick_count seconds, deals 0 magic damage. ~ [MOVESPEED: %movespeed_bonus%]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[stun_duration: 2][tick_count: 10][movespeed_bonus: -40][vision_duration: 4.73][delay: 1.6 1.6 1.6 1.6][torrent_height: 400]</code></td>
+</tr>
+<tr><th> Raw: Special 2 </th>
+<td> <code>[slow_duration: 8 10 12 14][radius: 256]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> false</td>
+</tr>
 </table>
 </section><section>
 <h2> Howl Pedal</h2>
@@ -279,6 +321,24 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_haojiao</td>
+</tr>
+<tr><th> Name </th>
+<td> </td>
+</tr>
+<tr><th> Tooltip </th>
+<td> </td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>[DAMAGEOUTGOING: %unit_bonus_damage%]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[aura_radius: 256][unit_bonus_damage: 20 30 40 50][howl_duration: 10.0][think_interval: 0.5]</code></td>
 </tr>
 </table>
 </section><section>
@@ -304,6 +364,21 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_acid_spray</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>Aura: Range %radius Effect:  deals %damage physical damage.</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[duration: 10.0][damage: 0][radius: 625][armor_reduction: -8 -10 -12 -14][tick_rate: 1.0]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> true</td>
+</tr>
 </table>
 </section><section>
 <h2> Paralysis Pedal</h2>
@@ -327,6 +402,21 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_cask</td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[bounce_delay: 0.2][hero_duration: 1][creep_duration: 1][bounces_tooltip: 6 8 10 12][hero_damage: 0][bounces: 6 8 10 12]</code></td>
+</tr>
+<tr><th> Raw: Special 2 </th>
+<td> <code>[bounce_range: 9999][speed: 1800]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> false</td>
 </tr>
 </table>
 </section><section>
@@ -352,6 +442,21 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_konghe</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>[INCOMING DAMAGE: %konghe_damage_per%][MOVESPEED: %konghe_speed_per%]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[konghe_speed_per: 40][konghe_duration: 6 8 10 12][konghe_damage_per: 40]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> true</td>
+</tr>
 </table>
 </section><section>
 <h2> Decrepify Pedal</h2>
@@ -375,6 +480,21 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_xuwu</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>[MOVESPEED: %xuwu_speed_per%][MAGICAL RESISTANCE DECREPIFY UNIQUE: %xuwu_mokang_per]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[xuwu_speed_per: -50][xuwu_mokang_per: -30][xuwu_duration: 5 6 7 8]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> false</td>
 </tr>
 </table>
 </section></section><section>
@@ -402,6 +522,18 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_youbu2</td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[youbu_duration: 2 3 4 5]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> true</td>
+</tr>
 </table>
 </section><section>
 <h2> Sparkling Gale Pedal</h2>
@@ -425,6 +557,24 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_venomous_gale2</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code> deals %tick_damage magic damage.</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[tick_interval: 3.0 3.0 3.0 3.0][strike_damage: 0][radius: 125 125 125 125][duration: 7 9 11 13][tick_damage: 0][movement_slow: -70 -70 -70 -70]</code></td>
+</tr>
+<tr><th> Raw: Special 2 </th>
+<td> <code>[distance: 1200 1200 1200 1200][speed: 400]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> false</td>
 </tr>
 </table>
 </section><section>
@@ -450,6 +600,24 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_torrent2</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>during %stun_duration seconds, every %stun_duration / %tick_count seconds, deals 0 magic damage. ~ [MOVESPEED: %movespeed_bonus%]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[stun_duration: 4][tick_count: 10][movespeed_bonus: -60][vision_duration: 4.73][delay: 1.6 1.6 1.6 1.6][torrent_height: 800]</code></td>
+</tr>
+<tr><th> Raw: Special 2 </th>
+<td> <code>[slow_duration: 8 10 12 14][radius: 256]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> false</td>
+</tr>
 </table>
 </section><section>
 <h2> Sparkling Howl Pedal</h2>
@@ -473,6 +641,18 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_haojiao2</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>[DAMAGEOUTGOING: %unit_bonus_damage%]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[aura_radius: 384][unit_bonus_damage: 40 60 80 100][howl_duration: 10.0][think_interval: 0.5]</code></td>
 </tr>
 </table>
 </section><section>
@@ -498,6 +678,21 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_acid_spray2</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>Aura: Range %radius Effect:  deals %damage physical damage.</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[duration: 15.0][damage: 0][radius: 625][armor_reduction: -16 -20 -24 -28][tick_rate: 1.0]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> true</td>
+</tr>
 </table>
 </section><section>
 <h2> Sparkling Paralyze Pedal</h2>
@@ -521,6 +716,18 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_cask2</td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[youbu_duration: 2 3 4 5]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> true</td>
 </tr>
 </table>
 </section><section>
@@ -546,6 +753,21 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_konghe2</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>[INCOMING DAMAGE: %konghe_damage_per%][MOVESPEED: %konghe_speed_per%]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[konghe_speed_per: 40][konghe_duration: 6 8 10 12][konghe_damage_per: 80]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> true</td>
+</tr>
 </table>
 </section><section>
 <h2> Sparkling Decrepify Pedal</h2>
@@ -569,6 +791,21 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_xuwu2</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>[MOVESPEED: %xuwu_speed_per%][MAGICAL RESISTANCE DECREPIFY UNIQUE: %xuwu_mokang_per]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[xuwu_speed_per: -70][xuwu_mokang_per: -50][xuwu_duration: 6 7 8 9]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> false</td>
 </tr>
 </table>
 </section></section><section>
@@ -596,6 +833,18 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_youbu3</td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[youbu_duration: 2 3 4 5]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> true</td>
+</tr>
 </table>
 </section><section>
 <h2> Blingbling Gale Pedal</h2>
@@ -619,6 +868,24 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_venomous_gale3</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code> deals %tick_damage magic damage.</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[tick_interval: 3.0 3.0 3.0 3.0][strike_damage: 0][radius: 125 125 125 125][duration: 11 13 15 17][tick_damage: 0][movement_slow: -90 -90 -90 -90]</code></td>
+</tr>
+<tr><th> Raw: Special 2 </th>
+<td> <code>[distance: 1600 1600 1600 1600][speed: 200]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> false</td>
 </tr>
 </table>
 </section><section>
@@ -644,6 +911,24 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_torrent3</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>during %stun_duration seconds, every %stun_duration / %tick_count seconds, deals 0 magic damage. ~ [MOVESPEED: %movespeed_bonus%]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[stun_duration: 8][tick_count: 10][movespeed_bonus: -80][vision_duration: 4.73][delay: 1.6 1.6 1.6 1.6][torrent_height: 1200]</code></td>
+</tr>
+<tr><th> Raw: Special 2 </th>
+<td> <code>[slow_duration: 8 10 12 14][radius: 256]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> false</td>
+</tr>
 </table>
 </section><section>
 <h2> Blingbling Howl Pedal</h2>
@@ -667,6 +952,18 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_haojiao3</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>[DAMAGEOUTGOING: %unit_bonus_damage%]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[aura_radius: 512][unit_bonus_damage: 60 90 120 150][howl_duration: 10.0][think_interval: 0.5]</code></td>
 </tr>
 </table>
 </section><section>
@@ -692,6 +989,21 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_acid_spray3</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>Aura: Range %radius Effect:  deals %damage physical damage.</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[duration: 20.0][damage: 0][radius: 625][armor_reduction: -32 -40 -48 -56][tick_rate: 1.0]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> true</td>
+</tr>
 </table>
 </section><section>
 <h2> Blingbling Paralyze Pedal</h2>
@@ -715,6 +1027,18 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_cask3</td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[youbu_duration: 2 3 4 5]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> true</td>
 </tr>
 </table>
 </section><section>
@@ -740,6 +1064,21 @@
 <tr><td> ~ </td>
 <td> ~</td>
 </tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_konghe3</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>[INCOMING DAMAGE: %konghe_damage_per%][MOVESPEED: %konghe_speed_per%]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[konghe_speed_per: 40][konghe_duration: 6 8 10 12][konghe_damage_per: 120]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> true</td>
+</tr>
 </table>
 </section><section>
 <h2> Blingbling Decrepify Pedal</h2>
@@ -763,6 +1102,21 @@
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> new_xuwu3</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>[MOVESPEED: %xuwu_speed_per%][MAGICAL RESISTANCE DECREPIFY UNIQUE: %xuwu_mokang_per]</code></td>
+</tr>
+<tr><th> Raw: Special </th>
+<td> <code>[xuwu_speed_per: -90][xuwu_mokang_per: -70][xuwu_duration: 7 8 9 10]</code></td>
+</tr>
+<tr><th> Pierce Spell Immunity </th>
+<td> false</td>
 </tr>
 </table>
 </section></section>
