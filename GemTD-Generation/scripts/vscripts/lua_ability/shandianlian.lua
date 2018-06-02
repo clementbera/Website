@@ -46,7 +46,6 @@ function ShanDian( caster,old,new,ability,radius,count,count_const,_group )
                     end
  
                 until(alive)
- 
                 ShanDian( caster,new,unit,ability,radius,count+1,count_const,_group )
  
                 return nil

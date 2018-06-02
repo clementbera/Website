@@ -45,5 +45,9 @@
 		"kuangbao_time"					"short"
 		"win_streak_time"				"short"
 	}
+	"show_money"
+	{
+		"money"					"short"
+	}
 }
 

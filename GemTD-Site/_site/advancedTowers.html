@@ -109,14 +109,14 @@
 <tr><th> Malachite </th>
 <td> E1 + Q1 + G1</td>
 </tr>
-<tr><th> Huge Malachite </th>
+<tr><th> Vivid Malachite </th>
 <td> Malachite + D2 + Y3</td>
 </tr>
 <tr><th> Uranium-238 </th>
 <td> Y5 + E2 + B3</td>
 </tr>
 <tr><th> Uranium-235 </th>
-<td> Uranium-238 + Huge Malachite + Malachite</td>
+<td> Uranium-238 + Vivid Malachite + Malachite</td>
 </tr>
 <tr><th> Depleted-Kyparium </th>
 <td> Uranium-235 + Q6 + Y6 | Q1 + Q2 + Q3 + Q4 + Q5</td>
@@ -251,10 +251,10 @@
 <td> ~</td>
 </tr>
 <tr><th> Attack Damage </th>
-<td> 25</td>
+<td> 30</td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.9</td>
+<td> 1</td>
 </tr>
 <tr><th> Attack Range </th>
 <td> 600</td>
@@ -299,10 +299,10 @@
 <td> ~</td>
 </tr>
 <tr><th> Attack Damage </th>
-<td> 60</td>
+<td> 100</td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.7</td>
+<td> 0.8</td>
 </tr>
 <tr><th> Attack Range </th>
 <td> 700</td>
@@ -362,7 +362,7 @@
 <td> ~</td>
 </tr>
 <tr><th> Attack Damage </th>
-<td> 20 <code>[+80]</code></td>
+<td> 30 <code>[+80]</code></td>
 </tr>
 <tr><th> Attack Rate </th>
 <td> 1</td>
@@ -428,10 +428,10 @@
 <td> ~</td>
 </tr>
 <tr><th> Attack Damage </th>
-<td> 100 <code>[+160]</code></td>
+<td> 150 <code>[+160]</code></td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.7</td>
+<td> 0.8</td>
 </tr>
 <tr><th> Attack Range </th>
 <td> 700</td>
@@ -489,6 +489,21 @@
 </tr>
 <tr><th> Raw </th>
 <td> <code>[BASEATTACK BONUSDAMAGE: 160]</code></td>
+</tr>
+<tr><td> ~ </td>
+<td> ~</td>
+</tr>
+<tr><th> Ability </th>
+<td> tower_slow3</td>
+</tr>
+<tr><th> Name </th>
+<td> slow 3</td>
+</tr>
+<tr><th> Tooltip </th>
+<td> Decrease enemy's movement speed by 120.</td>
+</tr>
+<tr><th> Raw </th>
+<td> <code>[MOVESPEED: -120]</code></td>
 </tr>
 </table>
 </section><section>
@@ -648,7 +663,7 @@
 </tr>
 </table>
 </section><section>
-<h2> Huge Malachite</h2>
+<h2> Vivid Malachite</h2>
 <p>
 
 <figure>
@@ -659,7 +674,7 @@
 <td> gemtd_xianyandekongqueshi</td>
 </tr>
 <tr><th> English </th>
-<td> Huge Malachite / HM</td>
+<td> Vivid Malachite / VM</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -761,7 +776,7 @@
 <td> ~</td>
 </tr>
 <tr><th> Attack Damage </th>
-<td> 90 <code>[+160]</code></td>
+<td> 60 <code>[+160]</code></td>
 </tr>
 <tr><th> Attack Rate </th>
 <td> 0.7</td>
@@ -773,7 +788,7 @@
 <td> ~</td>
 </tr>
 <tr><th> Combination </th>
-<td> Uranium-238 + Huge Malachite + Malachite</td>
+<td> Uranium-238 + Vivid Malachite + Malachite</td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -926,7 +941,7 @@
 <td> Deals 60 magical damage every second to nearby enemies.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 500 Effect: during 1 seconds, every 0.5 seconds, deals 30 magic damage.</code></td>
+<td> <code>Aura: Range 400 Effect: during 1 seconds, every 0.5 seconds, deals 30 magic damage.</code></td>
 </tr>
 </table>
 </section><section>
@@ -974,7 +989,7 @@
 <td> Deals 320 magical damage every second to nearby enemies.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 600 Effect: during 1 seconds, every 0.5 seconds, deals 160 magic damage.</code></td>
+<td> <code>Aura: Range 500 Effect: during 1 seconds, every 0.5 seconds, deals 160 magic damage.</code></td>
 </tr>
 </table>
 </section><section>
@@ -1022,7 +1037,7 @@
 <td> Attacks have a 30%% chance to spark a damaging lightning that jumps accross enemies.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, [30%]run script jn_D3_00 (shandianlian.lua) with [Damage: 150, Radius: 3000, AttackCount: 1, Count: 5]</code></td>
+<td> <code>On Attack Landed, [30%]run script jn_D3_00 (shandianlian.lua) with [Damage: 150, Radius: 1000, AttackCount: 1, Count: 5]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> false</td>
@@ -1076,7 +1091,7 @@
 <td> <code>On Attack Landed, [25%]run script Shock (shock.lua) with []</code></td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[damage: 4000][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]</code></td>
+<td> <code>[damage: 2500][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> false</td>
@@ -1094,7 +1109,7 @@
 <td> Deals 320 magical damage every second to nearby enemies.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 600 Effect: during 1 seconds, every 0.5 seconds, deals 160 magic damage.</code></td>
+<td> <code>Aura: Range 500 Effect: during 1 seconds, every 0.5 seconds, deals 160 magic damage.</code></td>
 </tr>
 </table>
 </section><section>
@@ -1145,7 +1160,7 @@
 <td> <code>On Attack Landed, [25%]run script Shock (shock.lua) with []</code></td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[damage: 4000][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]</code></td>
+<td> <code>[damage: 2500][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> false</td>
@@ -1163,7 +1178,7 @@
 <td> Deals 2500 magical damage every second to nearby enemies.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 700 Effect: during 1 seconds, every 2 seconds, deals 5000 magic damage.</code></td>
+<td> <code>Aura: Range 800 Effect: during 1 seconds, every 2 seconds, deals 5000 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -1175,10 +1190,10 @@
 <td> poison MAX</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Enemies take 64 damage every second. Lasts 5 seconds.</td>
+<td> Enemies take 128 damage every second. Lasts 5 seconds.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 64 magic damage.</code></td>
+<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 128 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -1229,10 +1244,10 @@
 <td> poison 4</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Enemies take 8 damage every second. Lasts 5 seconds.</td>
+<td> Enemies take 16 damage every second. Lasts 5 seconds.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 8 magic damage.</code></td>
+<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 16 magic damage.</code></td>
 </tr>
 </table>
 </section><section>
@@ -1328,7 +1343,7 @@
 <td> Increase attack range of allies</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 300 Effect: [ATTACK RANGE: 300]</code></td>
+<td> <code>Aura: Range 290 Effect: [ATTACK RANGE: 300]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -1340,10 +1355,10 @@
 <td> poison 5</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Enemies take 16 damage every second. Lasts 5 seconds.</td>
+<td> Enemies take 32 damage every second. Lasts 5 seconds.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 16 magic damage.</code></td>
+<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 32 magic damage.</code></td>
 </tr>
 </table>
 </section><section>
@@ -1388,10 +1403,10 @@
 <td> poison 5</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Enemies take 16 damage every second. Lasts 5 seconds.</td>
+<td> Enemies take 32 damage every second. Lasts 5 seconds.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 16 magic damage.</code></td>
+<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 32 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -1406,7 +1421,7 @@
 <td> Increase attack range of allies</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 300 Effect: [ATTACK RANGE: 300]</code></td>
+<td> <code>Aura: Range 290 Effect: [ATTACK RANGE: 300]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -1445,7 +1460,7 @@
 <td> 2514 <code>[+640]</code></td>
 </tr>
 <tr><th> Attack Rate </th>
-<td> 0.6</td>
+<td> 0.8</td>
 </tr>
 <tr><th> Attack Range </th>
 <td> 1200</td>
@@ -1484,7 +1499,7 @@
 <td> Increase attack range of allies</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 300 Effect: [ATTACK RANGE: 300]</code></td>
+<td> <code>Aura: Range 290 Effect: [ATTACK RANGE: 300]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -1568,10 +1583,10 @@
 <td> poison 5</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Enemies take 16 damage every second. Lasts 5 seconds.</td>
+<td> Enemies take 32 damage every second. Lasts 5 seconds.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 16 magic damage.</code></td>
+<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 32 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -1769,10 +1784,10 @@
 <td> corrupt 1</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Decrease target enemy's armor by 20.</td>
+<td> Decrease target enemy's armor by 32.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, [PHYSICAL ARMOR: -20]</code></td>
+<td> <code>On Attack Landed, [PHYSICAL ARMOR: -32]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> true</td>
@@ -1820,10 +1835,10 @@
 <td> corrupt 2</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Decrease target enemy's armor by 30.</td>
+<td> Decrease target enemy's armor by 48.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, [PHYSICAL ARMOR: -30]</code></td>
+<td> <code>On Attack Landed, [PHYSICAL ARMOR: -48]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> true</td>
@@ -1949,10 +1964,10 @@
 <td> corrupt 1</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Decrease target enemy's armor by 20.</td>
+<td> Decrease target enemy's armor by 32.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, [PHYSICAL ARMOR: -20]</code></td>
+<td> <code>On Attack Landed, [PHYSICAL ARMOR: -32]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> true</td>
@@ -2135,10 +2150,10 @@
 <td> poison MAX</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Enemies take 64 damage every second. Lasts 5 seconds.</td>
+<td> Enemies take 128 damage every second. Lasts 5 seconds.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 64 magic damage.</code></td>
+<td> <code>On Attack Landed, during 5 seconds, every 1 seconds, deals 128 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -2530,10 +2545,10 @@
 <td> otomad</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Allies's attack speed+250 nearby.</td>
+<td> Allies's attack speed+200 nearby.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 150 Effect: [ATTACKSPEED: 250]</code></td>
+<td> <code>Aura: Range 200 Effect: [ATTACKSPEED: 200]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -2611,10 +2626,10 @@
 <td> ice</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Decrease nearby enemies' movement by 75%%.</td>
+<td> Decrease nearby enemies' movement by 70%%.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 300 Effect: [MOVESPEED: -75%]</code></td>
+<td> <code>Aura: Range 300 Effect: [MOVESPEED: -70%]</code></td>
 </tr>
 </table>
 </section><section>
@@ -2659,10 +2674,10 @@
 <td> ice</td>
 </tr>
 <tr><th> Tooltip </th>
-<td> Decrease nearby enemies' movement by 75%%.</td>
+<td> Decrease nearby enemies' movement by 70%%.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 300 Effect: [MOVESPEED: -75%]</code></td>
+<td> <code>Aura: Range 300 Effect: [MOVESPEED: -70%]</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>
@@ -2997,7 +3012,7 @@
 <td> Attacks have a 30%% chance to spark a damaging lightning that jumps accross enemies.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>On Attack Landed, [30%]run script jn_D3_00 (shandianlian.lua) with [Damage: 150, Radius: 3000, AttackCount: 1, Count: 5]</code></td>
+<td> <code>On Attack Landed, [30%]run script jn_D3_00 (shandianlian.lua) with [Damage: 150, Radius: 1000, AttackCount: 1, Count: 5]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> false</td>
@@ -3018,7 +3033,7 @@
 <td> <code>On Attack Landed, [25%]run script Shock (shock.lua) with []</code></td>
 </tr>
 <tr><th> Raw: Special </th>
-<td> <code>[damage: 4000][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]</code></td>
+<td> <code>[damage: 2500][targets: 5][start_radius: 100][chance: 25][end_distance: 5000][end_radius: 3000]</code></td>
 </tr>
 <tr><th> Pierce Spell Immunity </th>
 <td> false</td>
@@ -3180,7 +3195,7 @@
 <td> Deals 2500 magical damage every second to nearby enemies.</td>
 </tr>
 <tr><th> Raw </th>
-<td> <code>Aura: Range 700 Effect: during 1 seconds, every 2 seconds, deals 5000 magic damage.</code></td>
+<td> <code>Aura: Range 800 Effect: during 1 seconds, every 2 seconds, deals 5000 magic damage.</code></td>
 </tr>
 <tr><td> ~ </td>
 <td> ~</td>

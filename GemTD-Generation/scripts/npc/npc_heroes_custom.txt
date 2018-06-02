@@ -25,7 +25,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -38,7 +38,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -57,6 +57,7 @@
 		"SoundSet"	"Hero_DragonKnight"
 		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
 		"VoiceFile"	"soundevents/voscripts/game_sounds_vo_wisp.vsndevts"
+		"FollowRange"	"100"
 	}
 
 	// h101
@@ -79,7 +80,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -92,7 +93,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -108,6 +109,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h102
@@ -130,7 +132,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -143,7 +145,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -159,6 +161,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h103
@@ -181,7 +184,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -194,7 +197,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -210,6 +213,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h104
@@ -233,7 +237,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -246,7 +250,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -262,6 +266,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h106
@@ -284,7 +289,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -297,7 +302,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -313,6 +318,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h201
@@ -335,7 +341,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -348,7 +354,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -364,6 +370,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h202
@@ -386,7 +393,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -399,7 +406,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -415,6 +422,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h203
@@ -437,7 +445,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -450,7 +458,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -466,6 +474,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h204
@@ -488,7 +497,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -501,7 +510,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -517,6 +526,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h205
@@ -539,7 +549,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -552,7 +562,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -568,6 +578,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h202
@@ -590,7 +601,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -603,7 +614,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -619,6 +630,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h203
@@ -641,7 +653,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -654,7 +666,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -670,6 +682,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h204
@@ -692,7 +705,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -705,7 +718,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -721,6 +734,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h205
@@ -743,7 +757,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -756,7 +770,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -772,6 +786,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h206
@@ -794,7 +809,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -807,7 +822,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -823,6 +838,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h207
@@ -845,7 +861,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -858,7 +874,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -874,6 +890,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h208
@@ -896,7 +913,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -909,7 +926,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -925,6 +942,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h209
@@ -947,7 +965,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -960,7 +978,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -976,6 +994,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h210
@@ -998,7 +1017,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1011,7 +1030,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1027,6 +1046,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h211
@@ -1049,7 +1069,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1062,7 +1082,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1078,6 +1098,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h212
@@ -1100,7 +1121,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1113,7 +1134,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1129,6 +1150,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	"npc_dota_hero_wisp"
@@ -1150,7 +1172,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1163,7 +1185,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1179,6 +1201,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h301
@@ -1201,7 +1224,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1214,7 +1237,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1230,6 +1253,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h302
@@ -1252,7 +1276,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1265,7 +1289,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1281,6 +1305,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h303
@@ -1303,7 +1328,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1316,7 +1341,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1332,6 +1357,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h304
@@ -1354,7 +1380,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1367,7 +1393,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1383,6 +1409,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h305
@@ -1405,7 +1432,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1418,7 +1445,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1434,6 +1461,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h306
@@ -1456,7 +1484,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1469,7 +1497,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1485,6 +1513,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h307
@@ -1507,7 +1536,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1520,7 +1549,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1536,6 +1565,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h308
@@ -1558,7 +1588,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1571,7 +1601,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1587,6 +1617,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h401
@@ -1609,7 +1640,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1622,7 +1653,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1638,6 +1669,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h402
@@ -1660,7 +1692,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1673,7 +1705,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1689,6 +1721,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h403
@@ -1711,7 +1744,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1724,7 +1757,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1740,6 +1773,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h404
@@ -1762,7 +1796,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1775,7 +1809,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1791,6 +1825,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h107
@@ -1813,7 +1848,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1826,7 +1861,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1842,6 +1877,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h108
@@ -1864,7 +1900,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1877,7 +1913,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1893,6 +1929,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h213
@@ -1915,7 +1952,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1928,7 +1965,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1944,6 +1981,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h214
@@ -1966,7 +2004,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -1979,7 +2017,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -1995,6 +2033,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h309
@@ -2017,7 +2056,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2030,7 +2069,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2046,6 +2085,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h310
@@ -2068,7 +2108,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2081,7 +2121,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2097,6 +2137,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h311
@@ -2119,7 +2160,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2132,7 +2173,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2148,6 +2189,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h405
@@ -2170,7 +2212,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2183,7 +2225,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2199,6 +2241,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h406
@@ -2221,7 +2264,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2234,7 +2277,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2250,6 +2293,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h407
@@ -2272,7 +2316,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2285,7 +2329,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2301,6 +2345,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h408
@@ -2323,7 +2368,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2336,7 +2381,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2352,6 +2397,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h409
@@ -2374,7 +2420,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2387,7 +2433,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2403,6 +2449,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h312
@@ -2425,7 +2472,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2438,7 +2485,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2454,6 +2501,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h313
@@ -2476,7 +2524,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2489,7 +2537,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2505,6 +2553,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h215
@@ -2527,7 +2576,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2540,7 +2589,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2556,6 +2605,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h216
@@ -2578,7 +2628,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2591,7 +2641,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2607,6 +2657,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h109
@@ -2629,7 +2680,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2642,7 +2693,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2658,6 +2709,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h110
@@ -2680,7 +2732,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2693,7 +2745,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2709,6 +2761,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h217
@@ -2731,7 +2784,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2744,7 +2797,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2760,6 +2813,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h218
@@ -2782,7 +2836,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2795,7 +2849,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2811,6 +2865,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h219
@@ -2833,7 +2888,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2846,7 +2901,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2862,6 +2917,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h314
@@ -2884,7 +2940,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2897,7 +2953,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2913,6 +2969,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h315
@@ -2935,7 +2992,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2948,7 +3005,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -2964,6 +3021,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h316
@@ -2986,7 +3044,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -2999,7 +3057,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -3015,6 +3073,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h410
@@ -3037,7 +3096,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -3074,6 +3133,7 @@
 		"Ability22"	"tt4"
 		"Ability23"	"tt1"
 		"Ability24"	"tt2"
+		"FollowRange"	"100"
 	}
 
 	// h411
@@ -3096,7 +3156,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -3109,7 +3169,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -3125,6 +3185,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h412
@@ -3147,7 +3208,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -3160,7 +3221,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -3176,6 +3237,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h414
@@ -3198,7 +3260,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -3211,7 +3273,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -3227,6 +3289,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 
 	// h413
@@ -3249,7 +3312,7 @@
 		"MagicalResistance"	"0"
 		// Hull type used for navigation/locomotion.
 		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"500"
 		"HasInventory"	"1"
 		"MinimapIcon"	"minimap_candybucket"
@@ -3262,7 +3325,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
-		"Ability1"	"no_hp_bar"
+		"Ability1"	""
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -3278,5 +3341,6 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"FollowRange"	"100"
 	}
 }

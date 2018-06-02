@@ -201,8 +201,8 @@
 		"VisionDaytimeRange"	"1000"
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"1000"
-		"MinimapIcon"	"minimap_candybucket"
-		"MinimapIconSize"	"768"
+		"MinimapIcon"	"minimap_courier"
+		"MinimapIconSize"	"512"
 		"Ability9"	""
 		"Ability10"	""
 		"Ability11"	""
@@ -1267,7 +1267,7 @@
 		// Name of sound set.
 		"SoundSet"	"Undying_Zombie"
 		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
-		"ModelScale"	"1.3"
+		"ModelScale"	"1.4"
 		"Level"	"11"
 		"IsAncient"	"1"
 		// Abilities
@@ -6465,7 +6465,7 @@
 		// Name of sound set.
 		"SoundSet"	"Undying_Zombie"
 		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
-		"ModelScale"	"4.5"
+		"ModelScale"	"4"
 		"Level"	"40"
 		"IsAncient"	"0"
 		// Abilities
@@ -7321,7 +7321,7 @@
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
-		"ArmorPhysical"	"40"
+		"ArmorPhysical"	"32"
 		// Magical protection.
 		"MagicalResistance"	"20"
 		// Attack
@@ -7427,7 +7427,7 @@
 		// Physical protection.
 		"ArmorPhysical"	"16"
 		// Magical protection.
-		"MagicalResistance"	"100"
+		"MagicalResistance"	"80"
 		// Attack
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -7531,7 +7531,7 @@
 		// Physical protection.
 		"ArmorPhysical"	"16"
 		// Magical protection.
-		"MagicalResistance"	"100"
+		"MagicalResistance"	"80"
 		// Attack
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -7843,7 +7843,7 @@
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
-		"ArmorPhysical"	"40"
+		"ArmorPhysical"	"32"
 		// Magical protection.
 		"MagicalResistance"	"80"
 		// Attack
@@ -8052,7 +8052,7 @@
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
-		"ArmorPhysical"	"16"
+		"ArmorPhysical"	"32"
 		// Magical protection.
 		"MagicalResistance"	"100"
 		// Attack
@@ -8897,7 +8897,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
-		"ModelScale"	"1.15"
+		"ModelScale"	"1.1"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -9804,7 +9804,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
-		"ModelScale"	"1.3"
+		"ModelScale"	"1.25"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -10969,7 +10969,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/wards/eye_of_avernus_ward/eye_of_avernus_ward.vmdl"
-		"ModelScale"	"1.6"
+		"ModelScale"	"1.55"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"
 		"MinimapIcon"	"minimap_creep"
@@ -14644,7 +14644,7 @@
 		"AttackAcquisitionRange"	"1000"
 		// Range within a target can be attacked.
 		"AttackRange"	"500"
-		"ProjectileModel"	"particles/units/heroes/hero_venomancer/venomancer_base_attack.vpcf"
+		"ProjectileModel"	"particles/econ/items/bristleback/ti7_head_nasal_goo/bristleback_ti7_nasal_goo_proj.vpcf"
 		// Speed of projectile.
 		"ProjectileSpeed"	"3000"
 		// Attributes
@@ -15164,9 +15164,9 @@
 		"AttackAcquisitionRange"	"1500"
 		// Range within a target can be attacked.
 		"AttackRange"	"800"
-		"ProjectileModel"	"particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf"
+		"ProjectileModel"	"particles/econ/items/vengeful/vs_ti8_immortal_shoulder/vs_ti8_immortal_magic_missle.vpcf"
 		// Speed of projectile.
-		"ProjectileSpeed"	"4000"
+		"ProjectileSpeed"	"2000"
 		// Attributes
 		// ----------------------------------------------------------------
 		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
@@ -15235,6 +15235,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
+		"Skin"	"1"
 	}
 
 	// =================================================================================
@@ -15276,7 +15277,7 @@
 		// Ability 7 - Extra.
 		"Ability7"	""
 		// Ability 8 - Extra.
-		"Ability8"	"tower_true_sight"
+		"Ability8"	""
 		// Armor
 		// ----------------------------------------------------------------
 		// Physical protection.
@@ -15415,12 +15416,12 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"25"
+		"AttackDamageMin"	"30"
 		// Damage range max.
-		"AttackDamageMax"	"25"
+		"AttackDamageMax"	"30"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
-		"AttackRate"	"0.9"
+		"AttackRate"	"1"
 		// Normalized time in animation cycle to attack.
 		"AttackAnimationPoint"	"0"
 		// Range within a target can be acquired.
@@ -15544,19 +15545,19 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"60"
+		"AttackDamageMin"	"100"
 		// Damage range max.
-		"AttackDamageMax"	"60"
+		"AttackDamageMax"	"100"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
-		"AttackRate"	"0.7"
+		"AttackRate"	"0.8"
 		// Normalized time in animation cycle to attack.
 		"AttackAnimationPoint"	"0"
 		// Range within a target can be acquired.
 		"AttackAcquisitionRange"	"1000"
 		// Range within a target can be attacked.
 		"AttackRange"	"700"
-		"ProjectileModel"	"particles/units/heroes/hero_tinker/tinker_laser.vpcf"
+		"ProjectileModel"	"effect/dabaiyin2/tinker_laser.vpcf"
 		// Speed of projectile.
 		"ProjectileSpeed"	"3000"
 		// Attributes
@@ -15814,7 +15815,7 @@
 		"AttackAcquisitionRange"	"1000"
 		// Range within a target can be attacked.
 		"AttackRange"	"700"
-		"ProjectileModel"	"particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+		"ProjectileModel"	"effect/dakongque/hantomlancer_spiritlance_projectile.vpcf"
 		// Speed of projectile.
 		"ProjectileSpeed"	"3000"
 		// Attributes
@@ -16328,7 +16329,7 @@
 		"AttackAcquisitionRange"	"1000"
 		// Range within a target can be attacked.
 		"AttackRange"	"900"
-		"ProjectileModel"	"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"
+		"ProjectileModel"	"particles/econ/items/necrolyte/necronub_death_pulse/necrolyte_pulse_ka_enemy.vpcf"
 		// Speed of projectile.
 		"ProjectileSpeed"	"3000"
 		// Attributes
@@ -16944,7 +16945,7 @@
 		// Ability 4.
 		"Ability4"	"naga_siren_ensnare"
 		// Ability 5.
-		"Ability5"	""
+		"Ability5"	"wudi"
 		// Ability 6 - Extra.
 		"Ability6"	""
 		// Ability 7 - Extra.
@@ -18007,9 +18008,9 @@
 		"AttackAcquisitionRange"	"1200"
 		// Range within a target can be attacked.
 		"AttackRange"	"700"
-		"ProjectileModel"	"particles/items_fx/desolator_projectile.vpcf"
+		"ProjectileModel"	"particles/econ/items/phantom_assassin/pa_ti8_immortal_head/pa_ti8_immortal_stifling_dagger.vpcf"
 		// Speed of projectile.
-		"ProjectileSpeed"	"3000"
+		"ProjectileSpeed"	"2000"
 		// Attributes
 		// ----------------------------------------------------------------
 		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
@@ -18124,9 +18125,9 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"20"
+		"AttackDamageMin"	"30"
 		// Damage range max.
-		"AttackDamageMax"	"20"
+		"AttackDamageMax"	"30"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
 		"AttackRate"	"1"
@@ -18253,12 +18254,12 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"100"
+		"AttackDamageMin"	"150"
 		// Damage range max.
-		"AttackDamageMax"	"100"
+		"AttackDamageMax"	"150"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
-		"AttackRate"	"0.7"
+		"AttackRate"	"0.8"
 		// Normalized time in animation cycle to attack.
 		"AttackAnimationPoint"	"0"
 		// Range within a target can be acquired.
@@ -18328,7 +18329,7 @@
 		"VisionDaytimeRange"	"900"
 		// Range of vision at night time.
 		"VisionNighttimeRange"	"600"
-		"Ability9"	""
+		"Ability9"	"tower_slow3"
 		"Ability10"	""
 		"Ability11"	""
 		"Ability12"	""
@@ -18652,7 +18653,7 @@
 		"AttackAcquisitionRange"	"1400"
 		// Range within a target can be attacked.
 		"AttackRange"	"700"
-		"ProjectileModel"	"particles/units/heroes/hero_razor/razor_static_link_projectile_a.vpcf"
+		"ProjectileModel"	"particles/units/heroes/hero_razor/razor_static_link.vpcf"
 		// Speed of projectile.
 		"ProjectileSpeed"	"3000"
 		// Attributes
@@ -18769,9 +18770,9 @@
 		// ----------------------------------------------------------------
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		// Damage range min.
-		"AttackDamageMin"	"90"
+		"AttackDamageMin"	"60"
 		// Damage range max.
-		"AttackDamageMax"	"90"
+		"AttackDamageMax"	"60"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
 		"AttackRate"	"0.7"
@@ -18781,7 +18782,7 @@
 		"AttackAcquisitionRange"	"1400"
 		// Range within a target can be attacked.
 		"AttackRange"	"800"
-		"ProjectileModel"	"particles/units/heroes/hero_razor/razor_static_link_projectile_a.vpcf"
+		"ProjectileModel"	"effect/u/u1.vpcf"
 		// Speed of projectile.
 		"ProjectileSpeed"	"3000"
 		// Attributes
@@ -19940,7 +19941,7 @@
 		"AttackDamageMax"	"2514"
 		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
 		// Speed of attack.
-		"AttackRate"	"0.6"
+		"AttackRate"	"0.8"
 		// Normalized time in animation cycle to attack.
 		"AttackAnimationPoint"	"0"
 		// Range within a target can be acquired.
@@ -20716,7 +20717,7 @@
 		"AttackAcquisitionRange"	"5000"
 		// Range within a target can be attacked.
 		"AttackRange"	"5000"
-		"ProjectileModel"	"particles/units/heroes/hero_razor/razor_static_link_projectile_a.vpcf"
+		"ProjectileModel"	"effect/u2/2.vpcf"
 		// Speed of projectile.
 		"ProjectileSpeed"	"3000"
 		// Attributes
@@ -24350,7 +24351,7 @@
 		// Class of entity of link to.
 		"BaseClass"	"npc_dota_creature"
 		// Model.
-		"Model"	"materials/mabishiban_jin.vmdl"
+		"Model"	"materials/xuwushiban_jin.vmdl"
 		"ModelScale"	"0.7"
 		// Name of sound set.
 		"SoundSet"	"Hero_Lina"

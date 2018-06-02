@@ -154,7 +154,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"max_heal"	"5 8 11 14"
+				"max_heal"	"10 13 15 16"
 			}
 		}
 		"AbilityGoldCost"	"400"
@@ -387,6 +387,11 @@
 				"IsHidden"	"1"
 				"EffectName"	"particles/units/heroes/hero_witchdoctor/witchdoctor_dust_hit.vpcf"
 				"EffectAttachType"	"follow_origin"
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_PASSIVES_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
 			}
 		}
 	}
@@ -437,7 +442,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"precache"
 		{
-			"particle"	"particles/units/unit_greevil/loot_greevil_death_spark_pnt.vpcf"
+			"particle"	"particles/units/unit_greevil/loot_greevil_death.vpcf"
 		}
 		"Modifiers"
 		{
@@ -445,7 +450,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"EffectName"	"particles/units/unit_greevil/loot_greevil_death_spark_pnt.vpcf"
+				"EffectName"	"particles/units/unit_greevil/loot_greevil_death.vpcf"
 				"EffectAttachType"	"follow_origin"
 			}
 		}
@@ -2997,7 +3002,7 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_inner_beast_guichu_buff"
-				"Aura_Radius"	"150"
+				"Aura_Radius"	"200"
 				"Aura_Teams"	"DOTA_TEAM_GOODGUYS | DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_GOODGUYS"
 				// mechanical?
 				"Aura_Types"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING | DOTA_UNIT_TARGET_BASIC"
@@ -3009,7 +3014,7 @@
 				"EffectAttachType"	"follow_overhead"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"250"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"200"
 				}
 			}
 		}
@@ -3281,6 +3286,10 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"particle"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+		}
 		"Modifiers"
 		{
 			"modifier_MyAbility_passive_dulong"
@@ -3307,10 +3316,12 @@
 					"Damage"
 					{
 						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"1"
+						"Damage"	"2"
 						"Target"	"TARGET"
 					}
 				}
+				"EffectName"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
 			}
 		}
 	}
@@ -3323,6 +3334,10 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"2"
+		"precache"
+		{
+			"particle"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+		}
 		"Modifiers"
 		{
 			"modifier_MyAbility_passive_dulong"
@@ -3349,10 +3364,12 @@
 					"Damage"
 					{
 						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"2"
+						"Damage"	"4"
 						"Target"	"TARGET"
 					}
 				}
+				"EffectName"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
 			}
 		}
 	}
@@ -3365,6 +3382,10 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"3"
+		"precache"
+		{
+			"particle"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+		}
 		"Modifiers"
 		{
 			"modifier_MyAbility_passive_dulong"
@@ -3391,10 +3412,12 @@
 					"Damage"
 					{
 						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"4"
+						"Damage"	"8"
 						"Target"	"TARGET"
 					}
 				}
+				"EffectName"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
 			}
 		}
 	}
@@ -3407,6 +3430,10 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"4"
+		"precache"
+		{
+			"particle"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+		}
 		"Modifiers"
 		{
 			"modifier_MyAbility_passive_dulong"
@@ -3433,10 +3460,12 @@
 					"Damage"
 					{
 						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"8"
+						"Damage"	"16"
 						"Target"	"TARGET"
 					}
 				}
+				"EffectName"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
 			}
 		}
 	}
@@ -3449,6 +3478,10 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"5"
+		"precache"
+		{
+			"particle"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+		}
 		"Modifiers"
 		{
 			"modifier_MyAbility_passive_dulong"
@@ -3475,10 +3508,12 @@
 					"Damage"
 					{
 						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"16"
+						"Damage"	"32"
 						"Target"	"TARGET"
 					}
 				}
+				"EffectName"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
 			}
 		}
 	}
@@ -3491,6 +3526,10 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"6"
+		"precache"
+		{
+			"particle"	"particles/econ/items/viper/viper_ti7_immortal/viper_poison_crimson_debuff_ti7.vpcf"
+		}
 		"Modifiers"
 		{
 			"modifier_MyAbility_passive_dulong"
@@ -3517,10 +3556,12 @@
 					"Damage"
 					{
 						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"64"
+						"Damage"	"128"
 						"Target"	"TARGET"
 					}
 				}
+				"EffectName"	"particles/econ/items/viper/viper_ti7_immortal/viper_poison_crimson_debuff_ti7.vpcf"
+				"EffectAttachType"	"follow_origin"
 			}
 		}
 	}
@@ -3916,7 +3957,7 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-1"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-2"
 				}
 				"TextureName"	"slardar_amplify_damage"
 			}
@@ -3952,7 +3993,7 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-2"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-4"
 				}
 				"TextureName"	"slardar_amplify_damage"
 			}
@@ -3988,7 +4029,7 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-4"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-8"
 				}
 				"TextureName"	"slardar_amplify_damage"
 			}
@@ -4024,7 +4065,7 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-8"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-16"
 				}
 				"TextureName"	"slardar_amplify_damage"
 			}
@@ -4060,7 +4101,7 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-16"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-32"
 				}
 				"TextureName"	"slardar_amplify_damage"
 			}
@@ -4110,7 +4151,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"1"
-		"AbilityCastRange"	"500"
+		"AbilityCastRange"	"400"
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_phoenix/phoenix_supernova_scepter_f.vpcf"
@@ -4122,7 +4163,7 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_tower_huiyao_buff1"
-				"Aura_Radius"	"500"
+				"Aura_Radius"	"400"
 				"Aura_Types"	"DOTA_UNIT_TARGET_BASIC"
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
@@ -4160,7 +4201,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"1"
-		"AbilityCastRange"	"600"
+		"AbilityCastRange"	"500"
 		"precache"
 		{
 			"particle"	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
@@ -4172,7 +4213,7 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_tower_huiyao_buff2"
-				"Aura_Radius"	"600"
+				"Aura_Radius"	"500"
 				"Aura_Types"	"DOTA_UNIT_TARGET_BASIC"
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
@@ -4210,7 +4251,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"1"
-		"AbilityCastRange"	"700"
+		"AbilityCastRange"	"800"
 		"precache"
 		{
 			"particle"	"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_cowlofice.vpcf"
@@ -4222,7 +4263,7 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_tower_huiyao_buff3"
-				"Aura_Radius"	"700"
+				"Aura_Radius"	"800"
 				"Aura_Types"	"DOTA_UNIT_TARGET_BASIC"
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
@@ -4581,7 +4622,7 @@
 				"EffectAttachType"	"follow_origin"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-75"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-70"
 				}
 			}
 		}
@@ -5365,7 +5406,7 @@
 				"Properties"	{}
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 				"Aura"	"modifier_tower_gongji10_friend"
-				"Aura_Radius"	"250"
+				"Aura_Radius"	"290"
 				"Aura_ApplyToCaster"	"0"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
 				"Aura_Types"	"DOTA_UNIT_TARGET_BASIC"
@@ -5495,7 +5536,7 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-20"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-32"
 				}
 			}
 		}
@@ -5536,7 +5577,7 @@
 				"Attributes"	"MODIFIER_ATTRIBUTE_NONE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-30"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-48"
 				}
 			}
 		}
@@ -5551,6 +5592,10 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
 		"Modifiers"
 		{
 			"modifier_jn_D3_10"
@@ -5571,8 +5616,13 @@
 								"Function"	"jn_D3_00"
 								"Count"	"5"
 								"Damage"	"150"
-								"Radius"	"3000"
+								"Radius"	"1000"
 								"AttackCount"	"1"
+							}
+							"FireSound"
+							{
+								"Target"	"CASTER"
+								"EffectName"	"Hero_Zuus.ArcLightning.Cast"
 							}
 						}
 					}
@@ -5667,7 +5717,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"4000"
+				"damage"	"2500"
 			}
 			"06"
 			{
@@ -5744,7 +5794,7 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"10"
+		"AbilityCooldown"	"60"
 		"AbilityManaCost"	"0"
 		"precache"
 		{
@@ -5799,7 +5849,7 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"10"
+		"AbilityCooldown"	"60"
 		"AbilityManaCost"	"0"
 		"precache"
 		{
@@ -5962,10 +6012,10 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cost"	"250 150 100 75"
+				"cost"	"200 125 75 50"
 			}
 		}
-		"AbilityGoldCost"	"250 150 100 75"
+		"AbilityGoldCost"	"200 125 75 50"
 	}
 
 	"gemtd_hero_lanse"
@@ -5976,12 +6026,8 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"particle"	"particles/gem/blue_pray.vpcf"
-		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -5989,21 +6035,6 @@
 				"Target"	"CASTER"
 				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
 				"Function"	"gemtd_hero_lanse"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"Duration"	"7"
-				"ModifierName"	"modifier_gemtd_hero_lanse"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_gemtd_hero_lanse"
-			{
-				"IsHidden"	"1"
-				"EffectName"	"particles/gem/blue_pray.vpcf"
-				"EffectAttachType"	"attach_origin"
 			}
 		}
 		"AbilitySpecial"
@@ -6025,12 +6056,8 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"particle"	"particles/gem/opal_pray.vpcf"
-		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6038,21 +6065,6 @@
 				"Target"	"CASTER"
 				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
 				"Function"	"gemtd_hero_danbai"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"Duration"	"7"
-				"ModifierName"	"modifier_gemtd_hero_danbai"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_gemtd_hero_danbai"
-			{
-				"IsHidden"	"1"
-				"EffectName"	"particles/gem/opal_pray.vpcf"
-				"EffectAttachType"	"attach_origin"
 			}
 		}
 		"AbilitySpecial"
@@ -6074,12 +6086,8 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"particle"	"particles/gem/white_pray.vpcf"
-		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6087,21 +6095,6 @@
 				"Target"	"CASTER"
 				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
 				"Function"	"gemtd_hero_baise"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"Duration"	"7"
-				"ModifierName"	"modifier_gemtd_hero_baise"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_gemtd_hero_baise"
-			{
-				"IsHidden"	"1"
-				"EffectName"	"particles/gem/white_pray.vpcf"
-				"EffectAttachType"	"attach_origin"
 			}
 		}
 		"AbilitySpecial"
@@ -6123,12 +6116,8 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"particle"	"particles/gem/red_pray.vpcf"
-		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6136,21 +6125,6 @@
 				"Target"	"CASTER"
 				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
 				"Function"	"gemtd_hero_hongse"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"Duration"	"7"
-				"ModifierName"	"modifier_gemtd_hero_hongse"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_gemtd_hero_hongse"
-			{
-				"IsHidden"	"1"
-				"EffectName"	"particles/gem/red_pray.vpcf"
-				"EffectAttachType"	"attach_origin"
 			}
 		}
 		"AbilitySpecial"
@@ -6172,12 +6146,8 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"particle"	"particles/gem/green_pray.vpcf"
-		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6185,21 +6155,6 @@
 				"Target"	"CASTER"
 				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
 				"Function"	"gemtd_hero_lvse"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"Duration"	"7"
-				"ModifierName"	"modifier_gemtd_hero_lvse"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_gemtd_hero_lvse"
-			{
-				"IsHidden"	"1"
-				"EffectName"	"particles/gem/green_pray.vpcf"
-				"EffectAttachType"	"attach_origin"
 			}
 		}
 		"AbilitySpecial"
@@ -6221,12 +6176,8 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"particle"	"particles/gem/sea_pray.vpcf"
-		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6234,21 +6185,6 @@
 				"Target"	"CASTER"
 				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
 				"Function"	"gemtd_hero_fense"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"Duration"	"7"
-				"ModifierName"	"modifier_gemtd_hero_fense"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_gemtd_hero_fense"
-			{
-				"IsHidden"	"1"
-				"EffectName"	"particles/gem/sea_pray.vpcf"
-				"EffectAttachType"	"attach_origin"
 			}
 		}
 		"AbilitySpecial"
@@ -6607,7 +6543,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"begin"	"50 60 70 80"
+				"begin"	"10"
 			}
 			"02"
 			{
@@ -6669,7 +6605,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attack_plus"	"50 100 150 200 250"
+				"attack_plus"	"10 60 110 160 210"
 			}
 		}
 	}
@@ -6720,7 +6656,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attack_plus"	"60 120 180 240 300"
+				"attack_plus"	"10 70 130 190 250"
 			}
 		}
 	}
@@ -6771,7 +6707,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attack_plus"	"70 140 210 280 350"
+				"attack_plus"	"10 80 150 220 290"
 			}
 		}
 	}
@@ -6822,7 +6758,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attack_plus"	"80 160 240 320 400"
+				"attack_plus"	"10 90 170 250 330"
 			}
 		}
 	}
@@ -6835,12 +6771,8 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"particle"	"particles/gem/purple_pray.vpcf"
-		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6848,21 +6780,6 @@
 				"Target"	"CASTER"
 				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
 				"Function"	"gemtd_hero_zise"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"Duration"	"7"
-				"ModifierName"	"modifier_gemtd_hero_zise"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_gemtd_hero_zise"
-			{
-				"IsHidden"	"1"
-				"EffectName"	"particles/gem/purple_pray.vpcf"
-				"EffectAttachType"	"attach_origin"
 			}
 		}
 		"AbilitySpecial"
@@ -6884,12 +6801,8 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"particle"	"particles/gem/yellow_pray.vpcf"
-		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6897,21 +6810,6 @@
 				"Target"	"CASTER"
 				"ScriptFile"	"scripts/vscripts/addon_game_mode.lua"
 				"Function"	"gemtd_hero_huangse"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"Duration"	"7"
-				"ModifierName"	"modifier_gemtd_hero_huangse"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_gemtd_hero_huangse"
-			{
-				"IsHidden"	"1"
-				"EffectName"	"particles/gem/yellow_pray.vpcf"
-				"EffectAttachType"	"attach_origin"
 			}
 		}
 		"AbilitySpecial"
@@ -6931,6 +6829,10 @@
 		"AbilityTextureName"	"puck_waning_rift"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"particle"	"particles/econ/items/sniper/sniper_immortal_cape/sniper_immortal_cape_headshot_slow_ring.vpcf"
+		}
 		"Modifiers"
 		{
 			"modifier_tower_aojiao"
@@ -6941,6 +6843,8 @@
 				{
 					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
+				"EffectName"	"particles/econ/items/sniper/sniper_immortal_cape/sniper_immortal_cape_headshot_slow_ring.vpcf"
+				"EffectAttachType"	"follow_overhead"
 			}
 			"modifier_tower_buaojiao"
 			{
@@ -7049,7 +6953,7 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_tower_shecheng_buff"
-				"Aura_Radius"	"300"
+				"Aura_Radius"	"290"
 				"Aura_Types"	"DOTA_UNIT_TARGET_BASIC"
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_NONE"
@@ -7156,7 +7060,7 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_guai_chenmo_buff"
-				"Aura_Radius"	"100 120 140 160"
+				"Aura_Radius"	"130 150 170 190"
 				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_RANGED_ONLY"
@@ -7375,7 +7279,7 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
 		"precache"
 		{
@@ -7424,7 +7328,7 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
 		"precache"
 		{
@@ -7473,7 +7377,7 @@
 		"MaxLevel"	"4"
 		"LevelsBetweenUpgrades"	"1"
 		"AbilityCastPoint"	"0.01"
-		"AbilityCooldown"	"5"
+		"AbilityCooldown"	"3"
 		"AbilityManaCost"	"0"
 		"precache"
 		{
@@ -9345,7 +9249,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"slow_duration"	"8 10 12 14"
+				"slow_duration"	"12 14 16 18"
 			}
 			"04"
 			{
@@ -9803,7 +9707,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"unit_bonus_damage"	"60 90 120 150"
+				"unit_bonus_damage"	"80 120 160 200"
 			}
 			// Extra
 			"03"
@@ -9915,7 +9819,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bounce_range"	"9999"
+				"bounce_range"	"1000"
 			}
 			"05"
 			{
@@ -10043,7 +9947,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bounce_range"	"9999"
+				"bounce_range"	"1000"
 			}
 			"05"
 			{
@@ -10171,7 +10075,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bounce_range"	"9999"
+				"bounce_range"	"1000"
 			}
 			"05"
 			{
@@ -12578,7 +12482,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"jump_range"	"9999"
+				"jump_range"	"1000"
 			}
 			"06"
 			{
@@ -12593,12 +12497,12 @@
 			"08"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage"	"4000"
+				"damage"	"8000"
 			}
 			"09"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_scepter"	"4000"
+				"damage_scepter"	"8000"
 			}
 			"10"
 			{
@@ -12719,7 +12623,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
+		"AbilityCooldown"	"5"
 		"AbilityManaCost"	"0"
 		"AbilityCastRange"	"500"
 		"precache"
@@ -12991,7 +12895,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"10"
+		"AbilityCooldown"	"0"
 		"AbilityManaCost"	"0"
 		"precache"
 		{
@@ -13004,7 +12908,7 @@
 			{
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_runrunrun"
-				"Duration"	"5 7 9 11"
+				"Duration"	"20 28 36 44"
 			}
 			"FireSound"
 			{
@@ -13018,7 +12922,7 @@
 			{
 				"EffectName"	"particles/econ/items/windrunner/windrunner_cape_sparrowhawk/windrunner_windrun_sparrowhawk.vpcf"
 				"EffectAttachType"	"follow_origin"
-				"Duration"	"5 7 9 11"
+				"Duration"	"20 28 36 44"
 				"TextureName"	"windrunner_windrun"
 				"Properties"
 				{
@@ -13105,12 +13009,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"konghe_damage_per"	"40"
+				"konghe_damage_per"	"50"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"konghe_speed_per"	"40"
+				"konghe_speed_per"	"30"
 			}
 		}
 	}
@@ -13191,12 +13095,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"konghe_damage_per"	"80"
+				"konghe_damage_per"	"100"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"konghe_speed_per"	"40"
+				"konghe_speed_per"	"30"
 			}
 		}
 	}
@@ -13277,12 +13181,12 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"konghe_damage_per"	"120"
+				"konghe_damage_per"	"200"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"konghe_speed_per"	"40"
+				"konghe_speed_per"	"30"
 			}
 		}
 	}
@@ -13538,7 +13442,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"youbu_duration"	"4 5 6 7"
+				"youbu_duration"	"5 6 7 8"
 			}
 		}
 	}
@@ -13809,7 +13713,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"xuwu_mokang_per"	"-50"
+				"xuwu_mokang_per"	"-60"
 			}
 			"03"
 			{
@@ -13883,12 +13787,133 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"xuwu_mokang_per"	"-70"
+				"xuwu_mokang_per"	"-90"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"xuwu_speed_per"	"-90"
+			}
+		}
+	}
+
+	"hero_dead"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_hero_dead"
+			{
+				"Passive"	"1"
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
+	"riki_smoke_screen"
+	{
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+	}
+
+	"wudi"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_wudi"
+			{
+				"Passive"	"1"
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
+	"let_aojiao"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"puck_waning_rift"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"precache"
+		{
+			"particle"	"effect/bottle/1_concoction_projectile.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+			"particle"	"particles/econ/items/sniper/sniper_immortal_cape/sniper_immortal_cape_headshot_slow_ring.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"effect/bottle/1_concoction_projectile.vpcf"
+				"MoveSpeed"	"1000"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"1"
+			"ApplyModifier"
+			{
+				"Target"	"TARGET"
+				"ModifierName"	"modifier_let_aojiao"
+				"Duration"	"180"
+			}
+			"FireSound"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"Hero_Alchemist.UnstableConcoction.Fuse"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_let_aojiao"
+			{
+				"Duration"	"180"
+				"TextureName"	"puck_waning_rift"
+				"IsDebuff"	"0"
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"ATTACKER"
+								"ModifierName"	"modifier_let_aojiao_fazuo"
+								"Duration"	"5"
+							}
+						}
+						"Chance"	"90"
+					}
+				}
+			}
+			"modifier_let_aojiao_fazuo"
+			{
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"EffectName"	"particles/econ/items/sniper/sniper_immortal_cape/sniper_immortal_cape_headshot_slow_ring.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"TextureName"	"puck_waning_rift"
+				"Duration"	"5"
 			}
 		}
 	}

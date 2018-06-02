@@ -35,12 +35,12 @@ function ParalyzingCask(keys)
 		Timers:CreateTimer(bounce_delay,
 		function()
 			-- Finds all units in the area
-			local units = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), nil, bounce_range, ability:GetAbilityTargetTeam(), ability:GetAbilityTargetType(), 0, 0, false)
+			local units = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), nil, bounce_range, ability:GetAbilityTargetTeam(), ability:GetAbilityTargetType(), 0, FIND_CLOSEST, false)
 			-- Go through the target_enties table, checking for the first one that isn't the same as the target
 			local target_to_jump = nil
 			for _,unit in pairs(units) do
 				if unit ~= target and not target_to_jump then
-					target_to_jump = unit
+                    target_to_jump = unit
 				end
 			end
 		

@@ -1,30 +1,45 @@
---回春
+--回春（中国玉）
 function huichun( keys )
     local caster = keys.caster
-    GameRules:GetGameModeEntity().gem_castle_hp = GameRules:GetGameModeEntity().gem_castle_hp +1
-    if GameRules:GetGameModeEntity().gem_castle_hp > 100 then
-        GameRules:GetGameModeEntity().gem_castle_hp = 100
+    local player_id = caster:GetOwner():GetPlayerID()
+    hp_count = 1
+    if GetMapName() ~= "gemtd_race" then
+        GameRules:GetGameModeEntity().gem_castle_hp = GameRules:GetGameModeEntity().gem_castle_hp + hp_count
+        if GameRules:GetGameModeEntity().gem_castle_hp > 100 then
+            GameRules:GetGameModeEntity().gem_castle_hp = 100
+        end
+        GameRules:GetGameModeEntity().gem_castle:SetHealth(GameRules:GetGameModeEntity().gem_castle_hp)
+        CustomNetTables:SetTableValue( "game_state", "gem_life", { gem_life = GameRules:GetGameModeEntity().gem_castle_hp } );
+        AMHC:CreateNumberEffect(caster,hp_count,5,AMHC.MSG_MISS,"green",0)
+        EmitSoundOn("DOTAMusic_Stinger.004",caster)
+
+        --英雄同步血量
+        local ii = 0
+        for ii = 0, 20 do
+            if ( PlayerResource:IsValidPlayer( ii ) ) then
+                local player = PlayerResource:GetPlayer(ii)
+                if player ~= nil then
+                    local h = player:GetAssignedHero()
+                    if h~= nil then
+                        h:SetHealth(GameRules:GetGameModeEntity().gem_castle_hp)
+                    end
+                end
+            end
+        end
+    else
+        GameRules:GetGameModeEntity().gem_castle_hp_race[player_id] = GameRules:GetGameModeEntity().gem_castle_hp_race[player_id] + hp_count
+        if GameRules:GetGameModeEntity().gem_castle_hp_race[player_id] > 100 then
+            GameRules:GetGameModeEntity().gem_castle_hp_race[player_id] = 100
+        end
+        GameRules:GetGameModeEntity().gem_castle_race[player_id]:SetHealth(GameRules:GetGameModeEntity().gem_castle_hp_race[player_id])
+        CustomNetTables:SetTableValue( "game_state", "gem_life_race", { player = player_id, gem_life = GameRules:GetGameModeEntity().gem_castle_hp_race[player_id] } ); 
+        AMHC:CreateNumberEffect(caster,hp_count,5,AMHC.MSG_MISS,"green",0)
+        EmitSoundOn("DOTAMusic_Stinger.004",caster)
+        
+        if PlayerResource:GetPlayer(player_id) ~= nil then
+            PlayerResource:GetPlayer(player_id):GetAssignedHero():SetHealth(GameRules:GetGameModeEntity().gem_castle_hp_race[player_id])
+        end
     end
-    GameRules:GetGameModeEntity().gem_castle:SetHealth(GameRules:GetGameModeEntity().gem_castle_hp)
-
-    CustomNetTables:SetTableValue( "game_state", "gem_life", { gem_life = GameRules:GetGameModeEntity().gem_castle_hp } );
-    AMHC:CreateNumberEffect(caster,1,5,AMHC.MSG_MISS,"green",0)
-
-    EmitGlobalSound("DOTAMusic_Stinger.004")
-
-	--英雄同步血量
-	local ii = 0
-	for ii = 0, 9 do
-		if ( PlayerResource:IsValidPlayer( ii ) ) then
-			local player = PlayerResource:GetPlayer(ii)
-			if player ~= nil then
-				local h = player:GetAssignedHero()
-				if h~= nil then
-					h:SetHealth(GameRules:GetGameModeEntity().gem_castle_hp)
-				end
-			end
-		end
-	end
 end
 
 

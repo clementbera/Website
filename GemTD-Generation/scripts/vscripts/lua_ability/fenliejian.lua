@@ -27,12 +27,15 @@ function DuoChongGongJi( keys )
  
                         if unit~=target then
                                 if unit:IsAlive() then
+                                    if GetMapName()~='gemtd_race' or caster:GetOwner():GetPlayerID() == unit.player then
                                         table.insert(attack_unit,unit)
+                                    end
                                 end
                         end
                 end
  
                 for i,unit in pairs(attack_unit) do
+                    
                         local info =
                             {
                                     Target = unit,
@@ -47,6 +50,7 @@ function DuoChongGongJi( keys )
                                     iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_1
                             }
                         projectile = ProjectileManager:CreateTrackingProjectile(info)
+                    
                 end
         end
 end
@@ -96,7 +100,9 @@ function DuoChongGongJi_you( keys )
  
                         if unit~=target then
                                 if unit:IsAlive() then
+                                    if GetMapName()~='gemtd_race' or caster:GetOwner():GetPlayerID() == unit.player then
                                         table.insert(attack_unit,unit)
+                                    end
                                 end
                         end
                 end
@@ -149,7 +155,13 @@ function gemtd_hero_lianjie (keys)
                               DOTA_UNIT_TARGET_FLAG_NONE,
                               FIND_FARTHEST,
                               false)
-    local unluckydog = direUnits[1]
+    local unluckydog = nil
+    for i,v in pairs (direUnits) do
+        if v.player == caster:GetPlayerID() then
+            unluckydog = v
+            break
+        end
+    end
     if unluckydog == nil then
         return
     end

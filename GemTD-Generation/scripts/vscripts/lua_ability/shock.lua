@@ -18,22 +18,37 @@ function Shock( event )
 	ApplyDamage({ victim = target, attacker = caster, damage = damage, damage_type = AbilityDamageType})
 	target:EmitSound("Hero_ShadowShaman.EtherShock.Target")
 
-	local cone_units = GetEnemiesInCone( caster, start_radius, end_radius, end_distance )
+	-- local cone_units = GetEnemiesInCone( caster, start_radius, end_radius, end_distance )
+	local cone_units = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
+                              target:GetAbsOrigin(),
+                              nil,
+                              1000,
+                              DOTA_UNIT_TARGET_TEAM_FRIENDLY,
+                              DOTA_UNIT_TARGET_ALL,
+                              DOTA_UNIT_TARGET_FLAG_NONE,
+                              FIND_FARTHEST,
+                              false)
 	local targets_shocked = 1 --Is targets=extra targets or total?
 	for _,unit in pairs(cone_units) do
 		if targets_shocked < targets then
 			if unit ~= target then
-				-- Particle
-				local origin = unit:GetAbsOrigin()
-				local lightningBolt = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
-				ParticleManager:SetParticleControl(lightningBolt,0,Vector(caster:GetAbsOrigin().x,caster:GetAbsOrigin().y,caster:GetAbsOrigin().z + caster:GetBoundingMaxs().z ))	
-				ParticleManager:SetParticleControl(lightningBolt,1,Vector(origin.x,origin.y,origin.z + unit:GetBoundingMaxs().z ))
-			
-				-- Damage
-				ApplyDamage({ victim = unit, attacker = caster, damage = damage, damage_type = AbilityDamageType})
+				print(unit.player)
+				print(caster:GetOwner():GetPlayerID())
+				if unit.player == nil or unit.player == caster:GetOwner():GetPlayerID() then
+					print('jinlaile')
+					-- Particle
+					local origin = unit:GetAbsOrigin()
+					local lightningBolt = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
+					ParticleManager:SetParticleControl(lightningBolt,0,Vector(caster:GetAbsOrigin().x,caster:GetAbsOrigin().y,caster:GetAbsOrigin().z + caster:GetBoundingMaxs().z ))	
+					ParticleManager:SetParticleControl(lightningBolt,1,Vector(origin.x,origin.y,origin.z + unit:GetBoundingMaxs().z ))
+				
+					-- Damage
+					ApplyDamage({ victim = unit, attacker = caster, damage = damage, damage_type = AbilityDamageType})
 
-				-- Increment counter
-				targets_shocked = targets_shocked + 1
+					-- Increment counter
+					targets_shocked = targets_shocked + 1
+				end
+				
 			end
 		else
 			break
