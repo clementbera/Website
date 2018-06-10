@@ -542,6 +542,7 @@ function InitVaribles()
 	GameRules:GetGameModeEntity():SetUseCustomHeroLevels(true)
 	GameRules:GetGameModeEntity():SetCustomHeroMaxLevel(5)
 	GameRules:GetGameModeEntity().top_runner = nil
+	GameRules:GetGameModeEntity().is_maze_guide_show = false
 	GameRules:GetGameModeEntity().last_mvp = {
 	}
 	GameRules:GetGameModeEntity().build_curr = {
@@ -1565,6 +1566,45 @@ function InitVaribles()
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	}
+	-- GameRules:GetGameModeEntity().maze_coop1 = {
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	-- }
 	GameRules:GetGameModeEntity().maze_coop2 = {
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
 		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
@@ -2159,7 +2199,6 @@ function GemTD:OnReceiveHeroInfo(keys)
 	if my_maze~=nil then
 		my_maze = json.decode(my_maze)
 	end
-
 	local heroindex_old = heroindex
 
 	local hero = EntIndexToHScript(heroindex)
@@ -2182,8 +2221,7 @@ function GemTD:OnReceiveHeroInfo(keys)
 	if hero.pet_name ~= nil then
 		change_pet_name = hero.pet_name
 	end
-
-	PrecacheUnitByNameAsync( GameRules:GetGameModeEntity().hero_sea[onduty_hero], function()
+	PrecacheUnitByNameAsync(GameRules:GetGameModeEntity().hero_sea[onduty_hero], function()
 		local pppp = hero:GetAbsOrigin()
 		hero:SetAbsOrigin(Vector(0,0,0))
 		if hero.ppp ~= nil then
@@ -2192,9 +2230,7 @@ function GemTD:OnReceiveHeroInfo(keys)
 		if hero.pp ~= nil then
 			ParticleManager:DestroyParticle(hero.pp,true)
 		end
-
 		local hero_new = PlayerResource:ReplaceHeroWith(id,GameRules:GetGameModeEntity().hero_sea[onduty_hero],PlayerResource:GetGold(id),0)
-
 		hero_new:RemoveAbility("techies_suicide")
 		hero_new:RemoveAbility("techies_focused_detonate")
 		hero_new:RemoveAbility("techies_land_mines")
@@ -2513,12 +2549,19 @@ function click_maze_guide_race(table,player_id)
 			end
 		end
 	end
-	CustomNetTables:SetTableValue( "game_state", "vectors", {t = keytable, player = player_id, hehe = RandomInt(1,100000)} );
+	CustomNetTables:SetTableValue( "game_state", "vectors_race", {t = keytable, player = player_id, hehe = RandomInt(1,100000)} );
 end
-function click_maze_guide_coop(table,player_id)
-	local keytable = {}
+function click_maze_guide_coop(t,player_id)
+	if GameRules:GetGameModeEntity().is_maze_guide_show == true then
+		CustomNetTables:SetTableValue( "game_state", "vectors_coop_hide", {hehe = RandomInt(1,100000)} )
+		GameRules:GetGameModeEntity().is_maze_guide_show = false
+		return
+	end
+	local keytable = {
+	}
 	local keycount = 1
-	for i,v in pairs(table) do
+	local keytablecount = 1
+	for i,v in pairs(t) do
 		for ii,vv in pairs (v) do
 			if vv == 1 then
 				local xxx = (ii-19)*128
@@ -2528,12 +2571,27 @@ function click_maze_guide_coop(table,player_id)
 					yyy = (38-i-19)*128
 				end
 				local p = Vector(xxx,yyy,128)
-				keytable[keycount] = p
+				if keytable[i%5] == nil then
+					keytable[i%5] = {}
+				end
+				table.insert(keytable[i%5],p)
 				keycount = keycount + 1
 			end
 		end
 	end
-	CustomNetTables:SetTableValue( "game_state", "vectors", {t = keytable, hehe = RandomInt(1,100000)} );
+
+	GameRules:GetGameModeEntity().is_maze_guide_show = true
+	local loop = 0
+	Timers:CreateTimer(function()
+		CustomNetTables:SetTableValue( "game_state", "vectors_coop", {loop = loop, t = keytable[loop], hehe = RandomInt(1,100000)} )
+		loop = loop + 1
+		if loop > 4 then
+			return
+		end
+		return 0.01
+	end)
+	
+	
 end
 function GemTD:OnSaveMaze(keys)
 	local player_id = keys.player_id
@@ -5371,30 +5429,15 @@ function GemTD:OnEntityKilled( keys )
 		if killed_unit:IsHero() == true then
 			return
 		end
+		if GetMapName() == 'gemtd_1p' or GetMapName() == 'gemtd_coop' then
+			if GameRules:GetGameModeEntity().is_debug == true then
+				prt('entindex_killed'..keys.entindex_killed)
+				prt('entindex_attacker'..keys.entindex_attacker)
+			end
+			if keys.entindex_killed ~= keys.entindex_attacker then
+				--单人模式和合作模式
+				if (string.find(killed_unit:GetUnitName(), "boss") or string.find(killed_unit:GetUnitName(), "tester") ) and GameRules:GetGameModeEntity().is_boss_entered == false then
 
-		if GetMapName() == 'gemtd_1p' or GetMapName() == 'gemtd_coop' then 
-			--单人模式和合作模式
-			if (string.find(killed_unit:GetUnitName(), "boss") or string.find(killed_unit:GetUnitName(), "tester") ) and GameRules:GetGameModeEntity().is_boss_entered == false then
-
-				GameRules:GetGameModeEntity().kills = GameRules:GetGameModeEntity().kills + 10
-				for k=1,10 do
-					PlayerResource:IncrementKills(0,1)
-					PlayerResource:IncrementKills(1,1)
-					PlayerResource:IncrementKills(2,1)
-					PlayerResource:IncrementKills(3,1)
-				end
-
-				if killed_unit:GetUnitName() == "gemtd_zard_boss_fly" or killed_unit:GetUnitName() == "gemtd_kongxinnanguaren_boss" or killed_unit:GetUnitName() == "gemtd_yuediyang_boss" or killed_unit:GetUnitName() == "gemtd_gugubiao_boss_fly" then
-					GameRules:GetGameModeEntity().kills = GameRules:GetGameModeEntity().kills + 5
-					for k=1,5 do
-						PlayerResource:IncrementKills(0,1)
-						PlayerResource:IncrementKills(1,1)
-						PlayerResource:IncrementKills(2,1)
-						PlayerResource:IncrementKills(3,1)
-					end
-				end
-
-				if killed_unit:GetUnitName() == "gemtd_roushan_boss_fly_jin" or killed_unit:GetUnitName() == "gemtd_roushan_boss_fly_bojin" then
 					GameRules:GetGameModeEntity().kills = GameRules:GetGameModeEntity().kills + 10
 					for k=1,10 do
 						PlayerResource:IncrementKills(0,1)
@@ -5402,129 +5445,143 @@ function GemTD:OnEntityKilled( keys )
 						PlayerResource:IncrementKills(2,1)
 						PlayerResource:IncrementKills(3,1)
 					end
-				end
 
-				log("kills: "..GameRules:GetGameModeEntity().kills)
-				GameRules:SendCustomMessage("#text_you_killed_the_boss", 0, 0)
-				GameRules:GetGameModeEntity().is_boss_entered = true
-
-				if killed_unit:GetUnitName() == "gemtd_zard_boss_fly" then
-					GameRules:GetGameModeEntity().quest_status["q104"] = true
-					show_quest()
-				end
-				if killed_unit:GetUnitName() == "gemtd_roushan_boss_fly_jin" then
-					GameRules:GetGameModeEntity().quest_status["q303"] = true
-					show_quest()
-				end
-
-			end
-
-			if killed_unit.is_jingying == true then
-				GameRules:GetGameModeEntity().kills = GameRules:GetGameModeEntity().kills + 4
-				for k=1,4 do
-					PlayerResource:IncrementKills(0,1)
-					PlayerResource:IncrementKills(1,1)
-					PlayerResource:IncrementKills(2,1)
-					PlayerResource:IncrementKills(3,1)
-				end
-				if GameRules:GetGameModeEntity().is_debug == true then
-					GameRules:SendCustomMessage("kills: "..GameRules:GetGameModeEntity().kills, 0, 0)
-				end
-			end
-
-			if (not (string.find(killed_unit:GetUnitName(), "boss")) and (not killed_unit.is_jingying == true)) then
-				GameRules:GetGameModeEntity().kills = GameRules:GetGameModeEntity().kills + 1
-				for k=1,1 do
-					PlayerResource:IncrementKills(0,1)
-					PlayerResource:IncrementKills(1,1)
-					PlayerResource:IncrementKills(2,1)
-					PlayerResource:IncrementKills(3,1)
-				end
-				if GameRules:GetGameModeEntity().is_debug == true then
-					GameRules:SendCustomMessage("kills: "..GameRules:GetGameModeEntity().kills, 0, 0)
-				end
-			end
-
-			if keys.entindex_attacker ~= nil then
-				local killer_unit = EntIndexToHScript(keys.entindex_attacker)
-				local killer_owner = killer_unit:GetOwner()
-			end
-
-			if killed_unit~= nil and not killed_unit.is_entered == true then
-
-				--给玩家经验
-				local exp_count = 5
-				if GameRules:GetGameModeEntity().level ==10 then
-					exp_count = 300
-				end
-				if GameRules:GetGameModeEntity().level ==20 then
-					exp_count = 300
-				end
-				if GameRules:GetGameModeEntity().level ==30 then
-					exp_count = 300
-				end
-				if GameRules:GetGameModeEntity().level ==40 then
-					exp_count = 300
-				end
-				if GameRules:GetGameModeEntity().level ==50 then
-					exp_count = 300
-				end
-				if GameRules:GetGameModeEntity().level >=11 and GameRules:GetGameModeEntity().level <=19 then
-					exp_count = 10
-				end
-				if GameRules:GetGameModeEntity().level >=21 and GameRules:GetGameModeEntity().level <=29 then
-					exp_count = 15
-				end
-				if GameRules:GetGameModeEntity().level >=31 and GameRules:GetGameModeEntity().level <=39 then
-					exp_count = 20
-				end
-				if GameRules:GetGameModeEntity().level >=41 and GameRules:GetGameModeEntity().level <=49 then
-					exp_count = 25
-				end
-				local exp_percent = 1
-
-				exp_count = exp_count * exp_percent
-				if (killed_unit~= nil and killed_unit.is_jingying == true) then
-					exp_count = exp_count * 10
-				end
-
-				local i = 0
-				for i = 0, 20 do
-					if ( PlayerResource:IsValidPlayer( i ) ) then
-						local player = PlayerResource:GetPlayer(i)
-						if player ~= nil then
-							local h = player:GetAssignedHero()
-							if h ~= nil then
-								h:AddExperience (exp_count,0,false,false)
-							end
+					if killed_unit:GetUnitName() == "gemtd_zard_boss_fly" or killed_unit:GetUnitName() == "gemtd_kongxinnanguaren_boss" or killed_unit:GetUnitName() == "gemtd_yuediyang_boss" or killed_unit:GetUnitName() == "gemtd_gugubiao_boss_fly" then
+						GameRules:GetGameModeEntity().kills = GameRules:GetGameModeEntity().kills + 5
+						for k=1,5 do
+							PlayerResource:IncrementKills(0,1)
+							PlayerResource:IncrementKills(1,1)
+							PlayerResource:IncrementKills(2,1)
+							PlayerResource:IncrementKills(3,1)
 						end
 					end
-				end
 
-				--给玩家团队金钱
-				if exp_count >= 100 then
-					exp_count = exp_count/2
+					if killed_unit:GetUnitName() == "gemtd_roushan_boss_fly_jin" or killed_unit:GetUnitName() == "gemtd_roushan_boss_fly_bojin" then
+						GameRules:GetGameModeEntity().kills = GameRules:GetGameModeEntity().kills + 10
+						for k=1,10 do
+							PlayerResource:IncrementKills(0,1)
+							PlayerResource:IncrementKills(1,1)
+							PlayerResource:IncrementKills(2,1)
+							PlayerResource:IncrementKills(3,1)
+						end
+					end
+
+					log("kills: "..GameRules:GetGameModeEntity().kills)
+					GameRules:SendCustomMessage("#text_you_killed_the_boss", 0, 0)
+					GameRules:GetGameModeEntity().is_boss_entered = true
+
+					if killed_unit:GetUnitName() == "gemtd_zard_boss_fly" then
+						GameRules:GetGameModeEntity().quest_status["q104"] = true
+						show_quest()
+					end
+					if killed_unit:GetUnitName() == "gemtd_roushan_boss_fly_jin" then
+						GameRules:GetGameModeEntity().quest_status["q303"] = true
+						show_quest()
+					end
+				end
+				if killed_unit.is_jingying == true then
+					GameRules:GetGameModeEntity().kills = GameRules:GetGameModeEntity().kills + 4
+					for k=1,4 do
+						PlayerResource:IncrementKills(0,1)
+						PlayerResource:IncrementKills(1,1)
+						PlayerResource:IncrementKills(2,1)
+						PlayerResource:IncrementKills(3,1)
+					end
+					if GameRules:GetGameModeEntity().is_debug == true then
+						GameRules:SendCustomMessage("kills: "..GameRules:GetGameModeEntity().kills, 0, 0)
+					end
+				end
+				if (not (string.find(killed_unit:GetUnitName(), "boss")) and (not killed_unit.is_jingying == true)) then
+					GameRules:GetGameModeEntity().kills = GameRules:GetGameModeEntity().kills + 1
+					for k=1,1 do
+						PlayerResource:IncrementKills(0,1)
+						PlayerResource:IncrementKills(1,1)
+						PlayerResource:IncrementKills(2,1)
+						PlayerResource:IncrementKills(3,1)
+					end
+					if GameRules:GetGameModeEntity().is_debug == true then
+						GameRules:SendCustomMessage("kills: "..GameRules:GetGameModeEntity().kills, 0, 0)
+					end
 				end
 				if keys.entindex_attacker ~= nil then
 					local killer_unit = EntIndexToHScript(keys.entindex_attacker)
 					local killer_owner = killer_unit:GetOwner()
+				end
+				if killed_unit~= nil and not killed_unit.is_entered == true then
+					--给玩家经验
+					local exp_count = 5
+					if GameRules:GetGameModeEntity().level ==10 then
+						exp_count = 300
+					end
+					if GameRules:GetGameModeEntity().level ==20 then
+						exp_count = 300
+					end
+					if GameRules:GetGameModeEntity().level ==30 then
+						exp_count = 300
+					end
+					if GameRules:GetGameModeEntity().level ==40 then
+						exp_count = 300
+					end
+					if GameRules:GetGameModeEntity().level ==50 then
+						exp_count = 300
+					end
+					if GameRules:GetGameModeEntity().level >=11 and GameRules:GetGameModeEntity().level <=19 then
+						exp_count = 10
+					end
+					if GameRules:GetGameModeEntity().level >=21 and GameRules:GetGameModeEntity().level <=29 then
+						exp_count = 15
+					end
+					if GameRules:GetGameModeEntity().level >=31 and GameRules:GetGameModeEntity().level <=39 then
+						exp_count = 20
+					end
+					if GameRules:GetGameModeEntity().level >=41 and GameRules:GetGameModeEntity().level <=49 then
+						exp_count = 25
+					end
+					local exp_percent = 1
 
-					if killer_unit ~= nil and killer_unit:FindModifierByName("modifier_tower_tanlan") ~= nil and RandomInt(1,100)<=5 then
+					exp_count = exp_count * exp_percent
+					if (killed_unit~= nil and killed_unit.is_jingying == true) then
 						exp_count = exp_count * 10
 					end
-					if killer_unit ~= nil then
-						PlayerResource:SetGold(0, PlayerResource:GetGold(0)+exp_count, true)
-						--同步玩家金钱
-						sync_player_gold()
-					end
-				end
-				AMHC:CreateNumberEffect(killed_unit,exp_count,5,AMHC.MSG_GOLD,"yellow",0)
-				GameRules:GetGameModeEntity().team_gold = GameRules:GetGameModeEntity().team_gold + exp_count
 
-				if exp_count >= 100 then
-					EmitGlobalSound("General.CoinsBig")
-				else
-					EmitGlobalSound("General.Coins")
+					local i = 0
+					for i = 0, 20 do
+						if ( PlayerResource:IsValidPlayer( i ) ) then
+							local player = PlayerResource:GetPlayer(i)
+							if player ~= nil then
+								local h = player:GetAssignedHero()
+								if h ~= nil then
+									h:AddExperience (exp_count,0,false,false)
+								end
+							end
+						end
+					end
+
+					--给玩家团队金钱
+					if exp_count >= 100 then
+						exp_count = exp_count/2
+					end
+					if keys.entindex_attacker ~= nil then
+						local killer_unit = EntIndexToHScript(keys.entindex_attacker)
+						local killer_owner = killer_unit:GetOwner()
+
+						if killer_unit ~= nil and killer_unit:FindModifierByName("modifier_tower_tanlan") ~= nil and RandomInt(1,100)<=5 then
+							exp_count = exp_count * 10
+						end
+						if killer_unit ~= nil then
+							PlayerResource:SetGold(0, PlayerResource:GetGold(0)+exp_count, true)
+							--同步玩家金钱
+							sync_player_gold()
+						end
+					end
+					AMHC:CreateNumberEffect(killed_unit,exp_count,5,AMHC.MSG_GOLD,"yellow",0)
+					GameRules:GetGameModeEntity().team_gold = GameRules:GetGameModeEntity().team_gold + exp_count
+
+					if exp_count >= 100 then
+						EmitGlobalSound("General.CoinsBig")
+					else
+						EmitGlobalSound("General.Coins")
+					end
 				end
 			end
 			GameRules:GetGameModeEntity().guai_live_count = GameRules:GetGameModeEntity().guai_live_count - 1
@@ -5635,26 +5692,6 @@ function GemTD:OnEntityKilled( keys )
 		elseif GetMapName() == 'gemtd_race' then
 			--竞速模式
 			local player_id = killed_unit.player
-			--矫正怪物数量
-			-- local enemyall = FindUnitsInRadius(DOTA_TEAM_GOODGUYS,
-	  --                             Vector(0,0,128),
-	  --                             nil,
-	  --                             99999,
-	  --                             DOTA_UNIT_TARGET_TEAM_ENEMY,
-	  --                             DOTA_UNIT_TARGET_ALL,
-	  --                             DOTA_UNIT_TARGET_FLAG_NONE,
-	  --                             FIND_ANY_ORDER,
-	  --                             false)
-			-- local new_count = 0
-			-- for m,n in pairs(enemyall) do
-			-- 	if n.player == player_id and n:IsAlive() == true then
-			-- 		new_count = new_count + 1
-			-- 	end
-			-- end
-			-- GameRules:GetGameModeEntity().enemy_live_count[player_id] = new_count
-			-- if GameRules:GetGameModeEntity().is_debug == true then
-			-- 	GameRules:SendCustomMessage('recount for player '..(player_id)..': Enemy x'..GameRules:GetGameModeEntity().enemy_live_count[player_id],0,0)
-			-- end
 
 			if keys.entindex_killed ~= keys.entindex_attacker then
 				--先算好应该给多少击杀数、钱、经验
@@ -5723,8 +5760,6 @@ function GemTD:OnEntityKilled( keys )
 			
 			--存活怪数-1
 			GameRules:GetGameModeEntity().enemy_live_count[player_id] = GameRules:GetGameModeEntity().enemy_live_count[player_id] - 1
-
-			-- log('玩家'..player_id..'剩余怪数量enemy_live_count: '..GameRules:GetGameModeEntity().enemy_live_count[player_id])
 
 			--有玩家杀完了
 			if GameRules:GetGameModeEntity().enemy_live_count[player_id] <= 0 then
@@ -6634,12 +6669,12 @@ function GemTD:OnNPCSpawned( keys )
 				return nil
 			end
 
-			if (spawned_unit.ftd ~= 2009 and spawned_unit:GetUnitName() ~= "npc_dota_thinker" and spawned_unit:GetUnitName() ~= "npc_dota_companion" and spawned_unit:GetUnitName() ~= nil and string.len(spawned_unit:GetUnitName())>0 ) then
+			if (spawned_unit.ftd ~= 2009 and spawned_unit:GetUnitName() ~= "npc_dota_thinker" and spawned_unit:GetUnitName() ~= "npc_dota_companion" and spawned_unit:GetUnitName() ~= nil and string.len(spawned_unit:GetUnitName())>0 and (not string.find(spawned_unit:GetUnitName(),'_dota_phantomassassin_gravestone'))) then
 
 				if spawned_unit:GetAttackDamage()>2 or spawned_unit:GetHullRadius()>10 then
 					zuobi()
 					GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
-						GameRules:SendCustomMessage("非法单位: "..spawned_unit:GetUnitName(), 0, 0)
+					GameRules:SendCustomMessage("非法单位: "..spawned_unit:GetUnitName(), 0, 0)
 					-- end
 				end
 				return nil
@@ -8560,50 +8595,48 @@ function merge_tower1( tower_name, caster )
 	end
 	caster:Destroy()
 
-	CreateUnitByNameAsync(unit_name, p,false,nil,nil,DOTA_TEAM_GOODGUYS,function(u)
-		u.ftd = 2009
+	local u = CreateUnitByName(unit_name, p,false,nil,nil,DOTA_TEAM_GOODGUYS)
+	u.ftd = 2009
 
-		--发弹幕
-		CustomNetTables:SetTableValue( "game_state", "bullet", {player_id = player_id, text = unit_name, hehe = RandomInt(1,100000)})
+	--发弹幕
+	CustomNetTables:SetTableValue( "game_state", "bullet", {player_id = player_id, text = unit_name, hehe = RandomInt(1,100000)})
 
-		if unit_name == "gemtd_huguoshenyishi" then
-			local random_attack = RandomInt(1,1024)
-			u:SetBaseDamageMin(random_attack)
-			u:SetBaseDamageMax(random_attack)
-			GameRules:SendCustomMessage("-random: "..random_attack,0,0)
-		end
+	if unit_name == "gemtd_huguoshenyishi" then
+		local random_attack = RandomInt(1,1024)
+		u:SetBaseDamageMin(random_attack)
+		u:SetBaseDamageMax(random_attack)
+		GameRules:SendCustomMessage("-random: "..random_attack,0,0)
+	end
 
-		u:SetOwner(owner)
-		u:SetControllableByPlayer(player_id, true)
-		u:SetForwardVector(Vector(0,-1,0))
+	u:SetOwner(owner)
+	u:SetControllableByPlayer(player_id, true)
+	u:SetForwardVector(Vector(0,-1,0))
 
-		u.is_merged = true
-		u.kill_count = 0
+	u.is_merged = true
+	u.kill_count = 0
 
-		u:AddAbility("no_hp_bar")
-		u:FindAbilityByName("no_hp_bar"):SetLevel(1)
-		play_merge_particle(u)
-		EmitGlobalSound("Loot_Drop_Stinger_Mythical")
-		
-		--添加玩家颜色底盘
-		local particle = ParticleManager:CreateParticle("particles/gem/team_0.vpcf", PATTACH_ABSORIGIN_FOLLOW, u) 
-		u.ppp = particle
-		
-		u:RemoveModifierByName("modifier_invulnerable")
-		u:SetHullRadius(1)
-
-		table.insert (GameRules:GetGameModeEntity().gemtd_pool, u)
-		table.insert (GameRules:GetGameModeEntity().gemtd_pool_race[player_id], u)
-		--AMHC:CreateNumberEffect(u,1,2,AMHC.MSG_DAMAGE,"yellow",0)
-
-
-		GameRules:GetGameModeEntity().build_curr[player_id] = {}
-		GameRules:GetGameModeEntity().is_build_ready[player_id] = true
-		send_merge_board(player_id)
-
-		finish_build(player_id)
-	end) 
+	u:AddAbility("no_hp_bar")
+	u:FindAbilityByName("no_hp_bar"):SetLevel(1)
+	play_merge_particle(u)
+	EmitGlobalSound("Loot_Drop_Stinger_Mythical")
 	
+	--添加玩家颜色底盘
+	local particle = ParticleManager:CreateParticle("particles/gem/team_0.vpcf", PATTACH_ABSORIGIN_FOLLOW, u) 
+	u.ppp = particle
+	
+	u:RemoveModifierByName("modifier_invulnerable")
+	u:SetHullRadius(1)
+
+	table.insert (GameRules:GetGameModeEntity().gemtd_pool, u)
+	table.insert (GameRules:GetGameModeEntity().gemtd_pool_race[player_id], u)
+	--AMHC:CreateNumberEffect(u,1,2,AMHC.MSG_DAMAGE,"yellow",0)
+
+
+	GameRules:GetGameModeEntity().build_curr[player_id] = {}
+	GameRules:GetGameModeEntity().is_build_ready[player_id] = true
+	send_merge_board(player_id)
+
+	finish_build(player_id)	
 end
 function gemtd_baiyin( keys )
 	local caster = keys.caster
@@ -9898,7 +9931,7 @@ function elite_hp()
 		beishu = 50
 	end
 
-	return (51-beishu)/50*8 +2
+	return (51-beishu)/50*6 +2
 end
 
 function log(t)

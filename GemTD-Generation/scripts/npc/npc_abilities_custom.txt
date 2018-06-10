@@ -2794,7 +2794,7 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_inner_beast1_buff"
-				"Aura_Radius"	"600"
+				"Aura_Radius"	"664"
 				"Aura_Teams"	"DOTA_TEAM_GOODGUYS | DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_GOODGUYS"
 				// mechanical?
 				"Aura_Types"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING | DOTA_UNIT_TARGET_BASIC"
@@ -2830,13 +2830,13 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_inner_beast2_buff"
-				"Aura_Radius"	"600"
+				"Aura_Radius"	"664"
 				"Aura_Teams"	"DOTA_TEAM_GOODGUYS | DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_GOODGUYS"
 				// mechanical?
 				"Aura_Types"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING | DOTA_UNIT_TARGET_BASIC"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				"IsBuff"	"1"
-				"IsPurgable"	"1"
+				"IsPurgable"	"0"
 			}
 			"modifier_inner_beast2_buff"
 			{
@@ -2867,11 +2867,12 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_inner_beast3_buff"
-				"Aura_Radius"	"600"
+				"Aura_Radius"	"664"
 				"Aura_Teams"	"DOTA_TEAM_GOODGUYS | DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_GOODGUYS"
 				// mechanical?
 				"Aura_Types"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING | DOTA_UNIT_TARGET_BASIC"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"IsBuff"	"1"
 			}
 			"modifier_inner_beast3_buff"
 			{
@@ -2900,11 +2901,12 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_inner_beast4_buff"
-				"Aura_Radius"	"600"
+				"Aura_Radius"	"664"
 				"Aura_Teams"	"DOTA_TEAM_GOODGUYS | DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_GOODGUYS"
 				// mechanical?
 				"Aura_Types"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING | DOTA_UNIT_TARGET_BASIC"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"IsBuff"	"1"
 			}
 			"modifier_inner_beast4_buff"
 			{
@@ -2933,11 +2935,12 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_inner_beast5_buff"
-				"Aura_Radius"	"600"
+				"Aura_Radius"	"664"
 				"Aura_Teams"	"DOTA_TEAM_GOODGUYS | DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_GOODGUYS"
 				// mechanical?
 				"Aura_Types"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING | DOTA_UNIT_TARGET_BASIC"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"IsBuff"	"1"
 			}
 			"modifier_inner_beast5_buff"
 			{
@@ -2966,11 +2969,12 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"Aura"	"modifier_inner_beast6_buff"
-				"Aura_Radius"	"600"
+				"Aura_Radius"	"664"
 				"Aura_Teams"	"DOTA_TEAM_GOODGUYS | DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_GOODGUYS"
 				// mechanical?
 				"Aura_Types"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING | DOTA_UNIT_TARGET_BASIC"
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"IsBuff"	"1"
 			}
 			"modifier_inner_beast6_buff"
 			{
